@@ -1,0 +1,54 @@
+[package]
+name = "eversoul-ai-chat"
+version = "0.0.1"
+description = "A Tauri App"
+authors = ["GarnetRapture <garnet@everlib.pro>"]
+repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
+homepage = "https://github.com/GarnetRapture/eversoul-ai-chat"
+license = "Apache-2.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "eversoul_ai_chat_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.103"
+thiserror = "2.0.18"
+tracing = "0.1.44"
+tracing-subscriber = "0.3.23"
+directories = "6.0.0"
+reqwest = { version = "0.13.4", default-features = false, features = ["json", "rustls", "stream"] }
+rusqlite = { version = "0.40.1", features = ["bundled"] }
+uuid = { version = "1.23.4", features = ["v4", "serde"] }
+tauri-plugin-shell = "2.3.5"
+tauri-plugin-dialog = "2.7.1"
+tauri-plugin-fs = "2.5.1"
+# CPU 기반 로컬 LLM 추론 (GGUF 포맷)
+# Windows 빌드 요구사항: Visual Studio Build Tools (MSVC) + CMake + Clang
+# GPU 가속 필요 시 features = ["cuda"] 또는 features = ["vulkan"] 으로 변경
+llama-cpp-2 = "0.1"
+futures-util = "0.3.32"
+sha2 = "0.11.0"
+hex = "0.4.3"
+
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
