@@ -1,7 +1,7 @@
-use std::collections::HashMap;
-use std::sync::OnceLock;
-use std::io::Read;
 use flate2::read::DeflateDecoder;
+use std::collections::HashMap;
+use std::io::Read;
+use std::sync::OnceLock;
 
 // 빌드 타임에 압축 아카이브 바이너리를 컴파일 결과물 내부로 직접 임베딩
 const PERSONAS_ARCHIVE: &[u8] = include_bytes!("../../../resources/personas.bin");
@@ -93,10 +93,12 @@ impl PersonaLoader {
     /// 특정 정령의 영어명을 기준으로 바이너리 아카이브에서 데이터를 찾아 온디맨드 부분 압축 해제
     pub fn load_persona(name_en: &str) -> Result<serde_json::Value, String> {
         let index = Self::get_index();
-        let name_lower = name_en.to_lowercase()
+        let name_lower = name_en
+            .to_lowercase()
             .replace(|c: char| !c.is_alphanumeric() && c != '_' && c != '-', "");
 
-        let entry = index.get(&name_lower)
+        let entry = index
+            .get(&name_lower)
             .ok_or_else(|| format!("페르소나 데이터를 찾을 수 없습니다: {}", name_en))?;
 
         if entry.offset + entry.length > PERSONAS_ARCHIVE.len() {
@@ -109,12 +111,13 @@ impl PersonaLoader {
         // Deflate 압축 온디맨드 해제
         let mut decoder = DeflateDecoder::new(compressed_slice);
         let mut json_str = String::new();
-        decoder.read_to_string(&mut json_str)
+        decoder
+            .read_to_string(&mut json_str)
             .map_err(|e| format!("Deflate 압축 해제 실패: {}", e))?;
 
         // JSON 파싱
-        let value: serde_json::Value = serde_json::from_str(&json_str)
-            .map_err(|e| format!("JSON 역직렬화 실패: {}", e))?;
+        let value: serde_json::Value =
+            serde_json::from_str(&json_str).map_err(|e| format!("JSON 역직렬화 실패: {}", e))?;
 
         Ok(value)
     }

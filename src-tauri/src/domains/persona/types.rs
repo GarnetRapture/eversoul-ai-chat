@@ -15,7 +15,6 @@ pub struct PersonaConfig {
     pub created_at: String,
 }
 
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UpdatePersonaRequest {
     pub id: String,
@@ -34,4 +33,3 @@ pub enum PersonaError {
     #[error("알 수 없는 오류: {0}")]
     Unknown(String),
 }
-

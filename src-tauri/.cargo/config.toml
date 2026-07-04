@@ -1,0 +1,4 @@
+[env]
+# llama-cpp-sys-2 빌드 시 bindgen이 C/C++ 헤더 바인딩을 생성하기 위해 필요한 libclang 위치.
+# LLVM 공식 배포판(winget: LLVM.LLVM) 설치 시 기본 경로.
+LIBCLANG_PATH = "C:\\Program Files\\LLVM\\bin"

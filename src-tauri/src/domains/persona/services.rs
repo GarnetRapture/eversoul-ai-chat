@@ -1,9 +1,8 @@
-use rusqlite::Connection;
-use uuid::Uuid;
-use std::time::SystemTime;
-use crate::infrastructure::compress::PersonaLoader;
-use super::types::{PersonaConfig, UpdatePersonaRequest, PersonaError};
 use super::repositories::PersonaRepository;
+use super::types::{PersonaConfig, PersonaError, UpdatePersonaRequest};
+use crate::infrastructure::compress::PersonaLoader;
+use rusqlite::Connection;
+use std::time::SystemTime;
 
 pub struct PersonaService<'a> {
     conn: &'a Connection,
@@ -32,8 +31,8 @@ impl<'a> PersonaService<'a> {
     /// 완벽 압축 아카이브에서 정령 데이터를 풀고 프로필 지침을 동적 조립하여 로컬 DB에 프리셋으로 저장(Upsert)한다.
     pub fn load_and_save_preset(&self, name_en: &str) -> Result<PersonaConfig, PersonaError> {
         // 1. 아카이브 바이너리로부터 정령 JSON 데이터 온디맨드 해제
-        let json_val = PersonaLoader::load_persona(name_en)
-            .map_err(|e| PersonaError::Archive(e))?;
+        let json_val =
+            PersonaLoader::load_persona(name_en).map_err(|e| PersonaError::Archive(e))?;
 
         // 2. JSON 데이터로부터 필드 안전하게 획득
         let name = json_val["name"].as_str().unwrap_or(name_en);
@@ -48,18 +47,23 @@ impl<'a> PersonaService<'a> {
         let constellation = json_val["profile"]["constellation"].as_str().unwrap_or("-");
         let union = json_val["profile"]["union"].as_str().unwrap_or("-");
         let birthday = json_val["profile"]["birthday"].as_str().unwrap_or("-");
-        
-        let height = json_val["profile"]["height"].as_f64()
-            .map(|h| format!("{}cm", h)).unwrap_or_else(|| "-".to_string());
-        let weight = json_val["profile"]["weight"].as_f64()
-            .map(|w| format!("{}kg", w)).unwrap_or_else(|| "-".to_string());
+
+        let height = json_val["profile"]["height"]
+            .as_f64()
+            .map(|h| format!("{}cm", h))
+            .unwrap_or_else(|| "-".to_string());
+        let weight = json_val["profile"]["weight"]
+            .as_f64()
+            .map(|w| format!("{}kg", w))
+            .unwrap_or_else(|| "-".to_string());
 
         let cv_ko = json_val["profile"]["cv_ko"].as_str().unwrap_or("-");
         let cv_jp = json_val["profile"]["cv_jp"].as_str().unwrap_or("-");
 
         // 배열 데이터 스트링 조합
         let parse_array = |field_key: &str| -> String {
-            json_val["profile"][field_key].as_array()
+            json_val["profile"][field_key]
+                .as_array()
                 .map(|arr| {
                     arr.iter()
                         .map(|v| v.as_str().unwrap_or(""))
@@ -75,8 +79,12 @@ impl<'a> PersonaService<'a> {
         let hobby = parse_array("hobby");
         let speciality = parse_array("speciality");
 
-        let description = json_val["personality"]["description"].as_str().unwrap_or("-");
-        let greeting = json_val["personality"]["greeting"].as_str().unwrap_or("안녕!");
+        let description = json_val["personality"]["description"]
+            .as_str()
+            .unwrap_or("-");
+        let greeting = json_val["personality"]["greeting"]
+            .as_str()
+            .unwrap_or("안녕!");
 
         // 말투 패턴 예시 중 대표 3개 추출
         let mut speech_lines = Vec::new();
@@ -124,7 +132,8 @@ impl<'a> PersonaService<'a> {
             .unwrap_or_default();
 
         // 영어명을 고유 ID로 매핑하여 Upsert 처리 (예: "aki")
-        let persona_id = name_en_val.to_lowercase()
+        let persona_id = name_en_val
+            .to_lowercase()
             .replace(|c: char| !c.is_alphanumeric() && c != '_' && c != '-', "");
 
         let config = PersonaConfig {
@@ -141,7 +150,6 @@ impl<'a> PersonaService<'a> {
             created_at: now,
         };
 
-
         // SQLite DB 저장소에 페르소나 설정 영속화
         PersonaRepository::save_persona(self.conn, &config)
             .map_err(|e| PersonaError::Database(e.to_string()))?;
@@ -151,8 +159,7 @@ impl<'a> PersonaService<'a> {
 
     /// LLM 추론을 위한 시스템 프롬프트를 구성하여 반환한다.
     pub fn get_assembled_system_prompt(&self, id: &str) -> Result<String, String> {
-        let persona = PersonaRepository::get_persona(self.conn, id)
-            .map_err(|e| e.to_string())?;
+        let persona = PersonaRepository::get_persona(self.conn, id).map_err(|e| e.to_string())?;
 
         if let Some(p) = persona {
             let prompt = format!(
@@ -167,6 +174,20 @@ impl<'a> PersonaService<'a> {
 
     /// 사용 가능한 모든 캐릭터 목록을 획득한다.
     pub fn get_available_personas(&self) -> Result<Vec<PersonaConfig>, PersonaError> {
+        let existing = PersonaRepository::list_personas(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))?;
+
+        if !existing.is_empty() {
+            return Ok(existing);
+        }
+
+        let mut names = PersonaLoader::list_personas();
+        names.sort();
+
+        for name in names {
+            self.load_and_save_preset(&name)?;
+        }
+
         PersonaRepository::list_personas(self.conn)
             .map_err(|e| PersonaError::Database(e.to_string()))
     }

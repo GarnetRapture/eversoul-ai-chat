@@ -11,7 +11,7 @@ impl HttpManager {
     /// 기본 URL을 설정하여 HTTP 매니저를 생성한다.
     pub fn new(base_url: String) -> Self {
         let client = Client::builder()
-            .timeout(Duration::from_seconds(30))
+            .timeout(Duration::from_secs(30))
             .build()
             .unwrap_or_else(|_| Client::new());
 
@@ -25,7 +25,7 @@ impl HttpManager {
     {
         let url = format!("{}{}", self.base_url, path);
         let response = self.client.get(&url).send().await?;
-        
+
         if !response.status().is_success() {
             return Err(anyhow::anyhow!(
                 "HTTP GET 요청 실패: Status {}",

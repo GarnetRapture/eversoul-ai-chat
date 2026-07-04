@@ -1,5 +1,5 @@
-use rusqlite::{params, Connection, Result};
 use super::types::KnowledgePayload;
+use rusqlite::{params, Connection, Result};
 
 pub struct KnowledgeRepository;
 
@@ -21,14 +21,18 @@ impl KnowledgeRepository {
 
     /// 단순 LIKE 쿼리를 이용해 본문 텍스트 내 키워드를 검색한다.
     /// SQLite3 기본 내장 검색으로 대용량 형태소 분석기 없이 빠르고 견고하게 작동하도록 설계.
-    pub fn search_chunks(conn: &Connection, query: &str, limit: usize) -> Result<Vec<KnowledgePayload>> {
+    pub fn search_chunks(
+        conn: &Connection,
+        query: &str,
+        limit: usize,
+    ) -> Result<Vec<KnowledgePayload>> {
         let pattern = format!("%{}%", query);
         let mut stmt = conn.prepare(
             "SELECT id, document_name, chunk_text, created_at FROM knowledge_chunk
              WHERE chunk_text LIKE ?1 LIMIT ?2",
         )?;
 
-        let rows = stmt.query_map(params![pattern, limit], |row| {
+        let rows = stmt.query_map(params![pattern, limit as i64], |row| {
             Ok(KnowledgePayload {
                 id: row.get(0)?,
                 document_name: row.get(1)?,

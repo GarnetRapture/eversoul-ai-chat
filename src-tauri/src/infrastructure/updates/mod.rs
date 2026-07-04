@@ -20,7 +20,8 @@ impl UpdateManager {
 
     /// 원격 서버에서 반환받은 최신 버전과 비교하여 업데이트 필요 여부를 판단한다.
     pub fn check_for_updates(&self, latest_version: &str, download_url: &str) -> UpdateCheckResult {
-        let has_update = self.parse_version(&self.current_version) < self.parse_version(latest_version);
+        let has_update =
+            self.parse_version(&self.current_version) < self.parse_version(latest_version);
 
         UpdateCheckResult {
             has_update,

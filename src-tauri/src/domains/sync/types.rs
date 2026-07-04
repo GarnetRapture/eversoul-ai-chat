@@ -11,6 +11,7 @@ pub struct SyncResult {
 pub struct RemoteDataPack {
     pub personas: Vec<crate::domains::persona::types::PersonaConfig>,
     pub knowledges: Vec<crate::domains::knowledge::types::KnowledgePayload>,
+    pub styles: Vec<crate::domains::style::types::StyleProfile>,
 }
 
 #[derive(Debug, thiserror::Error, serde::Serialize)]
@@ -22,4 +23,3 @@ pub enum SyncError {
     #[error("알 수 없는 오류: {0}")]
     Unknown(String),
 }
-

@@ -1,5 +1,5 @@
-use rusqlite::{params, Connection, Result};
 use super::types::UserSession;
+use rusqlite::{params, Connection, Result};
 
 pub struct AuthRepository;
 
@@ -9,14 +9,20 @@ impl AuthRepository {
         conn.execute("DELETE FROM auth_session", [])?;
         conn.execute(
             "INSERT INTO auth_session (token, email, username, created_at) VALUES (?1, ?2, ?3, ?4)",
-            params![session.token, session.email, session.username, session.created_at],
+            params![
+                session.token,
+                session.email,
+                session.username,
+                session.created_at
+            ],
         )?;
         Ok(())
     }
 
     /// 현재 저장된 활성 세션을 가져온다.
     pub fn get_session(conn: &Connection) -> Result<Option<UserSession>> {
-        let mut stmt = conn.prepare("SELECT token, email, username, created_at FROM auth_session LIMIT 1")?;
+        let mut stmt =
+            conn.prepare("SELECT token, email, username, created_at FROM auth_session LIMIT 1")?;
         let mut rows = stmt.query([])?;
 
         if let Some(row) = rows.next()? {

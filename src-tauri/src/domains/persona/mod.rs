@@ -1,4 +1,4 @@
-pub mod types;
+pub mod commands;
 pub mod repositories;
 pub mod services;
-pub mod commands;
+pub mod types;

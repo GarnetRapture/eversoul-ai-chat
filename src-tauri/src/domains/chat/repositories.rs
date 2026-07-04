@@ -1,5 +1,5 @@
+use super::types::{ChatMessage, ChatRoom};
 use rusqlite::{params, Connection, Result};
-use super::types::{ChatRoom, ChatMessage};
 
 pub struct ChatRepository;
 
@@ -15,7 +15,9 @@ impl ChatRepository {
 
     /// 대화방 리스트를 전체 조회한다.
     pub fn list_rooms(conn: &Connection) -> Result<Vec<ChatRoom>> {
-        let mut stmt = conn.prepare("SELECT id, title, created_at, updated_at FROM chat_room ORDER BY updated_at DESC")?;
+        let mut stmt = conn.prepare(
+            "SELECT id, title, created_at, updated_at FROM chat_room ORDER BY updated_at DESC",
+        )?;
         let rows = stmt.query_map([], |row| {
             Ok(ChatRoom {
                 id: row.get(0)?,

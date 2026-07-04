@@ -40,4 +40,3 @@ pub enum ChatError {
     #[error("알 수 없는 오류: {0}")]
     Unknown(String),
 }
-

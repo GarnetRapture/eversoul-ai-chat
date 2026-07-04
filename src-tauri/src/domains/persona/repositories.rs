@@ -1,5 +1,5 @@
-use rusqlite::{params, Connection, Result};
 use super::types::PersonaConfig;
+use rusqlite::{params, Connection, Result};
 
 pub struct PersonaRepository;
 

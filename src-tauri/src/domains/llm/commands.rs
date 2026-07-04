@@ -1,8 +1,8 @@
-use tauri::{AppHandle, State, Manager};
-use std::sync::Mutex;
-use crate::infrastructure::llm::LlmEngine;
-use super::types::{LlmStatus, LlmInferResponse, LlmError};
 use super::services::LlmService;
+use super::types::{LlmError, LlmInferResponse, LlmStatus};
+use crate::infrastructure::llm::LlmEngine;
+use std::sync::Mutex;
+use tauri::{AppHandle, Manager, State};
 
 pub struct LlmState(pub Mutex<Option<LlmEngine>>);
 
@@ -24,15 +24,20 @@ fn map_infra_error(err: String) -> LlmError {
     }
 }
 
-#[tauri::command]
+#[tauri::command(rename_all = "snake_case")]
 pub fn llm_load(
     app_handle: AppHandle,
     llm_state: State<'_, LlmState>,
 ) -> Result<LlmStatus, LlmError> {
-    let mut engine_lock = llm_state.0.lock().map_err(|e| LlmError::Unknown(e.to_string()))?;
+    let mut engine_lock = llm_state
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
     // 개발 모드와 빌드 배포 모드 양측 경로에 모두 호환되도록 기준 경로 수립
-    let app_root = app_handle.path().resource_dir()
+    let app_root = app_handle
+        .path()
+        .resource_dir()
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
 
     match LlmService::load_engine(&app_root) {
@@ -53,11 +58,12 @@ pub fn llm_load(
     }
 }
 
-#[tauri::command]
-pub fn llm_status(
-    llm_state: State<'_, LlmState>,
-) -> Result<LlmStatus, LlmError> {
-    let engine_lock = llm_state.0.lock().map_err(|e| LlmError::Unknown(e.to_string()))?;
+#[tauri::command(rename_all = "snake_case")]
+pub fn llm_status(llm_state: State<'_, LlmState>) -> Result<LlmStatus, LlmError> {
+    let engine_lock = llm_state
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
     if let Some(ref engine) = *engine_lock {
         Ok(LlmStatus {
@@ -74,13 +80,16 @@ pub fn llm_status(
     }
 }
 
-#[tauri::command]
+#[tauri::command(rename_all = "snake_case")]
 pub fn llm_infer(
     llm_state: State<'_, LlmState>,
     prompt: String,
     max_tokens: Option<u32>,
 ) -> Result<LlmInferResponse, LlmError> {
-    let engine_lock = llm_state.0.lock().map_err(|e| LlmError::Unknown(e.to_string()))?;
+    let engine_lock = llm_state
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
     if let Some(ref engine) = *engine_lock {
         LlmService::run_inference(engine, &prompt, max_tokens).map_err(map_infra_error)

@@ -1,11 +1,12 @@
 use rusqlite::Connection;
-use uuid::Uuid;
 use std::time::SystemTime;
+use uuid::Uuid;
 
-use crate::domains::persona::services::PersonaService;
-use crate::domains::knowledge::services::KnowledgeService;
-use super::types::{ChatRoom, ChatMessage, SendMessageRequest, ChatError};
 use super::repositories::ChatRepository;
+use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
+use crate::domains::knowledge::services::KnowledgeService;
+use crate::domains::persona::services::PersonaService;
+use crate::domains::style::services::StyleService;
 
 pub struct ChatService<'a> {
     conn: &'a Connection,
@@ -37,8 +38,7 @@ impl<'a> ChatService<'a> {
 
     /// 대화방 목록을 조회한다.
     pub fn get_chat_rooms(&self) -> Result<Vec<ChatRoom>, ChatError> {
-        ChatRepository::list_rooms(self.conn)
-            .map_err(|e| ChatError::Database(e.to_string()))
+        ChatRepository::list_rooms(self.conn).map_err(|e| ChatError::Database(e.to_string()))
     }
 
     /// 대화방 ID에 따라 메시지 리스트를 로드한다.
@@ -48,14 +48,16 @@ impl<'a> ChatService<'a> {
     }
 
     /// 사용자 메시지를 기록하고, 페르소나 및 로컬 지식 RAG 지침을 조립하여 AI 응답을 수립한다.
-    pub async fn process_message<F, Fut>(
+    ///
+    /// 로컬 CPU LLM 추론과 SQLite 접근은 전부 동기 작업이므로, `MutexGuard`(non-Send)를
+    /// `.await` 경계 너머로 들고 있지 않도록 이 메서드 전체를 동기로 구성한다.
+    pub fn process_message<F>(
         &self,
         req: SendMessageRequest,
         llm_infer_fn: F,
     ) -> Result<ChatMessage, ChatError>
     where
-        F: FnOnce(String, Vec<ChatMessage>) -> Fut,
-        Fut: std::future::Future<Output = Result<String, ChatError>>,
+        F: FnOnce(String, Vec<ChatMessage>) -> Result<String, ChatError>,
     {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -81,7 +83,7 @@ impl<'a> ChatService<'a> {
 
         // 3. 로컬 지식 기반 유사 검색(RAG)
         let knowledge_service = KnowledgeService::new(self.conn);
-        if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, 2) {
+        if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, Some(2)) {
             if !chunks.is_empty() {
                 let mut knowledge_context = String::from("\n[참고 지식 데이터]\n");
                 for (i, chunk) in chunks.iter().enumerate() {
@@ -91,14 +93,20 @@ impl<'a> ChatService<'a> {
             }
         }
 
-        // 4. 대화 이력 수집
+        // 4. 스타일팩(말투 프로필) 지침 병합 - 서버 동기화로 받은 활성 스타일이 있을 때만 반영
+        let style_service = StyleService::new(self.conn);
+        if let Ok(style_prompt) = style_service.get_assembled_style_prompt() {
+            system_prompt.push_str(&style_prompt);
+        }
+
+        // 5. 대화 이력 수집
         let history = ChatRepository::list_messages(self.conn, &req.room_id)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        // 5. LLM 비동기 추론 처리 (비즈니스 계층 침투 방지를 위해 클로저 위임 호출)
-        let ai_text = llm_infer_fn(system_prompt, history).await?;
+        // 6. LLM 추론 처리 (비즈니스 계층 침투 방지를 위해 클로저 위임 호출)
+        let ai_text = llm_infer_fn(system_prompt, history)?;
 
-        // 6. AI 응답 메시지 생성 및 SQLite 저장
+        // 7. AI 응답 메시지 생성 및 SQLite 저장
         let ai_now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())

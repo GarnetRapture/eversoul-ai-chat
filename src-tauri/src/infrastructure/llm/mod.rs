@@ -5,7 +5,7 @@ use llama_cpp_2::{
     llama_backend::LlamaBackend,
     llama_batch::LlamaBatch,
     model::{params::LlamaModelParams, LlamaModel},
-    token::data_array::LlamaTokenDataArray,
+    sampling::LlamaSampler,
 };
 use thiserror::Error;
 
@@ -64,8 +64,7 @@ impl LlmEngine {
             });
         }
 
-        let backend = LlamaBackend::init()
-            .map_err(|e| LlmError::BackendInit(e.to_string()))?;
+        let backend = LlamaBackend::init().map_err(|e| LlmError::BackendInit(e.to_string()))?;
 
         let model_params = LlamaModelParams::default();
         let model = LlamaModel::load_from_file(&backend, &model_path, &model_params)
@@ -91,10 +90,8 @@ impl LlmEngine {
     pub fn infer(&self, prompt: &str, max_tokens: Option<u32>) -> Result<String, LlmError> {
         let max_tokens = max_tokens.unwrap_or(DEFAULT_MAX_TOKENS);
 
-        let ctx_params = LlamaContextParams::default()
-            .with_n_ctx(std::num::NonZeroU32::new(CONTEXT_SIZE));
-
-
+        let ctx_params =
+            LlamaContextParams::default().with_n_ctx(std::num::NonZeroU32::new(CONTEXT_SIZE));
 
         let mut ctx = self
             .model
@@ -120,7 +117,8 @@ impl LlmEngine {
         ctx.decode(&mut batch)
             .map_err(|e| LlmError::Infer(e.to_string()))?;
 
-        // 토큰 생성 루프
+        // 토큰 생성 루프 (llama_sampler 체인 기반 탐욕적 샘플링)
+        let mut sampler = LlamaSampler::greedy();
         let mut output_tokens: Vec<llama_cpp_2::token::LlamaToken> = Vec::new();
         let mut n_cur = n_tokens as i32;
 
@@ -129,11 +127,9 @@ impl LlmEngine {
                 break;
             }
 
-            let candidates = ctx.candidates();
-            let mut candidates_p = LlamaTokenDataArray::from_iter(candidates, false);
-
-            // 탐욕적 샘플링 (greedy)
-            let next_token = ctx.sample_token_greedy(&mut candidates_p);
+            // 직전 decode 결과의 마지막 위치 로짓에서 다음 토큰을 탐욕적으로 샘플링
+            let next_token = sampler.sample(&ctx, -1);
+            sampler.accept(next_token);
 
             // EOS(End of Sequence) 토큰이면 종료
             if next_token == self.model.token_eos() {

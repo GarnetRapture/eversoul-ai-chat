@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/core';
+import { invokeCommand, tauriCommands } from '../../shared/api';
 import { ChatRoom, ChatMessage } from './types';
 
 export const chatClient = {
@@ -6,21 +6,21 @@ export const chatClient = {
    * 새 대화방을 생성한다.
    */
   async createRoom(title: string): Promise<ChatRoom> {
-    return invoke<ChatRoom>('chat_create_room', { title });
+    return invokeCommand<ChatRoom>(tauriCommands.chat.createRoom, { title });
   },
 
   /**
    * 대화방 목록을 조회한다.
    */
   async listRooms(): Promise<ChatRoom[]> {
-    return invoke<ChatRoom[]>('chat_list_rooms');
+    return invokeCommand<ChatRoom[]>(tauriCommands.chat.listRooms);
   },
 
   /**
    * 특정 대화방의 상세 메시지 목록을 가져온다.
    */
   async listMessages(roomId: string): Promise<ChatMessage[]> {
-    return invoke<ChatMessage[]>('chat_list_messages', { room_id: roomId });
+    return invokeCommand<ChatMessage[]>(tauriCommands.chat.listMessages, { room_id: roomId });
   },
 
   /**
@@ -31,7 +31,7 @@ export const chatClient = {
     content: string,
     personaId: string
   ): Promise<ChatMessage> {
-    return invoke<ChatMessage>('chat_send_message', {
+    return invokeCommand<ChatMessage>(tauriCommands.chat.sendMessage, {
       room_id: roomId,
       content,
       persona_id: personaId,

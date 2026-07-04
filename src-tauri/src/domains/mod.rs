@@ -3,4 +3,5 @@ pub mod chat;
 pub mod knowledge;
 pub mod llm;
 pub mod persona;
+pub mod style;
 pub mod sync;
