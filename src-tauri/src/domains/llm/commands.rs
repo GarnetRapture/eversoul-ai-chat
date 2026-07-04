@@ -1,26 +1,35 @@
-use super::services::LlmService;
+use super::services::{LlmLoadError, LlmService};
 use super::types::{LlmError, LlmInferResponse, LlmStatus};
 use crate::infrastructure::llm::LlmEngine;
+use crate::infrastructure::llm::LlmError as InfraLlmError;
 use std::sync::Mutex;
 use tauri::{AppHandle, Manager, State};
 
 pub struct LlmState(pub Mutex<Option<LlmEngine>>);
 
-fn map_infra_error(err: String) -> LlmError {
-    if err.contains("ModelFileNotFound") {
-        LlmError::ModelFileNotFound {
-            path: "ai/model/qwen25-3b-korean-Q4_K_M.gguf".to_string(),
-        }
-    } else if err.contains("BackendInit") {
-        LlmError::BackendInit(err)
-    } else if err.contains("ModelLoad") {
-        LlmError::ModelLoad(err)
-    } else if err.contains("ContextCreate") {
-        LlmError::ContextCreate(err)
-    } else if err.contains("Tokenize") {
-        LlmError::Tokenize(err)
-    } else {
-        LlmError::Infer(err)
+fn map_engine_error(err: InfraLlmError) -> LlmError {
+    match err {
+        InfraLlmError::ModelFileNotFound { path } => LlmError::ModelFileNotFound {
+            path: path.to_string_lossy().to_string(),
+        },
+        InfraLlmError::BackendInit(msg) => LlmError::BackendInit(msg),
+        InfraLlmError::ModelLoad(msg) => LlmError::ModelLoad(msg),
+        InfraLlmError::ContextCreate(msg) => LlmError::ContextCreate(msg),
+        InfraLlmError::Tokenize(msg) => LlmError::Tokenize(msg),
+        InfraLlmError::Infer(msg) => LlmError::Infer(msg),
+    }
+}
+
+fn map_load_error(err: LlmLoadError) -> LlmError {
+    match err {
+        LlmLoadError::ModelFileNotFound(paths) => LlmError::ModelFileNotFound {
+            path: paths
+                .iter()
+                .map(|p| p.to_string_lossy().to_string())
+                .collect::<Vec<String>>()
+                .join(", "),
+        },
+        LlmLoadError::EngineError(e) => map_engine_error(e),
     }
 }
 
@@ -34,7 +43,14 @@ pub fn llm_load(
         .lock()
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
-    // 개발 모드와 빌드 배포 모드 양측 경로에 모두 호환되도록 기준 경로 수립
+    if let Some(ref engine) = *engine_lock {
+        return Ok(LlmStatus {
+            is_loaded: true,
+            model_path: Some(engine.model_path().to_string_lossy().to_string()),
+            error_message: None,
+        });
+    }
+
     let app_root = app_handle
         .path()
         .resource_dir()
@@ -53,7 +69,7 @@ pub fn llm_load(
         }
         Err(e) => {
             *engine_lock = None;
-            Err(map_infra_error(e))
+            Err(map_load_error(e))
         }
     }
 }
@@ -92,7 +108,7 @@ pub fn llm_infer(
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
     if let Some(ref engine) = *engine_lock {
-        LlmService::run_inference(engine, &prompt, max_tokens).map_err(map_infra_error)
+        LlmService::run_inference(engine, &prompt, max_tokens).map_err(map_engine_error)
     } else {
         Err(LlmError::EngineNotLoaded)
     }

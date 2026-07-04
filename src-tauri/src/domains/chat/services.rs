@@ -7,6 +7,14 @@ use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::knowledge::services::KnowledgeService;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::style::services::StyleService;
+use crate::infrastructure::llm::LlmEngine;
+use crate::infrastructure::settings::SettingsManager;
+
+const EPISODIC_INJECT_LIMIT: usize = 5;
+
+const CONSOLIDATION_INTERVAL: usize = 10;
+
+const CONSOLIDATION_SOURCE_LIMIT: usize = 30;
 
 pub struct ChatService<'a> {
     conn: &'a Connection,
@@ -17,8 +25,15 @@ impl<'a> ChatService<'a> {
         Self { conn }
     }
 
-    /// 새 대화방을 생성한다.
     pub fn create_chat_room(&self, title: &str) -> Result<ChatRoom, ChatError> {
+        self.create_chat_session_room(title, None)
+    }
+
+    pub fn create_chat_session_room(
+        &self,
+        title: &str,
+        persona_id: Option<String>,
+    ) -> Result<ChatRoom, ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
@@ -27,6 +42,8 @@ impl<'a> ChatService<'a> {
         let room = ChatRoom {
             id: Uuid::new_v4().to_string(),
             title: title.to_string(),
+            persona_id,
+            session_started_at: now.clone(),
             created_at: now.clone(),
             updated_at: now,
         };
@@ -36,52 +53,45 @@ impl<'a> ChatService<'a> {
             .map_err(|e| ChatError::Database(e.to_string()))
     }
 
-    /// 대화방 목록을 조회한다.
     pub fn get_chat_rooms(&self) -> Result<Vec<ChatRoom>, ChatError> {
         ChatRepository::list_rooms(self.conn).map_err(|e| ChatError::Database(e.to_string()))
     }
 
-    /// 대화방 ID에 따라 메시지 리스트를 로드한다.
+    pub fn get_latest_session_room(&self, persona_id: &str) -> Result<Option<ChatRoom>, ChatError> {
+        ChatRepository::find_latest_room_by_persona(self.conn, persona_id)
+            .map_err(|e| ChatError::Database(e.to_string()))
+    }
+
     pub fn get_room_messages(&self, room_id: &str) -> Result<Vec<ChatMessage>, ChatError> {
         ChatRepository::list_messages(self.conn, room_id)
             .map_err(|e| ChatError::Database(e.to_string()))
     }
 
-    /// 사용자 메시지를 기록하고, 페르소나 및 로컬 지식 RAG 지침을 조립하여 AI 응답을 수립한다.
-    ///
-    /// 로컬 CPU LLM 추론과 SQLite 접근은 전부 동기 작업이므로, `MutexGuard`(non-Send)를
-    /// `.await` 경계 너머로 들고 있지 않도록 이 메서드 전체를 동기로 구성한다.
-    pub fn process_message<F>(
+    pub fn prepare_message_context(
         &self,
-        req: SendMessageRequest,
-        llm_infer_fn: F,
-    ) -> Result<ChatMessage, ChatError>
-    where
-        F: FnOnce(String, Vec<ChatMessage>) -> Result<String, ChatError>,
-    {
+        req: &SendMessageRequest,
+        settings: &SettingsManager,
+    ) -> Result<(String, Vec<ChatMessage>), ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
             .unwrap_or_default();
 
-        // 1. 사용자 메시지 생성 및 SQLite 저장
         let user_msg = ChatMessage {
             id: Uuid::new_v4().to_string(),
             room_id: req.room_id.clone(),
             role: "user".to_string(),
             content: req.content.clone(),
-            created_at: now.clone(),
+            created_at: now,
         };
         ChatRepository::insert_message(self.conn, &user_msg)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        // 2. 페르소나 시스템 프롬프트 조립
         let persona_service = PersonaService::new(self.conn);
         let mut system_prompt = persona_service
             .get_assembled_system_prompt(&req.persona_id)
             .map_err(|e| ChatError::Database(e))?;
 
-        // 3. 로컬 지식 기반 유사 검색(RAG)
         let knowledge_service = KnowledgeService::new(self.conn);
         if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, Some(2)) {
             if !chunks.is_empty() {
@@ -93,35 +103,145 @@ impl<'a> ChatService<'a> {
             }
         }
 
-        // 4. 스타일팩(말투 프로필) 지침 병합 - 서버 동기화로 받은 활성 스타일이 있을 때만 반영
         let style_service = StyleService::new(self.conn);
-        if let Ok(style_prompt) = style_service.get_assembled_style_prompt() {
+        let active_style_id = settings.get_active_style_id();
+        if let Ok(style_prompt) = style_service.get_assembled_style_prompt(active_style_id.as_deref())
+        {
             system_prompt.push_str(&style_prompt);
         }
 
-        // 5. 대화 이력 수집
+        let semantic_memory = ChatRepository::get_semantic_memory(self.conn, &req.persona_id)
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        let recent_episodic =
+            ChatRepository::list_episodic_memories(self.conn, &req.persona_id, EPISODIC_INJECT_LIMIT)
+                .map_err(|e| ChatError::Database(e.to_string()))?;
+
+        if semantic_memory.is_some() || !recent_episodic.is_empty() {
+            let mut memory_block =
+                String::from("\n[구원자와의 관계에 대해 이 정령이 누적한 기억]\n");
+            if let Some(ref summary) = semantic_memory {
+                memory_block.push_str(&format!("- (통합 요약) {}\n", summary));
+            }
+            for note in &recent_episodic {
+                memory_block.push_str(&format!("- (최근 기억) {}\n", note));
+            }
+            system_prompt.push_str(&memory_block);
+        }
+
         let history = ChatRepository::list_messages(self.conn, &req.room_id)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        // 6. LLM 추론 처리 (비즈니스 계층 침투 방지를 위해 클로저 위임 호출)
-        let ai_text = llm_infer_fn(system_prompt, history)?;
+        Ok((system_prompt, history))
+    }
 
-        // 7. AI 응답 메시지 생성 및 SQLite 저장
-        let ai_now = SystemTime::now()
+    pub fn save_ai_response(&self, room_id: &str, text: String) -> Result<ChatMessage, ChatError> {
+        let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
             .unwrap_or_default();
 
         let ai_msg = ChatMessage {
             id: Uuid::new_v4().to_string(),
-            room_id: req.room_id,
+            room_id: room_id.to_string(),
             role: "assistant".to_string(),
-            content: ai_text,
-            created_at: ai_now,
+            content: text,
+            created_at: now,
         };
         ChatRepository::insert_message(self.conn, &ai_msg)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
         Ok(ai_msg)
+    }
+
+    pub fn accumulate_memory(
+        &self,
+        persona_id: &str,
+        user_text: &str,
+        ai_text: &str,
+        engine: &LlmEngine,
+    ) -> Result<(), ChatError> {
+        let extraction_prompt = format!(
+            "<|im_start|>system\n다음은 정령 캐릭터와 구원자(사용자) 사이의 대화 한 턴이다. \
+             이 캐릭터가 앞으로의 대화에서 계속 기억해야 할 새로운 사실, 사건, 구원자의 취향/약속 \
+             등이 있다면 한국어 한 문장으로 간결하게 요약하라. 기억할 만한 새로운 정보가 없으면 \
+             정확히 '없음'이라고만 답하라.<|im_end|>\n\
+             <|im_start|>user\n구원자: {}\n캐릭터: {}<|im_end|>\n\
+             <|im_start|>assistant\n",
+            user_text, ai_text
+        );
+
+        let summary = engine
+            .infer(&extraction_prompt, Some(80))
+            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
+        let trimmed = summary.trim();
+
+        if !trimmed.is_empty() && !trimmed.contains("없음") {
+            let now = SystemTime::now()
+                .duration_since(SystemTime::UNIX_EPOCH)
+                .map(|d| d.as_secs().to_string())
+                .unwrap_or_default();
+            ChatRepository::insert_episodic_memory(
+                self.conn,
+                &Uuid::new_v4().to_string(),
+                persona_id,
+                trimmed,
+                &now,
+            )
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        }
+
+        let episodic_count = ChatRepository::count_episodic_memories(self.conn, persona_id)
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        if episodic_count > 0 && episodic_count % CONSOLIDATION_INTERVAL == 0 {
+            self.consolidate_semantic_memory(persona_id, engine)?;
+        }
+
+        Ok(())
+    }
+
+    fn consolidate_semantic_memory(&self, persona_id: &str, engine: &LlmEngine) -> Result<(), ChatError> {
+        let episodic =
+            ChatRepository::list_episodic_memories(self.conn, persona_id, CONSOLIDATION_SOURCE_LIMIT)
+                .map_err(|e| ChatError::Database(e.to_string()))?;
+        if episodic.is_empty() {
+            return Ok(());
+        }
+
+        let previous_summary = ChatRepository::get_semantic_memory(self.conn, persona_id)
+            .map_err(|e| ChatError::Database(e.to_string()))?
+            .unwrap_or_else(|| "없음".to_string());
+
+        let episodic_list = episodic
+            .iter()
+            .enumerate()
+            .map(|(i, m)| format!("{}. {}", i + 1, m))
+            .collect::<Vec<String>>()
+            .join("\n");
+
+        let consolidation_prompt = format!(
+            "<|im_start|>system\n다음은 정령 캐릭터가 구원자(사용자)와의 대화에서 그동안 기록해 \
+             온 개별 기억들과, 이전에 정리했던 통합 요약이다. 이 모든 정보를 종합해 이 캐릭터가 \
+             구원자에 대해 알고 있는 핵심 사실/취향/관계 상태를 한국어 3~5문장 이내로 새롭게 통합 \
+             요약하라. 중복은 제거하고 최신 정보를 우선하라.<|im_end|>\n\
+             <|im_start|>user\n[이전 통합 요약]\n{}\n\n[개별 기억 목록]\n{}<|im_end|>\n\
+             <|im_start|>assistant\n",
+            previous_summary, episodic_list
+        );
+
+        let new_summary = engine
+            .infer(&consolidation_prompt, Some(200))
+            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
+        let trimmed = new_summary.trim();
+
+        if !trimmed.is_empty() {
+            let now = SystemTime::now()
+                .duration_since(SystemTime::UNIX_EPOCH)
+                .map(|d| d.as_secs().to_string())
+                .unwrap_or_default();
+            ChatRepository::upsert_semantic_memory(self.conn, persona_id, trimmed, &now)
+                .map_err(|e| ChatError::Database(e.to_string()))?;
+        }
+
+        Ok(())
     }
 }

@@ -18,10 +18,8 @@ pub async fn auth_login(
     let req = LoginRequest { email, token };
     let service = AuthService::new(&http_state.0);
 
-    // 1. 원격 API 검증 (DB 락 없이 진행되는 비동기 구간)
     let session = service.verify_remote_session(req).await?;
 
-    // 2. 검증이 끝난 뒤에만 짧게 DB 락을 잡아 동기적으로 영속화
     let conn = db_state
         .0
         .lock()

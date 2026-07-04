@@ -4,6 +4,8 @@ use serde::{Deserialize, Serialize};
 pub struct ChatRoom {
     pub id: String,
     pub title: String,
+    pub persona_id: Option<String>,
+    pub session_started_at: String,
     pub created_at: String,
     pub updated_at: String,
 }
@@ -12,7 +14,7 @@ pub struct ChatRoom {
 pub struct ChatMessage {
     pub id: String,
     pub room_id: String,
-    pub role: String, // "user" 또는 "assistant" 또는 "system"
+    pub role: String,
     pub content: String,
     pub created_at: String,
 }
@@ -21,12 +23,13 @@ pub struct ChatMessage {
 pub struct SendMessageRequest {
     pub room_id: String,
     pub content: String,
-    pub persona_id: String, // 대화 상대 페르소나 매칭용
+    pub persona_id: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CreateRoomRequest {
     pub title: String,
+    pub persona_id: Option<String>,
 }
 
 #[derive(Debug, thiserror::Error, serde::Serialize)]

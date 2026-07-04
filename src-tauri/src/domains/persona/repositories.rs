@@ -4,7 +4,7 @@ use rusqlite::{params, Connection, Result};
 pub struct PersonaRepository;
 
 impl PersonaRepository {
-    /// 페르소나 정보를 데이터베이스에 저장하거나 갱신한다.
+
     pub fn save_persona(conn: &Connection, config: &PersonaConfig) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO persona_profile (
@@ -27,10 +27,9 @@ impl PersonaRepository {
         Ok(())
     }
 
-    /// ID로 페르소나 프로필을 조회한다.
     pub fn get_persona(conn: &Connection, id: &str) -> Result<Option<PersonaConfig>> {
         let mut stmt = conn.prepare(
-            "SELECT id, name, name_en, grade, race, class, sub_class, system_prompt, greeting, raw_json, created_at 
+            "SELECT id, name, name_en, grade, race, class, sub_class, system_prompt, greeting, raw_json, created_at
              FROM persona_profile WHERE id = ?1",
         )?;
         let mut rows = stmt.query(params![id])?;
@@ -54,10 +53,9 @@ impl PersonaRepository {
         }
     }
 
-    /// 모든 페르소나 목록을 조회한다.
     pub fn list_personas(conn: &Connection) -> Result<Vec<PersonaConfig>> {
         let mut stmt = conn.prepare(
-            "SELECT id, name, name_en, grade, race, class, sub_class, system_prompt, greeting, raw_json, created_at 
+            "SELECT id, name, name_en, grade, race, class, sub_class, system_prompt, greeting, raw_json, created_at
              FROM persona_profile"
         )?;
         let rows = stmt.query_map([], |row| {
@@ -84,4 +82,5 @@ impl PersonaRepository {
         }
         Ok(list)
     }
+
 }

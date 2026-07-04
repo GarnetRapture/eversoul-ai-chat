@@ -6,17 +6,14 @@ use llama_cpp_2::{
     llama_batch::LlamaBatch,
     model::{params::LlamaModelParams, LlamaModel},
     sampling::LlamaSampler,
+    TokenToStringError,
 };
 use thiserror::Error;
 
-/// 프로젝트 루트 기준 로컬 LLM 모델 파일 경로.
-/// 실제 파일은 git 제외 대상이며 로컬에 별도 배치해야 한다.
 pub const MODEL_RELATIVE_PATH: &str = "ai/model/qwen25-3b-korean-Q4_K_M.gguf";
 
-/// LLM 추론 최대 컨텍스트 토큰 수.
-const CONTEXT_SIZE: u32 = 2048;
+const CONTEXT_SIZE: u32 = 8192;
 
-/// LLM 추론 기본 최대 생성 토큰 수.
 const DEFAULT_MAX_TOKENS: u32 = 512;
 
 #[derive(Debug, Error)]
@@ -40,10 +37,6 @@ pub enum LlmError {
     Infer(String),
 }
 
-/// CPU 기반 로컬 LLM 엔진.
-///
-/// Qwen2.5-3B-Korean Q4_K_M GGUF 모델을 llama.cpp를 통해 로딩하고
-/// CPU에서 텍스트 생성 추론을 수행한다.
 pub struct LlmEngine {
     backend: LlamaBackend,
     model: LlamaModel,
@@ -51,10 +44,17 @@ pub struct LlmEngine {
 }
 
 impl LlmEngine {
-    /// 주어진 앱 루트 디렉터리 기준으로 GGUF 모델을 로딩해 `LlmEngine`을 생성한다.
-    ///
-    /// # Arguments
-    /// * `app_root` - 앱 실행 파일이 위치한 디렉터리 (또는 개발 중 프로젝트 루트)
+    fn token_to_bytes(&self, token: llama_cpp_2::token::LlamaToken) -> Result<Vec<u8>, LlmError> {
+        match self.model.token_to_piece_bytes(token, 8, true, None) {
+            Ok(bytes) => Ok(bytes),
+            Err(TokenToStringError::InsufficientBufferSpace(size)) if size.is_negative() => self
+                .model
+                .token_to_piece_bytes(token, (-size) as usize, true, None)
+                .map_err(|e| LlmError::Infer(e.to_string())),
+            Err(err) => Err(LlmError::Infer(err.to_string())),
+        }
+    }
+
     pub fn load(app_root: &Path) -> Result<Self, LlmError> {
         let model_path = app_root.join(MODEL_RELATIVE_PATH);
 
@@ -77,16 +77,10 @@ impl LlmEngine {
         })
     }
 
-    /// 현재 로딩된 모델 파일의 절대 경로를 반환한다.
     pub fn model_path(&self) -> &Path {
         &self.model_path
     }
 
-    /// 주어진 프롬프트로 텍스트 생성 추론을 수행하고 결과 문자열을 반환한다.
-    ///
-    /// # Arguments
-    /// * `prompt` - 입력 프롬프트 문자열
-    /// * `max_tokens` - 최대 생성 토큰 수. `None`이면 `DEFAULT_MAX_TOKENS`를 사용한다.
     pub fn infer(&self, prompt: &str, max_tokens: Option<u32>) -> Result<String, LlmError> {
         let max_tokens = max_tokens.unwrap_or(DEFAULT_MAX_TOKENS);
 
@@ -98,13 +92,11 @@ impl LlmEngine {
             .new_context(&self.backend, ctx_params)
             .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
 
-        // 프롬프트 토큰화
         let tokens = self
             .model
             .str_to_token(prompt, llama_cpp_2::model::AddBos::Always)
             .map_err(|e| LlmError::Tokenize(e.to_string()))?;
 
-        // 배치 생성 및 프롬프트 토큰 추가
         let n_tokens = tokens.len();
         let mut batch = LlamaBatch::new(n_tokens, 1);
         for (i, &token) in tokens.iter().enumerate() {
@@ -117,7 +109,6 @@ impl LlmEngine {
         ctx.decode(&mut batch)
             .map_err(|e| LlmError::Infer(e.to_string()))?;
 
-        // 토큰 생성 루프 (llama_sampler 체인 기반 탐욕적 샘플링)
         let mut sampler = LlamaSampler::greedy();
         let mut output_tokens: Vec<llama_cpp_2::token::LlamaToken> = Vec::new();
         let mut n_cur = n_tokens as i32;
@@ -127,18 +118,15 @@ impl LlmEngine {
                 break;
             }
 
-            // 직전 decode 결과의 마지막 위치 로짓에서 다음 토큰을 탐욕적으로 샘플링
             let next_token = sampler.sample(&ctx, -1);
             sampler.accept(next_token);
 
-            // EOS(End of Sequence) 토큰이면 종료
             if next_token == self.model.token_eos() {
                 break;
             }
 
             output_tokens.push(next_token);
 
-            // 다음 추론을 위한 단일 토큰 배치
             let mut next_batch = LlamaBatch::new(1, 1);
             next_batch
                 .add(next_token, n_cur, &[0], true)
@@ -150,15 +138,12 @@ impl LlmEngine {
             n_cur += 1;
         }
 
-        // 생성된 토큰을 문자열로 디코딩
-        let output: String = output_tokens
-            .iter()
-            .map(|&token| {
-                self.model
-                    .token_to_str(token, llama_cpp_2::model::Special::Tokenize)
-                    .unwrap_or_default()
-            })
-            .collect();
+        let mut output_bytes = Vec::new();
+        for token in output_tokens {
+            output_bytes.extend(self.token_to_bytes(token)?);
+        }
+
+        let output = String::from_utf8_lossy(&output_bytes).to_string();
 
         Ok(output)
     }

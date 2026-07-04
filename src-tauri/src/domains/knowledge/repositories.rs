@@ -4,7 +4,7 @@ use rusqlite::{params, Connection, Result};
 pub struct KnowledgeRepository;
 
 impl KnowledgeRepository {
-    /// 지식 청크 데이터를 데이터베이스에 적재한다.
+
     pub fn insert_chunk(conn: &Connection, payload: &KnowledgePayload) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO knowledge_chunk (id, document_name, chunk_text, created_at)
@@ -19,8 +19,6 @@ impl KnowledgeRepository {
         Ok(())
     }
 
-    /// 단순 LIKE 쿼리를 이용해 본문 텍스트 내 키워드를 검색한다.
-    /// SQLite3 기본 내장 검색으로 대용량 형태소 분석기 없이 빠르고 견고하게 작동하도록 설계.
     pub fn search_chunks(
         conn: &Connection,
         query: &str,

@@ -16,6 +16,16 @@ pub struct PersonaConfig {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BondRankingEntry {
+    pub persona_id: String,
+    pub name: String,
+    pub name_en: String,
+    pub message_count: usize,
+    pub memory_count: usize,
+    pub bond_score: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UpdatePersonaRequest {
     pub id: String,
     pub system_prompt: String,

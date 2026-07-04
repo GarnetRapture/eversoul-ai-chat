@@ -1,29 +1,38 @@
 use super::types::{ChatMessage, ChatRoom};
 use rusqlite::{params, Connection, Result};
+use std::collections::HashMap;
 
 pub struct ChatRepository;
 
 impl ChatRepository {
-    /// 대화방을 생성하여 데이터베이스에 추가한다.
+
     pub fn create_room(conn: &Connection, room: &ChatRoom) -> Result<()> {
         conn.execute(
-            "INSERT INTO chat_room (id, title, created_at, updated_at) VALUES (?1, ?2, ?3, ?4)",
-            params![room.id, room.title, room.created_at, room.updated_at],
+            "INSERT INTO chat_room (id, title, persona_id, session_started_at, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+            params![
+                room.id,
+                room.title,
+                room.persona_id.as_deref(),
+                room.session_started_at,
+                room.created_at,
+                room.updated_at
+            ],
         )?;
         Ok(())
     }
 
-    /// 대화방 리스트를 전체 조회한다.
     pub fn list_rooms(conn: &Connection) -> Result<Vec<ChatRoom>> {
         let mut stmt = conn.prepare(
-            "SELECT id, title, created_at, updated_at FROM chat_room ORDER BY updated_at DESC",
+            "SELECT id, title, persona_id, session_started_at, created_at, updated_at FROM chat_room ORDER BY updated_at DESC",
         )?;
         let rows = stmt.query_map([], |row| {
             Ok(ChatRoom {
                 id: row.get(0)?,
                 title: row.get(1)?,
-                created_at: row.get(2)?,
-                updated_at: row.get(3)?,
+                persona_id: row.get(2)?,
+                session_started_at: row.get(3)?,
+                created_at: row.get(4)?,
+                updated_at: row.get(5)?,
             })
         })?;
 
@@ -36,7 +45,52 @@ impl ChatRepository {
         Ok(list)
     }
 
-    /// 특정 대화방 내 최근 메시지들을 로드한다.
+    pub fn find_latest_room_by_persona(
+        conn: &Connection,
+        persona_id: &str,
+    ) -> Result<Option<ChatRoom>> {
+        let mut stmt = conn.prepare(
+            "SELECT id, title, persona_id, session_started_at, created_at, updated_at FROM chat_room WHERE persona_id = ?1 ORDER BY updated_at DESC LIMIT 1",
+        )?;
+        let mut rows = stmt.query(params![persona_id])?;
+        if let Some(row) = rows.next()? {
+            return Ok(Some(ChatRoom {
+                id: row.get(0)?,
+                title: row.get(1)?,
+                persona_id: row.get(2)?,
+                session_started_at: row.get(3)?,
+                created_at: row.get(4)?,
+                updated_at: row.get(5)?,
+            }));
+        }
+
+        Ok(None)
+    }
+
+    pub fn list_rooms_by_persona(conn: &Connection, persona_id: &str) -> Result<Vec<ChatRoom>> {
+        let mut stmt = conn.prepare(
+            "SELECT id, title, persona_id, session_started_at, created_at, updated_at FROM chat_room WHERE persona_id = ?1 ORDER BY created_at ASC",
+        )?;
+        let rows = stmt.query_map(params![persona_id], |row| {
+            Ok(ChatRoom {
+                id: row.get(0)?,
+                title: row.get(1)?,
+                persona_id: row.get(2)?,
+                session_started_at: row.get(3)?,
+                created_at: row.get(4)?,
+                updated_at: row.get(5)?,
+            })
+        })?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(r) = item {
+                list.push(r);
+            }
+        }
+        Ok(list)
+    }
+
     pub fn list_messages(conn: &Connection, room_id: &str) -> Result<Vec<ChatMessage>> {
         let mut stmt = conn.prepare(
             "SELECT id, room_id, role, content, created_at FROM chat_message WHERE room_id = ?1 ORDER BY created_at ASC",
@@ -60,14 +114,12 @@ impl ChatRepository {
         Ok(list)
     }
 
-    /// 단일 메시지를 데이터베이스에 추가한다.
     pub fn insert_message(conn: &Connection, msg: &ChatMessage) -> Result<()> {
         conn.execute(
             "INSERT INTO chat_message (id, room_id, role, content, created_at) VALUES (?1, ?2, ?3, ?4, ?5)",
             params![msg.id, msg.room_id, msg.role, msg.content, msg.created_at],
         )?;
 
-        // 대화방 최종 갱신 일시 업데이트
         conn.execute(
             "UPDATE chat_room SET updated_at = ?1 WHERE id = ?2",
             params![msg.created_at, msg.room_id],
@@ -76,9 +128,120 @@ impl ChatRepository {
         Ok(())
     }
 
-    /// 대화방 삭제 처리
     pub fn delete_room(conn: &Connection, id: &str) -> Result<()> {
         conn.execute("DELETE FROM chat_room WHERE id = ?1", params![id])?;
         Ok(())
+    }
+
+    pub fn insert_episodic_memory(
+        conn: &Connection,
+        id: &str,
+        persona_id: &str,
+        memory_text: &str,
+        created_at: &str,
+    ) -> Result<()> {
+        conn.execute(
+            "INSERT INTO persona_memory (id, persona_id, memory_type, memory_text, created_at)
+             VALUES (?1, ?2, 'episodic', ?3, ?4)",
+            params![id, persona_id, memory_text, created_at],
+        )?;
+        Ok(())
+    }
+
+    pub fn count_episodic_memories(conn: &Connection, persona_id: &str) -> Result<usize> {
+        let count: i64 = conn.query_row(
+            "SELECT COUNT(*) FROM persona_memory WHERE persona_id = ?1 AND memory_type = 'episodic'",
+            params![persona_id],
+            |row| row.get(0),
+        )?;
+        Ok(count as usize)
+    }
+
+    pub fn list_episodic_memories(
+        conn: &Connection,
+        persona_id: &str,
+        limit: usize,
+    ) -> Result<Vec<String>> {
+        let mut stmt = conn.prepare(
+            "SELECT memory_text FROM persona_memory
+             WHERE persona_id = ?1 AND memory_type = 'episodic'
+             ORDER BY created_at DESC LIMIT ?2",
+        )?;
+        let rows = stmt.query_map(params![persona_id, limit as i64], |row| row.get::<_, String>(0))?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(text) = item {
+                list.push(text);
+            }
+        }
+        Ok(list)
+    }
+
+    pub fn upsert_semantic_memory(
+        conn: &Connection,
+        persona_id: &str,
+        memory_text: &str,
+        created_at: &str,
+    ) -> Result<()> {
+        let id = format!("semantic-{}", persona_id);
+        conn.execute(
+            "INSERT OR REPLACE INTO persona_memory (id, persona_id, memory_type, memory_text, created_at)
+             VALUES (?1, ?2, 'semantic', ?3, ?4)",
+            params![id, persona_id, memory_text, created_at],
+        )?;
+        Ok(())
+    }
+
+    pub fn get_semantic_memory(conn: &Connection, persona_id: &str) -> Result<Option<String>> {
+        let mut stmt = conn.prepare(
+            "SELECT memory_text FROM persona_memory WHERE persona_id = ?1 AND memory_type = 'semantic' LIMIT 1",
+        )?;
+        let mut rows = stmt.query(params![persona_id])?;
+        if let Some(row) = rows.next()? {
+            Ok(Some(row.get(0)?))
+        } else {
+            Ok(None)
+        }
+    }
+
+    pub fn count_messages_by_persona(conn: &Connection) -> Result<HashMap<String, usize>> {
+        let mut stmt = conn.prepare(
+            "SELECT cr.persona_id, COUNT(cm.id)
+             FROM chat_room cr
+             JOIN chat_message cm ON cm.room_id = cr.id
+             WHERE cr.persona_id IS NOT NULL
+             GROUP BY cr.persona_id",
+        )?;
+        let rows = stmt.query_map([], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)? as usize))
+        })?;
+
+        let mut map = HashMap::new();
+        for item in rows {
+            if let Ok((persona_id, count)) = item {
+                map.insert(persona_id, count);
+            }
+        }
+        Ok(map)
+    }
+
+    pub fn count_episodic_memories_by_persona(conn: &Connection) -> Result<HashMap<String, usize>> {
+        let mut stmt = conn.prepare(
+            "SELECT persona_id, COUNT(*) FROM persona_memory
+             WHERE memory_type = 'episodic'
+             GROUP BY persona_id",
+        )?;
+        let rows = stmt.query_map([], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)? as usize))
+        })?;
+
+        let mut map = HashMap::new();
+        for item in rows {
+            if let Ok((persona_id, count)) = item {
+                map.insert(persona_id, count);
+            }
+        }
+        Ok(map)
     }
 }

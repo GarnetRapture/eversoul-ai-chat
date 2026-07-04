@@ -4,7 +4,7 @@ use rusqlite::{params, Connection, Result, Row};
 pub struct StyleRepository;
 
 impl StyleRepository {
-    /// 스타일 프로필을 데이터베이스에 저장하거나 갱신한다.
+
     pub fn save_style(conn: &Connection, style: &StyleProfile) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO style_profile (
@@ -26,7 +26,6 @@ impl StyleRepository {
         Ok(())
     }
 
-    /// ID로 스타일 프로필을 조회한다.
     pub fn get_style(conn: &Connection, id: &str) -> Result<Option<StyleProfile>> {
         let mut stmt = conn.prepare(
             "SELECT id, name, tone, formality, emoji_usage, speech_rules, example_phrases, raw_json, is_active, created_at
@@ -41,7 +40,6 @@ impl StyleRepository {
         }
     }
 
-    /// 모든 스타일 프로필 목록을 조회한다.
     pub fn list_styles(conn: &Connection) -> Result<Vec<StyleProfile>> {
         let mut stmt = conn.prepare(
             "SELECT id, name, tone, formality, emoji_usage, speech_rules, example_phrases, raw_json, is_active, created_at
@@ -56,31 +54,6 @@ impl StyleRepository {
             }
         }
         Ok(list)
-    }
-
-    /// 현재 활성화된 스타일 프로필을 조회한다.
-    pub fn get_active_style(conn: &Connection) -> Result<Option<StyleProfile>> {
-        let mut stmt = conn.prepare(
-            "SELECT id, name, tone, formality, emoji_usage, speech_rules, example_phrases, raw_json, is_active, created_at
-             FROM style_profile WHERE is_active = 1 LIMIT 1",
-        )?;
-        let mut rows = stmt.query([])?;
-
-        if let Some(row) = rows.next()? {
-            Ok(Some(Self::row_to_style(row)?))
-        } else {
-            Ok(None)
-        }
-    }
-
-    /// 지정된 ID의 스타일만 활성화하고 나머지는 비활성화한다.
-    pub fn set_active_style(conn: &Connection, id: &str) -> Result<()> {
-        conn.execute("UPDATE style_profile SET is_active = 0", [])?;
-        conn.execute(
-            "UPDATE style_profile SET is_active = 1 WHERE id = ?1",
-            params![id],
-        )?;
-        Ok(())
     }
 
     fn row_to_style(row: &Row) -> Result<StyleProfile> {

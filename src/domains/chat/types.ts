@@ -1,20 +1,22 @@
 export interface ChatRoom {
-  id: string;
-  title: string;
-  created_at: string;
-  updated_at: string;
+    id: string;
+    title: string;
+    persona_id: string | null;
+    session_started_at: string;
+    created_at: string;
+    updated_at: string;
 }
-
 export interface ChatMessage {
-  id: string;
-  room_id: string;
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-  created_at: string;
+    id: string;
+    room_id: string;
+    role: 'user' | 'assistant' | 'system';
+    content: string;
+    created_at: string;
 }
-
-export type ChatError =
-  | { Database: string }
-  | 'LlmEngineNotLoaded'
-  | { LlmInferenceFailed: string }
-  | { Unknown: string };
+export type ChatError = {
+    Database: string;
+} | 'LlmEngineNotLoaded' | {
+    LlmInferenceFailed: string;
+} | {
+    Unknown: string;
+};

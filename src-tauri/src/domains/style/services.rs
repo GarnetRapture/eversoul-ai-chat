@@ -11,12 +11,22 @@ impl<'a> StyleService<'a> {
         Self { conn }
     }
 
-    /// 사용 가능한 모든 스타일 프로필 목록을 획득한다.
-    pub fn get_available_styles(&self) -> Result<Vec<StyleProfile>, StyleError> {
-        StyleRepository::list_styles(self.conn).map_err(|e| StyleError::Database(e.to_string()))
+    pub fn get_available_styles(
+        &self,
+        active_style_id: Option<&str>,
+    ) -> Result<Vec<StyleProfile>, StyleError> {
+        let styles =
+            StyleRepository::list_styles(self.conn).map_err(|e| StyleError::Database(e.to_string()))?;
+
+        Ok(styles
+            .into_iter()
+            .map(|mut style| {
+                style.is_active = active_style_id == Some(style.id.as_str());
+                style
+            })
+            .collect())
     }
 
-    /// 스타일 프로필의 설정값을 수정하여 로컬 SQLite에 반영한다.
     pub fn update_style_settings(&self, req: UpdateStyleRequest) -> Result<(), StyleError> {
         let existing = StyleRepository::get_style(self.conn, &req.id)
             .map_err(|e| StyleError::Database(e.to_string()))?;
@@ -33,32 +43,24 @@ impl<'a> StyleService<'a> {
         }
     }
 
-    /// 지정된 스타일을 현재 활성 스타일로 선택한다.
-    pub fn select_active_style(&self, id: &str) -> Result<StyleProfile, StyleError> {
-        let existing = StyleRepository::get_style(self.conn, id)
+    pub fn get_style_for_activation(&self, id: &str) -> Result<StyleProfile, StyleError> {
+        StyleRepository::get_style(self.conn, id)
             .map_err(|e| StyleError::Database(e.to_string()))?
-            .ok_or_else(|| StyleError::NotFound(id.to_string()))?;
-
-        StyleRepository::set_active_style(self.conn, id)
-            .map_err(|e| StyleError::Database(e.to_string()))?;
-
-        Ok(StyleProfile {
-            is_active: true,
-            ..existing
-        })
+            .ok_or_else(|| StyleError::NotFound(id.to_string()))
     }
 
-    /// 현재 활성화된 스타일 프로필을 조회한다.
-    pub fn get_active_style(&self) -> Result<Option<StyleProfile>, StyleError> {
-        StyleRepository::get_active_style(self.conn)
-            .map_err(|e| StyleError::Database(e.to_string()))
+    pub fn get_style_by_id(&self, id: &str) -> Result<Option<StyleProfile>, StyleError> {
+        StyleRepository::get_style(self.conn, id).map_err(|e| StyleError::Database(e.to_string()))
     }
 
-    /// 활성 스타일을 시스템 프롬프트에 삽입할 문체 지침 문자열로 변환한다.
-    ///
-    /// 활성 스타일이 없으면 빈 문자열을 반환하여 기존 페르소나 어투를 그대로 유지한다.
-    pub fn get_assembled_style_prompt(&self) -> Result<String, StyleError> {
-        let active = self.get_active_style()?;
+    pub fn get_assembled_style_prompt(
+        &self,
+        active_style_id: Option<&str>,
+    ) -> Result<String, StyleError> {
+        let active = match active_style_id {
+            Some(id) => self.get_style_by_id(id)?,
+            None => None,
+        };
 
         Ok(match active {
             Some(style) => format!(

@@ -2,6 +2,7 @@ use super::services::ChatService;
 use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::auth::commands::DbState;
 use crate::domains::llm::commands::LlmState;
+use crate::domains::settings::commands::SettingsState;
 use tauri::State;
 
 #[tauri::command(rename_all = "snake_case")]
@@ -18,6 +19,20 @@ pub fn chat_create_room(
 }
 
 #[tauri::command(rename_all = "snake_case")]
+pub fn chat_create_session_room(
+    db_state: State<'_, DbState>,
+    title: String,
+    persona_id: String,
+) -> Result<ChatRoom, ChatError> {
+    let conn = db_state
+        .0
+        .lock()
+        .map_err(|e| ChatError::Database(e.to_string()))?;
+    let service = ChatService::new(&conn);
+    service.create_chat_session_room(&title, Some(persona_id))
+}
+
+#[tauri::command(rename_all = "snake_case")]
 pub fn chat_list_rooms(db_state: State<'_, DbState>) -> Result<Vec<ChatRoom>, ChatError> {
     let conn = db_state
         .0
@@ -25,6 +40,19 @@ pub fn chat_list_rooms(db_state: State<'_, DbState>) -> Result<Vec<ChatRoom>, Ch
         .map_err(|e| ChatError::Database(e.to_string()))?;
     let service = ChatService::new(&conn);
     service.get_chat_rooms()
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn chat_get_latest_session_room(
+    db_state: State<'_, DbState>,
+    persona_id: String,
+) -> Result<Option<ChatRoom>, ChatError> {
+    let conn = db_state
+        .0
+        .lock()
+        .map_err(|e| ChatError::Database(e.to_string()))?;
+    let service = ChatService::new(&conn);
+    service.get_latest_session_room(&persona_id)
 }
 
 #[tauri::command(rename_all = "snake_case")]
@@ -44,59 +72,80 @@ pub fn chat_list_messages(
 pub fn chat_send_message(
     db_state: State<'_, DbState>,
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
     room_id: String,
     content: String,
     persona_id: String,
 ) -> Result<ChatMessage, ChatError> {
-    // 1. Connection 획득 (Mutex 락 획득 범위 관리)
-    let conn = db_state
-        .0
-        .lock()
-        .map_err(|e| ChatError::Database(e.to_string()))?;
-    let service = ChatService::new(&conn);
     let req = SendMessageRequest {
-        room_id,
+        room_id: room_id.clone(),
         content,
         persona_id,
     };
 
-    // 2. LLM State 획득
-    let engine = llm_state
+    let (system_prompt, history) = {
+        let conn = db_state
+            .0
+            .lock()
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        let settings = settings_state
+            .0
+            .lock()
+            .map_err(|e| ChatError::Unknown(e.to_string()))?;
+        let service = ChatService::new(&conn);
+        service.prepare_message_context(&req, &settings)?
+    };
+
+    let engine_lock = llm_state
         .0
         .lock()
         .map_err(|e| ChatError::Unknown(e.to_string()))?;
+    let engine_instance = engine_lock.as_ref().ok_or(ChatError::LlmEngineNotLoaded)?;
 
-    // 3. 메시지 프로세싱 및 LLM 추론 위임 호출 (Qwen 챗 템플릿 준수, 로컬 CPU 동기 추론)
-    service.process_message(req, |system_prompt, history| {
-        if let Some(ref engine_instance) = *engine {
-            let mut full_prompt = String::new();
+    let mut full_prompt = String::new();
+    full_prompt.push_str(&format!(
+        "<|im_start|>system\n{}<|im_end|>\n",
+        system_prompt
+    ));
 
-            // Qwen 2.5 챗 템플릿 포맷 조립
-            // 시스템 가이드 (Persona 및 RAG 컨텍스트)
-            full_prompt.push_str(&format!(
-                "<|im_start|>system\n{}<|im_end|>\n",
-                system_prompt
-            ));
+    let recent_start = history.len().saturating_sub(10);
+    for msg in history.iter().skip(recent_start) {
+        full_prompt.push_str(&format!(
+            "<|im_start|>{}\n{}<|im_end|>\n",
+            msg.role, msg.content
+        ));
+    }
 
-            // 최근 10개 히스토리만 발췌
-            for msg in history.iter().take(10) {
-                full_prompt.push_str(&format!(
-                    "<|im_start|>{}\n{}<|im_end|>\n",
-                    msg.role, msg.content
-                ));
+    full_prompt.push_str("<|im_start|>assistant\n");
+
+    let ai_text = engine_instance
+        .infer(&full_prompt, Some(256))
+        .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
+    drop(engine_lock);
+
+    let ai_msg = {
+        let conn = db_state
+            .0
+            .lock()
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        let service = ChatService::new(&conn);
+        service.save_ai_response(&room_id, ai_text.clone())?
+    };
+
+    {
+        let engine_lock = llm_state.0.lock();
+        let db_lock = db_state.0.lock();
+        if let (Ok(engine_lock), Ok(conn)) = (engine_lock, db_lock) {
+            if let Some(ref engine_instance) = *engine_lock {
+                let service = ChatService::new(&conn);
+                if let Err(err) =
+                    service.accumulate_memory(&req.persona_id, &req.content, &ai_text, engine_instance)
+                {
+                    eprintln!("정령 누적 기억 처리 실패: {}", err);
+                }
             }
-
-            // 최종 AI 응답 트리거
-            full_prompt.push_str("<|im_start|>assistant\n");
-
-            // 로컬 CPU GGUF 추론 실행
-            let infer_res = engine_instance
-                .infer(&full_prompt, Some(256))
-                .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
-
-            Ok(infer_res)
-        } else {
-            Err(ChatError::LlmEngineNotLoaded)
         }
-    })
+    }
+
+    Ok(ai_msg)
 }

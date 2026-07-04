@@ -1,6 +1,6 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.3"
+version = "0.0.4"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
@@ -44,6 +44,22 @@ futures-util = "0.3.32"
 sha2 = "0.11.0"
 hex = "0.4.3"
 flate2 = "1.0"
+# 앱 설정(기본 정령, 활성 스타일 등) 영속화용 INI 파일 리더/라이터
+rust-ini = "0.21"
+
+# 정령별 누적 대화 데이터를 이용한 순수 Rust 실제 LoRA 파인튜닝(역전파 기반).
+# Python 의존성 없이 HuggingFace 공식 Rust ML 프레임워크(candle)만으로 학습.
+# candle-transformers는 사용하지 않고, candle-core/candle-nn 표준 텐서·자동미분 API만으로
+# Qwen2 아키텍처(RoPE/GQA/RMSNorm/SwiGLU)와 LoRA 어댑터를 직접 구현한다(내부 비공개 API에
+# 의존하지 않기 위함).
+candle-core = "0.8"
+candle-nn = "0.8"
+hf-hub = "0.3"
+# esaxx_fast(유니그램 토크나이저용 C++ 의존성 esaxx-rs)는 기본값에서 제외한다.
+# esaxx-rs가 정적 CRT(/MT)로 빌드되어 동적 CRT(/MD)로 빌드되는 llama-cpp-sys-2와
+# 링크 시 충돌(LNK2038 RuntimeLibrary mismatch)한다. Qwen2는 BPE 토크나이저를
+# 쓰므로 유니그램 전용인 esaxx-rs 자체가 애초에 불필요하다.
+tokenizers = { version = "0.20", default-features = false, features = ["onig", "progressbar"] }
 
 
 
