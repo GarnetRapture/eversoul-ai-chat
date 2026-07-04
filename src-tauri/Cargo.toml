@@ -1,6 +1,6 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
@@ -43,6 +43,9 @@ llama-cpp-2 = "0.1"
 futures-util = "0.3.32"
 sha2 = "0.11.0"
 hex = "0.4.3"
+flate2 = "1.0"
+
+
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration

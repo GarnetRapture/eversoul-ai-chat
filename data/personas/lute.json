@@ -1,0 +1,1316 @@
+{
+  "id": "2100",
+  "name": "루테",
+  "name_en": "Lute",
+  "grade": "에픽",
+  "race": "야수형",
+  "class": "디펜더",
+  "sub_class": "제어",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "은밀한 행운",
+    "constellation": "인연_제이드_이벤트1",
+    "union": "클라라 농장",
+    "birthday": "509",
+    "height": 155,
+    "weight": 44,
+    "cv_ko": "정유정",
+    "cv_jp": "Hiyori Nitta",
+    "like": [
+      "인간",
+      "캐러멜"
+    ],
+    "dislike": [
+      "폭력"
+    ],
+    "hobby": [
+      "십자말 풀이"
+    ],
+    "speciality": [
+      "모르는 질문 답하기"
+    ]
+  },
+  "personality": {
+    "description": "…힉! 구원자님… 인간이라는 게 진짜였어. 아, 어떡하지. 그래도 일단 인사해야…",
+    "greeting": "너희도 그렇게 생각하지…? 헤헷."
+  },
+  "speech_patterns": [
+    "구, 구원자님 에버톡 맞나요…?",
+    "흐잇! ",
+    "정말 구원자님의 에버톡이군요!",
+    "아, 앞으로 잘 부탁드려요…",
+    "에버톡인데도 뭔가 엄청 긴장되네요!",
+    "인간과 에버톡을 할 수 있다니…",
+    "사실 제가 인간에 관심이 많았어서…",
+    "이렇게 직접 소통하게 되니까 두근거려요.",
+    "헉, 네!",
+    "너무 좋아요…",
+    "구원자님",
+    "인간은 잠이랑 밥이 중요하다는데",
+    "정말이에요…?",
+    "그렇긴 하지만",
+    "인간은 훨씬 중요하다고 들었어요",
+    "조금만 덜 자고 덜 먹어도 바로 힘들어진다고",
+    "하지만 걱정마세요",
+    "앞으로 제가 꼬박꼬박 챙겨드릴 거라",
+    "헤헷",
+    "네",
+    "다녀오세요 기다릴게요",
+    "궁금한 게 있어요",
+    "전에 같이 별점 보면서 든 생각인데…",
+    "인간도 별점 보는 걸 좋아하나요?",
+    "정령들이랑 똑같네요",
+    "제 주변은 저를 포함해서 별점을 믿는 정령들이 많지만",
+    "그저 재미로만 보거나, 아예 운명론을 안 믿는 정령들도 있다고 해요.",
+    "그래도 탈리아의 별점은 빗나간 적이 없으니까…",
+    "저랑 구원자님도 빗나갈 일은 없을 거예요.",
+    "히힛",
+    "드디어 제 방을 다 꾸몄어요",
+    "이따 한번 구경 오세요",
+    "메피가 도와줘서 빨리 끝났어요",
+    "감사 표시로 양 인형 하나를 주려고 하는데…",
+    "좋아할까요?",
+    "그렇군요",
+    "메피가 앞으로 방주 생활에 관해서",
+    "이것저것 알려준댔어요",
+    "저 열심히 배울 거예요",
+    "뭔가 신부수업 같아서 두근거려요",
+    "응?",
+    "구원자님?",
+    "많이 바쁘시군요",
+    "에버톡 답장도 어려우실 정도라니",
+    "괜찮아요 언제든지 기다릴 수 있어요",
+    "이제 거리도 가까우니까 찾아가도 되구요",
+    "이거 보실래요?",
+    "완전 웃겨요~!",
+    "#!$^#&*^*!ㅋ ㅡ ㄹ ㅗ ㅇ ㅣ!@!",
+    "맞아요"
+  ],
+  "comments": [
+    {
+      "writer": "아야메",
+      "comment": "다정하고 친절한 분이셔요…"
+    },
+    {
+      "writer": "클레르",
+      "comment": "착하고 성실한 정령인 것은 잘 압니다만…"
+    },
+    {
+      "writer": "클라라",
+      "comment": "키우고 있는 양들처럼 온순하고 귀여워요~"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "루테",
+        "message": "구, 구원자님 에버톡 맞나요…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕"
+      },
+      {
+        "speaker": "루테",
+        "message": "흐잇! "
+      },
+      {
+        "speaker": "루테",
+        "message": "정말 구원자님의 에버톡이군요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "루테",
+        "message": "아, 앞으로 잘 부탁드려요…"
+      },
+      {
+        "speaker": "루테",
+        "message": "에버톡인데도 뭔가 엄청 긴장되네요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간과 에버톡을 할 수 있다니…"
+      },
+      {
+        "speaker": "루테",
+        "message": "사실 제가 인간에 관심이 많았어서…"
+      },
+      {
+        "speaker": "루테",
+        "message": "이렇게 직접 소통하게 되니까 두근거려요."
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 자주 연락하자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 자주 연락하자"
+      },
+      {
+        "speaker": "루테",
+        "message": "헉, 네!"
+      },
+      {
+        "speaker": "루테",
+        "message": "너무 좋아요…"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간은 잠이랑 밥이 중요하다는데"
+      },
+      {
+        "speaker": "루테",
+        "message": "정말이에요…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령도 중요하지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령도 중요하지 않아?"
+      },
+      {
+        "speaker": "루테",
+        "message": "그렇긴 하지만"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간은 훨씬 중요하다고 들었어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "조금만 덜 자고 덜 먹어도 바로 힘들어진다고"
+      },
+      {
+        "speaker": "루테",
+        "message": "하지만 걱정마세요"
+      },
+      {
+        "speaker": "루테",
+        "message": "앞으로 제가 꼬박꼬박 챙겨드릴 거라"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앗, 급한 서류 검토가 들어왔어!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앗, 급한 서류 검토가 들어왔어!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 마저 답장할게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 마저 답장할게!"
+      },
+      {
+        "speaker": "루테",
+        "message": "네"
+      },
+      {
+        "speaker": "루테",
+        "message": "다녀오세요 기다릴게요"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "궁금한 게 있어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "전에 같이 별점 보면서 든 생각인데…"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간도 별점 보는 걸 좋아하나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아하는 사람도 있고, 안 믿는 사람도 있지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아하는 사람도 있고, 안 믿는 사람도 있지"
+      },
+      {
+        "speaker": "루테",
+        "message": "정령들이랑 똑같네요"
+      },
+      {
+        "speaker": "루테",
+        "message": "제 주변은 저를 포함해서 별점을 믿는 정령들이 많지만"
+      },
+      {
+        "speaker": "루테",
+        "message": "그저 재미로만 보거나, 아예 운명론을 안 믿는 정령들도 있다고 해요."
+      },
+      {
+        "speaker": "루테",
+        "message": "그래도 탈리아의 별점은 빗나간 적이 없으니까…"
+      },
+      {
+        "speaker": "루테",
+        "message": "저랑 구원자님도 빗나갈 일은 없을 거예요."
+      },
+      {
+        "speaker": "루테",
+        "message": "히힛"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "드디어 제 방을 다 꾸몄어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "이따 한번 구경 오세요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생했어"
+      },
+      {
+        "speaker": "루테",
+        "message": "메피가 도와줘서 빨리 끝났어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "감사 표시로 양 인형 하나를 주려고 하는데…"
+      },
+      {
+        "speaker": "루테",
+        "message": "좋아할까요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아할 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아할 거야"
+      },
+      {
+        "speaker": "루테",
+        "message": "그렇군요"
+      },
+      {
+        "speaker": "루테",
+        "message": "메피가 앞으로 방주 생활에 관해서"
+      },
+      {
+        "speaker": "루테",
+        "message": "이것저것 알려준댔어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "저 열심히 배울 거예요"
+      },
+      {
+        "speaker": "루테",
+        "message": "뭔가 신부수업 같아서 두근거려요"
+      },
+      {
+        "speaker": "루테",
+        "message": "응?"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님?"
+      },
+      {
+        "speaker": "루테",
+        "message": "많이 바쁘시군요"
+      },
+      {
+        "speaker": "루테",
+        "message": "에버톡 답장도 어려우실 정도라니"
+      },
+      {
+        "speaker": "루테",
+        "message": "괜찮아요 언제든지 기다릴 수 있어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "이제 거리도 가까우니까 찾아가도 되구요"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "이거 보실래요?"
+      },
+      {
+        "speaker": "루테",
+        "message": "완전 웃겨요~!"
+      },
+      {
+        "speaker": "루테",
+        "message": "#!$^#&*^*!ㅋ ㅡ ㄹ ㅗ ㅇ ㅣ!@!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테가 보낸 게 아니네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테가 보낸 게 아니네"
+      },
+      {
+        "speaker": "루테",
+        "message": "맞아요"
+      },
+      {
+        "speaker": "루테",
+        "message": "이제 저예요"
+      },
+      {
+        "speaker": "루테",
+        "message": "클로이는 언제 저걸 찍었을까요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혼나느라 고생했구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혼나느라 고생했구나"
+      },
+      {
+        "speaker": "루테",
+        "message": "하지만 제가 잘못한 거니까"
+      },
+      {
+        "speaker": "루테",
+        "message": "우우"
+      },
+      {
+        "speaker": "루테",
+        "message": "사진은 지워주세요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "부끄러워요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "액자에 넣어서 장식해 둬야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "액자에 넣어서 장식해 둬야지"
+      },
+      {
+        "speaker": "루테",
+        "message": "제발 그것만은 봐주세요"
+      },
+      {
+        "speaker": "루테",
+        "message": "후에엥"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테 괜찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테 괜찮아?"
+      },
+      {
+        "speaker": "루테",
+        "message": "네"
+      },
+      {
+        "speaker": "루테",
+        "message": "메피가 챙겨줘서 괜찮아졌어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "갑자기 기절해서 놀라셨죠"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간의 손을 잡은 것도"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님의 손을 잡은 것도"
+      },
+      {
+        "speaker": "루테",
+        "message": "처음이라서 그만…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 엄청 떨렸어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 엄청 떨렸어"
+      },
+      {
+        "speaker": "루테",
+        "message": "정말요?"
+      },
+      {
+        "speaker": "루테",
+        "message": "두근거리는 말이네요"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "이 감촉이 사라질까 봐 두려울 정도로 좋았어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다음에 또 손잡자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다음에 또 손잡자"
+      },
+      {
+        "speaker": "루테",
+        "message": "히욱"
+      },
+      {
+        "speaker": "루테",
+        "message": "조 좋아요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "궁금한 게 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "궁금한 게 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테는 왜 인간을 좋아하는 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테는 왜 인간을 좋아하는 거야?"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간을 좋아하는 이유요?"
+      },
+      {
+        "speaker": "루테",
+        "message": "부끄러운 이야기인데…"
+      },
+      {
+        "speaker": "루테",
+        "message": "예전에 도서관을 갔는데"
+      },
+      {
+        "speaker": "루테",
+        "message": "먼 옛날에 인간이 썼다는"
+      },
+      {
+        "speaker": "루테",
+        "message": "그… 동화라는 걸 보게 되었어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "그전에는 책을 잘 못 읽었는데"
+      },
+      {
+        "speaker": "루테",
+        "message": "동화는 재미있어서 하루 종일 읽었어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "동화 속에 나오는 세상도 흥미로웠고"
+      },
+      {
+        "speaker": "루테",
+        "message": "그 동화를 썼다는 인간도 흥미로웠어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "그때부터 인간이 궁금해졌고"
+      },
+      {
+        "speaker": "루테",
+        "message": "궁금해하다 보니 좋아하게 된 것 같아요"
+      },
+      {
+        "speaker": "루테",
+        "message": "동화를 읽다 보니까 다른 책도 잘 읽게 되었구"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 도서관 데이트할까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 도서관 데이트할까?"
+      },
+      {
+        "speaker": "루테",
+        "message": "좋아요"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "전에 선물로 주셨던 십자말풀이 책"
+      },
+      {
+        "speaker": "루테",
+        "message": "열심히 풀고 있는데"
+      },
+      {
+        "speaker": "루테",
+        "message": "막히는 부분이 나오고 말았어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "후에엥"
+      },
+      {
+        "speaker": "루테",
+        "message": "잘 풀리다가 이렇게 막히면"
+      },
+      {
+        "speaker": "루테",
+        "message": "두통이 와요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다른 정령한테 도움을 청해보는 건?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다른 정령한테 도움을 청해보는 건?"
+      },
+      {
+        "speaker": "루테",
+        "message": "그래도 온전히 제힘으로"
+      },
+      {
+        "speaker": "루테",
+        "message": "풀어보고 싶어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "이렇게 막히다가 풀리면"
+      },
+      {
+        "speaker": "루테",
+        "message": "엄청 재미있어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포기하지 않는 모습이 보기 좋네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포기하지 않는 모습이 보기 좋네"
+      },
+      {
+        "speaker": "루테",
+        "message": "에헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "메피가 준 연애학 도서를 보니"
+      },
+      {
+        "speaker": "루테",
+        "message": "같이 할 수 있는 활동을 많이 하는 게"
+      },
+      {
+        "speaker": "루테",
+        "message": "관계를 진전시키는 데 도움이 된다고 해요"
+      },
+      {
+        "speaker": "루테",
+        "message": "혹시"
+      },
+      {
+        "speaker": "루테",
+        "message": "같이 하고 싶은 게 있으실까요"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님이 하고 싶으신 거라면"
+      },
+      {
+        "speaker": "루테",
+        "message": "뭐든 할게요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테는 나랑 뭘 같이 하고 싶어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테는 나랑 뭘 같이 하고 싶어?"
+      },
+      {
+        "speaker": "루테",
+        "message": "저요?"
+      },
+      {
+        "speaker": "루테",
+        "message": "저는"
+      },
+      {
+        "speaker": "루테",
+        "message": "우우우우"
+      },
+      {
+        "speaker": "루테",
+        "message": "말하기 부끄러운데"
+      },
+      {
+        "speaker": "루테",
+        "message": "저는"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님이랑"
+      },
+      {
+        "speaker": "루테",
+        "message": "양털 깎이를"
+      },
+      {
+        "speaker": "루테",
+        "message": "같이 하고 싶어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "연인이 생기면"
+      },
+      {
+        "speaker": "루테",
+        "message": "하고 싶었던 거에요"
+      },
+      {
+        "speaker": "루테",
+        "message": "우우 부끄러워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 하러 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 하러 가자"
+      },
+      {
+        "speaker": "루테",
+        "message": "같이 양털 깎을 생각을 하니까"
+      },
+      {
+        "speaker": "루테",
+        "message": "벌써 두근거려요"
+      },
+      {
+        "speaker": "루테",
+        "message": "제가 잘 알려드릴게요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "가끔 너무 행복하다 보면"
+      },
+      {
+        "speaker": "루테",
+        "message": "불안할 때가 있는데"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님도 그럴 때가 있으세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔 그랬던 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔 그랬던 것 같아"
+      },
+      {
+        "speaker": "루테",
+        "message": "저는 지금이 그래요"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님이랑"
+      },
+      {
+        "speaker": "루테",
+        "message": "이렇게 가까워져서"
+      },
+      {
+        "speaker": "루테",
+        "message": "엄청 행복한데"
+      },
+      {
+        "speaker": "루테",
+        "message": "갑자기 불안한 기분이 들 때가 있어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "무언가가 행복을 확"
+      },
+      {
+        "speaker": "루테",
+        "message": "낚아챌 것만 같아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럴 일은 없을 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럴 일은 없을 거야"
+      },
+      {
+        "speaker": "루테",
+        "message": "그렇겠죠…?"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "바쁘세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일이야?"
+      },
+      {
+        "speaker": "루테",
+        "message": "저 궁금한 게 있어서요"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님은 성이랑 방주 안에만 계시나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전혀 그렇지 않아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전혀 그렇지 않아"
+      },
+      {
+        "speaker": "루테",
+        "message": "그럼 나중에 길을 걷다 마주칠 수도 있겠네요"
+      },
+      {
+        "speaker": "루테",
+        "message": "그런 우연이 가능하다고 생각하니까 두근거려요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "약속 잡고 같이 보면 되잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "약속 잡고 같이 보면 되잖아"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "역시 구원자님은 상냥하셔요"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "인간 사회에서도 연애 후에 결혼했나요…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보통 그랬지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보통 그랬지"
+      },
+      {
+        "speaker": "루테",
+        "message": "보통 그랬다고 한다면…"
+      },
+      {
+        "speaker": "루테",
+        "message": "아닌 경우도 있었겠네요…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 다양한 경우들도 있으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 다양한 경우들도 있으니까"
+      },
+      {
+        "speaker": "루테",
+        "message": "그런 사례들이 뭔가 참고가 될 수도 있겠네요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "한 번 알아봐야겠어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "물론 연애도 배워올 테니까"
+      },
+      {
+        "speaker": "루테",
+        "message": "걱정하지 마세요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "방주 안은 어떤가요?"
+      },
+      {
+        "speaker": "루테",
+        "message": "소문에 의하면 둥둥 떠다니면서"
+      },
+      {
+        "speaker": "루테",
+        "message": "다양한 환영들이 보인다고 하던데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이상한 소문이 도는구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이상한 소문이 도는구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "방주 안은 생각보다 평범해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "방주 안은 생각보다 평범해"
+      },
+      {
+        "speaker": "루테",
+        "message": "휴"
+      },
+      {
+        "speaker": "루테",
+        "message": "다행이네요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "루테",
+        "message": "알려주셔서 감사해요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "걱정했던 부분이 해결되었어요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "주무세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 아직"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 아직"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "루테",
+        "message": "그런 건 아니에요"
+      },
+      {
+        "speaker": "루테",
+        "message": "그냥"
+      },
+      {
+        "speaker": "루테",
+        "message": "궁금해서 그랬어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님 "
+      },
+      {
+        "speaker": "루테",
+        "message": "죄송해요"
+      },
+      {
+        "speaker": "루테",
+        "message": "저 때문에 많이 곤란하셨죠"
+      },
+      {
+        "speaker": "루테",
+        "message": "제 제대로 사과드리고 싶은데"
+      },
+      {
+        "speaker": "루테",
+        "message": "제가 찾아가도 될까요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 사과 안 해도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 사과 안 해도 돼"
+      },
+      {
+        "speaker": "루테",
+        "message": "그렇지만"
+      },
+      {
+        "speaker": "루테",
+        "message": "우우우"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사과 금지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사과 금지"
+      },
+      {
+        "speaker": "루테",
+        "message": "그 금지까지…"
+      },
+      {
+        "speaker": "루테",
+        "message": "알겠어요…"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "주말에…"
+      },
+      {
+        "speaker": "루테",
+        "message": "저랑 데이트"
+      },
+      {
+        "speaker": "루테",
+        "message": "하실래요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "데이트 코스는 내가 짤게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "데이트 코스는 내가 짤게"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "부탁드릴게요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "……."
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "이제 어떡하면 좋을까요…"
+      },
+      {
+        "speaker": "루테",
+        "message": "제 방은 다 정리했어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "민폐만 끼치고 가서"
+      },
+      {
+        "speaker": "루테",
+        "message": "정말 죄송해요"
+      },
+      {
+        "speaker": "루테",
+        "message": "염치없지만"
+      },
+      {
+        "speaker": "루테",
+        "message": "마지막으로 부탁이 있어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "배웅은 하지 말아주세요"
+      },
+      {
+        "speaker": "루테",
+        "message": "지금 구원자님을 보면"
+      },
+      {
+        "speaker": "루테",
+        "message": "엄청 슬플 것 같아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테…"
+      },
+      {
+        "speaker": "루테",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "루테",
+        "message": "평소처럼 퇴근하시는 거죠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 그럴 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 그럴 거야"
+      },
+      {
+        "speaker": "루테",
+        "message": "에헤헷"
+      },
+      {
+        "speaker": "루테",
+        "message": "그럼 기다리고 있을게요"
+      },
+      {
+        "speaker": "루테",
+        "message": "오늘 기대돼요"
+      },
+      {
+        "speaker": "루테",
+        "message": "평범한 데이트…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "루테",
+        "message": "우우"
+      },
+      {
+        "speaker": "루테",
+        "message": "결혼식 준비가 쉽지 않네요"
+      },
+      {
+        "speaker": "루테",
+        "message": "대책 없이 일을 진행한다고"
+      },
+      {
+        "speaker": "루테",
+        "message": "클레르한테 또 혼났어요"
+      },
+      {
+        "speaker": "루테",
+        "message": "후엥"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생했어 루테"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생했어 루테"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 같이 드레스 고르러 갈까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 같이 드레스 고르러 갈까?"
+      },
+      {
+        "speaker": "루테",
+        "message": "드레스…"
+      },
+      {
+        "speaker": "루테",
+        "message": "후으으!"
+      },
+      {
+        "speaker": "루테",
+        "message": "너무 좋아요!"
+      },
+      {
+        "speaker": "루테",
+        "message": "새해가 왔다는 건…"
+      },
+      {
+        "speaker": "루테",
+        "message": "구, 구원자님의 새로운 역사가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테도 그렇잖아. 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "루테도 그렇잖아. 고마워!"
+      },
+      {
+        "speaker": "루테",
+        "message": "사, 사랑의 날에 보는"
+      },
+      {
+        "speaker": "루테",
+        "message": "상상만해도, 심장이 터질 것 같아요오~!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 보자, 루테!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 보자, 루테!"
+      },
+      {
+        "speaker": "루테",
+        "message": "헤헷, 이브의 날에 파티를 즐기는"
+      },
+      {
+        "speaker": "루테",
+        "message": "잠깐 상상해봤는데, 너무너무 귀여워요오…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 파티하자, 루테!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 파티하자, 루테!"
+      }
+    ]
+  }
+}

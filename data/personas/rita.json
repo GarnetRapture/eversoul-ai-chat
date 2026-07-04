@@ -1,0 +1,42 @@
+{
+  "id": "110",
+  "name": "리타",
+  "name_en": "Rita",
+  "grade": "레어",
+  "race": "인간형",
+  "class": "디펜더",
+  "sub_class": "보호",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "태양의 기사",
+    "constellation": "인연_제이드_이벤트2",
+    "union": "태양 기사단",
+    "birthday": "528",
+    "height": 155,
+    "weight": 47,
+    "cv_ko": "이지선",
+    "cv_jp": "Yuki Tanaka",
+    "like": [
+      "꿀 탄 우유"
+    ],
+    "dislike": [
+      "키가 작다는 말"
+    ],
+    "hobby": [
+      "키 쑥쑥 체조"
+    ],
+    "speciality": [
+      "선택적 기억 상실"
+    ]
+  },
+  "personality": {
+    "description": "리타임다! 제 무기? 보면 모르시겠슴까? 당연히 드릴임다!",
+    "greeting": "일단 뚫겠슴다!"
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

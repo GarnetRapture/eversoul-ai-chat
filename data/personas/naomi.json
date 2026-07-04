@@ -1,0 +1,1705 @@
+{
+  "id": "1070",
+  "name": "나오미",
+  "name_en": "Naomi",
+  "grade": "에픽",
+  "race": "인간형",
+  "class": "캐스터",
+  "sub_class": "지속",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "모두의 매니저",
+    "constellation": "인연_제이드_이벤트2",
+    "union": "베스티 프로덕션",
+    "birthday": "614",
+    "height": 157,
+    "weight": 44,
+    "cv_ko": "최하리",
+    "cv_jp": "Minami Takahashi",
+    "like": [
+      "게임",
+      "멍때리기",
+      "음악 감상"
+    ],
+    "dislike": [
+      "천둥과 번개",
+      "더위",
+      "초콜릿"
+    ],
+    "hobby": [
+      "스카우트",
+      "가창",
+      "댄스"
+    ],
+    "speciality": [
+      "커뮤니케이션"
+    ]
+  },
+  "personality": {
+    "description": "안녕, 구원자님! 처음 봤을 때부터 계속 친해지고 싶었어! 나는 나오미!",
+    "greeting": "안녕?"
+  },
+  "speech_patterns": [
+    "안녕, 구원자님?",
+    "나는 베스티 프로덕션의 매니저",
+    "나오미야",
+    "아주 귀엽고 사랑스러운~!",
+    "미카와 시하를 담당 하고 있어!",
+    "나도 엄청 반가워!",
+    "그러고 보니 구원자님은",
+    "영주님이기도 해서",
+    "정령들을 많이 알고 있겠네?",
+    "흐흠~",
+    "과한 겸손은 오히려 실례라구?",
+    "나중에 도움받으려면 친하게 지내야겠네?",
+    "후후 장난이야~",
+    "앞으로 편하게 대해줘, 구원자님!",
+    "응?",
+    "나는 지금도 편하게 대하고 있는걸?",
+    "더 편하게 대해달라 이거지?",
+    "좋아 그러면",
+    "잘 부탁해 구 원 자!",
+    "하아",
+    "갑자기 하늘에서 천재 아이돌 정령이",
+    "툭",
+    "하고 떨어졌으면 좋겠어",
+    "로드 캐스팅한다고 여기저기 다녔더니",
+    "다리가 너무 아파~",
+    "미카랑 시하를 캐스팅했던 건",
+    "정말 신이 도운 일이었을까?",
+    "너무 지친다~",
+    "마음은 고맙지만",
+    "구원자도 바쁘잖아!",
+    "그리고 나는",
+    "음료수보다는 시~원한 맥주를 좋아해",
+    "그러니까",
+    "이번 일 잘 해결되면",
+    "같이 마시러 갈래~?",
+    "으이구 자꾸 말 그렇게 할래?",
+    "보면 이미지랑은 다를 때가 있단 말이야?",
+    "좋아",
+    "꼭 같이 마시러 가는 거다?",
+    "으 속이 안 좋아",
+    "왜 미팅이나 회의에는",
+    "달콤한 과자만 준비해 두는 걸까?",
+    "가아끄음~~~",
+    "당길 때는 있지만",
+    "찾아 먹지는 않아",
+    "첫입은 그럭저럭 먹을만한데",
+    "먹다 보면 멀미 나는 것 같거든",
+    "미카랑 시하는 디저트를 좋아하는 편이라",
+    "나도 단맛에 적응을 하면 좋을 텐데",
+    "같이?"
+  ],
+  "comments": [
+    {
+      "writer": "미카",
+      "comment": "나오미가 없었다면 지금의 미카도 없지 않았을까? 미카를 이렇게 세심하게 챙겨주는 매니저는 앞으로도 없을 거 같아."
+    },
+    {
+      "writer": "시하",
+      "comment": "언제나 저랑 미카를 위해 애써주고 있어서 늘 고맙고 미안해요. 때로는 자신을 챙기는 시간도 가지면 좋겠어요."
+    },
+    {
+      "writer": "지호",
+      "comment": "나오미를 모르는 시하 팬은 거의 없을 거야. 또 다른 스타나 다름없지. 그러고 보니 나오미는 데뷔 안 하려나? 왠지 잘 할 것 같은데…"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "나오미",
+        "message": "안녕, 구원자님?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나는 베스티 프로덕션의 매니저"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나오미야"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아주 귀엽고 사랑스러운~!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "미카와 시하를 담당 하고 있어!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "반가워, 나오미"
+      },
+      {
+        "speaker": "구원자",
+        "message": "반가워, 나오미"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나도 엄청 반가워!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그러고 보니 구원자님은"
+      },
+      {
+        "speaker": "나오미",
+        "message": "영주님이기도 해서"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정령들을 많이 알고 있겠네?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지도 않아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지도 않아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "흐흠~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "과한 겸손은 오히려 실례라구?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나중에 도움받으려면 친하게 지내야겠네?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "후후 장난이야~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "앞으로 편하게 대해줘, 구원자님!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미도 날 편하게 대해줄래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미도 날 편하게 대해줄래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나는 지금도 편하게 대하고 있는걸?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "더 편하게 대해달라 이거지?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "좋아 그러면"
+      },
+      {
+        "speaker": "나오미",
+        "message": "잘 부탁해 구 원 자!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해 나오미"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해 나오미"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "갑자기 하늘에서 천재 아이돌 정령이"
+      },
+      {
+        "speaker": "나오미",
+        "message": "툭"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하고 떨어졌으면 좋겠어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "로드 캐스팅한다고 여기저기 다녔더니"
+      },
+      {
+        "speaker": "나오미",
+        "message": "다리가 너무 아파~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생이 많네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고생이 많네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "미카랑 시하를 캐스팅했던 건"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정말 신이 도운 일이었을까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "너무 지친다~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음료수라도 사줄까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음료수라도 사줄까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "마음은 고맙지만"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자도 바쁘잖아!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그리고 나는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "음료수보다는 시~원한 맥주를 좋아해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그러니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이번 일 잘 해결되면"
+      },
+      {
+        "speaker": "나오미",
+        "message": "같이 마시러 갈래~?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그날만 기다리고 있을게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그날만 기다리고 있을게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "으이구 자꾸 말 그렇게 할래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "보면 이미지랑은 다를 때가 있단 말이야?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "좋아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "꼭 같이 마시러 가는 거다?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "으 속이 안 좋아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "왜 미팅이나 회의에는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "달콤한 과자만 준비해 두는 걸까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "단 걸 못 먹나 보네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "단 걸 못 먹나 보네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "가아끄음~~~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "당길 때는 있지만"
+      },
+      {
+        "speaker": "나오미",
+        "message": "찾아 먹지는 않아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "첫입은 그럭저럭 먹을만한데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "먹다 보면 멀미 나는 것 같거든"
+      },
+      {
+        "speaker": "나오미",
+        "message": "미카랑 시하는 디저트를 좋아하는 편이라"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나도 단맛에 적응을 하면 좋을 텐데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 적응해 볼래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 적응해 볼래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "같이?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나야 좋지 응응"
+      },
+      {
+        "speaker": "나오미",
+        "message": "우리 같이 해볼 게 많네~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미, 바빠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미, 바빠?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아, 지금은 괜찮아!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "연습 다 끝났거든"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 무리하는 거 아니야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 무리하는 거 아니야?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "음"
+      },
+      {
+        "speaker": "나오미",
+        "message": "솔직히 꽤 무리하는 중이야!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그렇지만 시간이 없어서"
+      },
+      {
+        "speaker": "나오미",
+        "message": "최대한 많이 연습하는 방법밖에는 없더라구"
+      },
+      {
+        "speaker": "나오미",
+        "message": "휴"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘은 좀 많이 지치네!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘 같은 날에는 나한테 상을 줘도 되겠지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 상?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 상?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "예를 들면"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자가 사주는 맥주라든지?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "내가 트레이닝 중이라는 건 알아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그러니까 적당히 마실게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정령은 술 많이 마셔도 살 안 찐다구?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "문제 전혀 없을 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어, 사줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어, 사줄게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "야호!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "쇼케이스 때 입을 무대의상이 도착했어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "한번 볼래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 보고 싶어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 보고 싶어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어떤 거 같아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀여워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀여워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "귀엽다고?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "누군가한테 귀엽다는 말"
+      },
+      {
+        "speaker": "나오미",
+        "message": "처음 듣는 것 같아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "뭔가 부끄럽고 그렇네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래도 다행이다"
+      },
+      {
+        "speaker": "나오미",
+        "message": "옷이 너무 귀여워서 나랑 안 어울릴줄 알았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미는 평소에도 귀여워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미는 평소에도 귀여워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "으유, 그만그만!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그런 건 나중에 직접 말해줄래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "직접 만나서도 그렇게 말해주면 인정할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어, 꼭 말할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어, 꼭 말할게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자 물어볼 게 있어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "무대에서 내 표정"
+      },
+      {
+        "speaker": "나오미",
+        "message": "많이 굳어있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 그렇지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 그렇지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아무리 연습해도 잘 안되네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "혼자 거울 볼 때는 잘 되었는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 한 번 봐줄까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 한 번 봐줄까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아냐 아냐 아냐 아냐"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자가 있으면 더 안 될 것 같아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "안 그래도 구원자 앞에서 자주 표정 관리하는데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어 그니까 으 그게 표정 관리라는 게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "원활한 커뮤니케이션을 위한"
+      },
+      {
+        "speaker": "나오미",
+        "message": "사회생활이라는 거지 그니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아니다 사회생활은 너무 딱딱한 말인데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아우"
+      },
+      {
+        "speaker": "나오미",
+        "message": "손가락이 꼬인다 꼬여"
+      },
+      {
+        "speaker": "나오미",
+        "message": "대화 다 삭제하고 다시 시작하고 싶어져"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그랬구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그랬구나"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어라라?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오해하면 안 돼, 진짜!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자, 답장 좀~!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘이 팬들과의 만남이구나"
+      },
+      {
+        "speaker": "나오미",
+        "message": "으음 어떡한담"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 떨려?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 떨려?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "떨리기도 하고 어색하기도 해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "보니까 세레나데 팬 중에는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "미카랑 시하의 오랜 팬들도 많더라구"
+      },
+      {
+        "speaker": "나오미",
+        "message": "매니저 할 때 나름 친근하게 대했던 정령들이었는데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이렇게 아이돌로 만나니까 기분이 묘해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "무대에서는 그래도 거리감이 있어서 괜찮았는데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어떻게 대해야 할까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "친근하게 대해줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "친근하게 대해줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "원래 그랬던 것처럼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "원래 그랬던 것처럼"
+      },
+      {
+        "speaker": "나오미",
+        "message": "친근하게?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "좋아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "조언 고마워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "갔다 올게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "궁금한 게 있어 나오미"
+      },
+      {
+        "speaker": "구원자",
+        "message": "궁금한 게 있어 나오미"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응"
+      },
+      {
+        "speaker": "나오미",
+        "message": "편하게 물어봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 숲에서 노래 연습을 했던 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 숲에서 노래 연습을 했던 거야?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "사실"
+      },
+      {
+        "speaker": "나오미",
+        "message": "부끄러운 이야기인데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "원래는 집이나 빈 연습실에서 몰래 노래를 부르곤 했어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그런데 아무도 내 노래를 들을 수 없는 곳에서"
+      },
+      {
+        "speaker": "나오미",
+        "message": "노래를 부르니까 이상하게 집중이 안 되더라구"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래서 아주아주 혹시나 만약에"
+      },
+      {
+        "speaker": "나오미",
+        "message": "우연히 누군가가 듣게 되지 않을까 하는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그런 긴장감이 있다면 집중할 수 있지 않을까 해서"
+      },
+      {
+        "speaker": "나오미",
+        "message": "밤이 찾아온 숲에서 노래를 부르기 시작했지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "실제로 집중도 잘 되고"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자도 내 노래를 들었으니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "의도는 통했던 거 같아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "다 말하고 나니까 민망하네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 산책하길 정말 잘했네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 산책하길 정말 잘했네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그렇게 말해줘서 고마워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아이돌 활동은 다 좋은데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "취미 생활할 시간이 확보가 안 된다는 단점이 있네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미의 취미는 뭐야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미의 취미는 뭐야?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "음 나는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "집에서 게임하는 거랑 음악 듣는 거?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "평범하지?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "게임은 뭐든지 좋아해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "다 같이 하는 것도 좋고"
+      },
+      {
+        "speaker": "나오미",
+        "message": "혼자 엔딩까지 쭉 클리어하는 것도 좋아하고!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "음악은 거의 장르를 가리지 않고 들어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭔가 의외의 취미네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭔가 의외의 취미네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그런가?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "일할 때는 여기저기 많이 다니고"
+      },
+      {
+        "speaker": "나오미",
+        "message": "사람도 많이 만나다 보니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "쉴 때는 집에 있고 싶어지더라구"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래도 친한 사람을 집에 초대하는 건 좋아해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자도 나중에 게임하러 올래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "후후, 무슨 게임할지 생각해 둬야겠다"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "매니저 일은 할 만해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전혀"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전혀"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하하"
+      },
+      {
+        "speaker": "나오미",
+        "message": "동시에 세 정령을 관리하려니까 힘들겠네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래도 미카랑 시하가 구원자 칭찬 많이 해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "사소한 거에도 배려심이 보인다고 하던데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쑥스럽네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쑥스럽네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "물론"
+      },
+      {
+        "speaker": "나오미",
+        "message": "매니저 선배로서 지적할 부분이"
+      },
+      {
+        "speaker": "나오미",
+        "message": "없진 않지만!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자에게는 큰 장점이 있으니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "넘어가 줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "큰 장점?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "큰 장점?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나중에 구원자가 매니저 그만두게 되면 알려줄게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그때가 되면 나도 아이돌이 아닐 테니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "편하게 알려줄 수 있을지도?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "후후"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아 맞다"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자~!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "혹시 내일 많이 바빠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내일은 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내일은 괜찮아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "요새 바쁘다는 이야기는 들어서"
+      },
+      {
+        "speaker": "나오미",
+        "message": "부탁하기가 좀 민망하긴 한데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아 말해봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아 말해봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미의 부탁이라면 들어줘야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미의 부탁이라면 들어줘야지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "뭐야 구원자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "입에 바른 소리도 잘하네~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그럼 혹시 내일 찾아가도 될까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "부탁할 일은 직접 만나서 이야기할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응 고마워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "내일 점심쯤에 찾아갈게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자~!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오고 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 곧 도착해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 곧 도착해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "시간 약속에 철저하구나?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "역시 영주님이네~"
+      },
+      {
+        "speaker": "나오미",
+        "message": "도착하면 반가운 얼굴들도 있을 거고"
+      },
+      {
+        "speaker": "나오미",
+        "message": "처음 보는 얼굴들도 있을 거야"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그래도 모두 환영해 줄 거니까"
+      },
+      {
+        "speaker": "나오미",
+        "message": "걱정하지 않아도 돼!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왠지 떨리네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왠지 떨리네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "회의라고 해서 긴장하는 거야?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그러지 않아도 돼"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그냥 편하게 있다가"
+      },
+      {
+        "speaker": "나오미",
+        "message": "뭔가 아이디어가 생각나면"
+      },
+      {
+        "speaker": "나오미",
+        "message": "편하게 이야기 해줘"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정 긴장되면 내 얼굴만 보고 있어도 되구?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 좋네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 좋네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정말이지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "긴장하는 거 맞아?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그럼 이따 봐!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "저"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "한 10분 뒤에 카페에서 볼까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래"
+      },
+      {
+        "speaker": "나오미",
+        "message": "음"
+      },
+      {
+        "speaker": "나오미",
+        "message": "화난 거 아니지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "몰라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "몰라"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "카페에서 제대로 사과할게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이따 봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오미?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "요새 너무 무리하는 것 같은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "요새 너무 무리하는 것 같은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "연습량을 좀 줄여야 하지 않을까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "연습량을 좀 줄여야 하지 않을까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "난 괜찮아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "연습할 게 있어서 나중에 다시 연락할게"
+      },
+      {
+        "speaker": "나오미",
+        "message": "드디어 오고 말았네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘이 드디어 오고 말았어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어떡하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일찍 일어났네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일찍 일어났네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "하하"
+      },
+      {
+        "speaker": "나오미",
+        "message": "밤새웠지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그냥 못 잤어 아예"
+      },
+      {
+        "speaker": "나오미",
+        "message": "잠이 올 리가 없잖아~~~!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "심장 소리가 귀에 들리는 것 같았어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "안 되겠다, 심호흡 좀 하고 올게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도울 게 있으면 말해줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도울 게 있으면 말해줘"
+      },
+      {
+        "speaker": "나오미",
+        "message": "내 손 잡고 도망쳐 줄래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 보자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이따 보자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "안 통하네, 알았어!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이따가 미카랑 시하랑 다 같이 저녁 먹기로 한 거"
+      },
+      {
+        "speaker": "나오미",
+        "message": "나는 못 갈 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어디 안 좋아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어디 안 좋아?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그런 건 아니구"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그냥 입맛이 좀 없네"
+      },
+      {
+        "speaker": "나오미",
+        "message": "좀 쉬어야 겠어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 좀 사다 줄까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 좀 사다 줄까?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "아니야"
+      },
+      {
+        "speaker": "나오미",
+        "message": "괜찮아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "걱정해 줘서 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아프면 꼭 말해야 해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아프면 꼭 말해야 해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "알았어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "내일 봐"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "드디어 내일이 세레나데 공식 휴일인 거지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정말 2주 만에 쉬다니"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그러면 구원자도 내일 쉬는 날이겠네?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "세레나데의 매니저니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쉬는 날이긴 하지만 낮에 할 일이 좀 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쉬는 날이긴 하지만 낮에 할 일이 좀 있어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "나오미",
+        "message": "저녁에는?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저녁엔 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저녁엔 괜찮아"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그럼 내일 저녁에 만날래?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "고민 상담할 게 있어서 말이야"
+      },
+      {
+        "speaker": "나오미",
+        "message": "매니저님이니까 해줄 거지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "매니저가 아니어도 해줄 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "매니저가 아니어도 해줄 거야"
+      },
+      {
+        "speaker": "나오미",
+        "message": "뭐야~ 또 그런다"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그럼 내일 봐"
+      },
+      {
+        "speaker": "나오미",
+        "message": "장소는"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자가 내 노래를 처음 들었던 곳이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미카랑 시하가 찾아왔대"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미카랑 시하가 찾아왔대"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오지 말고 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나오지 말고 있어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응 고마워"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이따 봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일어났어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일어났어?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "응 지금 막 일어났어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "지각하지 않겠지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아슬아슬해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아슬아슬해"
+      },
+      {
+        "speaker": "나오미",
+        "message": "진짜?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "지각하는 아이돌이 되면 안 되는데"
+      },
+      {
+        "speaker": "나오미",
+        "message": "그렇다고 대충 씻은 아이돌이 될 수는 없고"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어떡하지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 준비부터 하자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 준비부터 하자"
+      },
+      {
+        "speaker": "나오미",
+        "message": "알았어!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자~?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "언제 와~?"
+      },
+      {
+        "speaker": "나오미",
+        "message": "데이트에 지각하는 남자친구라니"
+      },
+      {
+        "speaker": "나오미",
+        "message": "해명할 게 있으면 해줄래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안해, 영주 일 때문에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안해, 영주 일 때문에"
+      },
+      {
+        "speaker": "나오미",
+        "message": "정말이지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "일은 다 끝났어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 지금 가고 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 지금 가고 있어"
+      },
+      {
+        "speaker": "나오미",
+        "message": "어쩔 수 없지"
+      },
+      {
+        "speaker": "나오미",
+        "message": "공연 시간은 지킬 수 있게 빨리 와!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "구원자,"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘 약속, 잊지 않았지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 보자, 나오미!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 보자, 나오미!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "오늘은~ 비즈니스를 하는 자에겐"
+      },
+      {
+        "speaker": "나오미",
+        "message": "대상인의 날이야~! 짝짝!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "내년에도 꼭 기억해 줘~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 나오미!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 나오미!"
+      },
+      {
+        "speaker": "나오미",
+        "message": "이렇게 특별한 날을"
+      },
+      {
+        "speaker": "나오미",
+        "message": "너무 기쁘고 설레."
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 나오미, 이따 보자!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 나오미, 이따 보자!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1536 @@
+{
+  "id": "4110",
+  "name": "니니",
+  "name_en": "Nini",
+  "grade": "에픽",
+  "race": "불사형",
+  "class": "캐스터",
+  "sub_class": "디버프",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "음양의 틈새",
+    "constellation": "전갈자리",
+    "union": "팀 언더테이커",
+    "birthday": "1026",
+    "height": 148,
+    "weight": 40,
+    "cv_ko": "김가령",
+    "cv_jp": "Rui Tanabe",
+    "like": [
+      "구석",
+      "고독"
+    ],
+    "dislike": [
+      "혼잡한 장소"
+    ],
+    "hobby": [
+      "종이 접기 (부적)"
+    ],
+    "speciality": [
+      "존재감 삭제"
+    ]
+  },
+  "personality": {
+    "description": "(두리번두리번) 아무도 없지?",
+    "greeting": "…그렇게 빤히 쳐다보면… 으우…"
+  },
+  "speech_patterns": [
+    "니니랑 같이 지낼 거라면 세 가지 규칙이 있어",
+    "하나. 싸울 때 빼고는 니니를 찾지 마",
+    "둘. 니니는 친해질 생각 없어",
+    "셋. 보수는 월말에 한번에 정산",
+    "넷. 일주일 중 최소 2일의 휴가를 보장할 것",
+    "!!!",
+    "몰라됐어저리가바보",
+    "구원자님…",
+    "지난번 일은 진짜 미안…",
+    "답례로 부적이라도 써 줄까…?",
+    "당연히 있지",
+    "어설픈 재료 쓰는 거 싫어서",
+    "좋은 것만 쓰고 있어",
+    "경면주사라고 빨간 돌이 있는데",
+    "그걸 아주아주 곱게 갈아서 기름이랑 섞어가지고",
+    "질 좋은 괴황지 위에",
+    "마음을 담아 쓰는 거야",
+    "나중에 구원자님한테도 한장 써줄게",
+    "음…",
+    "음……",
+    "뭐래",
+    "그거나 써줄게",
+    "소화불량 안 걸리는 부적",
+    "구원자님은 그거면 충분하겠지",
+    "진짜 미안해 구원자님……",
+    "식당에서 도망쳐서…",
+    "구원자님한테도 미안하고",
+    "생일맞은 정령한테도 너무 미안해…",
+    "니니 진짜 어떡하면 좋아",
+    "…정말?",
+    "그렇다면 다행이지만…",
+    "아",
+    "니니 의자 위에 올라갈 때",
+    "신발 신고 올라간 것 같아",
+    "니니 이제 그 식당 못가",
+    "하아아……",
+    "어떻게 확신해!",
+    "진짜 예의없고 경우없는 애라고 생각했을거야",
+    "으으으…",
+    "어떻게 사과하지…",
+    "나 데이트 처음이야♡",
+    "구원자님과 첫 데이트♡",
+    "정말 기대돼!",
+    "우우웅~ 지금 그게 중요해?",
+    "구원자님을 위해 새 옷도 샀는데",
+    "내 맘도 안알아주고! 너무해!",
+    "헤헤… 이번 한번만 봐줄게!",
+    "왜냐면 지금 기분 엄청 좋거든!!",
+    "구원자님을 위해서 새 옷 말고도",
+    "진짜 구하기 힘든 것도 준비했다구!!"
+  ],
+  "comments": [
+    {
+      "writer": "루테",
+      "comment": "방에 침대 대신 관이 있다는 소문을 들었어요… 정말일까요?"
+    },
+    {
+      "writer": "캐서린",
+      "comment": "많이 소심하지만, 그래서 더 잘 챙겨주고 싶어요. 후훗…"
+    },
+    {
+      "writer": "페트라",
+      "comment": "은근히 순진해서… 장난에 잘 걸려들어… 재밌어…"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "니니",
+        "message": "니니랑 같이 지낼 거라면 세 가지 규칙이 있어"
+      },
+      {
+        "speaker": "니니",
+        "message": "하나. 싸울 때 빼고는 니니를 찾지 마"
+      },
+      {
+        "speaker": "니니",
+        "message": "둘. 니니는 친해질 생각 없어"
+      },
+      {
+        "speaker": "니니",
+        "message": "셋. 보수는 월말에 한번에 정산"
+      },
+      {
+        "speaker": "니니",
+        "message": "넷. 일주일 중 최소 2일의 휴가를 보장할 것"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세 가지가 아닌데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세 가지가 아닌데"
+      },
+      {
+        "speaker": "니니",
+        "message": "!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니?"
+      },
+      {
+        "speaker": "니니",
+        "message": "몰라됐어저리가바보"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님…"
+      },
+      {
+        "speaker": "니니",
+        "message": "지난번 일은 진짜 미안…"
+      },
+      {
+        "speaker": "니니",
+        "message": "답례로 부적이라도 써 줄까…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신경 안 써도 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신경 안 써도 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "근데 부적은 직접 쓰는 거구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "근데 부적은 직접 쓰는 거구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "부적 쓰는 도구도 다 있겠네?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "부적 쓰는 도구도 다 있겠네?"
+      },
+      {
+        "speaker": "니니",
+        "message": "당연히 있지"
+      },
+      {
+        "speaker": "니니",
+        "message": "어설픈 재료 쓰는 거 싫어서"
+      },
+      {
+        "speaker": "니니",
+        "message": "좋은 것만 쓰고 있어"
+      },
+      {
+        "speaker": "니니",
+        "message": "경면주사라고 빨간 돌이 있는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "그걸 아주아주 곱게 갈아서 기름이랑 섞어가지고"
+      },
+      {
+        "speaker": "니니",
+        "message": "질 좋은 괴황지 위에"
+      },
+      {
+        "speaker": "니니",
+        "message": "마음을 담아 쓰는 거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "나중에 구원자님한테도 한장 써줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 부적 써 줄 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 부적 써 줄 거야?"
+      },
+      {
+        "speaker": "니니",
+        "message": "음…"
+      },
+      {
+        "speaker": "니니",
+        "message": "음……"
+      },
+      {
+        "speaker": "구원자",
+        "message": "연애운 상승 부적?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "연애운 상승 부적?"
+      },
+      {
+        "speaker": "니니",
+        "message": "뭐래"
+      },
+      {
+        "speaker": "니니",
+        "message": "그거나 써줄게"
+      },
+      {
+        "speaker": "니니",
+        "message": "소화불량 안 걸리는 부적"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님은 그거면 충분하겠지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "별 부적이 다 있구나…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "별 부적이 다 있구나…"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜 미안해 구원자님……"
+      },
+      {
+        "speaker": "니니",
+        "message": "식당에서 도망쳐서…"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님한테도 미안하고"
+      },
+      {
+        "speaker": "니니",
+        "message": "생일맞은 정령한테도 너무 미안해…"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 진짜 어떡하면 좋아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생일파티하던 정령들도 다 이해해 줬어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생일파티하던 정령들도 다 이해해 줬어"
+      },
+      {
+        "speaker": "니니",
+        "message": "…정말?"
+      },
+      {
+        "speaker": "니니",
+        "message": "그렇다면 다행이지만…"
+      },
+      {
+        "speaker": "니니",
+        "message": "아"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 의자 위에 올라갈 때"
+      },
+      {
+        "speaker": "니니",
+        "message": "신발 신고 올라간 것 같아"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 이제 그 식당 못가"
+      },
+      {
+        "speaker": "니니",
+        "message": "하아아……"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 정도는 용서해 주실 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 정도는 용서해 주실 거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "어떻게 확신해!"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜 예의없고 경우없는 애라고 생각했을거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "으으으…"
+      },
+      {
+        "speaker": "니니",
+        "message": "어떻게 사과하지…"
+      },
+      {
+        "speaker": "니니",
+        "message": "나 데이트 처음이야♡"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님과 첫 데이트♡"
+      },
+      {
+        "speaker": "니니",
+        "message": "정말 기대돼!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "랜덤 성격 포션 마셨어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "랜덤 성격 포션 마셨어?"
+      },
+      {
+        "speaker": "니니",
+        "message": "우우웅~ 지금 그게 중요해?"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님을 위해 새 옷도 샀는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "내 맘도 안알아주고! 너무해!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안…"
+      },
+      {
+        "speaker": "니니",
+        "message": "헤헤… 이번 한번만 봐줄게!"
+      },
+      {
+        "speaker": "니니",
+        "message": "왜냐면 지금 기분 엄청 좋거든!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님을 위해서 새 옷 말고도"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜 구하기 힘든 것도 준비했다구!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "구하기 힘든 것?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "구하기 힘든 것?"
+      },
+      {
+        "speaker": "니니",
+        "message": "정답은~ 만나서 확인해♡"
+      },
+      {
+        "speaker": "니니",
+        "message": "에헤헤헷"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 들어갔어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 들어갔어?"
+      },
+      {
+        "speaker": "니니",
+        "message": "☆산지직송☆자체제작☆"
+      },
+      {
+        "speaker": "니니",
+        "message": "★최고급재료사용★합리적인가격★"
+      },
+      {
+        "speaker": "니니",
+        "message": "언제나 최선을 다하는 당신곁의 수호천사"
+      },
+      {
+        "speaker": "니니",
+        "message": "팀 언더테이커 부적제작센터입니다."
+      },
+      {
+        "speaker": "니니",
+        "message": "상담을 원하시면 메시지를 남겨주세요."
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "니니",
+        "message": "…? 이해하지 못했습니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "장난치지 말고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "장난치지 말고"
+      },
+      {
+        "speaker": "니니",
+        "message": "…? 이해하지 못했습니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "나 화낸다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나 화낸다"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "니니",
+        "message": "오늘은 혼자 내버려둬줘"
+      },
+      {
+        "speaker": "니니",
+        "message": "미안…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "창피해 하는 마음 이해해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "창피해 하는 마음 이해해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 연락이 안 되니까 너무 걱정돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 연락이 안 되니까 너무 걱정돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엉덩이는… 잘 안 보였어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엉덩이는… 잘 안 보였어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조명도 다 꺼져서 어두웠고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조명도 다 꺼져서 어두웠고"
+      },
+      {
+        "speaker": "니니",
+        "message": "조용히해!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜 미칠것같단말야"
+      },
+      {
+        "speaker": "니니",
+        "message": "그런 부끄러운 모습 다 보여버리고"
+      },
+      {
+        "speaker": "니니",
+        "message": "창피해서 정령석 될 것 같으니까"
+      },
+      {
+        "speaker": "니니",
+        "message": "에버톡 그만 보내!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 계속 니니 도와주고 싶으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 계속 니니 도와주고 싶으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "마음 좀 풀리면 언제든지 연락줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "마음 좀 풀리면 언제든지 연락줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "원한다면 나도 너랑 똑같은 포즈 보여줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "원한다면 나도 너랑 똑같은 포즈 보여줄게"
+      },
+      {
+        "speaker": "니니",
+        "message": "뭐????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 쌤쌤이니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 쌤쌤이니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어때?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어때?"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님 차단한다 진짜"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이게아닌가…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이게아닌가…"
+      },
+      {
+        "speaker": "니니",
+        "message": "음양은 아주 심오한 거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "빛과 어둠, 불과 물, 생과 사, 진실과 거짓…"
+      },
+      {
+        "speaker": "니니",
+        "message": "다 각각 음 또는 양에 속해 있어"
+      },
+      {
+        "speaker": "니니",
+        "message": "이들의 조화가 세계를 구축하고"
+      },
+      {
+        "speaker": "니니",
+        "message": "또 변화함으로써 순환하는 거지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어려운 얘기네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어려운 얘기네"
+      },
+      {
+        "speaker": "니니",
+        "message": "하나도 안 어려워"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님도 생각해봐"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님의 음과 양은 어떤 건지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포만감과 공복감?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포만감과 공복감?"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "니니",
+        "message": "장난해?"
+      },
+      {
+        "speaker": "니니",
+        "message": "아니…"
+      },
+      {
+        "speaker": "니니",
+        "message": "그것도 맞는 것 같아"
+      },
+      {
+        "speaker": "니니",
+        "message": "음양이란 거"
+      },
+      {
+        "speaker": "니니",
+        "message": "어려운 게 맞을지도"
+      },
+      {
+        "speaker": "니니",
+        "message": "물고기가 되고 싶을 때가 있어"
+      },
+      {
+        "speaker": "니니",
+        "message": "어디서 들었는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "좁은 데서 혼자 살아도 스트레스 안 받는 물고기가 있대"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니도 정령 말고"
+      },
+      {
+        "speaker": "니니",
+        "message": "그런 물고기로 태어났으면 좋았을텐데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 거짓말이라던데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 거짓말이라던데"
+      },
+      {
+        "speaker": "니니",
+        "message": "에 진짜??"
+      },
+      {
+        "speaker": "니니",
+        "message": "그럼 좁은 데에서도 못 살고"
+      },
+      {
+        "speaker": "니니",
+        "message": "혼자서도 못 살아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좁은 데서 살 수는 있어도 넓은 곳이 더 좋고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좁은 데서 살 수는 있어도 넓은 곳이 더 좋고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혼자 살긴 하는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혼자 살긴 하는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "자기 영역에 다른 물고기가 들어오면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "자기 영역에 다른 물고기가 들어오면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "죽을 때까지 싸운대"
+      },
+      {
+        "speaker": "구원자",
+        "message": "죽을 때까지 싸운대"
+      },
+      {
+        "speaker": "니니",
+        "message": "끙…"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니는 그 정도로 혼자 살고 싶은 건 아닌데…"
+      },
+      {
+        "speaker": "니니",
+        "message": "친구는 있었으면 좋겠어"
+      },
+      {
+        "speaker": "니니",
+        "message": "정령으로 살기 너무 어렵다…"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님이 전에 손 보여달라고 했던 거"
+      },
+      {
+        "speaker": "니니",
+        "message": "이것 때문이었어…?"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니를 알고 싶어서…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맞아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맞아"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니는… 숨기고 싶었어"
+      },
+      {
+        "speaker": "니니",
+        "message": "있는 그대로의 니니를 알면"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니를 더 싫어하게 될까봐…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지 않아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지 않아"
+      },
+      {
+        "speaker": "니니",
+        "message": "…"
+      },
+      {
+        "speaker": "니니",
+        "message": "좀 더… 생각해 볼게…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전에 말해줬던 음양 말이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전에 말해줬던 음양 말이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생각해 봤는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생각해 봤는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "이제 와서 무슨…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 남들과 잘 못 어울리는 게 음이라면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 남들과 잘 못 어울리는 게 음이라면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 남몰래 묵묵히 노력하는 건 양이지 않을까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 남몰래 묵묵히 노력하는 건 양이지 않을까?"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 부분들이 다 조화롭게 모여서 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 부분들이 다 조화롭게 모여서 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금의 니니를 이루고 있는 것 아닌가 싶어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금의 니니를 이루고 있는 것 아닌가 싶어"
+      },
+      {
+        "speaker": "니니",
+        "message": "그런 생각은 언제 또 한 거야…"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 말에 무슨 의미가 있다고"
+      },
+      {
+        "speaker": "니니",
+        "message": "그렇게 열심히 들었어…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 생각해 보라고 했으니까 했지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가 생각해 보라고 했으니까 했지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그리고 전에 말해준 대로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그리고 전에 말해준 대로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 음양의 조화가 점점 변화함으로써"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 음양의 조화가 점점 변화함으로써"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새로운 니니가 될 수 있지 않을까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새로운 니니가 될 수 있지 않을까?"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니가 정말"
+      },
+      {
+        "speaker": "니니",
+        "message": "그럴 수 있을까…"
+      },
+      {
+        "speaker": "니니",
+        "message": "자신이 없어……"
+      },
+      {
+        "speaker": "니니",
+        "message": "카렌"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜 미안해"
+      },
+      {
+        "speaker": "니니",
+        "message": "진짜로 도망갈 생각은 아니었는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "정신차려보니까 이미"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?? 무슨 소리야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?? 무슨 소리야?"
+      },
+      {
+        "speaker": "니니",
+        "message": "아니 아무리 그래도 정령들이 너무 많잖아"
+      },
+      {
+        "speaker": "니니",
+        "message": "대규모 작전이라고 듣긴 했지만"
+      },
+      {
+        "speaker": "니니",
+        "message": "앞으로 또 이러면 어떡하지 "
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 진짜 망했어"
+      },
+      {
+        "speaker": "니니",
+        "message": "어??"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡 잘못 보낸 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡 잘못 보낸 것 같아"
+      },
+      {
+        "speaker": "니니",
+        "message": "미치겠다진짜"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니는 진짜 왜 자꾸"
+      },
+      {
+        "speaker": "니니",
+        "message": "아아아아악"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니??"
+      },
+      {
+        "speaker": "니니",
+        "message": "생각해봤는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "랜덤 성격 포션"
+      },
+      {
+        "speaker": "니니",
+        "message": "테스트 계속 하고 싶어"
+      },
+      {
+        "speaker": "니니",
+        "message": "아직… 포기하고 싶지 않아"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "니니",
+        "message": "부탁이 하나 있는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤건데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤건데?"
+      },
+      {
+        "speaker": "니니",
+        "message": "전에 내가… 소란피웠던 식당 앞에"
+      },
+      {
+        "speaker": "니니",
+        "message": "과일바구니 두고 왔거든"
+      },
+      {
+        "speaker": "니니",
+        "message": "죄송하다고 카드도 써서 같이…"
+      },
+      {
+        "speaker": "니니",
+        "message": "그거… 사장님이 잘 들고 들어갔나"
+      },
+      {
+        "speaker": "니니",
+        "message": "한번만 보고 와주면 안돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "과일 바구니에 카드까지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "과일 바구니에 카드까지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니는 예의가 바르구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니는 예의가 바르구나"
+      },
+      {
+        "speaker": "니니",
+        "message": "뭐라는 거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "당연하잖아!"
+      },
+      {
+        "speaker": "니니",
+        "message": "그렇게 소란을 피우고"
+      },
+      {
+        "speaker": "니니",
+        "message": "중간에 도망까지 쳤는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "그냥 과일바구니로 되겠어?"
+      },
+      {
+        "speaker": "니니",
+        "message": "일부러 다른 동네까지 가서 "
+      },
+      {
+        "speaker": "니니",
+        "message": "제일 비싼 걸로 샀단말야"
+      },
+      {
+        "speaker": "니니",
+        "message": "아무튼 보고 와 줄 수 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어렵진 않은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어렵진 않은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 직접 드리지 않고 앞에 두고 왔어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 직접 드리지 않고 앞에 두고 왔어?"
+      },
+      {
+        "speaker": "니니",
+        "message": "어떻게 얼굴보고 드려!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "지금도 창피해 죽겠는데"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니 진짜 너무 한심해"
+      },
+      {
+        "speaker": "니니",
+        "message": "생각할수록 우울해져…"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자니임♡"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자니임~♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "거의 다 와가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "거의 다 와가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "빨리 갈게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "빨리 갈게!"
+      },
+      {
+        "speaker": "니니",
+        "message": "알게쬬"
+      },
+      {
+        "speaker": "니니",
+        "message": "에헤헤"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 포션 마셨지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 포션 마셨지?"
+      },
+      {
+        "speaker": "니니",
+        "message": "우웅?"
+      },
+      {
+        "speaker": "니니",
+        "message": "모루게또"
+      },
+      {
+        "speaker": "니니",
+        "message": "나는 그저"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님이 보구시포!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포션이 아니라 술 마신 건 아니지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "포션이 아니라 술 마신 건 아니지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 혀만 짧아진 게 아니라 에버톡까지…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 혀만 짧아진 게 아니라 에버톡까지…"
+      },
+      {
+        "speaker": "니니",
+        "message": "흥!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님이 너무 보고시퍼서"
+      },
+      {
+        "speaker": "니니",
+        "message": "이렇게 된거자나!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "빨리와~"
+      },
+      {
+        "speaker": "니니",
+        "message": "빨리~"
+      },
+      {
+        "speaker": "니니",
+        "message": "아무리 생각해도"
+      },
+      {
+        "speaker": "니니",
+        "message": "창피해서 죽을 것 같아"
+      },
+      {
+        "speaker": "니니",
+        "message": "정령은 죽진 않지만… 아무튼!!"
+      },
+      {
+        "speaker": "니니",
+        "message": "랜덤 성격 포션 같은 거 마시지 말 걸 그랬어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 자책하지 마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 자책하지 마"
+      },
+      {
+        "speaker": "니니",
+        "message": "어떻게 안 해"
+      },
+      {
+        "speaker": "니니",
+        "message": "망했어 진짜"
+      },
+      {
+        "speaker": "니니",
+        "message": "다 때려칠 거야!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니~"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님 진짜 끈질기다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "칭찬 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "칭찬 고마워"
+      },
+      {
+        "speaker": "니니",
+        "message": "칭찬 아니야!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맛집 찾았는데 같이 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맛집 찾았는데 같이 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생크림 케이크가 맛있는 카페야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생크림 케이크가 맛있는 카페야"
+      },
+      {
+        "speaker": "니니",
+        "message": "안 간다고 하면 어쩔 건데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "계속 에버톡 보내야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "계속 에버톡 보내야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 가준다고 할때까지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 가준다고 할때까지"
+      },
+      {
+        "speaker": "니니",
+        "message": "어휴"
+      },
+      {
+        "speaker": "니니",
+        "message": "어휴……"
+      },
+      {
+        "speaker": "니니",
+        "message": "알았으니까 에버톡 그만 좀 보내"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님이 말한 카페로 나갈 테니까"
+      },
+      {
+        "speaker": "니니",
+        "message": "이따 보든지 말든지…"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "니니",
+        "message": "기절할 것 같아"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님…"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니도 니니가 이렇게 한심한데"
+      },
+      {
+        "speaker": "니니",
+        "message": "이렇게 싫은데"
+      },
+      {
+        "speaker": "니니",
+        "message": "어떻게 구원자님은…"
+      },
+      {
+        "speaker": "니니",
+        "message": "……"
+      },
+      {
+        "speaker": "니니",
+        "message": "혹시…"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님 손…"
+      },
+      {
+        "speaker": "니니",
+        "message": "따뜻해…"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님의 온기가 손을 타고"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니에게 전해지는 것 같아…"
+      },
+      {
+        "speaker": "니니",
+        "message": "니니는 성격을 바꾸고 싶었다기보다는"
+      },
+      {
+        "speaker": "니니",
+        "message": "솔직해지고 싶었던 것 같아…"
+      },
+      {
+        "speaker": "니니",
+        "message": "하지만 그건"
+      },
+      {
+        "speaker": "니니",
+        "message": "너무 어려운걸…"
+      },
+      {
+        "speaker": "니니",
+        "message": "착각하지마"
+      },
+      {
+        "speaker": "니니",
+        "message": "괜히 니니만 빠졌다가 나중에 딴소리 듣기 싫은거니까"
+      },
+      {
+        "speaker": "니니",
+        "message": "사랑 같은 거 안 담겼으니까! 진짜로!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기쁘다. 고마워 니니!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기쁘다. 고마워 니니!"
+      },
+      {
+        "speaker": "니니",
+        "message": "구원자님은 원래 다른 세계에서 살았다고 했지?"
+      },
+      {
+        "speaker": "니니",
+        "message": "…가끔은 그쪽이 그리워지지 않아?"
+      },
+      {
+        "speaker": "니니",
+        "message": "뭐, 니니하고는 상관 없지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 니니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 니니"
+      },
+      {
+        "speaker": "니니",
+        "message": "오다 주운 거야"
+      },
+      {
+        "speaker": "니니",
+        "message": "빨간 옷이나 수염은 없지만…"
+      },
+      {
+        "speaker": "니니",
+        "message": "메리 크리스마스, 구원자님"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니도 메리 크리스마스!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니도 메리 크리스마스!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "220",
+  "name": "루리",
+  "name_en": "Ruri",
+  "grade": "레어",
+  "race": "야수형",
+  "class": "워리어",
+  "sub_class": "버프",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "그림자 꼬리",
+    "constellation": "사자자리",
+    "union": "떠돌이 해결사",
+    "birthday": "813",
+    "height": 146,
+    "weight": 38,
+    "cv_ko": "김하루",
+    "cv_jp": "Mei Shibata",
+    "like": [
+      "타코야끼"
+    ],
+    "dislike": [
+      "축축한 장소"
+    ],
+    "hobby": [
+      "수리검 저글링"
+    ],
+    "speciality": [
+      "분신술"
+    ]
+  },
+  "personality": {
+    "description": "소생, 루리라 하오.",
+    "greeting": "항상 꼬리를 밟지 않게 조심하시오."
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

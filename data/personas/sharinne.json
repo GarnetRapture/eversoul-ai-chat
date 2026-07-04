@@ -1,0 +1,44 @@
+{
+  "id": "210",
+  "name": "샤링",
+  "name_en": "Sharinne",
+  "grade": "레어",
+  "race": "야수형",
+  "class": "워리어",
+  "sub_class": "단일",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "타고난 장사꾼",
+    "constellation": "사자자리",
+    "union": "제이드 상단",
+    "birthday": "724",
+    "height": 140,
+    "weight": 35,
+    "cv_ko": "최하리",
+    "cv_jp": "Hikaru Akao",
+    "like": [
+      "돈",
+      "장부 정리"
+    ],
+    "dislike": [
+      "흥정",
+      "어음"
+    ],
+    "hobby": [
+      "가계부 작성"
+    ],
+    "speciality": [
+      "잔돈 세기"
+    ]
+  },
+  "personality": {
+    "description": "짤랑, 짤랑~♬",
+    "greeting": "킁킁! 어디서 돈 냄새가 나는데?"
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

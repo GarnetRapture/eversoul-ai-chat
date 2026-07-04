@@ -1,0 +1,1350 @@
+{
+  "id": "3140",
+  "name": "도미니크",
+  "name_en": "Dominique",
+  "grade": "에픽",
+  "race": "요정형",
+  "class": "캐스터",
+  "sub_class": "단일",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "찬란한 금빛",
+    "constellation": "천칭자리",
+    "union": "에덴",
+    "birthday": "930",
+    "height": 148,
+    "weight": 37,
+    "cv_ko": "김채린",
+    "cv_jp": "김채린",
+    "like": [
+      "스티커",
+      "도마뱀",
+      "쓴맛"
+    ],
+    "dislike": [
+      "발표",
+      "연설"
+    ],
+    "hobby": [
+      "그림 그리기"
+    ],
+    "speciality": [
+      "도망치기"
+    ]
+  },
+  "personality": {
+    "description": "아, 아, 안녕하세요… 구원자님…!",
+    "greeting": "네! 제가 바로… 트로이카의 왕, 도미니크예요."
+  },
+  "speech_patterns": [
+    "저기",
+    "혹시 구원자님이세요?",
+    "휴 다행이다",
+    "잘못 보냈으면 울 뻔했어요",
+    "아 저는",
+    "트로이카의 왕",
+    "도미니크예요",
+    "그냥",
+    "인사드리려고 했어요",
+    "혹시 귀찮게 해드렸다면",
+    "정말 죄송해요",
+    "감사해요",
+    "나중에 정식으로",
+    "인사드릴게요",
+    "이제 더 답장",
+    "안 하셔도 돼요",
+    "저 구생",
+    "아니 구원자님",
+    "아까 교실에서",
+    "저 많이 이상해보였나요?",
+    "완벽하게",
+    "위장했다고 생각했는데",
+    "결국 다 들켰네요",
+    "망해버렸어요",
+    "완전 글러 먹고 말았어요",
+    "(ㅠ▽ㅠ)",
+    "구생님",
+    "아니지 선생님",
+    "그럼",
+    "자기소개문은 꼭",
+    "발표해야 하는 건가요?",
+    "뭔가 그",
+    "대체 과제 같은 것은",
+    "없는 걸까요?",
+    "저 혹시",
+    "내일 아파도 돼요?",
+    "알겠어요…",
+    "발표 연습 혼자 한 거",
+    "인증샷 찍었어요",
+    "여기 있어요",
+    "찍는 건 친구한테",
+    "부탁했어요",
+    "그 그러니까",
+    "같은 반 친구한테요",
+    "(^▽^)",
+    "이번 숙제는",
+    "장래 희망 발표하기네요",
+    "장래 희망이",
+    "왕인 친구가 있으면",
+    "꽤 곤란하겠어요"
+  ],
+  "comments": [
+    {
+      "writer": "제이드",
+      "comment": "저는 선왕 전하의 판단과 도미니크 전하의 가능성을 믿고 있답니다."
+    },
+    {
+      "writer": "에리카",
+      "comment": "저, 정말 이렇게까지 공감이 되는 상대는 처음이야…"
+    },
+    {
+      "writer": "사쿠요",
+      "comment": "아랫것들을 다루는 법은 이 사쿠요에게 배워보시라고 전해라."
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "도미니크",
+        "message": "저기"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "혹시 구원자님이세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 맞아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 맞아"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "휴 다행이다"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "잘못 보냈으면 울 뻔했어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아 저는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "트로이카의 왕"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "도미니크예요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그냥"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "인사드리려고 했어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "혹시 귀찮게 해드렸다면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "정말 죄송해요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "반가워 도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "반가워 도미니크"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "감사해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "나중에 정식으로"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "인사드릴게요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이제 더 답장"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "안 하셔도 돼요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 구생"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아니 구원자님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아까 교실에서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 많이 이상해보였나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 긴장하는 것 같았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 긴장하는 것 같았어"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "완벽하게"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "위장했다고 생각했는데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "결국 다 들켰네요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "망해버렸어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "완전 글러 먹고 말았어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(ㅠ▽ㅠ)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아니 구원자님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아니지 선생님"
+      },
+      {
+        "speaker": "구원자",
+        "message": "편한 호칭으로 불러줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "편한 호칭으로 불러줘"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그럼"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "자기소개문은 꼭"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "발표해야 하는 건가요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "뭔가 그"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "대체 과제 같은 것은"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "없는 걸까요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 혹시"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "내일 아파도 돼요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안 돼"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(ㅠ▽ㅠ)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "알겠어요…"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "발표 연습 혼자 한 거"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "인증샷 찍었어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래 보여줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래 보여줘"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "여기 있어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "찍는 건 친구한테"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "부탁했어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그 그러니까"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "같은 반 친구한테요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘했어"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이번 숙제는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "장래 희망 발표하기네요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "장래 희망이"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "왕인 친구가 있으면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "꽤 곤란하겠어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(O_O)"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크의 장래 희망은 뭐야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크의 장래 희망은 뭐야?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "우으 부끄러운데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저는 예전부터"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "선생님이"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "되고 싶었어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님 입장에서는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "우스운 이야기일 것 같아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘할 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘할 거 같아"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "지 진짜로요?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그런 말은 처음 듣는데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "왠지 기분이 좋아지네요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 도미니크 아니에요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "글러 먹은 도미니크라는 애는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교에 나갈 생각이 없을 거예요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그러니까"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "더는 기다리지 마세요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교 가는 길에"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "길 잃은 도마뱀이 있어서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "원래 있을 법한 곳에"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "놓아주었어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘했어 도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘했어 도미니크"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그러니까"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "오늘 지각한 거"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "봐주시면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "안 될까요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "칭찬은 칭찬이고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "칭찬은 칭찬이고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "벌점은 벌점이지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "벌점은 벌점이지"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(ㅠ▽ㅠ)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교 분위기가"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "생각보다 많이"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "침체되어 있네요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 며칠째 그러네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 며칠째 그러네"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "제가 "
+      },
+      {
+        "speaker": "도미니크",
+        "message": "도망쳤던 탓이겠죠?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "친구들을 "
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이렇게 놔두면 안 되었는데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "전 정말 형편없네요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "하지만"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이제는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "도망가지 않아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐 도망친 사이에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐 도망친 사이에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "용기를 얻어서 돌아왔구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "용기를 얻어서 돌아왔구나"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "정말 구생님은"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "화술이 남다르시네요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "지금은"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교 가는 게 즐겁지만"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "예전에 다닐 때는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "늘 즐겁지는 않았어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일이 있었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일이 있었어?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "당시에는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그 학교에 저만"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "서민 출신이었어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그래서 잘 어울리지 못했죠"
+      },
+      {
+        "speaker": "구원자",
+        "message": "따돌림당한 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "따돌림당한 거야?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그런 건 아니에요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "오히려 잘해주는 친구들도 많았는데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "뭔가 대화에 낄 수 없어서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "잘 못 어울렸어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "지금 생각해 보면 그냥"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "제가 혼자 위축되어서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그런 건가 싶기도 하고"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "헤헷 쓸데없는 말이었어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니야 이야기 해줘서 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니야 이야기 해줘서 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크의 이야기는 언제나 환영해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크의 이야기는 언제나 환영해"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "혹시 저랑 약속했던 기간이 끝나면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아케나인으로 돌아가실 건가요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "별 계획이 없으면 그러지 않을까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "별 계획이 없으면 그러지 않을까?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그렇군요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "호 혹시라도"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교에 더 계시고 싶으시면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "언제든 말씀해 주세요!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "서류 처리는 금방 될 테니까"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "다른 건 걱정 안 하셔도 돼요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 도미니크"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "감사합니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아 그 공립 학교 교사"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "해주신다고 들었거든요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "거절하시면 어쩌나 하고"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "걱정 많이 했어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "잘 부탁드릴게요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "열심히 해볼게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "열심히 해볼게"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "네 그럼 학교에서 뵐게요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아 아니"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그러니까 제가 나중에"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "학교에 방문 하려고 하거든요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그럼 이만"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "줄일게요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 왕궁에 도착할 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 왕궁에 도착할 것 같아"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "ㅂ벌써요?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "알겟ㅆ습니다"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "ㅈ준비하고 ㅇ있ㅇㅡㄹ게요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크, 괜찮은 거지…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크, 괜찮은 거지…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 가고 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 가고 있어"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 도미니크 아니에요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "에버톡 잘 못 하신 것 같아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "도미니크",
+        "message": "죄송해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "알현실로 오시면 돼요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "혼나나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "우으으으…"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "혹시 오늘 보충수업"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "내일로"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "미룰 수 있을까요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그 친구들이"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "오늘 학교 끝나고"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "디저트 카페 가자고 해서요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "오늘은 놀러 가면"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "안될까요?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(O_O)"
+      },
+      {
+        "speaker": "구원자",
+        "message": "즐겁게 다녀와"
+      },
+      {
+        "speaker": "구원자",
+        "message": "즐겁게 다녀와"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "감사합니다!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "일어나셨어요?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 너무 떨려서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "잠을 거의 못 잤어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(ㅠ▽ㅠ)"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 긴장돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 긴장돼?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "긴장되기도 하고"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "설레기도 하고"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "막 엄청 복잡해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "우으으으"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우린 잘 해낼 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우린 잘 해낼 거야"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "네! 맞아요!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이따 봬요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왕궁 앞이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왕궁 앞이야"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "어서 오세요, 구원자님."
+      },
+      {
+        "speaker": "도미니크",
+        "message": "제가 전하가 있는 곳으로 안내해 드릴게요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 제이드야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 제이드야?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "남의 에버폰을 함부로 만진 일은"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구원자님과 저만의 비밀로 해주세요."
+      },
+      {
+        "speaker": "도미니크",
+        "message": "아셨죠?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 아까"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "잘했나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "훌륭했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "훌륭했어"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님의 보충수업 덕분이에요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "정말 감사해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그럼 저는"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "친구들이랑 회의하러 갈게요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "이따 봬요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)/"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도미니크"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나 오늘 수업 빠져도 될까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나 오늘 수업 빠져도 될까?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "네"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "친구들한테는 잘 둘러댈게요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 고마워"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저야말로 감사하죠"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님이 앞으로도 계속"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "선생님을 해주시기로 했으니까요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "전 그걸로 충분해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "저 아케나인이에요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐라고?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐라고?"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "급한 일이라서 찾아왔어요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "진짜 진짜 급해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "정말로요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(ㅠ▽ㅠ)"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다들 도착했대"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다들 도착했대"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "앗"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "알겠어요 준비할게요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "친구들이 요새 다 바빠서"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "시간 맞추기가 어려웠는데"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "구생님 덕에 다 모일 수 있게 되었네요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 그냥 스케줄링만 했을 뿐이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 그냥 스케줄링만 했을 뿐이야"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "그게 얼마나 큰 도움이 되었는데요!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "정말 감사해요"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "(^▽^)/"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "사, 사랑의 날이라서…"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "주, 준비해보았어요…!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 도미니크!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 도미니크!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "대, 대상인의 날을 맞아 준비해보았어요!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "마음에 안 드시면 꼭 말씀해주세요…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 마음에 들어, 도미니크!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 마음에 들어, 도미니크!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "해, 해피 이브 데이에요…!"
+      },
+      {
+        "speaker": "도미니크",
+        "message": "따뜻하고 즐거운 이브데이 되시기를…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "해피 이브 데이, 도미니크!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "해피 이브 데이, 도미니크!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1081 @@
+{
+  "id": "4160",
+  "name": "페트라(각혼)",
+  "name_en": "Petra (Awakened Soul)",
+  "grade": "에픽",
+  "race": "불사형",
+  "class": "디펜더",
+  "sub_class": "제어",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "눈부신 밤",
+    "constellation": "인연_제이드_이벤트1",
+    "union": "팀 언더테이커",
+    "birthday": "423",
+    "height": 144,
+    "weight": 39,
+    "cv_ko": "여민정",
+    "cv_jp": "여민정",
+    "like": [
+      "반짝이는 것",
+      "어두운 곳",
+      "장난"
+    ],
+    "dislike": [
+      "구속",
+      "강요",
+      "생선 회"
+    ],
+    "hobby": [
+      "멍하니 있기",
+      "빛나는 물건 모으기"
+    ],
+    "speciality": [
+      "땅 파기",
+      "어둠 속에서 길 찾기"
+    ]
+  },
+  "personality": {
+    "description": "와악―",
+    "greeting": "…응, 이번에는 거짓말이 아니야…"
+  },
+  "speech_patterns": [
+    "구원자 안녕",
+    "이거내 새에버폰",
+    "안녕 페트라",
+    "응",
+    "암즈에서받은 의뢰금으로",
+    "하나새로 샀어",
+    "근데이거 너무어려워",
+    "버튼이많아",
+    "어떻게쓰는지 알려줘",
+    "오늘은",
+    "장례식할거야",
+    "누구 장례식…?",
+    "칼라르에서데려온",
+    "헬블러드스노우",
+    "햇빛아래에 있으면",
+    "반짝거려서",
+    "그게예뻐서 창가에뒀는데",
+    "어느순간보니까 녹아버렸어",
+    "예요",
+    "구원자도 편히잠들라고 해줘",
+    "저번에 미리암이부탁한거",
+    "'결투'가아니라 '협력'이었지만",
+    "만약 나 미리암이랑 결투했으면",
+    "누가이겼을까",
+    "으응",
+    "그랬을지도",
+    "사실 총 쏴본적 없어요",
+    "'지옥의 신'에게 총은",
+    "거추장스러울뿐이니까",
+    "나도",
+    "아끼는거 정리해서",
+    "모아둔상자 있어",
+    "보물상자",
+    "산딸기씨앗이랑",
+    "도토리랑",
+    "완벽하게납작한 돌멩이",
+    "니니가만들어준 부적",
+    "유리조각",
+    "흙",
+    "벌레",
+    "전부 소중한거야",
+    "상자보다커서",
+    "못넣은것도 있지만",
+    "일단 구원자",
+    "잘구겨넣으면 들어가려나",
+    "칼라르 다녀온뒤로",
+    "가끔 옛날생각해",
+    "생각해도 달라지는거없는데",
+    "그냥 생각나",
+    "그래?"
+  ],
+  "comments": [
+    {
+      "writer": "미리암(잔영)",
+      "comment": "팬텀이 만들어낸 죄업… 속죄할 수 있어서 다행이라고 생각해."
+    },
+    {
+      "writer": "조앤",
+      "comment": "고 아가씨, 가끔은 제멋대로지만 그래도 심성이 나쁘진 않아."
+    },
+    {
+      "writer": "니니",
+      "comment": "칼라르에서 사고 치는 건 아니겠지? 으으, 진짜 걱정 돼!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자 안녕"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이거내 새에버폰"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "안녕 페트라"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "안녕 페트라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰 새로 산 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰 새로 산 거야?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "암즈에서받은 의뢰금으로"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "하나새로 샀어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "근데이거 너무어려워"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "버튼이많아"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "어떻게쓰는지 알려줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 만나면 알려줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 만나면 알려줄게"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "오늘은"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "장례식할거야"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "누구 장례식…?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "칼라르에서데려온"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "헬블러드스노우"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "햇빛아래에 있으면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "반짝거려서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그게예뻐서 창가에뒀는데"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "어느순간보니까 녹아버렸어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "예요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "눈사람 얘기구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "눈사람 얘기구나"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자도 편히잠들라고 해줘"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "저번에 미리암이부탁한거"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "'결투'가아니라 '협력'이었지만"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "만약 나 미리암이랑 결투했으면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "누가이겼을까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "구원자",
+        "message": "3, 2, 1 하고 쏘는 건"
+      },
+      {
+        "speaker": "구원자",
+        "message": "3, 2, 1 하고 쏘는 건"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미리암이 더 잘했을지도 모르겠네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미리암이 더 잘했을지도 모르겠네"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "으응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그랬을지도"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "사실 총 쏴본적 없어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스웜프였을 때도 총 안 썼어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스웜프였을 때도 총 안 썼어?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "'지옥의 신'에게 총은"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "거추장스러울뿐이니까"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "나도"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아끼는거 정리해서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "모아둔상자 있어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "보물상자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐가 들었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐가 들었어?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "으응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "산딸기씨앗이랑"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "도토리랑"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "완벽하게납작한 돌멩이"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "니니가만들어준 부적"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "유리조각"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "흙"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "벌레"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "전부 소중한거야"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "상자보다커서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "못넣은것도 있지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "못 넣은 건 뭔데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "못 넣은 건 뭔데?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "으응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "일단 구원자"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "잘구겨넣으면 들어가려나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…마음은 고맙지만 사양할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…마음은 고맙지만 사양할게"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "칼라르 다녀온뒤로"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "가끔 옛날생각해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "옛날 생각?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "옛날 생각?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "생각해도 달라지는거없는데"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그냥 생각나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 생각은 떨쳐내는 게 좋지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 생각은 떨쳐내는 게 좋지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "행복했던 추억을 떠올리는 건 좋다고 생각해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "행복했던 추억을 떠올리는 건 좋다고 생각해"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그래?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "으음"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그럼 행복했던추억 생각할게"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "떠올랐어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "떠올랐어?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "칼라르에서 구원자겉옷 입었을때"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자냄새나서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "좋았어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "다들 무명이랑대화하는거"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "어렵다고하는데"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "사실 무명은 말잘해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "가끔은 개랑도대화하니까"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "멍멍멍"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이에요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…대화 맞아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…대화 맞아?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "대화 아니야?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "어쨌든"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "꼭 말로하지않아도"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "말한것처럼 통할때도있어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그럴때마다 옛날에 옆에있었던"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "'그림자'랑 비슷하단생각을 해"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "니니 결혼하고싶은걸까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니니가?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "요즘자꾸 결혼식장간대"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "웨딩사진도찍고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "드레스도입고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 니니가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 니니가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "웨딩 화보 촬영 알바를 해서 그래"
+      },
+      {
+        "speaker": "구원자",
+        "message": "웨딩 화보 촬영 알바를 해서 그래"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "결혼하고싶은줄 알고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "니니 묫자리를 봐주고있었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "묫자리는 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "묫자리는 왜?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "예전에도말했지만"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "결혼은 무덤이니까"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "최고의무덤을"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "찾아주려고 한거야"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "단장은"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "찾고싶어해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "언더테이커 단장?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "언더테이커 단장?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 찾고 싶어하는데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 찾고 싶어하는데?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "기억을 찾고싶다고했어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "무명처럼 기억하지못해서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그래서 기억찾으려고 돌아다니는거야"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "예전엔 왜그래야하는지 잘몰랐는데"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이제조금은"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이해할수있어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "조앤한테"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "물어보고왔어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "인간의 몸은"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "정령의 몸이랑 달라서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "영양분이 가득한 음식을먹으면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "오래오래 튼튼할수있다고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그래서 준비했어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "숙성된지렁이즙"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "거대지네젤리"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "흰개미튀김"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자 뭐먹을래"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…꼭 먹어야 해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…꼭 먹어야 해?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자 오래오래살면 좋으니까"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자 좋아하는거 뭐야?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "반짝거리는거라던가"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "달콤한거나 예쁜거"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아니면 무덤이나"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "죽음"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "파멸"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "붕괴"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 건 안 좋아해!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 건 안 좋아해!"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "쳇"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "좋아하는거 알려주세요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "구원자",
+        "message": "글쎄"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아하는 건 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아하는 건 왜?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이제 구원자"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "영원히기억하기로 했으니까"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "많이알아두면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "더많이기억하니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 기억하고 싶은 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 기억하고 싶은 거야?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "음"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아마도"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "많이알아서"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "여러가지를 볼때마다"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자가 떠오르면좋겠어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "예를들면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "누군가의 은밀한취향이담긴 물건"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그런거보면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자도 좋아하는거다"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "라고 생각할지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런건 안 좋아한다니까!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런건 안 좋아한다니까!"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "집무실언제와?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 갈 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 갈 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "빨리와"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "선물준비했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물…?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "나"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아르바이트준비 잘했어?"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "처음이라 쉽지않겠지만"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "그래도 포기하지말고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "늘웃는얼굴 유지하고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "편한신발 신고가고"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "급여받으면 뿌듯할거야"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "준비다됐으면 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오늘 아르바이트 하는 건 페트라잖아!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오늘 아르바이트 하는 건 페트라잖아!"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "맞다그랬지"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "이제정리도 끝이네"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "집도 철거되면"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "여기에누가있었는지"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "아무도 모르게될지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나랑 페트라가 알잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나랑 페트라가 알잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 집 주인이 어떤 정령이었는지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 집 주인이 어떤 정령이었는지"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "구원자가"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "기억할거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "으음…"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "오늘드디어"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "결전의 날이네"
+      },
+      {
+        "speaker": "페트라(각혼)",
+        "message": "준비됐어 구원자?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 급여 지급일일 뿐이잖아!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 급여 지급일일 뿐이잖아!"
+      }
+    ]
+  }
+}

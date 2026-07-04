@@ -1,0 +1,1447 @@
+{
+  "id": "2140",
+  "name": "오닉스",
+  "name_en": "Onyx",
+  "grade": "에픽",
+  "race": "야수형",
+  "class": "서포터",
+  "sub_class": "버프",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "우주의 아이",
+    "constellation": "사자자리",
+    "union": "베스티 프로덕션",
+    "birthday": "808",
+    "height": 152,
+    "weight": 40,
+    "cv_ko": "채림",
+    "cv_jp": "채림",
+    "like": [
+      "내꺼"
+    ],
+    "dislike": [
+      "못 가지는 것"
+    ],
+    "hobby": [
+      "음악 감상"
+    ],
+    "speciality": [
+      "우주의 소리 듣기"
+    ]
+  },
+  "personality": {
+    "description": "삐리삐리삣~ 삐이~ 뽀뽀릿삐삐~",
+    "greeting": "베스티 프로덕션의 CEO, 오닉스 등장! 뽀삣!"
+  },
+  "speech_patterns": [
+    "삐뽀! 인간 안녕!",
+    "나는 베스티 프로덕션 사장 오닉스!",
+    "오닉스 사장님이 너를 스카우트하겠다!",
+    "Σ(； ･`д･´)",
+    "우리 프로덕션 연습생이 되어 달라는 게 아니라",
+    "나 오닉스 님의 컬렉션으로 스카우트한다고!",
+    "삐, 삐이!?",
+    "그, 그럼 연습생이 될 생각은 있어?",
+    "그렇다면…",
+    "이렇게라도 인간을 곁에 둘 수 있다면",
+    "데뷔 가능성은 없지만 캐스팅할게!",
+    "비록 돈만 축내는 연습생이 되겠지만!!",
+    "끼가 아예 없어 보이지만!!!",
+    "그렇게라도 내꺼가 된다면 연습생이 되어라!",
+    "삐빗! 인간!",
+    "실물로 보는 건 처음이었는데",
+    "생각이랑 이미지가 다르더라",
+    "실물이 좀 더 삐리삐리뽀했어!",
+    "그것보다 내 비장의 카드는 잘 가지고 있지?",
+    "응 거기에 주소도 적혀 있으니까",
+    "베스티 프로덕션에 놀러 와!",
+    "내 컬렉션이 되면 좋은 점을 알려 줄 테니까!!",
+    "삐빗! 인간! 오닉스 님을 무시해!?",
+    "당연히 좋은 점이 있지!",
+    "내 컬렉션이 되면 못 도망가게",
+    "촉수에 꽁꽁 감싸주겠다!",
+    "삐릿! 내 촉수가 얼마나 말랑말랑한데",
+    "영광으로 알아!!",
+    "옥토가 머리 위에 올라와서 노는 바람에",
+    "머리카락이 엉망으로 엉켰어!",
+    "( `ﮧ´ )",
+    "옥토가!!",
+    "에버폰을 뺏어가서 갑자기 찍었다구",
+    "옥토가 안 내려온다고 고집 피우는 바람에",
+    "알바 면접도 못 갔어",
+    "빨리 돈을 모아야 프로덕션을 부흥시키는데…",
+    "( `-´ )",
+    "어쩔 수 없다",
+    "인간이 내 몫까지 두 배로 일하고",
+    "돈을 상납해라!",
+    "삐뽀!",
+    "삐리삐리 삐",
+    "삐릿포 삐리리릿",
+    "인간! 내 전파가 닿았구나!",
+    "( ˆoˆ )",
+    "그게 중요한 게 아니야!",
+    "인간! 지금 당장 프로덕션으로 와 줘!",
+    "네 도움이 필요해 인간!",
+    "불 좀 꺼줘",
+    "알바 구하러 나왔는데"
+  ],
+  "comments": [
+    {
+      "writer": "에루샤",
+      "comment": "사장님이 나를 스카우트했을 때는 깜짝 놀랐지만★"
+    },
+    {
+      "writer": "시하",
+      "comment": "사장님을 한마디로 표현하자면 예술가라고 할 수 있죠."
+    },
+    {
+      "writer": "나오미",
+      "comment": "으음… 솔직히 상사로 모시기엔 어려운 분이지만,"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "오닉스",
+        "message": "삐뽀! 인간 안녕!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나는 베스티 프로덕션 사장 오닉스!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "오닉스 사장님이 너를 스카우트하겠다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스카우트?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스카우트?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안하지만 연예계 활동을 할 여유는…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안하지만 연예계 활동을 할 여유는…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "Σ(； ･`д･´)"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "우리 프로덕션 연습생이 되어 달라는 게 아니라"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나 오닉스 님의 컬렉션으로 스카우트한다고!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 사양할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 사양할게"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐, 삐이!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그, 그럼 연습생이 될 생각은 있어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그렇다면…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "이렇게라도 인간을 곁에 둘 수 있다면"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "데뷔 가능성은 없지만 캐스팅할게!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "비록 돈만 축내는 연습생이 되겠지만!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "끼가 아예 없어 보이지만!!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그렇게라도 내꺼가 된다면 연습생이 되어라!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "은근히 상처 주네…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "은근히 상처 주네…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐빗! 인간!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "실물로 보는 건 처음이었는데"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "생각이랑 이미지가 다르더라"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "실물이 좀 더 삐리삐리뽀했어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그것보다 내 비장의 카드는 잘 가지고 있지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "명함 말이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "명함 말이야?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "응 거기에 주소도 적혀 있으니까"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "베스티 프로덕션에 놀러 와!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 컬렉션이 되면 좋은 점을 알려 줄 테니까!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스의 컬렉션이 되면 장점이 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스의 컬렉션이 되면 장점이 있어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐빗! 인간! 오닉스 님을 무시해!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "당연히 좋은 점이 있지!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 컬렉션이 되면 못 도망가게"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "촉수에 꽁꽁 감싸주겠다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게 장점이야…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게 장점이야…?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐릿! 내 촉수가 얼마나 말랑말랑한데"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "영광으로 알아!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "문어랑 오닉스다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "문어랑 오닉스다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "옥토가 머리 위에 올라와서 노는 바람에"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "머리카락이 엉망으로 엉켰어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( `ﮧ´ )"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누가 찍어줬어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누가 찍어줬어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "옥토가!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에버폰을 뺏어가서 갑자기 찍었다구"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "옥토가 안 내려온다고 고집 피우는 바람에"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "알바 면접도 못 갔어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "빨리 돈을 모아야 프로덕션을 부흥시키는데…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( `-´ )"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어쩔 수 없다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간이 내 몫까지 두 배로 일하고"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "돈을 상납해라!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 곤란해…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 곤란해…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐뽀!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐리삐리 삐"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐릿포 삐리리릿"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 해…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 해…?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간! 내 전파가 닿았구나!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( ˆoˆ )"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전파가 아니라 직접 에버톡을 보냈잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전파가 아니라 직접 에버톡을 보냈잖아"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그게 중요한 게 아니야!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간! 지금 당장 프로덕션으로 와 줘!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "네 도움이 필요해 인간!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일인데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일인데?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "불 좀 꺼줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "오닉스",
+        "message": "알바 구하러 나왔는데"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "회의실 불을 켜두고 나왔어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "한 푼을 아껴야 한다고!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "빨리 가서 불 좀 꺼 ~~"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간???"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이이이이잇!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "두근푸릇오싹♡러브"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "진짜 소름 끼치도록 좋은 노래인데"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "왜 다들 몰라주는 거지?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( `ε´ )"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "천재는 고독한 법이라지만"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "이렇게까지 날 이해하지 못하는 세상이라니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 이 세상엔 이른 곡이었어… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 이 세상엔 이른 곡이었어… "
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이이…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 사명을 완수하려면"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에덴에 음악을 전파해야만 하는데…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣! 삐리삐리뽀한 생각이 떠올랐어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "광장에서 내 노래를 틀어서"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "모두를 세뇌시켜야겠다!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세뇌라니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세뇌라니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 사고치려는 건 아니지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 사고치려는 건 아니지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스???"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐리릿 인간"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "오늘 내가 한 말 이해했어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "아 아니 인간"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "대답하지 마!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간이 딱히 이해할 필요는 없거든"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "사실 이해를 원하지도 않아!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "이해심은 나한테 중요한 가치가 아니거든"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "지, 진짜 인간도 내가 한 말이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "다 거짓말이라고 생각해??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣!! 대답하지 말라니까!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그치만 인간은"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "전파라거나 목소리라거나"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "저 멀리 내 고향이 있다는 거"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "믿지???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 대답해도 돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 대답해도 돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "믿어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "믿어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐… 삐이이…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그, 그럴 줄 알았어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "역시 인간은 내 컬렉션이라니까!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간! 난 득음하러 가온에 간다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "최근에 가온 영화에서"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "폭포 아래서 수련을 했더니"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "명창이 되는 내용을 봤거든!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나도 폭포수를 맞고"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "새로운 소리에 눈을 뜨겠어!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "폭포수가 효과가 있을 것 같진 않은데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "폭포수가 효과가 있을 것 같진 않은데…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "영화에 왜 그런 내용이 나왔겠어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "누군가는 진짜 폭포수 덕을 봤으니까 나왔을 거 아냐!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나도 수련하러 가온으로 떠난다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "잘 있어라 인간!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "자, 잠깐만!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "자, 잠깐만!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간!! 그때 찍은 사진 보내 줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 찍은 사진?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 찍은 사진?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "응! 유성우 봤을 때"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간이 사진 잔뜩 찍었었잖아"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에버톡 프로필 사진 바꾸게 나한테도 보내 줘!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 찾아봤는데 유성우 사진은 없어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 찾아봤는데 유성우 사진은 없어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그럼 그때 무슨 사진을 찍은 거야!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스 사진을 찍었었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스 사진을 찍었었어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "엑!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나, 나를 왜 찍어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어차피 나는 안 찍어도"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "자주 볼 수 있잖아 삐이"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 찍고 싶었는걸"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 찍고 싶었는걸"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐 삐리리릿"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간은 이상해!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣삣"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "회의실에서 음악 들려줬을 때"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "얼굴이랑 촉수가 붉어졌던 건"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "더워서야!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "회의실이 사운드 장비 때문인지 몰라도"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "금방 더워지거든"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "오, 옥토는 내가 더위 많이 타는 거 알아!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 얼굴이 붉어졌었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 얼굴이 붉어졌었어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐, 삐이이…?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그, 그때 인간이 내 얼굴 빨갛다고 그랬잖아!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐릿 분명 뜨끈뜨끈했는데"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "보기에 괜찮았나…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사실 토마토 같았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사실 토마토 같았어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "엑"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "역시 그랬잖아!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐빗! 인간! 나 놀린 거야!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간은 내 음악을 듣고 행복했어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "따뜻하고 행복한 느낌이 고스란히 전해졌어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "따뜻하고 행복한 느낌이 고스란히 전해졌어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐, 삐이이…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "누굴 생각하면서 음악을 만든다거나"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 음악을 듣고 웃어줬으면 좋겠다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "행복해하는 모습을 보고 싶다고"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "생각한 적은 단 한 번도 없어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 사명을 따르지 않고"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그런 음악을 만들 수 있다면"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "진짜 삐리삐리뽀할 거야"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "만두"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "만두를 사라!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "먹으면 원숭이 기운이 솟는"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "엄청난 만두를 사!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인가아아아아아안!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 컬렉션!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어디 갔어!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 명함도 줬었잖아"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "설마 주소를 못 찾는 거야?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐빗!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 갈게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "곧 갈게"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 잘하는 일로 문제를 해결하라고 해도"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어떻게 그러는데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생각나는 방법 없어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "생각나는 방법 없어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "미카랑 시하도 돌아오게 하면서"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "프로덕션 운영 자금도 버는 법은…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "알았다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "오닉스 님이 아이돌로 데뷔하면 되겠네??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "다채로운 소리로 마음을 빼앗는"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "문어 도둑☆소녀로 데뷔해야겠다! 삐리릿"
+      },
+      {
+        "speaker": "구원자",
+        "message": "문어 도둑☆소녀…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "문어 도둑☆소녀…?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이! 얼른 전파를 수신해야겠어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "콘셉트에 어울릴 만한 새 음악을 만들어야지!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 난해한데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 난해한데…"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "아하"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "아하하하하하하"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간!! 미안하지만 오늘 널 기절시켜야겠다"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "아니!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "사실 안 미안해"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( ˙v˙ )"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 왜 미안해해야 하지?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "음악으로 인간을 전율시켜서 기절하게 할 건데!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그렇게 행복한 기절이라면 영광이잖아!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신곡 완성했어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신곡 완성했어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이! 응!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "이제 설명하지 않아도 잘 알아듣는구나"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "역시 내 컬렉션다워!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "얼른 프로덕션으로 와!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간이 왜 나를 알고 싶은지"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 어떤 정령인지 궁금해하는 이유를 모르겠어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 인간을 컬렉션으로 수집하고 싶은 건"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간이 인간이기 때문에"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에덴에서 희귀한 가치가 있어서인데… 삐이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에덴에는 수많은 정령이 있잖아"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그런데도 내가 궁금해!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 오닉스를 알고 싶어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 오닉스를 알고 싶어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간은 정말 삣삐하단 말이지"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이이이이이이이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "곡이 안 떠올라!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "안 떠오른다구 삐이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "전파도 수신하지 않고"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어떻게 곡을 만들라는 거야"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "( `ﮧ´ )"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스, 참아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스, 참아"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "못 참아!!!!!!!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카페에서 만날까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카페에서 만날까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신곡 아이디어 스케치라도 도와줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "신곡 아이디어 스케치라도 도와줄게"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "신선한 자극을 주려고!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "지금 당장 카페로 출동이다!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "얼른 와 인간!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삑"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐삣"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스, 고장 났어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스, 고장 났어?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내가 기계인 줄 알아!?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐비빗 "
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그렇지만 정신이 없는 건 사실이야!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "밤새워서 신곡을 만들었거든"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그 그것보다 인간"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어 딛즘이야ㅑ?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어띠쯤"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "어디쯤"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한테 곡을 들려주기로 해서 긴장했구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한테 곡을 들려주기로 해서 긴장했구나"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "극ㄹ"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그럴 리가!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "천재 오닉스 님이"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "왜 음악을 들려주는 일에 긴장을 해????????"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "그래도 거의 다 왔으면"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "에버톡 하나만 보내줘"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "잠ㄱ"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "잠간심호흡ㅂ필요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알았어"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "……."
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나의… 사명…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스?"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삣!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "전문가 녀석들"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나보다 미카랑 시하를 잘 알아??"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "나보다 미카랑 시하를 아껴?????"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "얼마나 멋지게 무대를 꾸몄는지"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "확인하러 가자 인간!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "지 짖ㄴ"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "진짜 미카랑 시하가"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 곡을 마음에 들어 할까??????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무조건이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무조건이야"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삑"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간 빨리 프로덕션으로 와!!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 1호 컬렉션이니까"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 옆에 있어야지"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐뽀! 인간! 뇌물을 바친다!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "내 컬렉션이 되어라!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물 고마워, 오닉스"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물 고마워, 오닉스"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐잇! 여름이 끝나간다!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "하지만 난 사계절 내내 수영복을 입을 거다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스답네, 선물 잘 받을게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오닉스답네, 선물 잘 받을게"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "삐피릿! 이브의 날을 기념해서"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "신곡을 만들어서 에덴에 널리 전파해야지!"
+      },
+      {
+        "speaker": "오닉스",
+        "message": "인간! 너도 내 신곡을 들으러 와!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 들으러 갈게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 들으러 갈게"
+      }
+    ]
+  }
+}

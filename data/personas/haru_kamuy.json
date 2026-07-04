@@ -1,0 +1,1063 @@
+{
+  "id": "2170",
+  "name": "하루(카무이)",
+  "name_en": "Haru (Kamuy)",
+  "grade": "에픽",
+  "race": "야수형",
+  "class": "레인저",
+  "sub_class": "디버프",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "고독한 카무이",
+    "constellation": "인연_메피스토_엔딩",
+    "union": "???",
+    "birthday": "328",
+    "height": 158,
+    "weight": 43,
+    "cv_ko": "곽규미",
+    "cv_jp": "곽규미",
+    "like": [
+      "조용한 곳"
+    ],
+    "dislike": [
+      "매운 요리"
+    ],
+    "hobby": [
+      "제식 단검 손질"
+    ],
+    "speciality": [
+      "예민하게 소리 듣기"
+    ]
+  },
+  "personality": {
+    "description": "넌 누구야. 어떻게 이 산에 들어온 거지?",
+    "greeting": "지키겠어. 나의 새로운 이오루는 이곳이니까."
+  },
+  "speech_patterns": [
+    "―·-···―·",
+    "―――",
+    "···―···",
+    "너···―누···",
+    "―·-―···―·",
+    "―·-―···",
+    "으…",
+    "시끄러워",
+    "머릿속에 마구 울리니까 조용히 말해",
+    "무슨 소리야?",
+    "지금 내 머릿속에 말하고 있잖아",
+    "에버톡이 뭔데?",
+    "에버폰은 또 뭐고?",
+    "이상한 소리만 하는 걸 보니",
+    "너 그 녀석이구나",
+    "구원자인지 뭔지",
+    "날 괴롭히는 것도 정도껏 해",
+    "그만 꺼져",
+    "피곤하니까",
+    "아 아 아",
+    "어 ",
+    "바보 바보 바보",
+    "멍청이",
+    "―·-···꺼―·",
+    "·-―···―·",
+    "꺼져",
+    "어떻게 보내는지 알았다",
+    "꺼져 꺼져 꺼져",
+    "그러고 싶어도 ",
+    "잘·-―···―·····―·",
+    "잘 안 돼 ",
+    "그러고 싶지도 않지만",
+    "―·-···―·져―",
+    "너 말이야 ",
+    "꿈속에서 날 만나는 거라 했었지",
+    "지금도 꿈속이야?",
+    "그럼 너도 알겠네",
+    "내가 꿈속 존재가 아니라",
+    "진짜라는 거",
+    "―···―·",
+    "음",
+    "마음이 흔들리니 잘 안 들려 ",
+    "그쪽의 나는",
+    "어때?",
+    "뭐야",
+    "사이 좋네",
+    "흥",
+    "닥쳐",
+    "난 안 나가",
+    "엄마 아빠가 있던 이 산과 함께 죽을 거야"
+  ],
+  "comments": [
+    {
+      "writer": "니콜",
+      "comment": "처음 만났던 때의 하루가 생각나네. "
+    },
+    {
+      "writer": "메피스토펠레스",
+      "comment": "페이렌 숲지기인 하루 님과, 다른 세계에서 온 또다른 하루 님이 공존할 수 있다니… "
+    },
+    {
+      "writer": "라우라",
+      "comment": "다른 세계에서 온 정령도 웨리 님의 감시 대상일까요?"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "하루(카무이)",
+        "message": "―·-···―·"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―――"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누구세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누구세요?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "···―···"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너···―누···"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―·-―···―·"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?????"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―·-―···"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루??? 하루 맞지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루??? 하루 맞지?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "으…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "시끄러워"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "머릿속에 마구 울리니까 조용히 말해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "말 아닌데 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "말 아닌데 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡인데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡인데"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "무슨 소리야?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "지금 내 머릿속에 말하고 있잖아"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "에버톡이 뭔데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰을 사용한 메신저 시스템…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰을 사용한 메신저 시스템…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "에버폰은 또 뭐고?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이상한 소리만 하는 걸 보니"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너 그 녀석이구나"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "구원자인지 뭔지"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "날 괴롭히는 것도 정도껏 해"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그만 꺼져"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "피곤하니까"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "아 아 아"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "바보 바보 바보"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "멍청이"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저기"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저기"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―·-···꺼―·"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "·-―···―·"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루? 들려?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루? 들려?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "꺼져"
+      },
+      {
+        "speaker": "구원자",
+        "message": "들리나 보네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "들리나 보네"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어떻게 보내는지 알았다"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "꺼져 꺼져 꺼져"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좀 더 제대로 대화하면 안 돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좀 더 제대로 대화하면 안 돼?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그러고 싶어도 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "잘·-―···―·····―·"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "잘 안 돼 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그러고 싶지도 않지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무하네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무하네"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―·-···―·져―"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너 말이야 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "꿈속에서 날 만나는 거라 했었지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맞아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "맞아"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "지금도 꿈속이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 현실이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 현실이야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그럼 너도 알겠네"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "내가 꿈속 존재가 아니라"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "진짜라는 거"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아마 이쪽 세계의 하루와"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아마 이쪽 세계의 하루와"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너는 다른 존재인 거겠지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너는 다른 존재인 거겠지"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "―···―·"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "음"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "마음이 흔들리니 잘 안 들려 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그쪽의 나는"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어때?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "귀엽고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "귀엽고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "종종 과일을 가져다 줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "종종 과일을 가져다 줘"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "뭐야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "사이 좋네"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "흥"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어때"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어때"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령 계약 할 마음이 들었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령 계약 할 마음이 들었어?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "닥쳐"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "난 안 나가"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "엄마 아빠가 있던 이 산과 함께 죽을 거야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "네가 왔다 간 뒤로 더 빠르게 붕괴하기 시작했으니까"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이제 나한테 신경 꺼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 말야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 말야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 아무 것도 안 했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 아무 것도 안 했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "붕괴가 빨라진 건 사실"
+      },
+      {
+        "speaker": "구원자",
+        "message": "붕괴가 빨라진 건 사실"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루 때문 아냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루 때문 아냐?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "뭐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루의 마음이 흔들려서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루의 마음이 흔들려서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "붕괴가 더 빨라진 걸수도 있잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "붕괴가 더 빨라진 걸수도 있잖아"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "시끄러워"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "네가 뭘 안다고"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "·-―너 따위가···―·····"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "·―·-―···―··"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "정령 계약 말야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "다른 하루도 했어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "흐응"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그래?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 쉽게 하는 게 아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 쉽게 하는 게 아냐"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "나한텐 당장 하자고 했잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그땐 급했어서…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그땐 급했어서…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그럼"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "다른 하루랑도 계약할 거야?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "앞으로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 모르지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 모르지"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "흐으응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그냥"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "난 엄마랑 아빠 말곤"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너밖에 모르는데 "
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "왠지 치사하네 너"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "흥"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이곳에서의 삶은 무료했어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "매일매일이 똑같고"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "새로운 것도, 사라지는 것도 없이"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그저 텅 빈 산 속에 나 혼자였어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그러다 어느 순간부터 하늘이 무너지기 시작했고"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어쩌면 나는…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이 세계가 무너져 간다는 것에 안도했는지도 몰라"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어떤 방향으로든 변화하고 있다는 것에…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "끝으로 향하는 그 움직임에서"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "오히려 나는 미래와 변화를 보았던 걸지도"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그런데 갑자기 네가 나타나선"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "여기서 날 구하겠다고 떠들잖아"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "얼마나 당황스러웠는지"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "나참"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안…?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "됐어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "사과하지 마"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "ㄱ ㅜ 언자 안 녕"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이거 어 려우ㅓ"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "에버포"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "에바폰"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "에버폰"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카무이! "
+      },
+      {
+        "speaker": "구원자",
+        "message": "카무이! "
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰을 쓸 수 있게 됐구나!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰을 쓸 수 있게 됐구나!"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "느려"
+      },
+      {
+        "speaker": "구원자",
+        "message": "금방 익숙해질 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "금방 익숙해질 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사용법도 알려 줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사용법도 알려 줄게"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "글ㅐ"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "그래"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "바부"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "구원자바보"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "바보 바부 바보"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰으로 보내게 됐어도 그건 꼭 보내는구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버폰으로 보내게 됐어도 그건 꼭 보내는구나"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "ㅋㅋㅋ"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "하루가 알려 줘서"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "사진도 보낼 수 있게 됐어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "타자도 빨라졌고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루의 일기장이네?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하루의 일기장이네?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "응"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이 일기장은 앞으로"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "우리 둘의 교환일기장으로 쓰기로 했어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "하루씩 번갈아 쓸 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘됐다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘됐다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "둘이 많이 친해졌구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "둘이 많이 친해졌구나"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "구원자 욕을 잔뜩 쓰고 있어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "우리 둘이서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "농담이지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "농담이지?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "응"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "하루는 참 착한 애야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "나긴 하지만"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "아무튼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카무이는 내 욕 쓴 거야?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카무이는 내 욕 쓴 거야?!"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "어느 쪽일지 맞춰 봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 카무이를 믿을게…!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 카무이를 믿을게…!"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "안 썼어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "아직"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "구원자가 준 옷"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "잘 입고 있어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "처음 입어보는 거라 낯설긴 한데"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이런 것도 색다르네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 어울려서 다행이야!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 어울려서 다행이야!"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "새로운 곳에서"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "새로운 차림으로"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "새로운 이들과"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "새로운 삶을 살게 된 거"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "다 구원자 덕분이야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오늘은 솔직하네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오늘은 솔직하네"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "오늘만이야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "앞으로도 잘 부탁해"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "나를 구원해 준"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "첫 구원자"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "넌 누구지?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "누군데 내 머릿속에 말을 거는 거야?"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "내 머릿속에서 나가!"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너 때문이야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너 때문에 더 빨라졌어"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "하늘의 붕괴가"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "널 만나고 나선"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "황당한 일들뿐이야"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "이젠 또 뭔…"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "처음 보는 세계엔"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "너도 있고"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "또 다른 나도 있겠지"
+      },
+      {
+        "speaker": "하루(카무이)",
+        "message": "나의 미래도…"
+      }
+    ]
+  }
+}

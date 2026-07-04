@@ -1,0 +1,55 @@
+{
+  "id": "6980",
+  "name": "토키사키 쿠루미",
+  "name_en": "Kurumi Tokisaki",
+  "grade": "에픽",
+  "race": "혼돈형",
+  "class": "레인저",
+  "sub_class": "단일",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "나이트메어",
+    "constellation": null,
+    "union": "데이트 어 라이브V",
+    "birthday": "610",
+    "height": 157,
+    "weight": null,
+    "cv_ko": "Asami Sanada",
+    "cv_jp": "Asami Sanada",
+    "like": [
+      "고양이"
+    ],
+    "dislike": [
+      "인간"
+    ],
+    "hobby": [
+      "고양이 카페 순회"
+    ],
+    "speciality": [
+      "심리전"
+    ]
+  },
+  "personality": {
+    "description": "다시 한번 소개하겠어요, ",
+    "greeting": "토키사키 쿠루미라고 한답니다."
+  },
+  "speech_patterns": [],
+  "comments": [
+    {
+      "writer": "야토가미 토카",
+      "comment": "확실히 쿠루미는 위험한 정령이지만… "
+    },
+    {
+      "writer": "아키",
+      "comment": "정말로 강한 분이세요! "
+    },
+    {
+      "writer": "메피스토펠레스",
+      "comment": "고양이들이 자주 모이는 장소를 알려드렸습니다만, "
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

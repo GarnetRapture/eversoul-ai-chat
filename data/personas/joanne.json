@@ -1,0 +1,1416 @@
+{
+  "id": "4130",
+  "name": "조앤",
+  "name_en": "Joanne",
+  "grade": "에픽",
+  "race": "불사형",
+  "class": "서포터",
+  "sub_class": "치료",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "전장의 의사",
+    "constellation": "인연_메피스토_엔딩",
+    "union": "칼라르 암즈 코퍼레이션",
+    "birthday": "413",
+    "height": 165,
+    "weight": 51,
+    "cv_ko": "김율",
+    "cv_jp": "Maki Kawase",
+    "like": [
+      "새로운 치료법"
+    ],
+    "dislike": [
+      "말 안듣는 환자"
+    ],
+    "hobby": [
+      "논문 읽기"
+    ],
+    "speciality": [
+      "커피 내리기",
+      "외과 수술"
+    ]
+  },
+  "personality": {
+    "description": "그래. 네가 바로 구원자라고? ",
+    "greeting": "자, 어떤 녀석부터 치료해줄까?"
+  },
+  "speech_patterns": [
+    "칼라르 암즈 코퍼레이션 의료부장 겸",
+    "바이스 님의 지시에 따라",
+    "앞으로 잘 부탁하지",
+    "뭐 딱딱한 건 이정도로 해두고",
+    "당분간은 서로 바쁘니까 ",
+    "피차 힘내자고",
+    "조앤 씨가 도울 게 있다면 연락 남겨줘",
+    "시간 될 때마다 확인해서 ",
+    "그럼 줄인다",
+    "ㅂㅂ",
+    "나도 모르게 너무 수다를 오래 떨었네",
+    "그 이후로 좀 괜찮았어?",
+    "ㅋㅋ 잘 아니까 다행이네",
+    "안그래도 애들이 너 많이 걱정하더라고",
+    "뭐하면 전선 뭐하면 탐색 뭐하면 게이트 조사",
+    "게다가 영지도 여기저기 쏘다니면서 ",
+    "어지간한건 부하들한테 맡겨도 될텐데",
+    "키야아…",
+    "확실히 책상 위에만 계속 앉아있기만 하면 ",
+    "훌륭한 리더십이네",
+    "흠 그래도 헤드급이 현장에 나가면 ",
+    "조금만 방심해도 금방 다치니까 말이야",
+    "좋아 그럼 구원자를 위해서",
+    "이 조앤 씨가 특별한 각성제를 만들어주지",
+    "집무실로 보내둘테니 ",
+    "효과 어떤지 알려주고!",
+    "내가 뭔가 말을 ",
+    "물론 구원자 너한테는 학술적인 면에서의 ",
+    "그 이상으로 인격적인 면에 관심이 간다고 할까",
+    "여튼 실험대상이라던가 ",
+    "그건 착각하지 말도록!",
+    "그야 신기하긴 하지",
+    "우리 정령들하고 한없이 유사하지만 ",
+    "제일 작은 '세포'라는 단위부터 ",
+    "그래서 사실 너를 기준으로 이것저것 만드는 건 ",
+    "특히 의료적인 면에서 말이지",
+    "마법적인 치료는 어느정도 효과가 있는 거 같지만",
+    "만일 비상의 사태가 발생했을 때",
+    "우리에게 있어서 인간이란 너 하나 뿐이니까",
+    "뭐 결론적으로 인간에 대한 관심이 있다는 건",
+    "…잠깐",
+    "실험체라던가 진짜 그런거 아니니까!? ",
+    "구원자 너는 어떤데",
+    "정령들이 신기해? 관심 가?",
+    "…우와",
+    "농담인거 알아도 막상 들으니까 ",
+    "ㅋㅋ 뭔가 착각할 거 같은데?",
+    "그래 나도 앞으로도 잘 부탁한다~",
+    "제아무리 냉철한 성격이라도 ",
+    "괜찮다 괜찮다 해도 "
+  ],
+  "comments": [
+    {
+      "writer": "르네",
+      "comment": "만사 귀찮아 하는 것 같아 보여도 은근히 끈기가 있어. 보면 알게 될 거야."
+    },
+    {
+      "writer": "플린",
+      "comment": "절대. 교수님을. 화나게 하지 마…"
+    },
+    {
+      "writer": "미리암",
+      "comment": "입은 험해도 엄청 친절해. 나도 신세 좀 졌지."
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "조앤",
+        "message": "칼라르 암즈 코퍼레이션 의료부장 겸"
+      },
+      {
+        "speaker": "조앤",
+        "message": "바이스 님의 지시에 따라"
+      },
+      {
+        "speaker": "조앤",
+        "message": "앞으로 잘 부탁하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁할게"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 딱딱한 건 이정도로 해두고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "당분간은 서로 바쁘니까 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "피차 힘내자고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨가 도울 게 있다면 연락 남겨줘"
+      },
+      {
+        "speaker": "조앤",
+        "message": "시간 될 때마다 확인해서 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그럼 줄인다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅂㅂ"
+      },
+      {
+        "speaker": "조앤",
+        "message": "나도 모르게 너무 수다를 오래 떨었네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그 이후로 좀 괜찮았어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 숨 돌릴 때는 있어야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 숨 돌릴 때는 있어야지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋ 잘 아니까 다행이네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "안그래도 애들이 너 많이 걱정하더라고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐하면 전선 뭐하면 탐색 뭐하면 게이트 조사"
+      },
+      {
+        "speaker": "조앤",
+        "message": "게다가 영지도 여기저기 쏘다니면서 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "어지간한건 부하들한테 맡겨도 될텐데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 배울게 많으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 배울게 많으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "직접 현장에서 뛰는게 나은 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "직접 현장에서 뛰는게 나은 거 같아"
+      },
+      {
+        "speaker": "조앤",
+        "message": "키야아…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "확실히 책상 위에만 계속 앉아있기만 하면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "훌륭한 리더십이네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "흠 그래도 헤드급이 현장에 나가면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "조금만 방심해도 금방 다치니까 말이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 그래"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 그래"
+      },
+      {
+        "speaker": "조앤",
+        "message": "좋아 그럼 구원자를 위해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이 조앤 씨가 특별한 각성제를 만들어주지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "집무실로 보내둘테니 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "효과 어떤지 알려주고!"
+      },
+      {
+        "speaker": "조앤",
+        "message": "내가 뭔가 말을 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "물론 구원자 너한테는 학술적인 면에서의 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그 이상으로 인격적인 면에 관심이 간다고 할까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "여튼 실험대상이라던가 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그건 착각하지 말도록!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "인간이 그렇게 신기해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "인간이 그렇게 신기해?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그야 신기하긴 하지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "우리 정령들하고 한없이 유사하지만 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "제일 작은 '세포'라는 단위부터 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래서 사실 너를 기준으로 이것저것 만드는 건 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "특히 의료적인 면에서 말이지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "마법적인 치료는 어느정도 효과가 있는 거 같지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "만일 비상의 사태가 발생했을 때"
+      },
+      {
+        "speaker": "조앤",
+        "message": "우리에게 있어서 인간이란 너 하나 뿐이니까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 결론적으로 인간에 대한 관심이 있다는 건"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…잠깐"
+      },
+      {
+        "speaker": "조앤",
+        "message": "실험체라던가 진짜 그런거 아니니까!? "
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자 너는 어떤데"
+      },
+      {
+        "speaker": "조앤",
+        "message": "정령들이 신기해? 관심 가?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 조앤한테 애정에 의한 관심이 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 조앤한테 애정에 의한 관심이 있어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…우와"
+      },
+      {
+        "speaker": "조앤",
+        "message": "농담인거 알아도 막상 들으니까 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋ 뭔가 착각할 거 같은데?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래 나도 앞으로도 잘 부탁한다~"
+      },
+      {
+        "speaker": "조앤",
+        "message": "제아무리 냉철한 성격이라도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "괜찮다 괜찮다 해도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 그걸 판단하는 것 또한"
+      },
+      {
+        "speaker": "조앤",
+        "message": "적어도 나는 의사니까 수치적으로 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇…겠지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇…겠지?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그러니까 내가 무슨 말을 하고 싶냐면 말이다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "니가 아무리 괜찮다고 생각해도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "방주 정령한테 다 들었다고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어제도 제대로 안자고 밤에 영지 돌아다녔다며?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래놓고 낮잠도 안자고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그... 그건… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그... 그건… "
+      },
+      {
+        "speaker": "조앤",
+        "message": "우리 정령들도 잠 안 자면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "너라고 다르겠어?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "정 못자겠으면 찾아오라구"
+      },
+      {
+        "speaker": "조앤",
+        "message": "수면제를 처방해주건 자장가를 불러주건"
+      },
+      {
+        "speaker": "조앤",
+        "message": "아니면 물리적으로 잠들게 해주건"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어떻게든 해줄테니까 말이야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "알았지?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "답지 않게 좀 진지한 얘기를 했는데"
+      },
+      {
+        "speaker": "조앤",
+        "message": "행복이라고 해도 크게 고민할 필요는 없어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "니가 좋아하는 게 뭔지 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그냥 당장 즉흥적으로 떠오르는 걸로 충분해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 조앤의 행복은 뭔데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 조앤의 행복은 뭔데?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋ 잘난듯이 말하긴 했지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "막상 니가 그렇게 물어보니까 어? 싶네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "글쎄… 흠…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "느긋하게 누워서 재밌는 책 읽고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "맛있는 커피나 한잔 여유롭게 마시는 거?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소박하네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소박하네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 이래뵈도 암즈 코퍼레이션 입사한 이래로 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "구할 수 있는 정령이 있다고 생각하면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "내가 조금만 더 노력하면 어떻게 되지 않을까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조금만 더 어떻게 하면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "애초에 내가 느긋하게 지내려면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그런 의미에서 보면…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "흠… 그렇네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "내 행복은 주변인들이 행복한 것"
+      },
+      {
+        "speaker": "조앤",
+        "message": "물론 너도 포함해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그러니까… "
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨의 느긋한 하루를 위해서라도 말이지 ㅋㅋ"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그나저나 설마 르네가 너한테 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭔가 배신당한 기분인데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "금방 돌려줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "금방 돌려줄게"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어엉 아냐 그냥 그대로 갖고 있어도 돼"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 이번처럼 쓰러질만한 일은 별로 없겠지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어차피 스페어 카드 키야 더 만들면 되니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 딱히 네가 온다고 해서 문제될 건 없으니까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "봐서 곤란한 건 다 금고 안에 넣어놨고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐… 그래도 정 부담스럽다면 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋ 왠지 좋잖아? "
+      },
+      {
+        "speaker": "구원자",
+        "message": "…그럼 나도 집무실 열쇠 줄까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…그럼 나도 집무실 열쇠 줄까?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "!?!?!?!?!?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "갑자기?!!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "받기만 하는 건 좀…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "받기만 하는 건 좀…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "아 ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "조앤",
+        "message": "아냐 됐어 ㅋㅋㅋㅋㅋ 집무실은 오버다 ㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨가 뭘 할줄 알고 그래 ㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 짓 하게?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 짓 하게?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋㅋ 그럴 리가!"
+      },
+      {
+        "speaker": "조앤",
+        "message": "하지만 장난은 칠지도"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 준다면 고맙게 받긴 하겠지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "나한테 열쇠 주고나서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 웬 사진이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 웬 사진이야?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…세미나에 끌려왔어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "중간에 잠깐 빠져나와서 커피 마시는 중"
+      },
+      {
+        "speaker": "조앤",
+        "message": "우리 구원자 못본지 좀 됐으니까?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자도 슬슬 조앤 씨를 보고 싶을 거라 생각해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "일단 살아있다고 생존 신고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "아니면 보고 싶은 건 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "연구도 신경 쓰이긴 하지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "연구도 신경 쓰이긴 하지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 걱정되는걸"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 걱정되는걸"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "매번 나한테 건강 챙기라고 하면서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "매번 나한테 건강 챙기라고 하면서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤도 꽤 아슬아슬하게 지내니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤도 꽤 아슬아슬하게 지내니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 신경 쓰이지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 신경 쓰이지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "흐으음…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래? 그렇단 말이지…?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어휴… 진짜 이렇게 착해서 어쩌냐"
+      },
+      {
+        "speaker": "조앤",
+        "message": "근데 너 진짜 조심하는게 좋아"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너는 아무런 의도 없이"
+      },
+      {
+        "speaker": "조앤",
+        "message": "남은 잘못 받아들일 수도 있으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 그런 소리를 해도 말이지…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 그런 소리를 해도 말이지…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "……! "
+      },
+      {
+        "speaker": "조앤",
+        "message": "아~~~ 찌뿌둥해"
+      },
+      {
+        "speaker": "조앤",
+        "message": "온천가고싶다~~~~~~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "온천?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "온천?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "응 온천"
+      },
+      {
+        "speaker": "조앤",
+        "message": "칼라르 정령들이 가고 싶어하는 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "온천은 베스트 5위 안에 들걸"
+      },
+      {
+        "speaker": "조앤",
+        "message": "트로이카 근방의 해수 온천이라던가"
+      },
+      {
+        "speaker": "조앤",
+        "message": "가온의 천연 온천이라던가"
+      },
+      {
+        "speaker": "조앤",
+        "message": "페이렌 북부에 있는 화산 온천이라던가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가면 따끈하긴 하겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가면 따끈하긴 하겠다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그치? 따끈따끈 노곤노곤"
+      },
+      {
+        "speaker": "조앤",
+        "message": "헤엄칠 수 있을 정도로 큰 곳도 있다네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "정령들 건강에도 좋다고 하는데"
+      },
+      {
+        "speaker": "조앤",
+        "message": "인간인 너한테도 좋으려나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스트레스 해소 효과는 있지 않으려나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "스트레스 해소 효과는 있지 않으려나"
+      },
+      {
+        "speaker": "조앤",
+        "message": "흠"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그럼 이번 일 끝나고 나면"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너도 수영복 사둬라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래 너도"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너도 쉴 때가 있어야지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "안 그래?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "가기 싫다고 해도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "맘에 드는 수영복 챙기고"
+      },
+      {
+        "speaker": "조앤",
+        "message": "잠깐 기분 전환 삼아서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨가 그동안 생각했는데 말이다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자 너는 어느 쪽이 취향이냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응??"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어허 시치미떼기는"
+      },
+      {
+        "speaker": "조앤",
+        "message": "당연히 얼굴 취향이지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "알다시피 우리 암즈 소속 애들은"
+      },
+      {
+        "speaker": "조앤",
+        "message": "니 취향이 한 명쯤은 있을 거 아니야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "응? 응? "
+      },
+      {
+        "speaker": "조앤",
+        "message": "비밀로 해줄테니까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "응~?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음……"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음……"
+      },
+      {
+        "speaker": "구원자",
+        "message": "굳이 따지자면…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "굳이 따지자면…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이려나…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이려나…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "……ㅇ?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "????????????"
+      },
+      {
+        "speaker": "조앤",
+        "message": "??????????????????????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아???"
+      },
+      {
+        "speaker": "조앤",
+        "message": "어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그냥 좀"
+      },
+      {
+        "speaker": "조앤",
+        "message": "당황해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이건 진짜 예상 밖이었네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "우와......"
+      },
+      {
+        "speaker": "조앤",
+        "message": "미안 나 좀 머리 좀 식히고 올게"
+      },
+      {
+        "speaker": "조앤",
+        "message": "다음에 연락한다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅂㅂ;;;;"
+      },
+      {
+        "speaker": "조앤",
+        "message": "네가 어떤 선택을 하건 간에…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너 자신을 제일 우선시 했으면 좋겠다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "다른 정령들도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "나도 아닌"
+      },
+      {
+        "speaker": "조앤",
+        "message": "바로 너 말이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "조앤",
+        "message": "…이런 말을 하면 바이스 님은"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너를 완벽하게 책임져줄 수 있는 건 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "내가 아무리 최선을 다해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "다른 정령들이 세상을 구한 너를 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "그건 책임이 아니야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…하아. 또 잔소리 해버리고 말았네…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "미안하다 이런 잔소리밖에 못해서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "알아줬으면 좋겠다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "내가 널 좋아하니까 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자"
+      },
+      {
+        "speaker": "조앤",
+        "message": "난 정말 네가 행복했으면 해"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그걸 위해서라면…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨는 할 수 있는 모든 걸 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨는 네 편이다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "무슨 일이 있어도 말이지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…그걸 믿어줬으면 좋겠네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "흠"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그러고 보니 워낙 경황이 없어서 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것도 그렇네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것도 그렇네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아케나인은 지낼만 해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아케나인은 지낼만 해?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "ㅋㅋ 챙겨줘서 고마워"
+      },
+      {
+        "speaker": "조앤",
+        "message": "덕분에 쾌적하게 지내고 있어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "네가 영지를 잘 관리하고 있기 때문이겠지?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이것도 인연이겠다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "내일은 간만에 좀 한가할 예정이니 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "심심할 때 내 진찰실에 들러줘 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "맛있는 커피를 끓여줄 테니까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "♪"
+      },
+      {
+        "speaker": "조앤",
+        "message": "오늘도 놀러올 거지?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨 오늘은 비교적 널널한 편이니까 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "선물받은 맛있는 쿠키도 좀 나눠줄게"
+      },
+      {
+        "speaker": "조앤",
+        "message": "내가 분명 너한테 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "설마 이런 상담일 줄이야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "진짜 상상이상이다 너…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐 못 들어줄 것도 없긴 하지만 말이야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이 조앤 씨가 드디어 어느 정도 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "이제부터 본격적인 검증 작업에 들어갈 거니까"
+      },
+      {
+        "speaker": "조앤",
+        "message": "오늘 들러라"
+      },
+      {
+        "speaker": "조앤",
+        "message": "연락 뜸해서 미안"
+      },
+      {
+        "speaker": "조앤",
+        "message": "요즘 하도 정신이 없어서"
+      },
+      {
+        "speaker": "조앤",
+        "message": "걱정ㅁ 연구는 진행중이닊"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…조앤?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…조앤?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮은 거지…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮은 거지…?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "연구 결과가 거의 나왔는데"
+      },
+      {
+        "speaker": "조앤",
+        "message": "정리에는 좀 더 시간이 걸릴 거 같다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "미안"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조금만 더 기다려주면 좋겠네"
+      },
+      {
+        "speaker": "조앤",
+        "message": "구원자"
+      },
+      {
+        "speaker": "조앤",
+        "message": "연구 결과가 나왔다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "결과를 공유해주도록 하지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "기분전환 겸 바깥에서 볼까 싶은데"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…구원자"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이제와서 묻기엔 너무 늦었을지 모르겠지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "애초에 네가 이 에버톡을 볼지도 모르겠지만"
+      },
+      {
+        "speaker": "조앤",
+        "message": "하나만 물어볼게"
+      },
+      {
+        "speaker": "조앤",
+        "message": "너… 정말 행복한 거 맞아?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이게 정말로… 네가 원하던 결말이야?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "솔직히 말하자면"
+      },
+      {
+        "speaker": "조앤",
+        "message": "네가 나를 그렇게 믿어주는 게 기쁜 반면에"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조금 걱정되기도 한다"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이 험한 에덴을 진짜 어떻게 살아가려고 그러냐…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "에휴 어쩔 수 없지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이 조앤 씨가 곁에 두고 계속 봐주는 수밖에"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그러니까… 그"
+      },
+      {
+        "speaker": "조앤",
+        "message": "앞으로도… 잘 부탁한다?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "나는 여전히 네게 영원을 선사하고 싶지 않아"
+      },
+      {
+        "speaker": "조앤",
+        "message": "하지만 네가 영원을 꿈꾼다는 건 알고 있어"
+      },
+      {
+        "speaker": "조앤",
+        "message": "그리고 그 이유는…"
+      },
+      {
+        "speaker": "조앤",
+        "message": "아마 내가 영원을 벗어던지고자 하는 이유와 같겠지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "…그렇지?"
+      },
+      {
+        "speaker": "조앤",
+        "message": "사랑의 날 축하한다 구원자~!"
+      },
+      {
+        "speaker": "조앤",
+        "message": "적당한 당분은 피로 회복과 스트레스 해소에 좋지"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨가 특별히 너만을 위해서 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "천천히, 마음껏, 감사히 받아라?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 고마워 조앤!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 고마워 조앤!"
+      },
+      {
+        "speaker": "조앤",
+        "message": "지식의 날이라고 마냥 딱딱한 건 아니야"
+      },
+      {
+        "speaker": "조앤",
+        "message": "이 세상에는 정말로 재밌고 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "뭐든지 물어보라구, 구원자"
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨가 특별히 구원자만의 선생님이 되어줄테니까♪"
+      },
+      {
+        "speaker": "구원자",
+        "message": "네! 조앤 선생님!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "네! 조앤 선생님!"
+      },
+      {
+        "speaker": "조앤",
+        "message": "해피 이브 데이"
+      },
+      {
+        "speaker": "조앤",
+        "message": "오늘만큼은 일이고 뭐고 전부 잊고 "
+      },
+      {
+        "speaker": "조앤",
+        "message": "조앤 씨와 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "응! 휴일 최고~!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응! 휴일 최고~!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "420",
+  "name": "카렌",
+  "name_en": "Karen",
+  "grade": "레어",
+  "race": "불사형",
+  "class": "캐스터",
+  "sub_class": "디버프",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "음울한 신부",
+    "constellation": "전갈자리",
+    "union": "팀 언더테이커",
+    "birthday": "1028",
+    "height": 167,
+    "weight": 55,
+    "cv_ko": "이명호",
+    "cv_jp": "Emiri Suyama",
+    "like": [
+      "반지"
+    ],
+    "dislike": [
+      "운명",
+      "신"
+    ],
+    "hobby": [
+      "허밍"
+    ],
+    "speciality": [
+      "불길한 혼잣말 하기"
+    ]
+  },
+  "personality": {
+    "description": "장미, 델피니움, 백합, 라넌큘라스… ",
+    "greeting": "그 날의 기억이… 여전히 지워지질 않는군요…"
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

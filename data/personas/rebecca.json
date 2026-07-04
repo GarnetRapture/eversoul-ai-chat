@@ -1,0 +1,1435 @@
+{
+  "id": "4030",
+  "name": "레베카",
+  "name_en": "Rebecca",
+  "grade": "에픽",
+  "race": "불사형",
+  "class": "레인저",
+  "sub_class": "디버프",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "불사의 봄",
+    "constellation": "궁수자리",
+    "union": "정령 연합군",
+    "birthday": "1215",
+    "height": 153,
+    "weight": 42,
+    "cv_ko": "김연우",
+    "cv_jp": "Maaya Uchida",
+    "like": [
+      "유행하는 것 따라하기"
+    ],
+    "dislike": [
+      "늙은이 취급"
+    ],
+    "hobby": [
+      "나이 속이기"
+    ],
+    "speciality": [
+      "연애 상담"
+    ]
+  },
+  "personality": {
+    "description": "레베카다. 요즘 애들은 정말 예의를 모르네. ",
+    "greeting": "어머머, 할머니라니… 농담이 심하시네요. "
+  },
+  "speech_patterns": [
+    "이게 구원자 에버톡 맞나?",
+    "옹야. 대답 잘 하는구만",
+    "사실 에버톡보다는 차라리 화상 전화가 편해",
+    "화면 오래 보고 있으면 눈 아프다고",
+    "아니 뭐, 전화할만큼 용건이 있는 건 아니거든",
+    "구원자 네 녀석은 앞으로 더욱 바빠질 몸이니~",
+    "연락처는 확보해야되지 않겠어?",
+    "앞으로 잘 부탁한다구",
+    "그래그래. 앞으로도 이렇게 씩씩하게 칼답하도록",
+    "합격~",
+    "구원자야",
+    "저번에 우리 단둘이서 한 나쁜짓",
+    "아직 아무한테도 안 들켰지?",
+    "그래~ 나쁜짓",
+    "너랑 나랑 아주 오붓하게",
+    "놀이공원 가서 업무 땡땡이 쳤잖냐",
+    "아직 안 들켰지?",
+    "너 데리고 농땡이 친 거 들키면",
+    "아주 귀찮아지거든",
+    "써야 할 시말서가 이미 많은데",
+    "더 늘어나면 귀찮아",
+    "끝까지 잘 숨기면",
+    "다음에 상으로 비법을 전수해 주마",
+    "안 들키게 농땡이 치는 비법",
+    "오냐",
+    "구원자야 구원자야",
+    "나",
+    "새 잠옷 샀다",
+    "그래 그래",
+    "새 잠옷",
+    "요즘 열받는 일도 많은데",
+    "생긴 건 귀엽고",
+    "잘 때는 폭신폭신하고",
+    "몸에 착 감겨서 몽글몽글하고",
+    "침대에 누웠을 때 포근한 걸 입어줘야",
+    "아 내가 이 잠옷을 입고 침대에 들어가려고",
+    "고된 하루를 버텼구나~ 싶어지는 법이지",
+    "보고 싶지?",
+    "엄청 궁금하지?",
+    "내 새 잠옷",
+    "뭐어?",
+    "그렇게까진 딱히 엄청 보고 싶다고?",
+    "이렇게 보채니 원",
+    "어쩔 수 없이 보여줘야겠구만",
+    "옛다",
+    "사진첩에 잘 모시도록~",
+    "나 다녀왔다",
+    "지쳤다 지쳤어",
+    "그래 힘들었지",
+    "그냥"
+  ],
+  "comments": [
+    {
+      "writer": "클라우디아",
+      "comment": "가끔은 말조심도 좀 해주세요. 알았죠?"
+    },
+    {
+      "writer": "클라라",
+      "comment": "처음에 뵈었을 때 열 살이라고 거짓말하시더라고요… 한참 속았어요. 흥!"
+    },
+    {
+      "writer": "시하",
+      "comment": "갈수록 잘 안 움직이시는 것 같아요. 운동하세요~"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "레베카",
+        "message": "이게 구원자 에버톡 맞나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 레베카"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 레베카"
+      },
+      {
+        "speaker": "레베카",
+        "message": "옹야. 대답 잘 하는구만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "사실 에버톡보다는 차라리 화상 전화가 편해"
+      },
+      {
+        "speaker": "레베카",
+        "message": "화면 오래 보고 있으면 눈 아프다고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전화할까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "전화할까?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아니 뭐, 전화할만큼 용건이 있는 건 아니거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자 네 녀석은 앞으로 더욱 바빠질 몸이니~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "연락처는 확보해야되지 않겠어?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "앞으로 잘 부탁한다구"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래그래. 앞으로도 이렇게 씩씩하게 칼답하도록"
+      },
+      {
+        "speaker": "레베카",
+        "message": "합격~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "저번에 우리 단둘이서 한 나쁜짓"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아직 아무한테도 안 들켰지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜짓????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜짓????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 레베카랑???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 레베카랑???"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래~ 나쁜짓"
+      },
+      {
+        "speaker": "레베카",
+        "message": "너랑 나랑 아주 오붓하게"
+      },
+      {
+        "speaker": "레베카",
+        "message": "놀이공원 가서 업무 땡땡이 쳤잖냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 그거…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 그거…"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아직 안 들켰지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "너 데리고 농땡이 친 거 들키면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아주 귀찮아지거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "써야 할 시말서가 이미 많은데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "더 늘어나면 귀찮아"
+      },
+      {
+        "speaker": "레베카",
+        "message": "끝까지 잘 숨기면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "다음에 상으로 비법을 전수해 주마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 비법?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 비법?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "안 들키게 농땡이 치는 비법"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "비밀 잘 지킬게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "비밀 잘 지킬게"
+      },
+      {
+        "speaker": "레베카",
+        "message": "오냐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야 구원자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "나"
+      },
+      {
+        "speaker": "레베카",
+        "message": "새 잠옷 샀다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새 잠옷?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새 잠옷?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래 그래"
+      },
+      {
+        "speaker": "레베카",
+        "message": "새 잠옷"
+      },
+      {
+        "speaker": "레베카",
+        "message": "요즘 열받는 일도 많은데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "생긴 건 귀엽고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "잘 때는 폭신폭신하고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "몸에 착 감겨서 몽글몽글하고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "침대에 누웠을 때 포근한 걸 입어줘야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아 내가 이 잠옷을 입고 침대에 들어가려고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "고된 하루를 버텼구나~ 싶어지는 법이지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "레베카",
+        "message": "보고 싶지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "엄청 궁금하지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내 새 잠옷"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게까진 딱히…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게까진 딱히…"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐어?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그렇게까진 딱히 엄청 보고 싶다고?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이렇게 보채니 원"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어쩔 수 없이 보여줘야겠구만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "옛다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "사진첩에 잘 모시도록~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "나 다녀왔다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "지쳤다 지쳤어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "힘든 회의였나봐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "힘든 회의였나봐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래 힘들었지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그냥"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그냥 부르는 거 못 들은 척이나 하고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자 너나 따라가서"
+      },
+      {
+        "speaker": "레베카",
+        "message": "니 옆에서 로맨스 소설 낭독회나 열 걸 그랬다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "하필 딱 거절하기 힘든 상대였어서 원"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이것도 다 노린 거겠다만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카한테 거절하기 힘든 상대도 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카한테 거절하기 힘든 상대도 있어?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "당연히 있지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내가 또 워낙 인정이 넘치는 정령이라"
+      },
+      {
+        "speaker": "레베카",
+        "message": "예를 들면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "유리아 님이라든가"
+      },
+      {
+        "speaker": "레베카",
+        "message": "클라우디아라든가"
+      },
+      {
+        "speaker": "레베카",
+        "message": "너라든가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "!"
+      },
+      {
+        "speaker": "레베카",
+        "message": "악용하면 안된다?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야 네 집무실에"
+      },
+      {
+        "speaker": "레베카",
+        "message": "저번에 소개시켜 줬던 애들"
+      },
+      {
+        "speaker": "레베카",
+        "message": "쭉 문서로 정리한 서류철 갖다 뒀다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "제일 위에 있는 게 [아케나인 인맥 목록]"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이거 보고 필요할 때 찾아갔는데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "마음대로 협조를 안 해 준다 싶으면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "두 번째에 둔 [아케나인 인맥 공략법]"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이거 까서 보고 참고해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 레베카"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 레베카"
+      },
+      {
+        "speaker": "레베카",
+        "message": "두 번째 문서의 대처법대로 했는데도"
+      },
+      {
+        "speaker": "레베카",
+        "message": "말을 안 들으면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "세 번째에 둔 파일인 [아케나인 인맥 약점표]"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이거 보고 상성에 맞춰서"
+      },
+      {
+        "speaker": "레베카",
+        "message": "협박하거나 회유하면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어지간한 문제는 다 해결될 거다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그리고 저 문서를 열었을 때는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "꼭 같이 봐줘야 하는 게 있지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "여기서 또 뭐가 더 있어…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "여기서 또 뭐가 더 있어…?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "마지막 파일 [아케나인 카페 메뉴 황금 조합표]"
+      },
+      {
+        "speaker": "레베카",
+        "message": "?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내 경험으로 봤을 때"
+      },
+      {
+        "speaker": "레베카",
+        "message": "세 번째 문서까지 열 때는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내 머리 뚜껑도 열받아서 같이 열릴 때였거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "말 안 듣는 얼간이들을 상대한 뒤에는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "당을 빵빵하게 채워줘야지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 그렇지만 카페 조합표는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 그렇지만 카페 조합표는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카랑 둘이서 갈 때 참고하고 싶은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카랑 둘이서 갈 때 참고하고 싶은데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "……."
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래도 되긴 하지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그러고 보니 궁금했던 건데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "네가 살던 시대에서"
+      },
+      {
+        "speaker": "레베카",
+        "message": "몇 살을 먹으면 장수한 인간인 거냐?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "음… 한 100살?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "음… 한 100살?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "에걔, 고작 100살?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령은 어떤데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정령은 어떤데?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐 정령은 인간과 삶의 형태가 다르니"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그냥 산 햇수만 비교하진 않아"
+      },
+      {
+        "speaker": "레베카",
+        "message": "몇 번 정령석으로 돌아갔냐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "얼마나 기억이 훼손되지 않고 남아 있냐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "고려할 게 얼마나 많은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카의 개인적인 기준으로 판단하면 어떤데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카의 개인적인 기준으로 판단하면 어떤데?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "흠…"
+      },
+      {
+        "speaker": "레베카",
+        "message": "나 외에 오래 산 정령을 말하라고 하면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "타브리아 대제나 지하 도시의 그 녀석 정도겠군"
+      },
+      {
+        "speaker": "레베카",
+        "message": "반대로 헤이즐 황태녀는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "수장급 반열에 들어가는 정령들 안에서 따지면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어린애나 마찬가지일 만큼 어린 편이지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그만큼 강력한 힘을 가지고 있다는 뜻이지만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아직은 미숙하니 옆에서 보조해 줘야 해"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐 그건 너도 마찬가지고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "걱정 마라"
+      },
+      {
+        "speaker": "레베카",
+        "message": "나는 언제나 널 도울 테니까"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아무 걱정 안 해도 돼"
+      },
+      {
+        "speaker": "레베카",
+        "message": "가끔 왜 직접 싸우지 않고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "링거들만 부려먹냐고 질문을 받는데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뻔한 대답을 왜 묻는 건지 모르겠구만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "당연히 귀찮으니까 그렇지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "귀찮아서였구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "귀찮아서였구나"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐 다른 이유가 이것저것 있긴 하다만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "제일 큰 이유는 역시 그거지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아주 일석이조라구?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이 링거들은 내 힘으로 움직이도록 설계된 녀석들이라"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내 의지대로 움직이는 녀석들이거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "평소에는 약을 나한테 공급하고 있지만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그 약에 내 힘을 살짝만 불어넣으면"
+      },
+      {
+        "speaker": "레베카",
+        "message": "공격하기 딱 좋은 독약이 되도록 배합해 놨지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "공격도 되고 방어도 되고 아주 편해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "평소에 담겨 있던 건 약이었다고…??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "평소에 담겨 있던 건 약이었다고…??"
+      },
+      {
+        "speaker": "레베카",
+        "message": "맞아"
+      },
+      {
+        "speaker": "레베카",
+        "message": "딱 한 방만 맞아도 피로가 싹 풀리는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "비장의 수액인데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "궁금하면 너도 맞아 보든지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아무나 안 놔주는 거지만 특별히 너한테면 뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "안 아프게 살살 놔주마"
+      },
+      {
+        "speaker": "레베카",
+        "message": "타브리아의 귀족은 세 부류로 나뉜다고 할 수 있지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "첫 번째는 대제에게 충성을 바치는 황실파"
+      },
+      {
+        "speaker": "레베카",
+        "message": "두 번째는 귀족끼리 결탁해 세력을 꾸린 귀족파"
+      },
+      {
+        "speaker": "레베카",
+        "message": "세 번째는 밤의 도시와 결탁한 지하 세력파"
+      },
+      {
+        "speaker": "레베카",
+        "message": "참고로 나는 타브리아에 있던 시절에는 첫 번째였어"
+      },
+      {
+        "speaker": "레베카",
+        "message": "정치 싸움은 늘 있는 법이다만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "세 번째, 지하 세력파와 특히 사이가 안 좋았지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 사이가 안 좋았어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 사이가 안 좋았어?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그놈들은 자기 욕망 외에는 생각이 없거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "물론 세상 모든 녀석은"
+      },
+      {
+        "speaker": "레베카",
+        "message": "자기 자신을 위해 사는 법이다만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "욕망밖에 모르는 녀석은 무조건 주의해야 하는 법이다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "처음에는 구원자랍시고 나타난 인간이라길래"
+      },
+      {
+        "speaker": "레베카",
+        "message": "혹시 너도 그런 녀석이 아닌가 지켜봤지만…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지켜봤지만…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지켜봤지만…?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "넌 반대로 너무 잇속을 챙길 줄 몰라서"
+      },
+      {
+        "speaker": "레베카",
+        "message": "여기저기 뜯기기만 하는 걸 보고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "저것도 좀 문제가 있다 싶었지…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 그랬었나…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 그랬었나…?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이것 봐, 자기가 뜯긴 줄도 모르잖냐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이래서 내가 널 가만히 둘 수가 없다니까"
+      },
+      {
+        "speaker": "레베카",
+        "message": "궁금했었는데, 구원자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래서 이디스 공주님이랑은?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어떻게 된 거냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이미 알면서 왜 물어…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이미 알면서 왜 물어…"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭘 알아? 모르는데?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "저번에 회의할 때"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이디스 공주님한테 아주 정신을 놓고 있던 거 말야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이디스 때문이 아니라 레베카 때문이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이디스 때문이 아니라 레베카 때문이야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 됐지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 됐지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "ㅇㅏ니"
+      },
+      {
+        "speaker": "레베카",
+        "message": "뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "딱히 뭐 그런 말을 조를 생각으로"
+      },
+      {
+        "speaker": "레베카",
+        "message": "물은 건 아니었긴한데뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "…그날 느낀 게 내 착각이 아니었단 말야…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아니 아무것도아니다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그냥 뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "지금 엄청 보고 싶어졌다고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그러고 보니 솔레이에 온 지 얼마 안됐을 때는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어린 정령들이 나한테 스스럼없이 접근하길래"
+      },
+      {
+        "speaker": "레베카",
+        "message": "좀 놀랐었지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "타브리아에서는 날 무서워하거나 존경하거나"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그 외 여러 이유로"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그렇게 편하게 구는 녀석이 얼마 없었거든"
+      },
+      {
+        "speaker": "레베카",
+        "message": "여기서 지낼 때는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그런 걸 신경 쓰지 않아도 되니 좋긴 했군"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무서운 레베카…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무서운 레베카…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "상상이 잘 안되네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "상상이 잘 안되네"
+      },
+      {
+        "speaker": "레베카",
+        "message": "당연하지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내가 너한테 얼마나"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그럭저럭 다정하고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그럭저럭 믿음직한 정령이 되려고"
+      },
+      {
+        "speaker": "레베카",
+        "message": "항상 은근히 노력을"
+      },
+      {
+        "speaker": "레베카",
+        "message": "."
+      },
+      {
+        "speaker": "레베카",
+        "message": "음 뭐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "많이 하지는 않았지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "조금 했어 조금"
+      },
+      {
+        "speaker": "구원자",
+        "message": "날 위해 노력해 줬구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "날 위해 노력해 줬구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 레베카"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 레베카"
+      },
+      {
+        "speaker": "레베카",
+        "message": "……."
+      },
+      {
+        "speaker": "레베카",
+        "message": "넌 정말이지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "이런 점 때문에 못 당하겠다니까…"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "어디냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "집무실인데…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "집무실인데…?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래 그래"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그럴 줄 알았다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "1분 뒤에 도착하니까"
+      },
+      {
+        "speaker": "레베카",
+        "message": "맞이할 준비하고 있도록"
+      },
+      {
+        "speaker": "레베카",
+        "message": "오늘도 또 연합군 회의구만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "요즘은 회의 때마다 우중충한 소식들뿐이니 원"
+      },
+      {
+        "speaker": "레베카",
+        "message": "회의 시작 시간 안 잊어버렸지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "지각하지 말고 오도록~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "레베카 님이 선물하신"
+      },
+      {
+        "speaker": "레베카",
+        "message": "레베카 님이 선물하신"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "레베카",
+        "message": "레베카 님이 선물하신"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 책들은 뭐야??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 책들은 뭐야??"
+      },
+      {
+        "speaker": "레베카",
+        "message": "한창 봄이 찾아온"
+      },
+      {
+        "speaker": "레베카",
+        "message": "우리 귀여운 구원자님한테 필요할 것 같아서?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "기껏 회의 끝나서 쉬려고 했더니만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "또 새 회의 잡혀서 가는 길인데"
+      },
+      {
+        "speaker": "레베카",
+        "message": "니 생각 나서 좀 샀다~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "부담 갖지 말고 취향껏 골라 읽으면 돼"
+      },
+      {
+        "speaker": "레베카",
+        "message": "회의 다녀올 테니 감상평 남겨놓도록~"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야, 얼굴 좀 보자"
+      },
+      {
+        "speaker": "레베카",
+        "message": "중요하게 할 말이 있으니"
+      },
+      {
+        "speaker": "레베카",
+        "message": "깔끔하고 번듯하게 딱 하고 나와"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카"
+      },
+      {
+        "speaker": "구원자",
+        "message": "레베카"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 어디에 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 어디에 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "타브리아에 가면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "타브리아에 가면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "50년은 안 돌아오는다는 거 정말이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "50년은 안 돌아오는다는 거 정말이야?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "ㄱㅜ"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원ㅈㅏ"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원 자야"
+      },
+      {
+        "speaker": "레베카",
+        "message": "방금 그건"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그냥 좀"
+      },
+      {
+        "speaker": "레베카",
+        "message": "당황해서"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그런 거니까"
+      },
+      {
+        "speaker": "레베카",
+        "message": "신경 쓰지 말고 넌 네가 있을 곳으로 돌아가"
+      },
+      {
+        "speaker": "레베카",
+        "message": "알겠냐 구원자야?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "왜 대답이 없어…?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "아무리 멀리 떨어져도,"
+      },
+      {
+        "speaker": "레베카",
+        "message": "날 잊지 마."
+      },
+      {
+        "speaker": "레베카",
+        "message": "약속이다, 구원자야."
+      },
+      {
+        "speaker": "레베카",
+        "message": "섭섭하게 여길 것 없어"
+      },
+      {
+        "speaker": "레베카",
+        "message": "넌 혼자서도 잘 해낼 거다"
+      },
+      {
+        "speaker": "레베카",
+        "message": "비록 거리는 좀 멀어지긴 하지만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "난 어디에 있든 변함없이"
+      },
+      {
+        "speaker": "레베카",
+        "message": "널 도울 테니까"
+      },
+      {
+        "speaker": "레베카",
+        "message": "떠나는 날짜가 잡혔어"
+      },
+      {
+        "speaker": "레베카",
+        "message": "일주일 뒤"
+      },
+      {
+        "speaker": "레베카",
+        "message": "떠나는 날까지"
+      },
+      {
+        "speaker": "레베카",
+        "message": "내가 너한테 해 줄 수 있는 건 뭐든 해 주고 가마"
+      },
+      {
+        "speaker": "레베카",
+        "message": "떠나는 날짜가 잡혔어"
+      },
+      {
+        "speaker": "레베카",
+        "message": "일주일 뒤"
+      },
+      {
+        "speaker": "레베카",
+        "message": "마지막 작별 인사 정도는"
+      },
+      {
+        "speaker": "레베카",
+        "message": "나와줄 거지?"
+      },
+      {
+        "speaker": "레베카",
+        "message": "고작 1년 지났다고 기념하다니"
+      },
+      {
+        "speaker": "레베카",
+        "message": "귀여운 녀석들!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로도 잘 부탁해, 레베카!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로도 잘 부탁해, 레베카!"
+      },
+      {
+        "speaker": "레베카",
+        "message": "사랑의 날이라고 오만 녀석이 들떴구만"
+      },
+      {
+        "speaker": "레베카",
+        "message": "구원자야, 너도 이거 받고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 고마워 레베카!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응, 고마워 레베카!"
+      },
+      {
+        "speaker": "레베카",
+        "message": "에고고. 삭신이 쑤시는 겨울에"
+      },
+      {
+        "speaker": "레베카",
+        "message": "그래도 뭐… 축하한다 구원자야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "메리 크리스마스, 레베카!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "메리 크리스마스, 레베카!"
+      }
+    ]
+  }
+}

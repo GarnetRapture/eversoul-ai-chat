@@ -1,0 +1,42 @@
+{
+  "id": "320",
+  "name": "르웨인",
+  "name_en": "Lewayne",
+  "grade": "레어",
+  "race": "요정형",
+  "class": "레인저",
+  "sub_class": "광역",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "잠꾸러기 궁수",
+    "constellation": "처녀자리",
+    "union": "페이렌 숲지기",
+    "birthday": "915",
+    "height": 151,
+    "weight": 41,
+    "cv_ko": "이지영",
+    "cv_jp": "Amane Makino",
+    "like": [
+      "숲"
+    ],
+    "dislike": [
+      "개구리"
+    ],
+    "hobby": [
+      "화살 고르기"
+    ],
+    "speciality": [
+      "나무 오르기"
+    ]
+  },
+  "personality": {
+    "description": "…조용히. 지금은 낮잠 시간.",
+    "greeting": "후~ 그럼 이제 한 숨 자볼까?"
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "6990",
+  "name": "야토가미 토카",
+  "name_en": "Tohka Yatogami",
+  "grade": "에픽",
+  "race": "혼돈형",
+  "class": "워리어",
+  "sub_class": "광역",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "프린세스",
+    "constellation": null,
+    "union": "데이트 어 라이브V",
+    "birthday": "410",
+    "height": 155,
+    "weight": null,
+    "cv_ko": "Marina Inoue",
+    "cv_jp": "Marina Inoue",
+    "like": [
+      "콩고물 빵"
+    ],
+    "dislike": [
+      "주사",
+      "매실장아찌"
+    ],
+    "hobby": [
+      "돌아다니면서 먹기"
+    ],
+    "speciality": [
+      "운동 전반"
+    ]
+  },
+  "personality": {
+    "description": "그럼 우리 서로를 잘 알게되었으니 다시 한번 인사하마! ",
+    "greeting": "토카. 내 이름이다. "
+  },
+  "speech_patterns": [],
+  "comments": [
+    {
+      "writer": "토키사키 쿠루미",
+      "comment": "토카 양은 얼빠졌을 정도로 착한 사람이지만, 그 힘은 진짜랍니다. "
+    },
+    {
+      "writer": "미리암",
+      "comment": "얘를 조금이라도 의심한 내가 바보처럼 느껴져. "
+    },
+    {
+      "writer": "유리아",
+      "comment": "우연으로 만났지만 정말 멋진 분이랍니다. "
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

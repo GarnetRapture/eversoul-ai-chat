@@ -1,0 +1,1301 @@
+{
+  "id": "6050",
+  "name": "이브",
+  "name_en": "Eve",
+  "grade": "에픽",
+  "race": "악마형",
+  "class": "디펜더",
+  "sub_class": "보호",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "금지된 지혜",
+    "constellation": "염소자리",
+    "union": "파우스트 공방",
+    "birthday": "1228",
+    "height": 154,
+    "weight": 46,
+    "cv_ko": "이현진",
+    "cv_jp": "이현진",
+    "like": [
+      "실험",
+      "논리적인 결론"
+    ],
+    "dislike": [
+      "맹목"
+    ],
+    "hobby": [
+      "바깥 돌아다니기"
+    ],
+    "speciality": [
+      "분석",
+      "회유"
+    ]
+  },
+  "personality": {
+    "description": "그래, 네가 바로 구원자라고 불리는 인간의 아이구나. ",
+    "greeting": "나는 파괴하고, 또한 창조하는 자. "
+  },
+  "speech_patterns": [
+    "이게 바로 에버톡…",
+    "정령들은 여전히 ",
+    "사용법은 잘 알았어",
+    "앞으로 무슨 일이 있다면 ",
+    "…….",
+    "그래",
+    "잘 부탁할게",
+    "네가 나를 구했으니",
+    "나도 너를 돕도록 하지",
+    "하지만 기억해 둬",
+    "나는 어디까지나 의리로 너를 돕겠지만",
+    "너와 가까워질 생각은 없어",
+    "너 뿐만이 아니라 ",
+    "나와 원만한 관계를 유지하고 싶다면 ",
+    "구원자",
+    "가급적 빨리 네 방으로 돌아가",
+    "저번에 시장에서 과일을 받은 걸 사양했더니",
+    "오히려 기회라면서 ",
+    "구원자 너와 함께 시장에 나가서 그랬는지",
+    "영주님이 계신 방주로 ",
+    "…어차피 내가 물건을 안 받아들이거나 ",
+    "영주님께 헌상될 테니  ",
+    "어쨌건… 혼자서는 다 못 먹으니까",
+    "…그런 짓은 못 해",
+    "글쎄…",
+    "뭐… ",
+    "포기하고 싶어지면 ",
+    "비록 네가 패배하더라도 ",
+    "그저 너와 거리를 둘 뿐이야",
+    "내 매혹의 저주를 알고도",
+    "역시 너는 약간…",
+    "아니면 매혹의 저주에 걸려보고 싶은 거야?",
+    "…지금 나한테 떼 쓰는 거야?",
+    "네 말은 전혀 논리적이지 않아",
+    "인간은…",
+    "잘 알겠어",
+    "네가 바라는대로 하도록 해",
+    "나는 분명 경고 했어",
+    "급작스러운 질문에 당황한 것 같네",
+    "내가 위험해 보이냐는 질문…",
+    "정답이 있지만 없는 질문이야",
+    "그저 너의 생각을 알고 싶은 것뿐",
+    "그러니까 편하게 의견을 들려줘",
+    "…상관 없다만",
+    "안젤리카는…",
+    "둘도 없는 친구",
+    "내게 이 육신을 준 존재",
+    "나는 인간을 싫어하지만",
+    "지금도 안젤리카만큼은 아끼고 있어",
+    "안젤리카가 숨을 거두는 순간에 "
+  ],
+  "comments": [
+    {
+      "writer": "메피스토펠레스",
+      "comment": "어딘가 계속 그립고, 친숙한 느낌이 듭니다. 하지만, 지독히 슬픈 느낌 역시 드네요…"
+    },
+    {
+      "writer": "비비안",
+      "comment": "단순해 보이지만 생각이 많고, 생각이 많아 보이지만 단순하단다. 까다로운 정령이지."
+    },
+    {
+      "writer": "캐서린",
+      "comment": "태초의 어머니 정령 이브… 직접 만나뵈니 무어라 말을 건네야 할지 모르겠네요…"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "이브",
+        "message": "이게 바로 에버톡…"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령들은 여전히 "
+      },
+      {
+        "speaker": "이브",
+        "message": "사용법은 잘 알았어"
+      },
+      {
+        "speaker": "이브",
+        "message": "앞으로 무슨 일이 있다면 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해 이브"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 부탁해 이브"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "그래"
+      },
+      {
+        "speaker": "이브",
+        "message": "잘 부탁할게"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 나를 구했으니"
+      },
+      {
+        "speaker": "이브",
+        "message": "나도 너를 돕도록 하지"
+      },
+      {
+        "speaker": "이브",
+        "message": "하지만 기억해 둬"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 어디까지나 의리로 너를 돕겠지만"
+      },
+      {
+        "speaker": "이브",
+        "message": "너와 가까워질 생각은 없어"
+      },
+      {
+        "speaker": "이브",
+        "message": "너 뿐만이 아니라 "
+      },
+      {
+        "speaker": "이브",
+        "message": "나와 원만한 관계를 유지하고 싶다면 "
+      },
+      {
+        "speaker": "이브",
+        "message": "구원자"
+      },
+      {
+        "speaker": "이브",
+        "message": "가급적 빨리 네 방으로 돌아가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "웬 과일이야???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "웬 과일이야???"
+      },
+      {
+        "speaker": "이브",
+        "message": "저번에 시장에서 과일을 받은 걸 사양했더니"
+      },
+      {
+        "speaker": "이브",
+        "message": "오히려 기회라면서 "
+      },
+      {
+        "speaker": "이브",
+        "message": "구원자 너와 함께 시장에 나가서 그랬는지"
+      },
+      {
+        "speaker": "이브",
+        "message": "영주님이 계신 방주로 "
+      },
+      {
+        "speaker": "이브",
+        "message": "…어차피 내가 물건을 안 받아들이거나 "
+      },
+      {
+        "speaker": "이브",
+        "message": "영주님께 헌상될 테니  "
+      },
+      {
+        "speaker": "이브",
+        "message": "어쨌건… 혼자서는 다 못 먹으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 버리진 않는구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 버리진 않는구나"
+      },
+      {
+        "speaker": "이브",
+        "message": "…그런 짓은 못 해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "과일엔 죄가 없어서?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "과일엔 죄가 없어서?"
+      },
+      {
+        "speaker": "이브",
+        "message": "글쎄…"
+      },
+      {
+        "speaker": "이브",
+        "message": "뭐… "
+      },
+      {
+        "speaker": "이브",
+        "message": "구원자"
+      },
+      {
+        "speaker": "이브",
+        "message": "포기하고 싶어지면 "
+      },
+      {
+        "speaker": "이브",
+        "message": "비록 네가 패배하더라도 "
+      },
+      {
+        "speaker": "이브",
+        "message": "그저 너와 거리를 둘 뿐이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 그게 서운해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 그게 서운해"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "내 매혹의 저주를 알고도"
+      },
+      {
+        "speaker": "이브",
+        "message": "역시 너는 약간…"
+      },
+      {
+        "speaker": "이브",
+        "message": "아니면 매혹의 저주에 걸려보고 싶은 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저주에 걸리고 싶은 건 아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저주에 걸리고 싶은 건 아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그치만 이브랑 멀어지는 건 싫어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그치만 이브랑 멀어지는 건 싫어"
+      },
+      {
+        "speaker": "이브",
+        "message": "…지금 나한테 떼 쓰는 거야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "네 말은 전혀 논리적이지 않아"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "인간은…"
+      },
+      {
+        "speaker": "이브",
+        "message": "잘 알겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 바라는대로 하도록 해"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 분명 경고 했어"
+      },
+      {
+        "speaker": "이브",
+        "message": "급작스러운 질문에 당황한 것 같네"
+      },
+      {
+        "speaker": "이브",
+        "message": "내가 위험해 보이냐는 질문…"
+      },
+      {
+        "speaker": "이브",
+        "message": "정답이 있지만 없는 질문이야"
+      },
+      {
+        "speaker": "이브",
+        "message": "그저 너의 생각을 알고 싶은 것뿐"
+      },
+      {
+        "speaker": "이브",
+        "message": "그러니까 편하게 의견을 들려줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 전에…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 전에…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 하나 물어봐도 돼?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐 하나 물어봐도 돼?"
+      },
+      {
+        "speaker": "이브",
+        "message": "…상관 없다만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안젤리카가 대체 누구야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안젤리카가 대체 누구야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "안젤리카는…"
+      },
+      {
+        "speaker": "이브",
+        "message": "둘도 없는 친구"
+      },
+      {
+        "speaker": "이브",
+        "message": "내게 이 육신을 준 존재"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 인간을 싫어하지만"
+      },
+      {
+        "speaker": "이브",
+        "message": "지금도 안젤리카만큼은 아끼고 있어"
+      },
+      {
+        "speaker": "이브",
+        "message": "안젤리카가 숨을 거두는 순간에 "
+      },
+      {
+        "speaker": "이브",
+        "message": "어째서 인간은 그렇게 쉽게 죽는 걸까…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 죽을 때는 옆에 있을래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 죽을 때는 옆에 있을래?"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "그래"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 죽는 모습은 내가 지켜봐줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 생각해 봤는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 생각해 봤는데…"
+      },
+      {
+        "speaker": "이브",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 위험하기도 하고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 위험하기도 하고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안 위험하기도 해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안 위험하기도 해"
+      },
+      {
+        "speaker": "이브",
+        "message": "……? "
+      },
+      {
+        "speaker": "이브",
+        "message": "지난 번에 물어본 질문에 대한 답이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "객관적으로 보면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "객관적으로 보면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브의 능력은 확실히 위험한데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브의 능력은 확실히 위험한데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것만으로 위험하다고 하는 건 이상해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것만으로 위험하다고 하는 건 이상해"
+      },
+      {
+        "speaker": "이브",
+        "message": "능력이 위험하면 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 이브는 싸움을 싫어하잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 이브는 싸움을 싫어하잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세상을 멸망시키고 싶어하지도 않고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "세상을 멸망시키고 싶어하지도 않고"
+      },
+      {
+        "speaker": "이브",
+        "message": "…내 입장은 언제든지 "
+      },
+      {
+        "speaker": "이브",
+        "message": "지금에야 너와 함께 지내고 있고"
+      },
+      {
+        "speaker": "이브",
+        "message": "나도 이유가 있다면 "
+      },
+      {
+        "speaker": "이브",
+        "message": "그럼에도 나는 위험하지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브가 적이라면 무섭겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브가 적이라면 무섭겠다"
+      },
+      {
+        "speaker": "이브",
+        "message": "하지만 너는 지금의 내가 아군이니까 "
+      },
+      {
+        "speaker": "이브",
+        "message": "네 생각은 잘 알겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "너는 많이… 무르군"
+      },
+      {
+        "speaker": "이브",
+        "message": "…역시 내가 아는 인간들과는 달라"
+      },
+      {
+        "speaker": "이브",
+        "message": "오늘도 또 과일이 도착했어"
+      },
+      {
+        "speaker": "이브",
+        "message": "이번에는 과일 뿐만 아니라 "
+      },
+      {
+        "speaker": "이브",
+        "message": "…그만했으면 좋겠는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 이런 걸 받으면 귀찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 이런 걸 받으면 귀찮아?"
+      },
+      {
+        "speaker": "이브",
+        "message": "귀찮은 게 아니야"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는…"
+      },
+      {
+        "speaker": "이브",
+        "message": "이런 호의에 "
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 정령도 인간도 "
+      },
+      {
+        "speaker": "이브",
+        "message": "내게 어떤 선물을 주더라도"
+      },
+      {
+        "speaker": "이브",
+        "message": "내게 아무리 애정을 쏟더라도"
+      },
+      {
+        "speaker": "이브",
+        "message": "그럼에도 대체 왜 이러는 걸까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 미안한 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 미안한 거야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "내가 어째서?"
+      },
+      {
+        "speaker": "이브",
+        "message": "…그저 곤란할 뿐이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 보통 이런 경우에는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 보통 이런 경우에는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "호의에 답하지 못하는 걸 신경쓰기보다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "호의에 답하지 못하는 걸 신경쓰기보다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "상대를 귀찮게 생각하지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "상대를 귀찮게 생각하지 않아?"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "그렇게 생각해 본 적은…"
+      },
+      {
+        "speaker": "이브",
+        "message": "단 한번도 없어…"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "공식적으로 알려진 태초의 정령은 나지만"
+      },
+      {
+        "speaker": "이브",
+        "message": "태초의 정령은 나 혼자가 아니야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "이브",
+        "message": "나와는 다른 또 한 명의 태초의 정령…"
+      },
+      {
+        "speaker": "이브",
+        "message": "그 아이는 나랑 달리 "
+      },
+      {
+        "speaker": "이브",
+        "message": "많은 이들에게 사랑받는 일도 없었지"
+      },
+      {
+        "speaker": "이브",
+        "message": "오직 공방만이 그의 존재를 알고 있었어"
+      },
+      {
+        "speaker": "이브",
+        "message": "먼 옛날의 나는 세상에 알려지지 않은 "
+      },
+      {
+        "speaker": "이브",
+        "message": "너무 많은 시선을 받아버린 "
+      },
+      {
+        "speaker": "이브",
+        "message": "세상에 외면당한 그 아이와 "
+      },
+      {
+        "speaker": "이브",
+        "message": "진짜로 행복한 건 어느 쪽이었을까…"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령이란 존재는 어째서 태어난 걸까"
+      },
+      {
+        "speaker": "이브",
+        "message": "가끔 그런 의문을 품을 때가 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑작스럽네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑작스럽네"
+      },
+      {
+        "speaker": "이브",
+        "message": "너희들 인간은 "
+      },
+      {
+        "speaker": "이브",
+        "message": "우리들 정령의 원형이 되는 ANIMA는 "
+      },
+      {
+        "speaker": "이브",
+        "message": "지금의 지구…"
+      },
+      {
+        "speaker": "이브",
+        "message": "에덴처럼 마나가 풍부한 곳이라면"
+      },
+      {
+        "speaker": "이브",
+        "message": "기본적으로 우리는 영혼에 불과해"
+      },
+      {
+        "speaker": "이브",
+        "message": "먼 과거 초인류들이 존재하던 세계에서는…"
+      },
+      {
+        "speaker": "이브",
+        "message": "ANIMA 중에서도 특별히 강한 "
+      },
+      {
+        "speaker": "이브",
+        "message": "여기서는 그렇게 강하지 않은 "
+      },
+      {
+        "speaker": "이브",
+        "message": "…그들의 존재 의미는 무엇일까"
+      },
+      {
+        "speaker": "이브",
+        "message": "게이트 사건을 해결하기 위해 "
+      },
+      {
+        "speaker": "이브",
+        "message": "그런 약한 정령들의 존재는 오히려 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "자연의 법칙대로라면 그런 약한 존재는"
+      },
+      {
+        "speaker": "이브",
+        "message": "강력한 개체만이 남을텐데도…"
+      },
+      {
+        "speaker": "이브",
+        "message": "에덴은 오히려 그런 약한 정령들이"
+      },
+      {
+        "speaker": "이브",
+        "message": "무리에서 탈락자가 나타나지 않도록 "
+      },
+      {
+        "speaker": "이브",
+        "message": "인간이 없어져버린 이 세상에서…"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령들은 새로운 인간이 되고 싶은 걸까…"
+      },
+      {
+        "speaker": "이브",
+        "message": "나를 깨운게 네가 아니었다면…"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 아마 다시 잠들기를 택했겠지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 보니 묻고 싶었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 보니 묻고 싶었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 어째서 날 돕는 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 어째서 날 돕는 거야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "궁금해"
+      },
+      {
+        "speaker": "이브",
+        "message": "초인류의 인간이 아닌 "
+      },
+      {
+        "speaker": "이브",
+        "message": "아니면 다른 희망을 가질 수 있을지"
+      },
+      {
+        "speaker": "이브",
+        "message": "아주 오랜 세월동안 "
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 아직도 판단하지 못하고 있어"
+      },
+      {
+        "speaker": "이브",
+        "message": "너희에게는 분명 선성이라는 게 "
+      },
+      {
+        "speaker": "이브",
+        "message": "동시에 악성이라고 부를 만한 "
+      },
+      {
+        "speaker": "이브",
+        "message": "그 두 가지 성질 중 "
+      },
+      {
+        "speaker": "이브",
+        "message": "지켜보고 싶다고 생각했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…이건 내 착각일 수도 있는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…이건 내 착각일 수도 있는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 인간을 믿고 싶어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브는 인간을 믿고 싶어?"
+      },
+      {
+        "speaker": "이브",
+        "message": "…모르겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "나 자신도 내가 어떤 감정인지"
+      },
+      {
+        "speaker": "이브",
+        "message": "어쩌면 내가 네게 내기를 권한 것도…"
+      },
+      {
+        "speaker": "이브",
+        "message": "너를 믿을 만한 존재라고"
+      },
+      {
+        "speaker": "이브",
+        "message": "인간은 자주 아프곤 하지"
+      },
+      {
+        "speaker": "이브",
+        "message": "먼 옛날…"
+      },
+      {
+        "speaker": "이브",
+        "message": "나도 때때로 공방의 인간들을 간호하곤 했어"
+      },
+      {
+        "speaker": "이브",
+        "message": "반대로 내게 무슨 일이 생겼을 때도 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 식으로 돌봐줬는데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 식으로 돌봐줬는데?"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령술사가 정령을 관리하는 것과 같아"
+      },
+      {
+        "speaker": "이브",
+        "message": "내가 공방에서 지내던 시절에는 "
+      },
+      {
+        "speaker": "이브",
+        "message": "다양한 수단으로 날 간호하려 했지"
+      },
+      {
+        "speaker": "이브",
+        "message": "인간처럼 침대에 눕히고 "
+      },
+      {
+        "speaker": "이브",
+        "message": "환자가 먹는 음식을 만들어서 먹이거나…"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령을 제작하는 데 쓰이는 설비를 써서"
+      },
+      {
+        "speaker": "이브",
+        "message": "그 덕분에 정령술의 기초를 다졌다고는 하는데… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "하는데…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하는데…?"
+      },
+      {
+        "speaker": "이브",
+        "message": "당시 내게 있어 제일 큰 영향을 미친 건…"
+      },
+      {
+        "speaker": "이브",
+        "message": "인간들이 나를 보며 걱정하는 얼굴이었던 것 같아"
+      },
+      {
+        "speaker": "이브",
+        "message": "정령은 영혼이 육신을 얻은 존재니…"
+      },
+      {
+        "speaker": "이브",
+        "message": "마음으로 입은 상처는 마음으로 치료하는 게 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…나도 언젠가는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…나도 언젠가는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브의 마음이 다쳤을 때 치료해줄 수 있을까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이브의 마음이 다쳤을 때 치료해줄 수 있을까"
+      },
+      {
+        "speaker": "이브",
+        "message": "…글쎄"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 치료하기에는 내 상처는 너무 오래되어서"
+      },
+      {
+        "speaker": "이브",
+        "message": "그래도…"
+      },
+      {
+        "speaker": "이브",
+        "message": "시도해보는 건 나쁘진 않겠지"
+      },
+      {
+        "speaker": "이브",
+        "message": "나가는 건 가급적 지양하고 있었지만…"
+      },
+      {
+        "speaker": "이브",
+        "message": "그래도 정령술사인 너와 함께라면 "
+      },
+      {
+        "speaker": "이브",
+        "message": "정령들만의 세상에서 "
+      },
+      {
+        "speaker": "이브",
+        "message": "내 눈으로 직접 확인하겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "구원자"
+      },
+      {
+        "speaker": "이브",
+        "message": "약속대로 시장에서 벌어진 일에 대해 설명해줄게"
+      },
+      {
+        "speaker": "이브",
+        "message": "이따가 내 개인실로 오도록 해"
+      },
+      {
+        "speaker": "이브",
+        "message": "드디어 내기가 본격적으로 시작되었군"
+      },
+      {
+        "speaker": "이브",
+        "message": "언제쯤 널 만나러 가면 되지?"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "구원자?"
+      },
+      {
+        "speaker": "이브",
+        "message": "……."
+      },
+      {
+        "speaker": "이브",
+        "message": "자고 있나…?"
+      },
+      {
+        "speaker": "이브",
+        "message": "오늘은 내 질문에 대답할 수 있겠어?"
+      },
+      {
+        "speaker": "이브",
+        "message": "저번에도 말했지만"
+      },
+      {
+        "speaker": "이브",
+        "message": "긴장할 필요 없어"
+      },
+      {
+        "speaker": "이브",
+        "message": "그저 네 생각을 말하면 돼"
+      },
+      {
+        "speaker": "이브",
+        "message": "설마 일이 이렇게 커질 줄이야…"
+      },
+      {
+        "speaker": "이브",
+        "message": "어떻게든 해결할 방법을 찾아야겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "신세를 좀 지도록 하지"
+      },
+      {
+        "speaker": "이브",
+        "message": "오늘이네"
+      },
+      {
+        "speaker": "이브",
+        "message": "지긋지긋한 착각을 끝내는 날이"
+      },
+      {
+        "speaker": "이브",
+        "message": "걱정하지 마"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 남들 앞에 나서는 데에 익숙하니까"
+      },
+      {
+        "speaker": "이브",
+        "message": "어떻게든 될 거야"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 정령술사인 이상 "
+      },
+      {
+        "speaker": "이브",
+        "message": "그래도 이런 형태로 보여주고 싶지는 않았어"
+      },
+      {
+        "speaker": "이브",
+        "message": "…나의 치부를 무방비하게 노출한"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는 아주 치욕스러워"
+      },
+      {
+        "speaker": "이브",
+        "message": "어디서부터 잘못된 건지 모르겠어"
+      },
+      {
+        "speaker": "이브",
+        "message": "내가 너를 더 밀어냈어야 했을까"
+      },
+      {
+        "speaker": "이브",
+        "message": "아니면 반대로 너를 완전히 받아들였어야 했을까"
+      },
+      {
+        "speaker": "이브",
+        "message": "이런 결말은 예상하지 못했어"
+      },
+      {
+        "speaker": "이브",
+        "message": "나는…"
+      },
+      {
+        "speaker": "이브",
+        "message": "너를 아끼고 싶었는데… "
+      },
+      {
+        "speaker": "이브",
+        "message": "승부에 비겁한 수를 쓰다니…"
+      },
+      {
+        "speaker": "이브",
+        "message": "하지만…"
+      },
+      {
+        "speaker": "이브",
+        "message": "너의 기지는 인정하도록 할게"
+      },
+      {
+        "speaker": "이브",
+        "message": "계속해서 너를 지켜볼 거야"
+      },
+      {
+        "speaker": "이브",
+        "message": "네가 유혹에 질지"
+      },
+      {
+        "speaker": "이브",
+        "message": "아니면… 계속해서 유혹에 이길 수 있을지"
+      },
+      {
+        "speaker": "이브",
+        "message": "네 앞에만 서면 자꾸 마음이 약해져"
+      },
+      {
+        "speaker": "이브",
+        "message": "너는 나를 도대체 어떻게 하고 싶은 거야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "이 이상 소중한 건 만들지 않겠다고 다짐했는데"
+      },
+      {
+        "speaker": "이브",
+        "message": "자꾸 네가 나의 연약한 부분으로 파고들고 말아"
+      },
+      {
+        "speaker": "이브",
+        "message": "너를 만난 것 자체가"
+      },
+      {
+        "speaker": "이브",
+        "message": "내게는 구원이라고 인정해야 하는 거야?"
+      },
+      {
+        "speaker": "이브",
+        "message": "알려줘"
+      },
+      {
+        "speaker": "정령",
+        "message": "네가 나한테 받는 선물을 기뻐할 지는 모르겠지만"
+      },
+      {
+        "speaker": "정령",
+        "message": "일단 그래도…"
+      },
+      {
+        "speaker": "정령",
+        "message": "해피 발렌타인, 구원자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 이브! 사랑이 느껴져!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 이브! 사랑이 느껴져!"
+      },
+      {
+        "speaker": "정령",
+        "message": "아는 게 많아질 수록 "
+      },
+      {
+        "speaker": "정령",
+        "message": "무지함 또한 축복이지만"
+      },
+      {
+        "speaker": "정령",
+        "message": "새로운 사실을 배워서 스스로를 무장하는 쾌락…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 이브! 조만간 찾아갈게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워 이브! 조만간 찾아갈게!"
+      },
+      {
+        "speaker": "정령",
+        "message": "…이브의 날이라니"
+      },
+      {
+        "speaker": "정령",
+        "message": "하지만 네게는 딱히 죄가 없으니"
+      },
+      {
+        "speaker": "정령",
+        "message": "…해피 홀리데이."
+      },
+      {
+        "speaker": "구원자",
+        "message": "해피 홀리데이, 이브!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "해피 홀리데이, 이브!"
+      }
+    ]
+  }
+}

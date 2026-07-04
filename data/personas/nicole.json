@@ -1,0 +1,1236 @@
+{
+  "id": "3070",
+  "name": "니콜",
+  "name_en": "Nicole",
+  "grade": "에픽",
+  "race": "요정형",
+  "class": "레인저",
+  "sub_class": "광역",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "숲의 바람",
+    "constellation": "처녀자리",
+    "union": "페이렌 숲지기",
+    "birthday": "912",
+    "height": 163,
+    "weight": 47,
+    "cv_ko": "이지선",
+    "cv_jp": "Tomoyo Takayanagi",
+    "like": [
+      "자유",
+      "무한 리필"
+    ],
+    "dislike": [
+      "계획"
+    ],
+    "hobby": [
+      "새 모이 주기"
+    ],
+    "speciality": [
+      "풀잎 피리 불기"
+    ]
+  },
+  "personality": {
+    "description": "오, 안녕? 네가 구원자? 난 니콜! 명사수라는 말을 앞에 붙여주면 좀 더 좋고. 하핫. 내 활은 백발백중이라구.",
+    "greeting": "좋아, 이번에도 완벽한 호흡이야."
+  },
+  "speech_patterns": [
+    "구원자~ 안녕!",
+    "헤헤~ 매돌이도 인사! 안녕!",
+    "태평, 미소, 여유! 이게 내 좌우명이야",
+    "숲에서 지내다 보면",
+    "시간이 날 때 언제든 숲에 놀러 와",
+    "우리 매돌이도 소개시켜줄 겸,",
+    "아, 난 방안에 있을 때보다",
+    "그러니까 날 찾을 땐 그냥 숲에 와서",
+    "매돌이가 귀가 좋아서 숲 인근이라면",
+    "응!",
+    "헤헤, 벌써부터 기대되는걸?",
+    "그럼 기대하고 있을게!",
+    "뭔가 미안한걸",
+    "방주에 있는 방 그대로 써도 됐는데",
+    "굳이 일반적인 정령 숙소처럼 꾸며주다니",
+    "친절하네",
+    "고마워 구원자",
+    "답례로 뭔가 해주고 싶은데",
+    "구원자한테 과연 내가 ",
+    "아",
+    "좋은 생각이 떠올랐어",
+    "조금만 기다려봐",
+    "내가 금방 숲에서 ",
+    "아케나인에서 지내다보니까 ",
+    "나쁜 의미는 아니고",
+    "내가 모르는 사이 ",
+    "어디 구경을 간다고 해도 ",
+    "아 역시?",
+    "다들 익숙한 풍경이 달라서 그런가…",
+    "표지판을 보고 다니는 거보다 ",
+    "좀 그런 편이긴 해",
+    "자연을 보다 풍부하게 느낄 수 있어서 좋지만",
+    "때로는 이런 감각을 남과 ",
+    "뭐… 어쩔 수 없는 건 ",
+    "서로 느끼는 게 달라도 ",
+    "동물과 식물이 서로 달라도 ",
+    "다 그런 거겠지",
+    "안 그래?",
+    "그러고 보니 한때는 ",
+    "나는 사실 음식에까지 ",
+    "구원자는 어때?",
+    "귀여운 도시락 보면 ",
+    "헤에… '특별하다'라…",
+    "그렇네… 그럴지도… ",
+    "나는 보통 내가 매돌이랑 ",
+    "특별하다는 의식은 해본 적이 없었어",
+    "좋아…",
+    "그럼 이번엔 구원자를 위해 만드는 거니까",
+    "조금은 의식해볼까나",
+    "헤헤"
+  ],
+  "comments": [
+    {
+      "writer": "미리암",
+      "comment": "먹는 양이 내 다섯 배 정도 돼. 다 어디로 들어가는 걸까?"
+    },
+    {
+      "writer": "레베카",
+      "comment": "잘 먹는 걸 보면 내가 다 기분이 좋더라. 크. 어디 대회 내보내야 돼."
+    },
+    {
+      "writer": "도라",
+      "comment": "내 포도를 매돌이가 먹었어! 으앙~!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "니콜",
+        "message": "구원자~ 안녕!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "헤헤~ 매돌이도 인사! 안녕!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "되게 활기차 보이네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "되게 활기차 보이네"
+      },
+      {
+        "speaker": "니콜",
+        "message": "태평, 미소, 여유! 이게 내 좌우명이야"
+      },
+      {
+        "speaker": "니콜",
+        "message": "숲에서 지내다 보면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "니콜",
+        "message": "시간이 날 때 언제든 숲에 놀러 와"
+      },
+      {
+        "speaker": "니콜",
+        "message": "우리 매돌이도 소개시켜줄 겸,"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아, 난 방안에 있을 때보다"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그러니까 날 찾을 땐 그냥 숲에 와서"
+      },
+      {
+        "speaker": "니콜",
+        "message": "매돌이가 귀가 좋아서 숲 인근이라면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조만간 들러볼게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조만간 들러볼게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "응!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "헤헤, 벌써부터 기대되는걸?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그럼 기대하고 있을게!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "뭔가 미안한걸"
+      },
+      {
+        "speaker": "니콜",
+        "message": "방주에 있는 방 그대로 써도 됐는데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "굳이 일반적인 정령 숙소처럼 꾸며주다니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜이 조금이라도 편하게 지냈으면 하거든"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜이 조금이라도 편하게 지냈으면 하거든"
+      },
+      {
+        "speaker": "니콜",
+        "message": "친절하네"
+      },
+      {
+        "speaker": "니콜",
+        "message": "고마워 구원자"
+      },
+      {
+        "speaker": "니콜",
+        "message": "답례로 뭔가 해주고 싶은데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자한테 과연 내가 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "좋은 생각이 떠올랐어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "조금만 기다려봐"
+      },
+      {
+        "speaker": "니콜",
+        "message": "내가 금방 숲에서 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 진짜 숲에 간거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 진짜 숲에 간거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜…?!?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜…?!?!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아케나인에서 지내다보니까 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "나쁜 의미는 아니고"
+      },
+      {
+        "speaker": "니콜",
+        "message": "내가 모르는 사이 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "어디 구경을 간다고 해도 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 숲에 가면 그런 느낌인데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 숲에 가면 그런 느낌인데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아 역시?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "다들 익숙한 풍경이 달라서 그런가…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "표지판을 보고 다니는 거보다 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜은 정말 감각이 예민하구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜은 정말 감각이 예민하구나"
+      },
+      {
+        "speaker": "니콜",
+        "message": "좀 그런 편이긴 해"
+      },
+      {
+        "speaker": "니콜",
+        "message": "자연을 보다 풍부하게 느낄 수 있어서 좋지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "때로는 이런 감각을 남과 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "뭐… 어쩔 수 없는 건 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "서로 느끼는 게 달라도 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "동물과 식물이 서로 달라도 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "다 그런 거겠지"
+      },
+      {
+        "speaker": "니콜",
+        "message": "안 그래?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그러고 보니 한때는 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "나는 사실 음식에까지 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자는 어때?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "귀여운 도시락 보면 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 좀 기쁘지 않을까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아무래도 좀 기쁘지 않을까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "특별하다는 느낌이 드니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "특별하다는 느낌이 드니까"
+      },
+      {
+        "speaker": "니콜",
+        "message": "헤에… '특별하다'라…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇네… 그럴지도… "
+      },
+      {
+        "speaker": "니콜",
+        "message": "나는 보통 내가 매돌이랑 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "특별하다는 의식은 해본 적이 없었어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "좋아…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그럼 이번엔 구원자를 위해 만드는 거니까"
+      },
+      {
+        "speaker": "니콜",
+        "message": "조금은 의식해볼까나"
+      },
+      {
+        "speaker": "니콜",
+        "message": "헤헤"
+      },
+      {
+        "speaker": "니콜",
+        "message": "근데 구원자"
+      },
+      {
+        "speaker": "니콜",
+        "message": "진짜 괜찮았어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "도시락 말이야"
+      },
+      {
+        "speaker": "니콜",
+        "message": "내가 남은거 싸가겠다고 하긴 했는데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "결국 그렇게 잔뜩 먹고 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "무리한 거 아닌가 싶어서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "방주의 냉장고는 엄청 널널하니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "방주의 냉장고는 엄청 널널하니까"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그래? 그렇다면 다행인데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "게다가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "게다가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금은 어차피 니콜하고 같이 살고 있으니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금은 어차피 니콜하고 같이 살고 있으니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜이 싸가는 거나 내가 싸가는 거나 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜이 싸가는 거나 내가 싸가는 거나 같아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "…어?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "생각해보니 그렇네!?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "우와"
+      },
+      {
+        "speaker": "니콜",
+        "message": "갑자기 엄청 부끄러워졌어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 지금 구원자랑 같이 살고 있구나"
+      },
+      {
+        "speaker": "니콜",
+        "message": "…방주는 넓으니까 자각 못했어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그럼… 만나고 싶을 때 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇지"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그 그래"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇구나…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "…설마 이렇게 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "비록… 기간 한정이긴 하지만…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그동안 잘 부탁할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그동안 잘 부탁할게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 나야말로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정식으로 사귀는 사이가 될 수 있게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정식으로 사귀는 사이가 될 수 있게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "최선을 다하겠습니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "최선을 다하겠습니다"
+      },
+      {
+        "speaker": "니콜",
+        "message": "가가가가갑자기 그게 무슨 소리야!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 진지한데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 진지한데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그그그건 알겠지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그……"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 나같은 애로 괜찮겠어?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자 네 주변에는 워낙 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "일개 숲지기인 나로 괜찮나 싶어서"
+      },
+      {
+        "speaker": "니콜",
+        "message": "사실 아직도 구원자랑 사귀기로 했다는 게 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "이거 진짜 꿈 아니겠지…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "꿈 아니야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "꿈 아니야"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그… 그래"
+      },
+      {
+        "speaker": "니콜",
+        "message": "이게 바로 현실…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "꿈이 아니구나…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "매돌이 녀석…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아무리 내가 키우는 건 아니라고 해도…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "이렇게까지 코빼기도 안 비추는 건 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 보니 한 번도 못봤네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 보니 한 번도 못봤네"
+      },
+      {
+        "speaker": "니콜",
+        "message": "하아… 마지막으로 본 게 바로 이 때야"
+      },
+      {
+        "speaker": "니콜",
+        "message": "계속 저렇게 다른 매랑 붙어 다니더라고"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇게 좋은가… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "이해는 갈지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이해는 갈지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 니콜하고 계속 같이 있고 싶은걸"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 니콜하고 계속 같이 있고 싶은걸"
+      },
+      {
+        "speaker": "니콜",
+        "message": "뭐어어어어!?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구 구원자 진짜 부끄러운 말 잘한다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짠데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짠데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜은 안 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜은 안 그래?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그 그렇게 묻는 건 치사하잖아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그런 식으로 물어보면"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그야 당연히…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 나도"
+      },
+      {
+        "speaker": "니콜",
+        "message": "같이 있고 싶지…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "……."
+      },
+      {
+        "speaker": "니콜",
+        "message": "지금 집무실로 가도 돼…?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자랑 같이 있다보면"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그게 나쁜 느낌은 아니긴 한데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "한편으로는 계속 뭐라도 해야 하는거 아닌가 싶어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 좀 이상한 건가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보면 볼수록 니콜도 상당한 워커홀릭 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보면 볼수록 니콜도 상당한 워커홀릭 같아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그런가…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그치만…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "숲지기 애들이 걱정했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "숲지기 애들이 걱정했어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "……끙…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇지만… 불안한걸…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "내가… 숲을 지키지 않으면… "
+      },
+      {
+        "speaker": "니콜",
+        "message": "마치 그때 그날처럼…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "……."
+      },
+      {
+        "speaker": "니콜",
+        "message": "미안…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "역시 좀 불안하네…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "잠깐만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아주 잠깐만 나갔다 올게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "페이렌의 정령들은 대부분 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "개중에는 페이렌에 정착하는 정령들도 있고"
+      },
+      {
+        "speaker": "니콜",
+        "message": "솔레이나 아우렐리아처럼 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "그래서 그런지"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정령들 사이에서도 '결혼'… "
+      },
+      {
+        "speaker": "니콜",
+        "message": "예전에는 별 생각 없었지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "지금은 어쩐지 그 이유를 알 것 같네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "니콜",
+        "message": "…좀 무서운 것 같아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "영원을 맹세했다가 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "상황이 바뀌어서 함께 할 수 없게 되어버리면?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "…당장 구원자와의 관계를 정리해야 하는 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "그냥… 갑자기 떠올라서"
+      },
+      {
+        "speaker": "니콜",
+        "message": "진짜 미안…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자"
+      },
+      {
+        "speaker": "니콜",
+        "message": "새삼스럽지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 고맙다는 말을 또 하고 싶어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "지난 번에 악몽을 꿨을 때"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그때 구원자가 나를 아무 말 없이 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "내 곁에 있어줘서…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 오랜만에 푹 잔 것 같거든"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그렇게 안심되는 느낌은 오랜만이었어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "아주 따뜻하고 부드러워서"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그 날 내가 잠들 때까지 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "앞으로 무슨 일이 있더라도"
+      },
+      {
+        "speaker": "니콜",
+        "message": "조금은 안심할 수 있을 거 같아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…나야말로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…나야말로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜과 함께 지내서 너무 좋았어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "니콜과 함께 지내서 너무 좋았어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그럼 다행이고"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 좀 재미 없다는 소리도 들으니까"
+      },
+      {
+        "speaker": "니콜",
+        "message": "내 존재가… "
+      },
+      {
+        "speaker": "니콜",
+        "message": "새처럼 자유로이 에덴 전역을 나는 네가"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나라는 나뭇가지에 앉아서 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "숲에서 나무가 되는 보람도 있을 거 같아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 좋아했어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "예상치도 못하게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "방주에 초대해줘서 고마워"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그럼 당분간 신세 좀 질게?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "숲을 이렇게 오래 떠나있으리라고는 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "애들 괜찮을까?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 없이도 잘 하고 있으려나…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "끄으으응…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "상업 단지라…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "조금 긴장되기도 하고"
+      },
+      {
+        "speaker": "니콜",
+        "message": "설레기도 하네"
+      },
+      {
+        "speaker": "니콜",
+        "message": "오늘은 잘 부탁해 구원자!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "함께 재밌게 놀아보자구♪"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자~!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "지난 번에 말한 대로 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "집무실로 바로 들고 갈게!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "기대하라구~?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그"
+      },
+      {
+        "speaker": "니콜",
+        "message": "할말이 있는데…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "……."
+      },
+      {
+        "speaker": "니콜",
+        "message": "여 역시 아무것도 아냐!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "신경 쓰지 마!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "미안!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "가끔"
+      },
+      {
+        "speaker": "니콜",
+        "message": "참을 수 없을 정도로 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "혼자 있고 싶지 않아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "같이… 있어 줄래?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "오늘 같이 별 보러 가지 않을래?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "오늘 밤은 하늘이 엄청 맑아서 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "기다리고 있을게!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그동안 정말 고마웠어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그리고 안녕"
+      },
+      {
+        "speaker": "니콜",
+        "message": "너에게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "수호자가 아닌 정령 '니콜'을 남기고 갈게"
+      },
+      {
+        "speaker": "니콜",
+        "message": "비록 내 휴가는 끝났지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "우리가 함께할 시간은 앞으로도 쭉 이어지겠지?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "저기"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나 하고 싶은 말이 있는데"
+      },
+      {
+        "speaker": "니콜",
+        "message": "혹시… 내가 사명을 무사히 마치고 나면…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그러면…"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자 네가 좀 특이한 건 알았지만"
+      },
+      {
+        "speaker": "니콜",
+        "message": "정말 이렇게까지 극단적인 방법을 쓸 줄은 몰랐어"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그래서 싫었어?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "그래서 싫었어?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "…바보"
+      },
+      {
+        "speaker": "니콜",
+        "message": "안 싫으니까 문제고 "
+      },
+      {
+        "speaker": "니콜",
+        "message": "어휴 내가 어쩌다가 이런 애한테 반해서"
+      },
+      {
+        "speaker": "니콜",
+        "message": "앞으로는 각오해?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "나도 구원자 너를 잔~뜩 휘둘러줄테니까!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "구원자는 기념일 챙기는 거 좋아해?"
+      },
+      {
+        "speaker": "니콜",
+        "message": "난 잘 모르겠어!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "하지만… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 니콜!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 니콜!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "우리 숲에도 아름다운 꽃이 참 많아"
+      },
+      {
+        "speaker": "니콜",
+        "message": "언제 한 번 꽃구경하러 놀러오라구!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 꼭 찾아갈게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 꼭 찾아갈게!"
+      },
+      {
+        "speaker": "니콜",
+        "message": "와~ 엄청 성대한 파티를 하려나 보네"
+      },
+      {
+        "speaker": "니콜",
+        "message": "이미 많이 받았겠지만…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기뻐, 니콜. 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기뻐, 니콜. 고마워!"
+      }
+    ]
+  }
+}

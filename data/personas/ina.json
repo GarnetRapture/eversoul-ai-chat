@@ -1,0 +1,117 @@
+{
+  "id": "3020",
+  "name": "이나",
+  "name_en": "Ina",
+  "grade": "에픽",
+  "race": "요정형",
+  "class": "디펜더",
+  "sub_class": "버프",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "사랑스러운 선율",
+    "constellation": "인연_제이드_엔딩",
+    "union": "클라라 농장",
+    "birthday": "714",
+    "height": 137,
+    "weight": 34,
+    "cv_ko": "???",
+    "cv_jp": null,
+    "like": [
+      "클로버",
+      "친구"
+    ],
+    "dislike": [
+      "마녀"
+    ],
+    "hobby": [
+      "숨바꼭질"
+    ],
+    "speciality": [
+      "동물과 대화하기"
+    ]
+  },
+  "personality": {
+    "description": "자기 소개 임시 데이터.",
+    "greeting": "고양이랑 강아지 중에, 누가 더 착할까요?"
+  },
+  "speech_patterns": [
+    "구원자님. 사랑의 날이에요.",
+    "많이 사랑하세요~",
+    "구원자님. 감사의 날이에요.",
+    "감사합니다~",
+    "이렇게 하는 거 맞아요?",
+    "구원자님. 이브의 날이에요",
+    "해피 이브 데이"
+  ],
+  "comments": [
+    {
+      "writer": "멜피스",
+      "comment": "좀 잘 울긴 해도 같이 놀면 재밌어."
+    },
+    {
+      "writer": "브라이스",
+      "comment": "…멜피스와 친한 게 마음에 안 들어요. 동물들도 날 안 좋아해요."
+    },
+    {
+      "writer": "캐서린",
+      "comment": "어리고 마음이 약해서, 유난히 신경 써서 돌보게 되네요."
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "이나",
+        "message": "구원자님. 사랑의 날이에요."
+      },
+      {
+        "speaker": "이나",
+        "message": "많이 사랑하세요~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 이나도!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 이나도!"
+      },
+      {
+        "speaker": "이나",
+        "message": "구원자님. 감사의 날이에요."
+      },
+      {
+        "speaker": "이나",
+        "message": "감사합니다~"
+      },
+      {
+        "speaker": "이나",
+        "message": "이렇게 하는 거 맞아요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 이나에게 항상 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 이나에게 항상 고마워!"
+      },
+      {
+        "speaker": "이나",
+        "message": "구원자님. 이브의 날이에요"
+      },
+      {
+        "speaker": "이나",
+        "message": "해피 이브 데이"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이나야, 해피 이브 데이!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이나야, 해피 이브 데이!"
+      }
+    ]
+  }
+}

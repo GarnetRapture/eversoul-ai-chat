@@ -1,0 +1,1009 @@
+{
+  "id": "3090",
+  "name": "미리암",
+  "name_en": "Miriam",
+  "grade": "에픽",
+  "race": "요정형",
+  "class": "레인저",
+  "sub_class": "단일",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "빗발치는 탄환",
+    "constellation": "처녀자리",
+    "union": "칼라르 암즈 코퍼레이션",
+    "birthday": "823",
+    "height": 161,
+    "weight": 44,
+    "cv_ko": "박시윤",
+    "cv_jp": "Chiwa Saitou",
+    "like": [
+      "토스트",
+      "체리"
+    ],
+    "dislike": [
+      "사생활 침해"
+    ],
+    "hobby": [
+      "정리정돈",
+      "맛집 투어"
+    ],
+    "speciality": [
+      "총 돌리기"
+    ]
+  },
+  "personality": {
+    "description": "미리암, 내 이름이야. 잘 기억해 둬.",
+    "greeting": "알아서 조심해."
+  },
+  "speech_patterns": [
+    "구원자, 개인톡으론 처음 인사하지?",
+    "미리암이야. 안녕",
+    "좋아. 무사히 연락처 교환했네",
+    "지금? ",
+    "출장을 좀 길게 했더니 ",
+    "의외로 깨끗한 걸 좋아하는 성격이거든, 내가",
+    "이제 커튼만 빨면 돼",
+    "요령? 글쎄?",
+    "흠…",
+    "루틴으로 만드는 거려나",
+    "꾸준히 자잘하게 습관적으로 하는 거야",
+    "그치? ㅋㅋ",
+    "그럼 난 잠깐 세탁하러 다녀올게",
+    "또 보자구~",
+    "이번에 새로 생긴 ",
+    "내 점수는…",
+    "꼬치구이를 거리가 아닌 ",
+    "또 그게 되려 아쉽기도 하거든?",
+    "그치!?",
+    "실내에서 먹는 꼬치구이에 대해서",
+    "시간 날 때 한 번 해보자구",
+    "ㅎㅎ",
+    "좋아",
+    "그럼 시간 되는 날에 ",
+    "난 같은 옷을 여러벌 구비해두고",
+    "잘 다림질 해서 입는 편이야",
+    "애들이랑 놀러 나갈 때마다 ",
+    "깨끗하고 잘 어울리면 괜찮지 않아?",
+    "ㅋㅋ 고마워",
+    "뭐 그래도",
+    "가끔 다른 옷 입으면",
+    "구원자 혹시 주위에 ",
+    "새로 생긴 식당 가보고 싶은데",
+    "주변에 매운거 먹을 수 있는 애들이 별로 없네",
+    "메피는 아닌척해도 매운 거 못먹고",
+    "칸나도 못먹고",
+    "르네는 먹을 수는 있는데",
+    "…어?",
+    "여왕 폐하? 진짜?",
+    "몰랐네…",
+    "고급 정보 고마워",
+    "구원자 통조림 좋아해?",
+    "다른건 아니고 짐정리하다가 ",
+    "저번에 칼라르로 돌아갔을 때 잔뜩 사놨거든",
+    "우리 전통 문화인데",
+    "내가 충동구매해놓은 게",
+    "많아도 너무 많지 뭐야",
+    "그치? 내 고향이지만 가끔 ",
+    "성에 갖다줄테니까 ",
+    "내가 추천하는 건 "
+  ],
+  "comments": [
+    {
+      "writer": "나이아",
+      "comment": "하아암… 미리암 씨… 졸려 보이는 눈…"
+    },
+    {
+      "writer": "르네",
+      "comment": "흠. 나만큼은 아니지만 갈고닦으면 참 빛날 재목이야. "
+    },
+    {
+      "writer": "도라",
+      "comment": "나한테 벌꿀 주스를 추천해줬는데 엄청 맛있었어…!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "미리암",
+        "message": "구원자, 개인톡으론 처음 인사하지?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "미리암이야. 안녕"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 미리암"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 미리암"
+      },
+      {
+        "speaker": "미리암",
+        "message": "좋아. 무사히 연락처 교환했네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 뭐하고 있었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 뭐하고 있었어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "지금? "
+      },
+      {
+        "speaker": "미리암",
+        "message": "출장을 좀 길게 했더니 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "의외로 깨끗한 걸 좋아하는 성격이거든, 내가"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이제 커튼만 빨면 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "청소하는 데에 뭔가 요령이라도 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "청소하는 데에 뭔가 요령이라도 있어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "요령? 글쎄?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "흠…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "루틴으로 만드는 거려나"
+      },
+      {
+        "speaker": "미리암",
+        "message": "꾸준히 자잘하게 습관적으로 하는 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쉬운 건지 어려운 건지 잘 모르겠어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쉬운 건지 어려운 건지 잘 모르겠어"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그치? ㅋㅋ"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그럼 난 잠깐 세탁하러 다녀올게"
+      },
+      {
+        "speaker": "미리암",
+        "message": "또 보자구~"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이번에 새로 생긴 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "내 점수는…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "꼬치구이를 거리가 아닌 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "또 그게 되려 아쉽기도 하거든?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알 거 같아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그치!?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "실내에서 먹는 꼬치구이에 대해서"
+      },
+      {
+        "speaker": "미리암",
+        "message": "시간 날 때 한 번 해보자구"
+      },
+      {
+        "speaker": "구원자",
+        "message": "열심히 스케줄 조정해볼게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "열심히 스케줄 조정해볼게!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "ㅎㅎ"
+      },
+      {
+        "speaker": "미리암",
+        "message": "좋아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그럼 시간 되는 날에 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "난 같은 옷을 여러벌 구비해두고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "잘 다림질 해서 입는 편이야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "애들이랑 놀러 나갈 때마다 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "깨끗하고 잘 어울리면 괜찮지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 어울리니까 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 어울리니까 괜찮아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "ㅋㅋ 고마워"
+      },
+      {
+        "speaker": "미리암",
+        "message": "뭐 그래도"
+      },
+      {
+        "speaker": "미리암",
+        "message": "가끔 다른 옷 입으면"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자 혹시 주위에 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "새로 생긴 식당 가보고 싶은데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "주변에 매운거 먹을 수 있는 애들이 별로 없네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜? 의외다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜? 의외다"
+      },
+      {
+        "speaker": "미리암",
+        "message": "메피는 아닌척해도 매운 거 못먹고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "칸나도 못먹고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "르네는 먹을 수는 있는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내 주변엔 유리아가 잘 먹는 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내 주변엔 유리아가 잘 먹는 것 같아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "…어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "여왕 폐하? 진짜?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "몰랐네…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "고급 정보 고마워"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자 통조림 좋아해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "통조림…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "통조림…?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "다른건 아니고 짐정리하다가 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "저번에 칼라르로 돌아갔을 때 잔뜩 사놨거든"
+      },
+      {
+        "speaker": "미리암",
+        "message": "우리 전통 문화인데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "내가 충동구매해놓은 게"
+      },
+      {
+        "speaker": "미리암",
+        "message": "많아도 너무 많지 뭐야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "창작 통조림 대회라니 신기하네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "창작 통조림 대회라니 신기하네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그치? 내 고향이지만 가끔 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "성에 갖다줄테니까 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "내가 추천하는 건 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "비스킷이랑 같이 먹으면 맛있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 먹을게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 먹을게!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "ㅎㅎ"
+      },
+      {
+        "speaker": "미리암",
+        "message": "나중에 어땠는지 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "퇴근"
+      },
+      {
+        "speaker": "미리암",
+        "message": "퇴근하고싶다"
+      },
+      {
+        "speaker": "미리암",
+        "message": "정말 매우 아주 퇴근하고싶다"
+      },
+      {
+        "speaker": "미리암",
+        "message": "진심으로 퇴근하고싶다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 일 있어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아니 딱히"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그런 건 아닌데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "뭐 그냥 일하기 싫은 날이란게 있잖아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 날도 있긴 하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 날도 있긴 하지"
+      },
+      {
+        "speaker": "미리암",
+        "message": "미리암 씨도 일하기 싫을 때가 있다고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "농땡이 피우고 싶을 땐 스스로한테 솔직해져야돼"
+      },
+      {
+        "speaker": "미리암",
+        "message": "안그러면 병난다 병"
+      },
+      {
+        "speaker": "미리암",
+        "message": "하~~ 퇴근하고싶다~"
+      },
+      {
+        "speaker": "미리암",
+        "message": "방이 너무 삭막하다고 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "어떻게 키워야할지 막막하네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "식물이 있는 방은 보기에 예쁘고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "보니까 꽃가루도 거의 안날리는거 같긴 해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "식물 키워본 적 없어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "식물 키워본 적 없어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아무래도 일이 일이다보니까?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "감찰관이 되기 전에는 용병 일을 했어서 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 확실히 식물은 키우기 어려웠겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 확실히 식물은 키우기 어려웠겠다"
+      },
+      {
+        "speaker": "미리암",
+        "message": "흠"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이거 엄청 오랜 시간이 지나야 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "이거 꽃 필 쯤에도 구원자가 여기 있으려나"
+      },
+      {
+        "speaker": "미리암",
+        "message": "뭐, 잘 돌보면 일찍 필지도 모르겠네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자, 장수해."
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력해볼게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력해볼게!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그래그래~ 옳지 옳지♪"
+      },
+      {
+        "speaker": "미리암",
+        "message": "머리카락이 길면 가끔"
+      },
+      {
+        "speaker": "미리암",
+        "message": "면 요리 먹을 때 불편해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "머리를 묶고 먹어야겠네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "머리를 묶고 먹어야겠네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "맞아;"
+      },
+      {
+        "speaker": "미리암",
+        "message": "과일 꼬치처럼 끈적한거 먹으면 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "그냥 확 자를까…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 아까울 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 아까울 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미리암 긴머리 잘 어울리니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미리암 긴머리 잘 어울리니까"
+      },
+      {
+        "speaker": "미리암",
+        "message": "…그래? "
+      },
+      {
+        "speaker": "미리암",
+        "message": "그럼 까짓거"
+      },
+      {
+        "speaker": "미리암",
+        "message": "먹는 스킬을 더 단련하지 뭐"
+      },
+      {
+        "speaker": "미리암",
+        "message": "후후 그럼 바로 연습하러 가볼까♪"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갈래!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갈래!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "후…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "현장에 나가는 건 괜찮은데 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자도 본 적 있지?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "글자는 많은데 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "사실 별로 못 본 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "사실 별로 못 본 거 같아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "진짜? 완전 부럽네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자 주변엔 유능한 애들밖에 없나봐"
+      },
+      {
+        "speaker": "미리암",
+        "message": "현장에서 본 걸 곧이곧대로 디테일하게 쓰는걸 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "보통 다들 시간이 없으니까 말이야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "읽는 상대의 입장을 고려해서 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "갑자기 왜 이런 말을 하냐면…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자용 보고서하고 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "조앤용 보고서를 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 고마워"
+      },
+      {
+        "speaker": "미리암",
+        "message": "에휴~~~"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그래 그렇게 고마워하니까 됐다"
+      },
+      {
+        "speaker": "미리암",
+        "message": "힘내서 마저 쓰고 올게~"
+      },
+      {
+        "speaker": "미리암",
+        "message": "흠"
+      },
+      {
+        "speaker": "미리암",
+        "message": "사실 나 사진 찍는 거 별로 안 좋아하거든"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그래서 내 사진이 별로 없는데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "요즘은 좀 후회되네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아니 뭐, 그냥"
+      },
+      {
+        "speaker": "미리암",
+        "message": "때로는 의미있는 기록이었겠구나 싶어서"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그런 의미로 나중에 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 서로 교환할까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 서로 교환할까?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "ㅋㅋ 그럴까"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그럼 사진 잘 찍어놔라!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "기대하고 있을게"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이건 내 방 사진이야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아까 청소를 끝냈어"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아케나인은 솔레이의 임시 수도지만"
+      },
+      {
+        "speaker": "미리암",
+        "message": "맛집이 쟁쟁한 걸로 치면"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구 수도인 엘나스에도 뒤지지 않기로 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "어때"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이곳의 영주를 맡은 게"
+      },
+      {
+        "speaker": "미리암",
+        "message": "후 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "정령 연합군 일은 보람차지만"
+      },
+      {
+        "speaker": "미리암",
+        "message": "필요한 서류가 너무 많아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "조금만 방심하면 일이 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "오늘은"
+      },
+      {
+        "speaker": "미리암",
+        "message": "전부터 계속 궁금했던 걸 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아 근데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "진짜 별 거 아니니까"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이상한 생각은 하지 말고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그냥 단순한 질문일 뿐이니까!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "예상 밖의 상황이네"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이를 어쩐다…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "린지랑 나는 제법 죽이 잘 맞는 편이야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "항상 같이 다닐 정도는 아니어도…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자도 린지랑 꽤 친하지?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "옛날이면 몰라도 요즘은"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그런가?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그런가?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "하핫"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그럼 오늘도"
+      },
+      {
+        "speaker": "미리암",
+        "message": "요즘 잠들기 전에 뭔가 심란한데…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "하아…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아니"
+      },
+      {
+        "speaker": "미리암",
+        "message": "아무것도 아니야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "미안"
+      },
+      {
+        "speaker": "미리암",
+        "message": "요즘 뭔가 일이 많아져서 말이야"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그래서 연락하기 쉽지 않네, 하하"
+      },
+      {
+        "speaker": "미리암",
+        "message": "연락이 잘 안되면 걱정돼"
+      },
+      {
+        "speaker": "미리암",
+        "message": "연락이 잘 안되면 걱정돼"
+      },
+      {
+        "speaker": "미리암",
+        "message": "…응"
+      },
+      {
+        "speaker": "미리암",
+        "message": "뭐, 한차례 정리되면 "
+      },
+      {
+        "speaker": "미리암",
+        "message": "그때까지 잘 지내라구, 구원자"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그, 요즘은 잘…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "시간이 안 나더라고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "하하…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "……."
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자는 벚꽃이 피는 걸"
+      },
+      {
+        "speaker": "미리암",
+        "message": "미리 알아보고"
+      },
+      {
+        "speaker": "미리암",
+        "message": "나는…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "생각해봤는데"
+      },
+      {
+        "speaker": "미리암",
+        "message": "재밌을 것 같아"
+      },
+      {
+        "speaker": "미리암",
+        "message": "광장으로 나가면 돼?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "그리고…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "둘이서 가고 싶어"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이런 기념일 특유의 들뜬 분위기…"
+      },
+      {
+        "speaker": "미리암",
+        "message": "좀 낯간지러운 것 같긴해"
+      },
+      {
+        "speaker": "미리암",
+        "message": "자, 받아 구원자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "챙겨줘서 고마워, 미리암!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "챙겨줘서 고마워, 미리암!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "구원자는 꼭 다시 만나고 싶은 상대가 있어?"
+      },
+      {
+        "speaker": "미리암",
+        "message": "오늘은 그런 상대를 추억하는 날이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알려줘서 고마워, 미리암!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알려줘서 고마워, 미리암!"
+      },
+      {
+        "speaker": "미리암",
+        "message": "이브의 날은 큰 명절이지. "
+      },
+      {
+        "speaker": "미리암",
+        "message": "미식가는 절대 이 시기를 놓치면 안된다구. 하핫"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알겠어, 유념할게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알겠어, 유념할게!"
+      }
+    ]
+  }
+}

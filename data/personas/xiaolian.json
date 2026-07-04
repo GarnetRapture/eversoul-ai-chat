@@ -1,0 +1,1129 @@
+{
+  "id": "2120",
+  "name": "소연",
+  "name_en": "Xiaolian",
+  "grade": "에픽",
+  "race": "야수형",
+  "class": "스트라이커",
+  "sub_class": "단일",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "천하제일 배달원",
+    "constellation": "천칭자리",
+    "union": "대성만두",
+    "birthday": "1010",
+    "height": 154,
+    "weight": 43,
+    "cv_ko": "이다은",
+    "cv_jp": "Yuuki Takada",
+    "like": [
+      "만두"
+    ],
+    "dislike": [
+      "복잡한 것",
+      "바보 취급"
+    ],
+    "hobby": [
+      "자전거 타기"
+    ],
+    "speciality": [
+      "만두 많이 먹기",
+      "체술"
+    ]
+  },
+  "personality": {
+    "description": "오, 안녕! 네가 구원자구나?",
+    "greeting": "빠른 배달은 맡겨만 주시라!"
+  },
+  "speech_patterns": [
+    "안녕 구원자",
+    "흠",
+    "진짜 잘 보내지고 있는거 맞나?",
+    "와",
+    "깜짝이야",
+    "잘 가고 있었구나 ",
+    "이거 처음 써봐서",
+    "동생한테 한참 배워써",
+    "배웠어",
+    "헤헤…그래?",
+    "뭐…",
+    "아",
+    "잠깐만 실수",
+    "느낌표 쓸려고했는데",
+    "하트 ㄴ아니고 느낌표야",
+    "아 쫌!!!!!",
+    "놀리지마 진짜 때린다",
+    "너 이따 두고봐",
+    "악",
+    "만두 떨궜어",
+    "흑바닥에",
+    "ㅇㅇ 그거",
+    "5분안에 주웠으니까",
+    "먹어도 되겠지",
+    "에이 설마",
+    "그럼 먹을 수 있는게 거의 없다는 거잖아",
+    "5분이겠지",
+    "걱정마셔",
+    "내 위장은 튼튼하니까 문제 없다구~",
+    "만두 종류가 엄청 많은 거 알아?",
+    "요리 방법도 그렇지만",
+    "재료나 모양에 따라서도 다 이름이 다르다구",
+    "나?",
+    "나는…",
+    "흠…",
+    "아 이거 어렵네…",
+    "그렇게까지 고민할 문제야…?",
+    "무슨 소리야 이런 진지한 질문에",
+    "대충 대답하는 건 만두에 대한 모욕이야!!",
+    "으으음...",
+    "기다려봐 내일까지 대답해줄테니까",
+    "음… ",
+    "안돼! ",
+    "구원자 이거 봐",
+    "둘째 동생이 그려줬어",
+    "그치????",
+    "재능이 있는 것 같아",
+    "미술학원을 알아봐야되나",
+    "으히히",
+    "소중한게 많다는 건 분명 좋은 건데"
+  ],
+  "comments": [
+    {
+      "writer": "레베카",
+      "comment": "현상 유지라…"
+    },
+    {
+      "writer": "무명",
+      "comment": "크르륵… 바보다… 크륵…!"
+    },
+    {
+      "writer": "클라라",
+      "comment": "항상 야채를 거래해 주시는 고마운 분!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "소연",
+        "message": "안녕 구원자"
+      },
+      {
+        "speaker": "소연",
+        "message": "흠"
+      },
+      {
+        "speaker": "소연",
+        "message": "진짜 잘 보내지고 있는거 맞나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 소연"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 소연"
+      },
+      {
+        "speaker": "소연",
+        "message": "와"
+      },
+      {
+        "speaker": "소연",
+        "message": "깜짝이야"
+      },
+      {
+        "speaker": "소연",
+        "message": "잘 가고 있었구나 "
+      },
+      {
+        "speaker": "소연",
+        "message": "이거 처음 써봐서"
+      },
+      {
+        "speaker": "소연",
+        "message": "동생한테 한참 배워써"
+      },
+      {
+        "speaker": "소연",
+        "message": "배웠어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 하는 것 같은데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 하는 것 같은데?"
+      },
+      {
+        "speaker": "소연",
+        "message": "헤헤…그래?"
+      },
+      {
+        "speaker": "소연",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "소연",
+        "message": "아"
+      },
+      {
+        "speaker": "소연",
+        "message": "잠깐만 실수"
+      },
+      {
+        "speaker": "소연",
+        "message": "느낌표 쓸려고했는데"
+      },
+      {
+        "speaker": "소연",
+        "message": "하트 ㄴ아니고 느낌표야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 부탁해 ♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 부탁해 ♡"
+      },
+      {
+        "speaker": "소연",
+        "message": "아 쫌!!!!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "놀리지마 진짜 때린다"
+      },
+      {
+        "speaker": "소연",
+        "message": "너 이따 두고봐"
+      },
+      {
+        "speaker": "소연",
+        "message": "악"
+      },
+      {
+        "speaker": "소연",
+        "message": "만두 떨궜어"
+      },
+      {
+        "speaker": "소연",
+        "message": "흑바닥에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "흙바닥 말하는 거지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "흙바닥 말하는 거지?"
+      },
+      {
+        "speaker": "소연",
+        "message": "ㅇㅇ 그거"
+      },
+      {
+        "speaker": "소연",
+        "message": "5분안에 주웠으니까"
+      },
+      {
+        "speaker": "소연",
+        "message": "먹어도 되겠지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거… 원래는 5초 아니야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거… 원래는 5초 아니야?"
+      },
+      {
+        "speaker": "소연",
+        "message": "에이 설마"
+      },
+      {
+        "speaker": "소연",
+        "message": "그럼 먹을 수 있는게 거의 없다는 거잖아"
+      },
+      {
+        "speaker": "소연",
+        "message": "5분이겠지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "모쪼록 탈 안 나게 조심해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "모쪼록 탈 안 나게 조심해"
+      },
+      {
+        "speaker": "소연",
+        "message": "걱정마셔"
+      },
+      {
+        "speaker": "소연",
+        "message": "내 위장은 튼튼하니까 문제 없다구~"
+      },
+      {
+        "speaker": "소연",
+        "message": "만두 종류가 엄청 많은 거 알아?"
+      },
+      {
+        "speaker": "소연",
+        "message": "요리 방법도 그렇지만"
+      },
+      {
+        "speaker": "소연",
+        "message": "재료나 모양에 따라서도 다 이름이 다르다구"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연이 제일 좋아하는 만두는 뭐야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연이 제일 좋아하는 만두는 뭐야?"
+      },
+      {
+        "speaker": "소연",
+        "message": "나?"
+      },
+      {
+        "speaker": "소연",
+        "message": "나는…"
+      },
+      {
+        "speaker": "소연",
+        "message": "흠…"
+      },
+      {
+        "speaker": "소연",
+        "message": "아 이거 어렵네…"
+      },
+      {
+        "speaker": "소연",
+        "message": "그렇게까지 고민할 문제야…?"
+      },
+      {
+        "speaker": "소연",
+        "message": "그렇게까지 고민할 문제야…?"
+      },
+      {
+        "speaker": "소연",
+        "message": "무슨 소리야 이런 진지한 질문에"
+      },
+      {
+        "speaker": "소연",
+        "message": "대충 대답하는 건 만두에 대한 모욕이야!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "으으음..."
+      },
+      {
+        "speaker": "구원자",
+        "message": "흐으음~~~~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하아… 오늘 안에 답 안 나오는 문제야 이건"
+      },
+      {
+        "speaker": "소연",
+        "message": "기다려봐 내일까지 대답해줄테니까"
+      },
+      {
+        "speaker": "소연",
+        "message": "음… "
+      },
+      {
+        "speaker": "소연",
+        "message": "음… "
+      },
+      {
+        "speaker": "소연",
+        "message": "안돼! "
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자 이거 봐"
+      },
+      {
+        "speaker": "소연",
+        "message": "둘째 동생이 그려줬어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀엽다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀엽다"
+      },
+      {
+        "speaker": "소연",
+        "message": "그치????"
+      },
+      {
+        "speaker": "소연",
+        "message": "재능이 있는 것 같아"
+      },
+      {
+        "speaker": "소연",
+        "message": "미술학원을 알아봐야되나"
+      },
+      {
+        "speaker": "소연",
+        "message": "으히히"
+      },
+      {
+        "speaker": "소연",
+        "message": "소중한게 많다는 건 분명 좋은 건데"
+      },
+      {
+        "speaker": "소연",
+        "message": "뭔가 가끔 무서워"
+      },
+      {
+        "speaker": "소연",
+        "message": "내가 지킬 수 있을까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지킬 수 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지킬 수 있어"
+      },
+      {
+        "speaker": "소연",
+        "message": "응…"
+      },
+      {
+        "speaker": "소연",
+        "message": "누가 뭐래도 소중한 것들을 지킬 거야"
+      },
+      {
+        "speaker": "소연",
+        "message": "그러기 위해서라면 난…"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자"
+      },
+      {
+        "speaker": "소연",
+        "message": "부탁이 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭔데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭔데?"
+      },
+      {
+        "speaker": "소연",
+        "message": "내가 진짜 가끔 바보같은 짓을 할 때가 있거든?"
+      },
+      {
+        "speaker": "소연",
+        "message": "그럴 땐 제대로 말해줘"
+      },
+      {
+        "speaker": "소연",
+        "message": "겸워히 받아들일테니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 말할 거 생겼어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "지금 말할 거 생겼어"
+      },
+      {
+        "speaker": "소연",
+        "message": "!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "뭐 뭔데 말해봐!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "'겸워히'가 아니라 '겸허히'야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "'겸워히'가 아니라 '겸허히'야"
+      },
+      {
+        "speaker": "소연",
+        "message": "아씨"
+      },
+      {
+        "speaker": "소연",
+        "message": "그런 거 말한 거 아니라고!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "그리고 몰라서 잘못 쓴 거 아니거든?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래그래"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래그래"
+      },
+      {
+        "speaker": "소연",
+        "message": "아~~~진짜"
+      },
+      {
+        "speaker": "소연",
+        "message": "너 나 바보라고 생각했지!!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자 지금 뭐해?"
+      },
+      {
+        "speaker": "소연",
+        "message": "산책가자"
+      },
+      {
+        "speaker": "소연",
+        "message": "밖에 날씨 진짜 좋아"
+      },
+      {
+        "speaker": "소연",
+        "message": "자전거로 공원 한 바퀴 돌자"
+      },
+      {
+        "speaker": "소연",
+        "message": "내 자전거 뒤에 태워줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "날 태워준다고?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "날 태워준다고?"
+      },
+      {
+        "speaker": "소연",
+        "message": "왜? 자전거 뒤에 처음 타봐?"
+      },
+      {
+        "speaker": "소연",
+        "message": "무서우면 내 허리 꽉 잡아"
+      },
+      {
+        "speaker": "소연",
+        "message": "걱정마 분명 재밌을테니까"
+      },
+      {
+        "speaker": "소연",
+        "message": "히히"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연. 오늘은 자전거 안 타?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연. 오늘은 자전거 안 타?"
+      },
+      {
+        "speaker": "소연",
+        "message": "아"
+      },
+      {
+        "speaker": "소연",
+        "message": "타야지"
+      },
+      {
+        "speaker": "소연",
+        "message": "또 태워달라고?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 재밌었어서…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그때 재밌었어서…"
+      },
+      {
+        "speaker": "소연",
+        "message": "아니 그건 아닌데..."
+      },
+      {
+        "speaker": "소연",
+        "message": "그때 니가 내 허리를 너무 꽉 잡아서"
+      },
+      {
+        "speaker": "소연",
+        "message": "엄청 간지러웠단 말야"
+      },
+      {
+        "speaker": "소연",
+        "message": "그니까 이번엔 니가 태워줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아"
+      },
+      {
+        "speaker": "소연",
+        "message": "너무 선뜻 알겠다고 하니까 당황스러운데..."
+      },
+      {
+        "speaker": "소연",
+        "message": "또 자전거 고장내면 안된다?!"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자~"
+      },
+      {
+        "speaker": "소연",
+        "message": "영감이 신메뉴 연구한다고"
+      },
+      {
+        "speaker": "소연",
+        "message": "만두를 엄청 많이 만들어서"
+      },
+      {
+        "speaker": "소연",
+        "message": "좀 나눠주겠다는데"
+      },
+      {
+        "speaker": "소연",
+        "message": "대성만두로 올래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아, 맛있겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋아, 맛있겠다"
+      },
+      {
+        "speaker": "소연",
+        "message": "오면 바로 먹을 수 있도록 준비해둘게"
+      },
+      {
+        "speaker": "소연",
+        "message": "조심히 와!"
+      },
+      {
+        "speaker": "소연",
+        "message": "대성만두에 네가 없으면"
+      },
+      {
+        "speaker": "소연",
+        "message": "어쩐지… 좀 이상해"
+      },
+      {
+        "speaker": "소연",
+        "message": "요새 맨날 와서 그런가…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쓸쓸해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "쓸쓸해?"
+      },
+      {
+        "speaker": "소연",
+        "message": "쓰"
+      },
+      {
+        "speaker": "소연",
+        "message": "쓸쓸한 것 까진 아니거든"
+      },
+      {
+        "speaker": "소연",
+        "message": "그냥 좀 허전함?"
+      },
+      {
+        "speaker": "소연",
+        "message": "뭐 그런거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연이 쓸쓸하지 않게 빨리 갈게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소연이 쓸쓸하지 않게 빨리 갈게"
+      },
+      {
+        "speaker": "소연",
+        "message": "너 또 놀리지"
+      },
+      {
+        "speaker": "소연",
+        "message": "우씨..."
+      },
+      {
+        "speaker": "소연",
+        "message": "됐으니까 올거면 빨리 와!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "큰일 났어!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "아직 니가 뿌순 자전거 살 돈도 못 모았는데!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨일이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨일이야?"
+      },
+      {
+        "speaker": "소연",
+        "message": "설명하자면 기ㄹ어"
+      },
+      {
+        "speaker": "소연",
+        "message": "얼른 대성만두로 와!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "무명반점 녀석들"
+      },
+      {
+        "speaker": "소연",
+        "message": "대체 어떤 녀석들일지 궁금해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "힘을 숨기고 있던 베테랑일지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "힘을 숨기고 있던 베테랑일지도"
+      },
+      {
+        "speaker": "소연",
+        "message": "그치?!"
+      },
+      {
+        "speaker": "소연",
+        "message": "만두만 몇백년 만든 도인이 나올지도 몰라"
+      },
+      {
+        "speaker": "소연",
+        "message": "그래도 안 질거지만!"
+      },
+      {
+        "speaker": "소연",
+        "message": "영감이 나한테 요리사는 꿈도 꾸지 말라고 했었는데"
+      },
+      {
+        "speaker": "소연",
+        "message": "난 아직 경험이 별로 없는 거지 "
+      },
+      {
+        "speaker": "소연",
+        "message": "하면 잘 할수 있거든?"
+      },
+      {
+        "speaker": "소연",
+        "message": "두고 봐"
+      },
+      {
+        "speaker": "소연",
+        "message": "영감의 만두보다 더 맛있는 걸 만들어줄테다"
+      },
+      {
+        "speaker": "소연",
+        "message": "예전에 말했었지?"
+      },
+      {
+        "speaker": "소연",
+        "message": "동생이 세 명 있다고"
+      },
+      {
+        "speaker": "소연",
+        "message": "응 들었어"
+      },
+      {
+        "speaker": "소연",
+        "message": "응 들었어"
+      },
+      {
+        "speaker": "소연",
+        "message": "그... 애들이 좀 활발해서"
+      },
+      {
+        "speaker": "소연",
+        "message": "시끄러울 수도 있어"
+      },
+      {
+        "speaker": "소연",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "소연",
+        "message": "문제 없어"
+      },
+      {
+        "speaker": "소연",
+        "message": "문제 없어"
+      },
+      {
+        "speaker": "소연",
+        "message": "그럼 다행이야"
+      },
+      {
+        "speaker": "소연",
+        "message": "이따봐, 구원자."
+      },
+      {
+        "speaker": "소연",
+        "message": "대성만두는 틀리지 않았어."
+      },
+      {
+        "speaker": "소연",
+        "message": "바뀌어야할 건 대성만두가 아닌데,"
+      },
+      {
+        "speaker": "소연",
+        "message": "아닐텐데…"
+      },
+      {
+        "speaker": "소연",
+        "message": "모르겠어…"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "아직 집에 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 방금 밖에 나왔는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 방금 밖에 나왔는데…"
+      },
+      {
+        "speaker": "소연",
+        "message": "그럼 거기서 기다려!"
+      },
+      {
+        "speaker": "소연",
+        "message": "어디 가면 안 돼?"
+      },
+      {
+        "speaker": "소연",
+        "message": "야…"
+      },
+      {
+        "speaker": "소연",
+        "message": "너… 봤어? 못 봤지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘?"
+      },
+      {
+        "speaker": "소연",
+        "message": "그"
+      },
+      {
+        "speaker": "소연",
+        "message": "그거… 무늬…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바나나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바나나?"
+      },
+      {
+        "speaker": "소연",
+        "message": "%*"
+      },
+      {
+        "speaker": "소연",
+        "message": "조용히해"
+      },
+      {
+        "speaker": "소연",
+        "message": "너 그거"
+      },
+      {
+        "speaker": "소연",
+        "message": "누구한테 말하지마"
+      },
+      {
+        "speaker": "소연",
+        "message": "지금 당장 잊어!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력은 해볼게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력은 해볼게"
+      },
+      {
+        "speaker": "소연",
+        "message": "아 진짜~!!!!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "다행이야 구원자"
+      },
+      {
+        "speaker": "소연",
+        "message": "이대로 계속 가면 "
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자 덕분이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조금 걱정 되네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조금 걱정 되네"
+      },
+      {
+        "speaker": "소연",
+        "message": "에이 뭘 걱정해"
+      },
+      {
+        "speaker": "소연",
+        "message": "노력은 성공의 어머니라는 말이 있잖아"
+      },
+      {
+        "speaker": "소연",
+        "message": "어머니가 아니라 아버지였나? "
+      },
+      {
+        "speaker": "소연",
+        "message": "열심히 했으니까"
+      },
+      {
+        "speaker": "소연",
+        "message": "천재지변이라도 생기지 않는 이상"
+      },
+      {
+        "speaker": "소연",
+        "message": "별일 없을 거야"
+      },
+      {
+        "speaker": "소연",
+        "message": "요즘 영감 주책 장난 아냐"
+      },
+      {
+        "speaker": "소연",
+        "message": "왜 저러는거야 정말"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가게가 잘 되고 있으니 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "가게가 잘 되고 있으니 "
+      },
+      {
+        "speaker": "소연",
+        "message": "그…"
+      },
+      {
+        "speaker": "소연",
+        "message": "자꾸 널 이상하게 부르잖아"
+      },
+      {
+        "speaker": "소연",
+        "message": "저기 뭐냐…"
+      },
+      {
+        "speaker": "소연",
+        "message": "영감이 하는 주접 그냥 무시해"
+      },
+      {
+        "speaker": "소연",
+        "message": "알겠지?!"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자, 오고 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "거의 다 왔어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "거의 다 왔어"
+      },
+      {
+        "speaker": "소연",
+        "message": "좋았어"
+      },
+      {
+        "speaker": "소연",
+        "message": "혹시 몸 안 좋으면 바로바로 말해"
+      },
+      {
+        "speaker": "소연",
+        "message": "영감이 너는 무조건 쉬게 해준대"
+      },
+      {
+        "speaker": "소연",
+        "message": "쉬는 날에도 일당 준다더라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "호화롭네…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "호화롭네…"
+      },
+      {
+        "speaker": "소연",
+        "message": "내 말이"
+      },
+      {
+        "speaker": "소연",
+        "message": "오래 일한 나한테는 푸대접이면서!!"
+      },
+      {
+        "speaker": "소연",
+        "message": "아무튼 널 다른 가게에 뺏길까 봐 불안해하더라"
+      },
+      {
+        "speaker": "소연",
+        "message": "솔직히 그건 이해가 가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "대성만두엔 소연이 있으니까 다른 가게로는 안 가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "대성만두엔 소연이 있으니까 다른 가게로는 안 가"
+      },
+      {
+        "speaker": "소연",
+        "message": "야너는"
+      },
+      {
+        "speaker": "소연",
+        "message": "넌쫌 그런말 아무렇지않게하지마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "소연",
+        "message": "그냥 좀 이상해"
+      },
+      {
+        "speaker": "소연",
+        "message": "뭔가 명치쪽이 간지러운 것 같단말야…"
+      },
+      {
+        "speaker": "소연",
+        "message": "사랑의 날이라니 이름부터 낯간지러워..."
+      },
+      {
+        "speaker": "소연",
+        "message": "그.. 말해두지만 이거 그냥 주는거다?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 받을게, 소연"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 받을게, 소연"
+      },
+      {
+        "speaker": "소연",
+        "message": "여름도 이제 곧 끝나는건가~"
+      },
+      {
+        "speaker": "소연",
+        "message": "가을도 좋지만~ "
+      },
+      {
+        "speaker": "구원자",
+        "message": "가을에도 잘 부탁해, 소연"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가을에도 잘 부탁해, 소연"
+      },
+      {
+        "speaker": "소연",
+        "message": "만두가 제일 잘 팔리는 계절~♪"
+      },
+      {
+        "speaker": "소연",
+        "message": "구원자. 항상 도와줘서 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나야말로. 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나야말로. 고마워!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1272 @@
+{
+  "id": "1100",
+  "name": "셰리",
+  "name_en": "Cherrie",
+  "grade": "에픽",
+  "race": "인간형",
+  "class": "레인저",
+  "sub_class": "지속",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "스파클링 피스톨",
+    "constellation": "인연_제이드_이벤트2",
+    "union": "횃불 해적단",
+    "birthday": "523",
+    "height": 167,
+    "weight": 52,
+    "cv_ko": "강시현",
+    "cv_jp": "Kaori Maeda",
+    "like": [
+      "세상의 모든 술"
+    ],
+    "dislike": [
+      "문어",
+      "바다 괴담"
+    ],
+    "hobby": [
+      "코르크 수집"
+    ],
+    "speciality": [
+      "아무데서나 잠들기"
+    ]
+  },
+  "personality": {
+    "description": "짜잔! '횃불 해적단'의 선장, 셰리야~!",
+    "greeting": "술 마시는 데엔 사계절의 풍경만으로도 충분하지!"
+  },
+  "speech_patterns": [
+    "ㅜ구어자임 나셰리",
+    "구언쟈님 안녀",
+    "이상하네 자판버튼이 너무??@# 조그맣네",
+    "그리구 이상하게 에버폰이 빙글빙글~~돌아",
+    "아이구 머리 울려~~",
+    "엥~그",
+    "오늘은 쪼~~금 더 마시긴@했는데 ",
+    "아직멀쩡해멀쩡",
+    "그래서그런데 구원쟈님 환영ㅇ",
+    "환영인사로 한잔대접하구싶은데",
+    "시간 좀 내줏루있어? 이따 저녁에",
+    "응~~~된다니 다행이네 헤헤 그럼 이따만나",
+    "우헤헤",
+    "구원자님 진짜웃ㄱㅕ",
+    "몸으로 사례하라고 하니까",
+    "얼굴 완전 백짓장 ㅋㅋㅋㅋㅋㅋ",
+    "응",
+    "아니?",
+    "웅",
+    "비~밀",
+    "구원자님 반응이",
+    "너무재밌는걸",
+    "이런 거에 진지하게 반응하다니",
+    "별로 중요한 것도 아ㄴ니데",
+    "ㅋㅋㅋㅋㅋㅋ",
+    "구원자님 가온은 처음 가봐?",
+    "그럼 놀러 가는 건 처음인거네~",
+    "우후후후훙",
+    "구원자님의 처♡음",
+    "내가 받아가는 거네에~~",
+    "오잉",
+    "학습능력이 좋네 구원쟈님",
+    "그럼 이런 온천여관에",
+    "이 선장님 같은 미녀랑",
+    "단둘이 같이 온 건????",
+    "처음?? 처음이야??? 처음이지????",
+    "…구원자니임?",
+    "구원자님~~~~~~",
+    "지금이야 트로이카의 절반이 ",
+    "게이트 현상 때문에 잃어버린 땅이 되어 버렸지만",
+    "예전엔 제법 넓은 나라였거든??",
+    "당연히 트로이카의 뒷골목 사정도",
+    "좀… 아니 꽤~~ 복잡했구…",
+    "에일린하고는 그때쯤에 친해졌어",
+    "정령들이 줄어서 장물 수입도 줄었는데",
+    "에일린네가 물량을 꽤 늘려 줬거든",
+    "또 우리가 입항할 때마다 쓸데없는 좀도둑들이 설치지 않게",
+    "편의도 잘 봐줬고",
+    "그리고 걔 은근히 술을 좀 하거든~~!!!",
+    "나만큼은 아니지만~~"
+  ],
+  "comments": [
+    {
+      "writer": "니콜",
+      "comment": "기억력이 엄청 좋아. 세 달 전에 빌린 3골드를 아직도 기억하더라니까."
+    },
+    {
+      "writer": "비비안",
+      "comment": "함께 자주 마시지만, '진짜로' 취한 모습을 본 적은 거의 없어. 강적이야~"
+    },
+    {
+      "writer": "레베카",
+      "comment": "쯧쯧, 젊은 처자가 대낮부터 취해서 비틀비틀 돌아다니면 쓰나!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "셰리",
+        "message": "ㅜ구어자임 나셰리"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구언쟈님 안녀"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이상하네 자판버튼이 너무??@# 조그맣네"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그리구 이상하게 에버폰이 빙글빙글~~돌아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "아이구 머리 울려~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 취했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 취했어"
+      },
+      {
+        "speaker": "셰리",
+        "message": "엥~그"
+      },
+      {
+        "speaker": "셰리",
+        "message": "오늘은 쪼~~금 더 마시긴@했는데 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "아직멀쩡해멀쩡"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그래서그런데 구원쟈님 환영ㅇ"
+      },
+      {
+        "speaker": "셰리",
+        "message": "환영인사로 한잔대접하구싶은데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "시간 좀 내줏루있어? 이따 저녁에"
+      },
+      {
+        "speaker": "셰리",
+        "message": "응~~~된다니 다행이네 헤헤 그럼 이따만나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 아무 대답도 안했는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아직 아무 대답도 안했는데…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우헤헤"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 진짜웃ㄱㅕ"
+      },
+      {
+        "speaker": "셰리",
+        "message": "몸으로 사례하라고 하니까"
+      },
+      {
+        "speaker": "셰리",
+        "message": "얼굴 완전 백짓장 ㅋㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당연히 놀라지!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당연히 놀라지!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다른 정령들한테도 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다른 정령들한테도 그래?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "응"
+      },
+      {
+        "speaker": "셰리",
+        "message": "아니?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "웅"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어느 쪽이야?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어느 쪽이야?!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우헤헤"
+      },
+      {
+        "speaker": "셰리",
+        "message": "비~밀"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 놀려먹기만 하고!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 놀려먹기만 하고!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 반응이"
+      },
+      {
+        "speaker": "셰리",
+        "message": "너무재밌는걸"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이런 거에 진지하게 반응하다니"
+      },
+      {
+        "speaker": "셰리",
+        "message": "별로 중요한 것도 아ㄴ니데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "ㅋㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 가온은 처음 가봐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "처음은 아닌데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "처음은 아닌데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "출장으로만 가 봤어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "출장으로만 가 봤어"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그럼 놀러 가는 건 처음인거네~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우후후후훙"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님의 처♡음"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내가 받아가는 거네에~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 그런 거엔 안 놀라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이제 그런 거엔 안 놀라"
+      },
+      {
+        "speaker": "셰리",
+        "message": "오잉"
+      },
+      {
+        "speaker": "셰리",
+        "message": "학습능력이 좋네 구원쟈님"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그럼 이런 온천여관에"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이 선장님 같은 미녀랑"
+      },
+      {
+        "speaker": "셰리",
+        "message": "단둘이 같이 온 건????"
+      },
+      {
+        "speaker": "셰리",
+        "message": "처음?? 처음이야??? 처음이지????"
+      },
+      {
+        "speaker": "셰리",
+        "message": "…구원자니임?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님~~~~~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "지금이야 트로이카의 절반이 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "게이트 현상 때문에 잃어버린 땅이 되어 버렸지만"
+      },
+      {
+        "speaker": "셰리",
+        "message": "예전엔 제법 넓은 나라였거든??"
+      },
+      {
+        "speaker": "셰리",
+        "message": "당연히 트로이카의 뒷골목 사정도"
+      },
+      {
+        "speaker": "셰리",
+        "message": "좀… 아니 꽤~~ 복잡했구…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "에일린하고는 그때쯤에 친해졌어"
+      },
+      {
+        "speaker": "셰리",
+        "message": "정령들이 줄어서 장물 수입도 줄었는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "에일린네가 물량을 꽤 늘려 줬거든"
+      },
+      {
+        "speaker": "셰리",
+        "message": "또 우리가 입항할 때마다 쓸데없는 좀도둑들이 설치지 않게"
+      },
+      {
+        "speaker": "셰리",
+        "message": "편의도 잘 봐줬고"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그리고 걔 은근히 술을 좀 하거든~~!!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나만큼은 아니지만~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게 제일 중요한 이유였구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그게 제일 중요한 이유였구나"
+      },
+      {
+        "speaker": "셰리",
+        "message": "헉 어떻게 알았어??"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 천재네!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그러고보니 구원자님"
+      },
+      {
+        "speaker": "셰리",
+        "message": "어제 그거 먹었어?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "장어말이랑 곤약소면이랑 산채나물이랑"
+      },
+      {
+        "speaker": "셰리",
+        "message": "유부무침이랑 생선회랑 계란찜!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…맛있었겠네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…맛있었겠네"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 안먹었어???"
+      },
+      {
+        "speaker": "셰리",
+        "message": "왜?????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누구 때문이겠어??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "누구 때문이겠어??"
+      },
+      {
+        "speaker": "셰리",
+        "message": "누구??????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "셰리",
+        "message": "에"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그럼 구원자님이 현관에서 잔 것도…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "……."
+      },
+      {
+        "speaker": "셰리",
+        "message": "에헤… 헤헤헤…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "미, 미안……?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알면 됐어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알면 됐어"
+      },
+      {
+        "speaker": "셰리",
+        "message": "에헤헤헤…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "전에 배에서 마셨던 와인…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "코르크를 잃어버렸어…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그거 모으는 게 내 삶의 낙인데~~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "취미가 코르크 모으기였지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "취미가 코르크 모으기였지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "웅웅"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이렇게 와인 테이스팅 할때도"
+      },
+      {
+        "speaker": "셰리",
+        "message": "코르크에 남은 잔향을 킁킁하면"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이 와인이 상했나 안 상했나 알 수 있기도 해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "테이스팅 하는 거 멋지다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "테이스팅 하는 거 멋지다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "와인 맛의 미묘한 차이까지 다 느끼는 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "와인 맛의 미묘한 차이까지 다 느끼는 거야?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "아니"
+      },
+      {
+        "speaker": "셰리",
+        "message": "솔직히 그냥 다 맛있어서…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이건 좀 시큼하게 맛있는 와인이구나~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이건 떫은 맛 나는 맛있는 와인이구나~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이 정도"
+      },
+      {
+        "speaker": "셰리",
+        "message": "하아아아앙"
+      },
+      {
+        "speaker": "셰리",
+        "message": "상상하니까"
+      },
+      {
+        "speaker": "셰리",
+        "message": "와인 마시구 싶다"
+      },
+      {
+        "speaker": "셰리",
+        "message": "조만간 구원자님이랑 마셔야겠어!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "태초에 천족과 마족이 있었다…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "지상에서는 전쟁의 봉화가 불타오르고…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 추천해준 거 말고"
+      },
+      {
+        "speaker": "셰리",
+        "message": "다른 게임도 해 봤는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "대뜸 이렇게 시작하길래"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이게 뭔 소리야?? 했거든?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "근데 생각해 보니까 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 에덴에 막 왔을 때"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이런 느낌이었으려나 싶더라구?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나는 게임을 끌 수 있었지만"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님은 그럴 수가 없었잖아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그래서~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "힘들었겠구나~~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진지하게 걱정해 주는 거 맞지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진지하게 걱정해 주는 거 맞지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "진짜야!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "깊게 생각하면"
+      },
+      {
+        "speaker": "셰리",
+        "message": "너무 막막해서 무서운걸"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 대단하네에에에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 얼버무리네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 얼버무리네"
+      },
+      {
+        "speaker": "셰리",
+        "message": "흥"
+      },
+      {
+        "speaker": "셰리",
+        "message": "무서운걸 어떡해"
+      },
+      {
+        "speaker": "셰리",
+        "message": "횃불 해적단 말이야"
+      },
+      {
+        "speaker": "셰리",
+        "message": "어느새 이렇게 커져버렸지만"
+      },
+      {
+        "speaker": "셰리",
+        "message": "처음에는 정말 오합지졸이었거든~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "갈곳 없는 정령"
+      },
+      {
+        "speaker": "셰리",
+        "message": "배가 타고 싶은 정령"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그냥 집 나온 정령"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나처럼 술 좋아하는 정령"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그런 녀석들이 대충 모이다 보니 이렇게 됐어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셰리는 해적단에 소속감을 못 느꼈다고 했지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셰리는 해적단에 소속감을 못 느꼈다고 했지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 제법 좋아하지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래도 제법 좋아하지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그럼!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내 해적단인걸"
+      },
+      {
+        "speaker": "셰리",
+        "message": "더 좋아하고 싶은데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그러지 못해서 속상한 거야아아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 그 버릇"
+      },
+      {
+        "speaker": "구원자",
+        "message": "또 그 버릇"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진지한 얘기 할 때 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "진지한 얘기 할 때 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "말꼬리 늘이는 버릇"
+      },
+      {
+        "speaker": "구원자",
+        "message": "말꼬리 늘이는 버릇"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "셰리",
+        "message": "셰리 선장에 대해 너무 많이 알아버렸군"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그런 구원자님에게는"
+      },
+      {
+        "speaker": "셰리",
+        "message": "술주정 공격을 하겠습니다!!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "훙냐냐냐~~~~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 술에 취해 있는 거"
+      },
+      {
+        "speaker": "구원자",
+        "message": "항상 술에 취해 있는 거"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 이렇게 말꼬리 늘이는 버릇을"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 이렇게 말꼬리 늘이는 버릇을"
+      },
+      {
+        "speaker": "구원자",
+        "message": "숨기기 위한 위장이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "숨기기 위한 위장이야?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "에에엥?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "술은 정말 좋아서 마시는 거야아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그리구우우"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그냥"
+      },
+      {
+        "speaker": "셰리",
+        "message": "좀 그렇잖아아아 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "말로 하면 좀 나은데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "에버톡으로 보내면 기록이 남아서"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나중에 다시 보게 되고"
+      },
+      {
+        "speaker": "셰리",
+        "message": "왠지 부끄러워어어ㅓ어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡은 취한 척을 못 하니까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "에버톡은 취한 척을 못 하니까?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "오늘 구원자님"
+      },
+      {
+        "speaker": "셰리",
+        "message": "엄청 날카롭네"
+      },
+      {
+        "speaker": "셰리",
+        "message": "흐음으음으으음음"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그 이해도를 치하하며"
+      },
+      {
+        "speaker": "셰리",
+        "message": "셰리학 박사학위를 수여하겠습니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…고마워;"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…고마워;"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이제 셰리학의 권위자가 되셨으니"
+      },
+      {
+        "speaker": "셰리",
+        "message": "앞으로도 셰리 선장에 대해"
+      },
+      {
+        "speaker": "셰리",
+        "message": "깊게 탐구해 주쎄요오옹"
+      },
+      {
+        "speaker": "셰리",
+        "message": "바에 칵테일을 마시러 가면"
+      },
+      {
+        "speaker": "셰리",
+        "message": "목테일이라고"
+      },
+      {
+        "speaker": "셰리",
+        "message": "논알콜 칵테일 종류가 있는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "생각보다 맛이 그럴싸해서 가끔 속아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "분명히 그걸 마시고 나서 알딸딸해졌는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나중에 가서 보니 논알콜일 때도 있고…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "분명 취한 기분이 들었는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이 기분이 가짜라니 말도 안 되지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다 마음먹기 달렸다는 거지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다 마음먹기 달렸다는 거지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 셰리도 너무 걱정 마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 셰리도 너무 걱정 마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셰리의 제자리도 금방 찾을 수 있을 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셰리의 제자리도 금방 찾을 수 있을 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니면 제자리라고 생각할 수 있는 곳을"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니면 제자리라고 생각할 수 있는 곳을"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 은근히"
+      },
+      {
+        "speaker": "셰리",
+        "message": "근성론자네?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그래도 그랬으면 좋겠다"
+      },
+      {
+        "speaker": "셰리",
+        "message": "찾을 수 있다고 생각하면"
+      },
+      {
+        "speaker": "셰리",
+        "message": "금방 찾아지겠지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "셰리학 박사가 하는 말이니까"
+      },
+      {
+        "speaker": "셰리",
+        "message": "믿어 볼게~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "ㄴ ㅏ?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "나몰ㄹ ㅏ?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "셰리잔아~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "트로이카 체고의 선 자ㅇ"
+      },
+      {
+        "speaker": "셰리",
+        "message": "아 한잔더해야지"
+      },
+      {
+        "speaker": "셰리",
+        "message": "암튼 놀러와아우앙"
+      },
+      {
+        "speaker": "셰리",
+        "message": "항구에 정박해있으니가~~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 잃어버린 브로치"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그거 대충"
+      },
+      {
+        "speaker": "셰리",
+        "message": "대애애ㅐㅐ충"
+      },
+      {
+        "speaker": "셰리",
+        "message": "비슷한 거 차면 아무도 모를걸?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "솔직히이히히"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 싶지 않아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러고 싶지 않아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "범생이~~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이런 건 의미가 중요한 거잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이런 건 의미가 중요한 거잖아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그래~?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "흐으으음"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그러면 구원자님은 성실하니깐"
+      },
+      {
+        "speaker": "셰리",
+        "message": "몸으로 팍팍 사례해 줄거지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…또 그 소리!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "…또 그 소리!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "아 재밋어~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우햐햐햐~~"
+      },
+      {
+        "speaker": "셰리",
+        "message": "여기 대욕장 진짜 좋다아"
+      },
+      {
+        "speaker": "셰리",
+        "message": "온천 물도 완전 보들보들하고"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내가 들어간 쪽은 노천온천이 있었는데"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님 들어간 쪽은 어땠어? 거기도 있었어?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내일은 우리 탕 바꿔서 들어가 보자!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "음~ 구원자님~ "
+      },
+      {
+        "speaker": "셰리",
+        "message": "아직 씻고 있어~?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우리 둘 뿐이니까"
+      },
+      {
+        "speaker": "셰리",
+        "message": "누구 눈치도 보지 않고 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 '진짜로 하고 싶은 것'"
+      },
+      {
+        "speaker": "셰리",
+        "message": "그걸 내게 말해줘"
+      },
+      {
+        "speaker": "셰리",
+        "message": "가온국은 지역마다 문화가 꽤 다르거든?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 전에 가본 곳하고 "
+      },
+      {
+        "speaker": "셰리",
+        "message": "지금 우리가 와 있는 곳은 꽤 분위기가 다르지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "오늘은 나랑 같이 여길 좀 산책해줘"
+      },
+      {
+        "speaker": "셰리",
+        "message": "게이이임?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "배 위에서도 카드 게임 같은 건 했었지만"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 말하는 건 이런 게 아닌 거지?"
+      },
+      {
+        "speaker": "셰리",
+        "message": "뭐, 일단 가보자고~!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님…!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우리가 해냈어!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "우리가…!!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내 자리가"
+      },
+      {
+        "speaker": "셰리",
+        "message": "어딘가 존재하긴 하는 걸지…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "혼자서는 잘 모르겠어…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이런 길을 선택하는 것도"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원자님이 알려준 방식이니까…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "두 발을 땅에 딛을게♪"
+      },
+      {
+        "speaker": "셰리",
+        "message": "둥실둥실 떠다니던 망망대해도"
+      },
+      {
+        "speaker": "셰리",
+        "message": "마음 둘 곳 없던 고향 봉우리도 아닌"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내가 속할 곳이 어딘지"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이제 알 것 같아."
+      },
+      {
+        "speaker": "셰리",
+        "message": "사랑이 가득한 하루야~♡"
+      },
+      {
+        "speaker": "셰리",
+        "message": "이럴 땐 달달한 스파클링 와인이 딱이지♪ 좋구만~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 많이 마시지는 마. 고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 많이 마시지는 마. 고마워!"
+      },
+      {
+        "speaker": "셰리",
+        "message": "1년중 가쟝 행복한 날~♥"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구원쟈님 여기술이진짜많ㅇㅏ"
+      },
+      {
+        "speaker": "셰리",
+        "message": "구엉자님이랑도 한잔 하고싶네~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐, 얼마나 마신 거야…? 지금 갈게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐, 얼마나 마신 거야…? 지금 갈게"
+      },
+      {
+        "speaker": "셰리",
+        "message": "칠면조 구이와 와인 한 잔…"
+      },
+      {
+        "speaker": "셰리",
+        "message": "내년도 잘 부탁해, 우리 구원자님~♪"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 부탁해. 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 부탁해. 고마워"
+      }
+    ]
+  }
+}

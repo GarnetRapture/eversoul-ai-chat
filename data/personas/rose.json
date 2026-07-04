@@ -1,0 +1,43 @@
+{
+  "id": "120",
+  "name": "로제",
+  "name_en": "Rose",
+  "grade": "레어",
+  "race": "인간형",
+  "class": "캐스터",
+  "sub_class": "치료",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "석양빛 베일",
+    "constellation": "인연_제이드_이벤트2",
+    "union": "태양 기사단",
+    "birthday": "610",
+    "height": 160,
+    "weight": 46,
+    "cv_ko": "이명호",
+    "cv_jp": "Rena Maeda",
+    "like": [
+      "바게트빵",
+      "이타적 행동"
+    ],
+    "dislike": [
+      "추위"
+    ],
+    "hobby": [
+      "향초 태우기"
+    ],
+    "speciality": [
+      "지팡이 돌리기"
+    ]
+  },
+  "personality": {
+    "description": "안녕하세요, 구원자님? 저는 로제라고 해요.",
+    "greeting": "제 기도가 닿지 않는 곳은 없답니다. "
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

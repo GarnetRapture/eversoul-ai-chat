@@ -1,0 +1,2092 @@
+{
+  "id": "4150",
+  "name": "바이스",
+  "name_en": "Weiss",
+  "grade": "에픽",
+  "race": "불사형",
+  "class": "레인저",
+  "sub_class": "광역",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "무한 화포",
+    "constellation": "인연_메피스토_이벤트1",
+    "union": "칼라르 암즈 코퍼레이션",
+    "birthday": "131",
+    "height": 150,
+    "weight": 35,
+    "cv_ko": "이세레나",
+    "cv_jp": "이세레나",
+    "like": [
+      "기계",
+      "미인"
+    ],
+    "dislike": [
+      "비효율"
+    ],
+    "hobby": [
+      "병력 증강"
+    ],
+    "speciality": [
+      "일"
+    ]
+  },
+  "personality": {
+    "description": "그래, 만나서 반갑군.",
+    "greeting": "바이스다. 칼라르의 헤드를 맡고 있지. "
+  },
+  "speech_patterns": [
+    "실례하지. ",
+    "칼라르의 바이스다. ",
+    "그래. ",
+    "근처에서 유리아 님을 봐서 알겠지만 ",
+    "그러니 할 말이 있다면 ",
+    "용건의 핵심, 혹은 결론부터 말하고 ",
+    "…정말 제대로 이해한 거냐, 네 녀석.",
+    "어쨌던 알겠다. ",
+    "일단은 협력하는 입장이니 ",
+    "그럭저럭 원만한 관계를 유지하길 빌마.",
+    "말해두겠지만, ",
+    "허튼 수작 부리지 마라. ",
+    "그럼 이만.",
+    "혹시 몰라서 하는 말이지만",
+    "착각하지 마라",
+    "이 몸은 어디까지나 그 행사에 ",
+    "절대로",
+    "사적인 욕망을 해방시키기 위해 간 게 아니다",
+    "잘 알겠지?",
+    "…….",
+    "네 녀석…",
+    "역시 기억을 제거해야…",
+    "하???",
+    "그건… ",
+    "따지자면… 그렇긴… 하지…",
+    "흥",
+    "네 녀석… 보는 눈은 나쁘지 않군",
+    "그 수제 인형 시리즈는 한 행사에 ",
+    "한때는 너무 구하기가 어려워서 ",
+    "뭐 지금은 제작자인 솜솜조아조아 님의 자비로 ",
+    "이번에 판매하신 암즈 유니폼 시리즈 마크 VI는 ",
+    "…아니다!!!!",
+    "어이",
+    "구원자",
+    "넌 대체 무슨 생각이냐",
+    "이 몸과 '친구'가 되고 싶다니",
+    "그러니까",
+    "그게 대체 무슨 뜻인지 모르겠다는 거다",
+    "알고 있겠지만",
+    "나는 비리와는 거리가 멀다",
+    "아무리 사적으로 친한 상대라고 해도 ",
+    "그러니 네 녀석의 수작이 뭔진 모르겠지만 ",
+    "???????????",
+    "…!!!! 네 녀석…! ",
+    "이 몸을 속일 수 있을 거라 생각하지 마라 구원자",
+    "난 절대 방심하지 않을테니까 말이야",
+    "흥... 그런 알기 쉬운 수법에 넘어갈까 보냐?",
+    "뭐 그래도 일단",
+    "네 녀석의 수작이 궁금하긴 하니",
+    "그날 보도록 하지"
+  ],
+  "comments": [
+    {
+      "writer": "칸나",
+      "comment": "바이스 님 너무 좋아! 칸나 공주를 귀여워해 주셔!! "
+    },
+    {
+      "writer": "도미니크",
+      "comment": "가…가끔 절 노려보면서 아무 말 없이 사탕을 쥐여주고 가세요…"
+    },
+    {
+      "writer": "브리기트",
+      "comment": "재미있는 녀석."
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "바이스",
+        "message": "실례하지. "
+      },
+      {
+        "speaker": "바이스",
+        "message": "칼라르의 바이스다. "
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 잘 부탁해!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 잘 부탁해!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그래. "
+      },
+      {
+        "speaker": "바이스",
+        "message": "근처에서 유리아 님을 봐서 알겠지만 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그러니 할 말이 있다면 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "용건의 핵심, 혹은 결론부터 말하고 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "알겠어!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "알겠어!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…정말 제대로 이해한 거냐, 네 녀석."
+      },
+      {
+        "speaker": "바이스",
+        "message": "어쨌던 알겠다. "
+      },
+      {
+        "speaker": "바이스",
+        "message": "일단은 협력하는 입장이니 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럭저럭 원만한 관계를 유지하길 빌마."
+      },
+      {
+        "speaker": "바이스",
+        "message": "말해두겠지만, "
+      },
+      {
+        "speaker": "바이스",
+        "message": "허튼 수작 부리지 마라. "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럼 이만."
+      },
+      {
+        "speaker": "바이스",
+        "message": "혹시 몰라서 하는 말이지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "착각하지 마라"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸은 어디까지나 그 행사에 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "절대로"
+      },
+      {
+        "speaker": "바이스",
+        "message": "사적인 욕망을 해방시키기 위해 간 게 아니다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "잘 알겠지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 거 치고는 되게 신나 보였는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 거 치고는 되게 신나 보였는데"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……."
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "역시 기억을 제거해야…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 의미가 아니야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나쁜 의미가 아니야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 즐거워 보여서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 즐거워 보여서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보기 좋았다는 뜻이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "보기 좋았다는 뜻이야"
+      },
+      {
+        "speaker": "바이스",
+        "message": "하???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나랑 똑같은 인형 샀잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나랑 똑같은 인형 샀잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스도 선물용으로 산 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스도 선물용으로 산 거야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그건… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 개인소장용이구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 개인소장용이구나"
+      },
+      {
+        "speaker": "바이스",
+        "message": "따지자면… 그렇긴… 하지…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀여워서 나도 가지고 싶더라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "엄청 귀여워서 나도 가지고 싶더라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 또 팔려나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나중에 또 팔려나?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "흥"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석… 보는 눈은 나쁘지 않군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그 수제 인형 시리즈는 한 행사에 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "한때는 너무 구하기가 어려워서 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 지금은 제작자인 솜솜조아조아 님의 자비로 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "이번에 판매하신 암즈 유니폼 시리즈 마크 VI는 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 엄청 잘 알고 있잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 엄청 잘 알고 있잖아"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…아니다!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": ";;;"
+      },
+      {
+        "speaker": "구원자",
+        "message": ";;;"
+      },
+      {
+        "speaker": "바이스",
+        "message": "어이"
+      },
+      {
+        "speaker": "바이스",
+        "message": "구원자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "바이스",
+        "message": "넌 대체 무슨 생각이냐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸과 '친구'가 되고 싶다니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "말 그대로의 뜻인데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "말 그대로의 뜻인데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그동안 친해질 기회가 없었으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그동안 친해질 기회가 없었으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이번 일을 계기로 좀 더 친해지고 싶어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이번 일을 계기로 좀 더 친해지고 싶어"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그러니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그게 대체 무슨 뜻인지 모르겠다는 거다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "알고 있겠지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "나는 비리와는 거리가 멀다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "아무리 사적으로 친한 상대라고 해도 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그러니 네 녀석의 수작이 뭔진 모르겠지만 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 바이스에 대해 더 알고 싶을 뿐이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 바이스에 대해 더 알고 싶을 뿐이야"
+      },
+      {
+        "speaker": "바이스",
+        "message": "???????????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 좋아하고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 좋아하고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 싫어하는지 라던가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 싫어하는지 라던가"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…!!!! 네 녀석…! "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 그런거 아니래도!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 그런거 아니래도!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸을 속일 수 있을 거라 생각하지 마라 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "난 절대 방심하지 않을테니까 말이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 그래도 되니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 그래도 되니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 내일 시간 돼? "
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 내일 시간 돼? "
+      },
+      {
+        "speaker": "구원자",
+        "message": "변장하고 15시쯤에 만나고 싶은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "변장하고 15시쯤에 만나고 싶은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "장소는 여기"
+      },
+      {
+        "speaker": "구원자",
+        "message": "장소는 여기"
+      },
+      {
+        "speaker": "바이스",
+        "message": "흥... 그런 알기 쉬운 수법에 넘어갈까 보냐?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 그래도 일단"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석의 수작이 궁금하긴 하니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그날 보도록 하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스… 진짜 성실하구나…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스… 진짜 성실하구나…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "무슨 소린지 모르겠군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "일단 내일 만나도록 하지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "늦지 마라 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…오늘은 안내 수고 많았다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "덕분에 전혀 몰랐던 좋은 장소를 알게 되었다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "앞으로도 가끔 애용하도록 하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 맘에 들었어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 맘에 들었어?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 불편하지 않은 장소였다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그리고 내가 그렇게 느끼기는 쉽지 않지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "가게 자체가 원체 조용해서 집중하기 좋아 보이더군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "식사나 음료수 주문도 가능하고"
+      },
+      {
+        "speaker": "바이스",
+        "message": "테이블도 널찍한 편이라 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "카드 게임?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "카드 게임?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "자주 하지는 않는다만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그래도 카드 자체는 꽤 모으는 편이라서 말이다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 캐릭터 같은 게 그려져 있는 카드 게임이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 캐릭터 같은 게 그려져 있는 카드 게임이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "마법이라던가 아이템이라던가 그런 분류도 있고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "마법이라던가 아이템이라던가 그런 분류도 있고"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐냐, 네 녀석! 이미 알고 있었던 거냐!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "트로이카에서 유행한지 얼마 되지 않아서 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "토큰과 룰렛, 그리고 다양한 카드를 조합해 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "'기갑배틀 메카소울'을…!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 처음 들어보긴 하는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 처음 들어보긴 하는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "재밌어 보이네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "재밌어 보이네"
+      },
+      {
+        "speaker": "바이스",
+        "message": "호오... 처음 들어본다고…?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이거 안되겠군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "조만간 초보도 쓸만한 덱을 하나 보내주지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스는 엄청 잘하나 봐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스는 엄청 잘하나 봐?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 그럭저럭"
+      },
+      {
+        "speaker": "바이스",
+        "message": "하는 편이지 않을까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…플레이 경험 자체는 별로 없다만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 그럼 초보야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 그럼 초보야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "초…보는 아니다!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "아… 아마도…!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 같이 배워보면 되겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 같이 배워보면 되겠다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "으으으윽…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그…래… "
+      },
+      {
+        "speaker": "바이스",
+        "message": "일단 기대하고 있겠다…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그런 의미로 이번에는 좋은 곳을 안내 받았으니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "말했듯 다음에는 이 몸이 제대로 대접하도록 하지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "큭큭… 기대하는 게 좋을 거다, 구원자…!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "젠장… 이렇게 실패하다니…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "설마 첫 방향성부터 잘못 잡았을 줄이야… "
+      },
+      {
+        "speaker": "바이스",
+        "message": "크으윽… 먼저 구원자 네 녀석의 호불호에 대한 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 지금이라도 알아 볼래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 지금이라도 알아 볼래?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…뭐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그것도 나쁘지 않겠군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "다행히 아케나인에 체류하는 동안은 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "……."
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸이 하나 학습한 게 있다만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "구원자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "구원자",
+        "message": "??"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석이 정의한 '친구' 끼린 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "…마, 말해두겠지만 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "딱히 이 몸이 뭐 친구를 사귀어본 적이 없다거나 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석은 정령이 아닌 인간이잖냐? "
+      },
+      {
+        "speaker": "바이스",
+        "message": "우리와는 시간 개념이나 교우 관계에 대해 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그래"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그러니까 물어보는 거다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "ㅋㅋ 그냥 편하게 물어봐도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "ㅋㅋ 그냥 편하게 물어봐도 돼"
+      },
+      {
+        "speaker": "바이스",
+        "message": "아니거든!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "어쨌건!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭘 해야하는 거냐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "서로 100문 100답이라도 하는 거냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "100문 100답ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "100문 100답ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+      },
+      {
+        "speaker": "바이스",
+        "message": "웃지 마라!!!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 해도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 해도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋네 100문 100답"
+      },
+      {
+        "speaker": "구원자",
+        "message": "좋네 100문 100답"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당장 하자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당장 하자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "놀리지 마라, 구원자!!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안"
+      },
+      {
+        "speaker": "바이스",
+        "message": "흥!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그래서 다시 좀 이야기를 돌리자면"
+      },
+      {
+        "speaker": "바이스",
+        "message": "구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너는 나한테 하고 싶은 말이 없냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 그건 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 그건 왜?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…아니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "항상 너와 만나면"
+      },
+      {
+        "speaker": "바이스",
+        "message": "내가 떠들고 넌 들어주는 거 같아서 말이다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너는 그게 좋아서 그런 걸지도 모르겠지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……."
+      },
+      {
+        "speaker": "바이스",
+        "message": "문득…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "나도 궁금해지더군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너라는 인간에 대해서"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너라는 개체가 이 세상을 어떻게 살아가고 있는지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "시"
+      },
+      {
+        "speaker": "바이스",
+        "message": "싫으면 뭐 넘어가도 된다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그냥 내가 혼자 멋대로 궁금해진 거니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "시간 뺏어서 미안하군"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아냐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 말해줘서 엄청 기뻐!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 말해줘서 엄청 기뻐!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그… 그러냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음 그래도 에버톡보단"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음 그래도 에버톡보단"
+      },
+      {
+        "speaker": "구원자",
+        "message": "직접 만나서 대화하고 싶네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "직접 만나서 대화하고 싶네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스 보고 싶으니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스 보고 싶으니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석은 대체 무슨 의도로 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐가???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭐가???"
+      },
+      {
+        "speaker": "바이스",
+        "message": "보고싶다느니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "직접 만나서 대화하고 싶다느니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "우리가 언제 그렇게 친해졌다고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리 안 친해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리 안 친해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 안 만나줄 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 안 만나줄 거야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "누 누가 안만나준다고 했냐!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "오"
+      },
+      {
+        "speaker": "바이스",
+        "message": "오늘은 내가 그쪽으로 가지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "마침 나 없는 동안 볼 '기갑 장르' "
+      },
+      {
+        "speaker": "구원자",
+        "message": "달달한 디저트 준비해 둘게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "달달한 디저트 준비해 둘게!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "와 기대된…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 아니라!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그런 거 안 준비해도 돼!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "설마 이렇게 다짜고짜 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "정말 꿈에도 상상 못했다 구원자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 방해야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 방해야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "솔직하게 말하면 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "니가 여기 있으면 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "좀 집중이 안되긴 한다만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안"
+      },
+      {
+        "speaker": "바이스",
+        "message": "말은 끝까지 들어라 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…그 이상으로 네 녀석이 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "다행이다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "다행이다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "일단 르네한테 부탁해서 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "항상 사장실에 있을 수도 없는 노릇이니"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그리고… 어쨌건 내가 집중하는 동안 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "지난 번에 안 빌려준 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "비장의 컬렉션???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "비장의 컬렉션???"
+      },
+      {
+        "speaker": "바이스",
+        "message": "순수한 기갑 장르라고 보기엔 좀 그렇다만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "지난 번에 말했지 "
+      },
+      {
+        "speaker": "구원자",
+        "message": "초마신병 시리즈 말이지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "초마신병 시리즈 말이지?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그래 그거 말고도 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그중에서도 제일 추천하고 싶은 건 이거다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 이건 또 뭐야!?!?!?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 이건 또 뭐야!?!?!?!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "훗… "
+      },
+      {
+        "speaker": "바이스",
+        "message": "예전에 구문명 유적에서 발견했던 데이터를 토대로"
+      },
+      {
+        "speaker": "바이스",
+        "message": "조앤이 기꺼이 모델이 되어줬지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 뭔가 엄청나게 하드보일드해 보이는데…!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조앤이 뭔가 엄청나게 하드보일드해 보이는데…!?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "의학은 쉽지 않으니까 말이다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "기왕이면 저런 작풍을 좋아하는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 계산해서 일부러 저렇게 만든 거구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아 계산해서 일부러 저렇게 만든 거구나"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 그림체야 어쨌건 간에 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "강력하게 추천한다 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "조앤… 아니 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "아무래도 좋은 얘기다만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "솔직히 말하자면"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너에 대한 이 몸의 인상은 최악이었다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기!?!?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기!?!?!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "정신 차리고 보면 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "하나 같이 네 녀석에 대해 좋은 이야기를 하고"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석에게 썩 친근하게 구니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "수상하기 짝이 없다고 생각했지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런가…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런가…?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너는 잘 모를 수도 있지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "조앤이나 르네는 물론 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "그렇게 쉽게 남에게 마음을 여는 타입은 아니다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석과 직접 만나보고 나니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "왜 다들 그렇게 무장 해제를 하고 있는지는 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "이쪽에서 어떻게든 거리를 두려고 해도"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그렇게 어떻게든 끈질기고 우악스럽게 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "나를 알고 싶다던가"
+      },
+      {
+        "speaker": "바이스",
+        "message": "친해지고 싶다던가"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그렇게 달라붙으면서"
+      },
+      {
+        "speaker": "바이스",
+        "message": "실제로 나를 유심히 관찰해서는"
+      },
+      {
+        "speaker": "바이스",
+        "message": "내가 필요할 때 적절한 서포트를 해주거나"
+      },
+      {
+        "speaker": "바이스",
+        "message": "적당한 관심을 주니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "치… 칭찬이지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "치… 칭찬이지?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럼 네 녀석은 내 말을 대체 뭘로 듣고 있는 거냐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "당연히 칭찬이지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴 다행이다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴 다행이다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐 어쨌건…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "나도 결국 네 녀석과 '친구'라는 관계를"
+      },
+      {
+        "speaker": "바이스",
+        "message": "여기까지 질질 끌고 오게 됐으니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "참 대단한 녀석이야 넌"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…만일"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너 같은 녀석을 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "내가 조금 더 일찍 알고 지냈다면"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……."
+      },
+      {
+        "speaker": "바이스",
+        "message": "아니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "아무것도 아니다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "잊어라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스… "
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스… "
+      },
+      {
+        "speaker": "바이스",
+        "message": "설마 내가 말싸움으로 지는 날이 올 줄이야…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "평소엔 이기는 편이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "평소엔 이기는 편이야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "내 성격상 누구한테 지는 걸 용납할 거 같냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한텐 꽤 자주 져주는 거 같았는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한텐 꽤 자주 져주는 거 같았는데"
+      },
+      {
+        "speaker": "바이스",
+        "message": "하여간 따박따박 한마디도 지는 날이 없구나 넌!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "대제한테도 꽤 지는 거 같고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "대제한테도 꽤 지는 거 같고"
+      },
+      {
+        "speaker": "바이스",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "캐서린한테도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "캐서린한테도"
+      },
+      {
+        "speaker": "바이스",
+        "message": "잠깐!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "르네한테도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "르네한테도"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그건 좀!!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔은 조앤한테도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔은 조앤한테도"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너 어디까지 아는 거냐!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진심인 미리암한테도 지잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진심인 미리암한테도 지잖아"
+      },
+      {
+        "speaker": "바이스",
+        "message": "~~~!!!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "농담이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "농담이야"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그… 그래"
+      },
+      {
+        "speaker": "바이스",
+        "message": "마음만 먹으면 언제든 이길 수 있다고!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "마음만 먹으면!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "평소엔 내가 봐, 봐주는 거니까!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 바이스 착하니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 바이스 착하니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그런 거 아니거든!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 말싸움 허접인거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 말싸움 허접인거야?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "야!!!!!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…나도 결국엔 그냥 한 명의 정령이라서"
+      },
+      {
+        "speaker": "바이스",
+        "message": "사실 딱히 일하는 걸 좋아하는 건 아니다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그냥 일을 잘하고 많이 할 수 있으니까 하는 거지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그리고 필요하니까 하는 거지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "너한테만 말하는 거지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "사실은 나도 놀고 싶어"
+      },
+      {
+        "speaker": "바이스",
+        "message": "땡땡이란 걸 치고 싶단 말이다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…하아. 어때. "
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 딱히?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니 딱히?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오히려 그런 생각을 안하는 게 더 무서워…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오히려 그런 생각을 안하는 게 더 무서워…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "지… 진짜 그렇게 생각하냐? "
+      },
+      {
+        "speaker": "바이스",
+        "message": "정말로?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스에 비하면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스에 비하면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 구원자 별로 오래 안했는데도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 구원자 별로 오래 안했는데도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔은 정말 푹 쉬고 싶어지는데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "가끔은 정말 푹 쉬고 싶어지는데"
+      },
+      {
+        "speaker": "바이스",
+        "message": "흐… 흐흥. 그래? "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그야 당연하지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그야 당연하지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그… 그럼 가끔은 쉬어도 되겠지?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "1년에 한 3일 정도는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "3일 밖에 안 쉬게!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "3일 밖에 안 쉬게!?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그… 그럼 에라 큰 맘 먹고!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "1.. 1주일!!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스는 주5일이란 걸 배워야할 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스는 주5일이란 걸 배워야할 거 같아"
+      },
+      {
+        "speaker": "바이스",
+        "message": "하? 무슨 소리냐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "주 5일근무는 평범하게 시행하고 있다만?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "부서에 따라선 암즈 코퍼레이션은 주3일 근무도 있다만?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "근데 왜 바이스는 안 쉬냐고!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "근데 왜 바이스는 안 쉬냐고!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그거 아나 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "수상도 사장도 노동자로 취급하지 않는다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "즉 노동시간에 제한이 없다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스가 그러면 다들 못 쉴 걸?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "바이스가 그러면 다들 못 쉴 걸?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……? 그게 무슨 뜻이냐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나만 해도 갑자기 눈치가 보여…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나만 해도 갑자기 눈치가 보여…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그… 그런 거냐…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴일은 절대로 더 늘리는 게 좋아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "휴일은 절대로 더 늘리는 게 좋아"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…그 그렇군?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "참고하겠다…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…크흠"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석도 뭐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "바이스",
+        "message": "힘들 땐 의지해도 좋다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "괜히 내가 바쁜 걸 신경쓸 필요는 없어"
+      },
+      {
+        "speaker": "바이스",
+        "message": "앞으로는 에버톡도 최대한 빨리 답변하겠다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "우린…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "치… 친구니까!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "서로가 엄청 소중한!!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "절대 가만안둬"
+      },
+      {
+        "speaker": "바이스",
+        "message": "절대 용서못해"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸의 비밀을 알아버린 이상 네 녀석을…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…이번엔 정말 미안하게 됐군"
+      },
+      {
+        "speaker": "바이스",
+        "message": "나도 모르게 이성을 잃은 거 같다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "일단 이번 일에 대해서는 제대로 사과하지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…청구할 배상 내역에 대해서는 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "정말 '그걸'로 괜찮을지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "어이 구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "약속 시간이나 장소는 변경 없겠지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "정시에 도착할 예정이니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그렇게 알고 있어라"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럼 이만."
+      },
+      {
+        "speaker": "구원자",
+        "message": "1시간 전인데 일부러 연락 준거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "1시간 전인데 일부러 연락 준거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…흥"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 정도는 상식이지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럼 곧 보지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "큭큭큭… 구원자. "
+      },
+      {
+        "speaker": "바이스",
+        "message": "이 몸이 네 녀석에서 끝내주게 멋진 광경을 보여주지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "기대하는 게 좋을 거다!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "준비가 되면 이 카페로 와라!!!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "기다리고 있겠다…!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "큭큭큭…!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "뭐… 네 녀석이 굳이 시간을 내주겠다니까…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "조금… 사적인 이야기를 하지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "……."
+      },
+      {
+        "speaker": "바이스",
+        "message": "듣기 싫으면 그냥 중간에 말 끊어도 된다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "딱히… 재밌는 이야기가 아닐 수도 있으니까"
+      },
+      {
+        "speaker": "바이스",
+        "message": "미안하지만 말했듯이 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "연락 확인이 늦으니"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그렇게 알고 있도록"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…네 녀석의 마음은 잘 알았다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "진심에는 진심으로 답할 수 밖에 없지"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그럼…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "이왕 칼라르에 온 김에"
+      },
+      {
+        "speaker": "바이스",
+        "message": "끝내주게 쩌는 거 하나 보고 가지 않겠나?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…너랑 나는 너무 닮았었고"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그게 우리의 문제였다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그 누구도 나쁘지 않아"
+      },
+      {
+        "speaker": "바이스",
+        "message": "그냥 우리가 서로에게 기대하던 바가 달랐을 뿐"
+      },
+      {
+        "speaker": "바이스",
+        "message": "난… 네가 날 구원하려 들지 않았으면 했어"
+      },
+      {
+        "speaker": "바이스",
+        "message": "난 그저 네가…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "새삼 깨달은 거지만"
+      },
+      {
+        "speaker": "바이스",
+        "message": "구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석은 천재냐???"
+      },
+      {
+        "speaker": "바이스",
+        "message": "…아무리 생각해도"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석은 그냥 '친구'라고만 정의하기엔"
+      },
+      {
+        "speaker": "바이스",
+        "message": "좀 여러모로 무리인 거 같다는 생각이 든다"
+      },
+      {
+        "speaker": "바이스",
+        "message": "구원자"
+      },
+      {
+        "speaker": "바이스",
+        "message": "네 녀석은 대체"
+      },
+      {
+        "speaker": "바이스",
+        "message": "나랑 어떻게 되고 싶은 거냐…!?"
+      },
+      {
+        "speaker": "바이스",
+        "message": "오늘은 너무 바빠서 직접 만나러 가긴 좀 그렇다만…"
+      },
+      {
+        "speaker": "바이스",
+        "message": "마침 최근 어쩌다 보니 일류 장인이 만든 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "먹고 싶다면 뭐 그래 응 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "따… 딱히 특별한 의도가 있는 건 아니니까!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워! 조만간 놀러갈게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워! 조만간 놀러갈게!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "대상인의 날 하면 보통 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "칼라르에서는 대상인의 날에 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "암즈 코퍼레이션도 이 때 맞춰서 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "필요하면 카탈로그 정도는 보내주지."
+      },
+      {
+        "speaker": "바이스",
+        "message": "…보고 싶지? 그치? 구경하고 싶지???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 한 부 부탁할게!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 한 부 부탁할게!"
+      },
+      {
+        "speaker": "바이스",
+        "message": "흥. 여기고 저기고 다들 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "축제를 즐기는 건 좋지만 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "조만간 비교적 편하게 대할 수 있는 정령들과 "
+      },
+      {
+        "speaker": "바이스",
+        "message": "……너도 오겠나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당연하지! 꼭 불러줘!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "당연하지! 꼭 불러줘!"
+      }
+    ]
+  }
+}

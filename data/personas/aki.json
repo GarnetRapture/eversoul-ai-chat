@@ -1,0 +1,1488 @@
+{
+  "id": "1040",
+  "name": "아키",
+  "name_en": "Aki",
+  "grade": "에픽",
+  "race": "인간형",
+  "class": "스트라이커",
+  "sub_class": "암살",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "꽃피는 검격",
+    "constellation": "인연_제이드_이벤트2",
+    "union": "떠돌이 해결사",
+    "birthday": "605",
+    "height": 165,
+    "weight": 52,
+    "cv_ko": "박지윤",
+    "cv_jp": "Kaede Hondo",
+    "like": [
+      "연애 소설"
+    ],
+    "dislike": [
+      "민트류 음식"
+    ],
+    "hobby": [
+      "입욕제 모으기"
+    ],
+    "speciality": [
+      "검무"
+    ]
+  },
+  "personality": {
+    "description": "들리는가, 곤란에 빠진 정령들의 목소리가…",
+    "greeting": "그 누구보다 화려한 벚꽃을!"
+  },
+  "speech_patterns": [
+    "일일 퀘스트",
+    "주간 퀘스트",
+    "메인 퀘스트",
+    "달성도",
+    "완료",
+    "이동",
+    "수령",
+    "플레이어",
+    "기록",
+    "구원자님!!",
+    "네네, 제가 바로 해결사 아키랍니다!",
+    "기억해주셔서 기뻐요~!",
+    "이게 제 에버톡이에요",
+    "꼭 저장해주세요!",
+    "기왕 아케나인에 왔으니",
+    "구원자님과 친해지고 싶어요~!",
+    "심심할 때나 곤란할 때 언제든지 연락 주세요",
+    "저도 종종 메시지 드릴게요☆",
+    "시간 되실 때 한 번 뵙고 싶은데",
+    "언제가 한가하세요?",
+    "스케줄 확인하시고",
+    "알려주시면 제가 맞출게요",
+    "연락 기다리고 있을게요♪",
+    "구원자님~!",
+    "지난 번엔 도와주셔서 정말 감사했어요~!",
+    "구원자님 덕에 화재 현장도 잘 수습됐고",
+    "저도 무사히 제 임무를 마저 완료했답니다♪",
+    "화재 현장 뒷처리까지 했었으면 위험했을 거예요",
+    "저 진짜 완전 열심히 굴뚝 닦았거든요",
+    "그럼요 그럼요!",
+    "그러고보니 구원자님은 취미 있으세요?",
+    "저는 소설 읽는 걸 좋아하는 편인데",
+    "혹시 괜찮으시면 추천해드리고 싶어요",
+    "어떤 소설인데?",
+    "일단 제가 먼저 추천드리고 싶은게",
+    "어디 보자…",
+    "으음",
+    "죄송해요 구원자님 ㅜㅜ 추리려고 했는데 너무 많은 거 같아요",
+    "일단 제가 성에 갖다 드릴테니까",
+    "표지 보고 골라보실래요?",
+    "오래 빌리셔도 되니까요!!",
+    "그럼 이따 뵈어요!!!",
+    "금방 갈게요!!!",
+    "짜잔",
+    "구원자님 덕분에 레베카랑 엄청 친해졌어요♪",
+    "이건 레베카랑 쇼핑 갔다가 새로 산 옷인데",
+    "어때요 ㅎㅎ 귀엽죠 ㅎㅎ",
+    "귀엽다!",
+    "사실 이거 최근 핫한 로맨스 소설 주인공 느낌으로 입어본건데",
+    "다음엔 구원자님도 같이 쇼핑하러 가요♪"
+  ],
+  "comments": [
+    {
+      "writer": "캐서린",
+      "comment": "아이를 좋아하시는 것 같아요. 상냥한 분이랍니다."
+    },
+    {
+      "writer": "비비안",
+      "comment": "로맨스 소설 책장을 한참 동안 기웃거리더라. 알고 보니 단골이라더라고~!"
+    },
+    {
+      "writer": "니콜",
+      "comment": "도시락에 소금 주먹밥, 절인 무, 나물 뭉치만 가득했어."
+    }
+  ],
+  "dialogues": {
+    "story": [
+      {
+        "speaker": "아키",
+        "message": "일일 퀘스트"
+      },
+      {
+        "speaker": "아키",
+        "message": "주간 퀘스트"
+      },
+      {
+        "speaker": "아키",
+        "message": "메인 퀘스트"
+      },
+      {
+        "speaker": "아키",
+        "message": "달성도"
+      },
+      {
+        "speaker": "아키",
+        "message": "완료"
+      },
+      {
+        "speaker": "아키",
+        "message": "이동"
+      },
+      {
+        "speaker": "아키",
+        "message": "수령"
+      },
+      {
+        "speaker": "구원자",
+        "message": "모두 받기"
+      },
+      {
+        "speaker": "구원자",
+        "message": "순위"
+      },
+      {
+        "speaker": "아키",
+        "message": "플레이어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아레나 점수"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아레나"
+      },
+      {
+        "speaker": "아키",
+        "message": "기록"
+      }
+    ],
+    "evertalk": [
+      {
+        "speaker": "아키",
+        "message": "구원자님!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 아키"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕, 아키"
+      },
+      {
+        "speaker": "아키",
+        "message": "네네, 제가 바로 해결사 아키랍니다!"
+      },
+      {
+        "speaker": "아키",
+        "message": "기억해주셔서 기뻐요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "이게 제 에버톡이에요"
+      },
+      {
+        "speaker": "아키",
+        "message": "꼭 저장해주세요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "기왕 아케나인에 왔으니"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님과 친해지고 싶어요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "심심할 때나 곤란할 때 언제든지 연락 주세요"
+      },
+      {
+        "speaker": "아키",
+        "message": "저도 종종 메시지 드릴게요☆"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 기억해둘게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 기억해둘게"
+      },
+      {
+        "speaker": "아키",
+        "message": "시간 되실 때 한 번 뵙고 싶은데"
+      },
+      {
+        "speaker": "아키",
+        "message": "언제가 한가하세요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "스케줄 확인하시고"
+      },
+      {
+        "speaker": "아키",
+        "message": "알려주시면 제가 맞출게요"
+      },
+      {
+        "speaker": "아키",
+        "message": "연락 기다리고 있을게요♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "지난 번엔 도와주셔서 정말 감사했어요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님 덕에 화재 현장도 잘 수습됐고"
+      },
+      {
+        "speaker": "아키",
+        "message": "저도 무사히 제 임무를 마저 완료했답니다♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "화재 현장 뒷처리까지 했었으면 위험했을 거예요"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 진짜 완전 열심히 굴뚝 닦았거든요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도움이 되었다니 다행이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "도움이 되었다니 다행이야"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼요 그럼요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그러고보니 구원자님은 취미 있으세요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "저는 소설 읽는 걸 좋아하는 편인데"
+      },
+      {
+        "speaker": "아키",
+        "message": "혹시 괜찮으시면 추천해드리고 싶어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "어떤 소설인데?"
+      },
+      {
+        "speaker": "아키",
+        "message": "어떤 소설인데?"
+      },
+      {
+        "speaker": "아키",
+        "message": "일단 제가 먼저 추천드리고 싶은게"
+      },
+      {
+        "speaker": "아키",
+        "message": "어디 보자…"
+      },
+      {
+        "speaker": "아키",
+        "message": "으음"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "아키",
+        "message": "죄송해요 구원자님 ㅜㅜ 추리려고 했는데 너무 많은 거 같아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "일단 제가 성에 갖다 드릴테니까"
+      },
+      {
+        "speaker": "아키",
+        "message": "표지 보고 골라보실래요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "오래 빌리셔도 되니까요!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 이따 뵈어요!!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "금방 갈게요!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키????"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키????"
+      },
+      {
+        "speaker": "아키",
+        "message": "짜잔"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 웬 사진이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 웬 사진이야?"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님 덕분에 레베카랑 엄청 친해졌어요♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "이건 레베카랑 쇼핑 갔다가 새로 산 옷인데"
+      },
+      {
+        "speaker": "아키",
+        "message": "어때요 ㅎㅎ 귀엽죠 ㅎㅎ"
+      },
+      {
+        "speaker": "아키",
+        "message": "귀엽다!"
+      },
+      {
+        "speaker": "아키",
+        "message": "귀엽다!"
+      },
+      {
+        "speaker": "아키",
+        "message": "사실 이거 최근 핫한 로맨스 소설 주인공 느낌으로 입어본건데"
+      },
+      {
+        "speaker": "아키",
+        "message": "다음엔 구원자님도 같이 쇼핑하러 가요♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "제가 엄청 멋있는 옷 골라 드릴게요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그리고 같이 맛있는 거도 먹으러 가요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "재밌겠다! 그러자!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "재밌겠다! 그러자!"
+      },
+      {
+        "speaker": "아키",
+        "message": "ㅎㅎ"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 약속하신 거예요~! > <"
+      },
+      {
+        "speaker": "아키",
+        "message": "신난다~"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님은 다른 나라 문화에는 많이 익숙하세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "갑자기 왜?"
+      },
+      {
+        "speaker": "아키",
+        "message": "솔레이 왕국 외에 다른 곳에 가보신 적 있나 싶어서요"
+      },
+      {
+        "speaker": "아키",
+        "message": "사실 연극만해도 나라별로 엄청 느낌 다르거든요"
+      },
+      {
+        "speaker": "아키",
+        "message": "솔레이 왕국 극장은 소규모가 많은 느낌이라 신기해요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래? 어떤 식으로 다른데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그래? 어떤 식으로 다른데?"
+      },
+      {
+        "speaker": "아키",
+        "message": "예를 들어 음"
+      },
+      {
+        "speaker": "아키",
+        "message": "타브리아 극장은 엄청 넓거든요"
+      },
+      {
+        "speaker": "아키",
+        "message": "의상도 화려하고 연출도 화려하고 엄청 빠방한 느낌"
+      },
+      {
+        "speaker": "아키",
+        "message": "노래도 많이 부르고 군무도 많아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오페라같은 느낌인가?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오페라같은 느낌인가?"
+      },
+      {
+        "speaker": "아키",
+        "message": "앗 맞아요! 어떻게 아셨어요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "가온국은 극장은 좀 더 좁긴 한데"
+      },
+      {
+        "speaker": "아키",
+        "message": "주연 배우는 검무를 필수로 배워야 하는데"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 사실 검무 엄청 잘 추거든요"
+      },
+      {
+        "speaker": "아키",
+        "message": "나중에 한 번 보여드릴까요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 추는 검무라니 멋지겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 추는 검무라니 멋지겠다"
+      },
+      {
+        "speaker": "아키",
+        "message": "헤헤"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 언제 한 번 보여드릴게요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "기대해주세요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "아직도 꿈만 같아요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "막상 상상만 했었을 때보다"
+      },
+      {
+        "speaker": "아키",
+        "message": "실제로 연극을 해보니까 더 좋네요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님은 어떠셨어요!?"
+      },
+      {
+        "speaker": "아키",
+        "message": "잘 봐주셨나요?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키한테서 재능이 느껴졌어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키한테서 재능이 느껴졌어"
+      },
+      {
+        "speaker": "아키",
+        "message": "아앗?"
+      },
+      {
+        "speaker": "아키",
+        "message": "이거 역시 저 배우로 전직해도 될 거 같은 그런 느낌인가요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "스스로의 재능이 두려워졌어요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "아키 이 무서운 아이!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 즐거워 보여서 다행이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 즐거워 보여서 다행이야"
+      },
+      {
+        "speaker": "아키",
+        "message": "네?"
+      },
+      {
+        "speaker": "아키",
+        "message": "그야 즐겁지만"
+      },
+      {
+        "speaker": "아키",
+        "message": "음"
+      },
+      {
+        "speaker": "아키",
+        "message": "역시 다음에도 이런 기회가 있다고 한다면"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님도 같이 했으면 좋겠어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "ㅎㅎ 워낙 바쁘시니 어렵겠지만요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것도 괜찮을 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그것도 괜찮을 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "어엇"
+      },
+      {
+        "speaker": "아키",
+        "message": "긍정적으로 검토해주시는 건가요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 그럼 슬쩍 기대해볼게요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "나중에 빼시기 없기예요~!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님! 괜찮으시죠?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응? 갑자기 왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응? 갑자기 왜?"
+      },
+      {
+        "speaker": "아키",
+        "message": "아…"
+      },
+      {
+        "speaker": "아키",
+        "message": "다행이다…"
+      },
+      {
+        "speaker": "아키",
+        "message": "안 좋은 꿈을 꿨어요 ㅜ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮아?"
+      },
+      {
+        "speaker": "아키",
+        "message": "괜찮긴 한데… 좀 무섭네요"
+      },
+      {
+        "speaker": "아키",
+        "message": "진짜 기상천외한 악몽이라면"
+      },
+      {
+        "speaker": "아키",
+        "message": "현실하고는 상관 없으니까 괜찮은데"
+      },
+      {
+        "speaker": "아키",
+        "message": "묘하게 리얼한 악몽일 수록 멘탈이 힘들어지는 느낌?"
+      },
+      {
+        "speaker": "아키",
+        "message": "하필 이번에 꾼 꿈이"
+      },
+      {
+        "speaker": "아키",
+        "message": "약간 그런 묘하게 리얼한 스타일이라서"
+      },
+      {
+        "speaker": "아키",
+        "message": "현실이 되버린 거 아닐까"
+      },
+      {
+        "speaker": "아키",
+        "message": "갑자기 무서워져서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 내가 잘못되거나 했어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 내가 잘못되거나 했어?"
+      },
+      {
+        "speaker": "아키",
+        "message": "네…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게?"
+      },
+      {
+        "speaker": "아키",
+        "message": "음 그게"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님이 엄청 커다란 너구리한테 짓눌리는"
+      },
+      {
+        "speaker": "아키",
+        "message": "그런 꿈이었어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "무사하시다니 다행이에요 ㅜㅜ"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님~! "
+      },
+      {
+        "speaker": "아키",
+        "message": "꼭 건강하게! 잘 계셔야해요?!"
+      },
+      {
+        "speaker": "아키",
+        "message": "무슨 일 있으시면 저 꼭 부르고요!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "약속!"
+      },
+      {
+        "speaker": "아키",
+        "message": "으음"
+      },
+      {
+        "speaker": "아키",
+        "message": "진짜 괜찮을까요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제가 여기에 있어도"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님을 불행하게 할까봐"
+      },
+      {
+        "speaker": "아키",
+        "message": "친구들을 불행하게 할까봐"
+      },
+      {
+        "speaker": "아키",
+        "message": "걱정돼요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게든 될 거야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게든 될 거야"
+      },
+      {
+        "speaker": "아키",
+        "message": "ㅎㅎ 이상한 기분이네요"
+      },
+      {
+        "speaker": "아키",
+        "message": "남이 그런 말을 해줘도 여태까지는"
+      },
+      {
+        "speaker": "아키",
+        "message": "딱히 위로랄까 안심되는 느낌이 아니었는데"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님이 그렇게 말해주시니까"
+      },
+      {
+        "speaker": "아키",
+        "message": "진짜 어떻게든 될 수 있을 거 같다는"
+      },
+      {
+        "speaker": "아키",
+        "message": "그런 느낌이 든달까"
+      },
+      {
+        "speaker": "아키",
+        "message": "으음"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "아키",
+        "message": "진짜 고마워요"
+      },
+      {
+        "speaker": "아키",
+        "message": "만약 일이 잘 안 풀려도"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님이 절 위해주신 건 못 잊을 거예요 ㅎㅎ"
+      },
+      {
+        "speaker": "아키",
+        "message": "♡"
+      },
+      {
+        "speaker": "아키",
+        "message": "가온에서 살던 집은 꽤 화사하게 꾸몄었어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "꽃꽂이 같은 걸 주로 장식했는데요"
+      },
+      {
+        "speaker": "아키",
+        "message": "벚나무 가지라던가 난초라던가"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 꽤 잘 만드는데"
+      },
+      {
+        "speaker": "아키",
+        "message": "나중에 한 번 만들어드리고 싶어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 꽃꽂이를 만들어주려고?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떤 꽃꽂이를 만들어주려고?"
+      },
+      {
+        "speaker": "아키",
+        "message": "글쎄요 흠"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님한테 어울리는 꽃…"
+      },
+      {
+        "speaker": "아키",
+        "message": "동백꽃이 좋을 거 같네요"
+      },
+      {
+        "speaker": "아키",
+        "message": "빨간 거랑 하얀 걸 같이 써서"
+      },
+      {
+        "speaker": "아키",
+        "message": "예쁜 검은색 병에 담아드리고 싶어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "운치 있을 거 같다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "운치 있을 거 같다"
+      },
+      {
+        "speaker": "아키",
+        "message": "하핫"
+      },
+      {
+        "speaker": "아키",
+        "message": "제대로 실력 발휘 할테니까"
+      },
+      {
+        "speaker": "아키",
+        "message": "기대해주세요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "기회가 된다면"
+      },
+      {
+        "speaker": "아키",
+        "message": "언젠가 구원자님하고 같이 온천에 가고 싶어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "좋은 곳을 알거든요"
+      },
+      {
+        "speaker": "아키",
+        "message": "입욕제로 집에서 편하게 즐기는 탕도 좋지만"
+      },
+      {
+        "speaker": "아키",
+        "message": "친한 애들하고 같이 온천에 가서"
+      },
+      {
+        "speaker": "아키",
+        "message": "탁구도 치고"
+      },
+      {
+        "speaker": "아키",
+        "message": "아이스크림도 먹고"
+      },
+      {
+        "speaker": "아키",
+        "message": "경치도 구경하면"
+      },
+      {
+        "speaker": "아키",
+        "message": "참 좋을 거 같아요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 좋겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거 좋겠다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저주가 풀리면 같이 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "저주가 풀리면 같이 가자"
+      },
+      {
+        "speaker": "아키",
+        "message": "하핫"
+      },
+      {
+        "speaker": "아키",
+        "message": "네"
+      },
+      {
+        "speaker": "아키",
+        "message": "기대되네요…♪"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 힘낼게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 힘낼게"
+      },
+      {
+        "speaker": "아키",
+        "message": "큰일이네요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님을 향한 애정이"
+      },
+      {
+        "speaker": "아키",
+        "message": "그냥 계속 커져만 가고 있어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "안되는데"
+      },
+      {
+        "speaker": "아키",
+        "message": "이럴수록 더더욱 저주를 이겨내기가 어려워지는데"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "아키",
+        "message": "어떻게 해야 구원자님을 미워할 수 있을까요"
+      },
+      {
+        "speaker": "아키",
+        "message": "조금이라도 구원자님이 싫어져야 할텐데"
+      },
+      {
+        "speaker": "아키",
+        "message": "그래야 제가 저 자신을 유지할 수 있을텐데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키?"
+      },
+      {
+        "speaker": "아키",
+        "message": "메시지 전송에 실패했습니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮은 거지?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "괜찮은 거지?"
+      },
+      {
+        "speaker": "아키",
+        "message": "메시지 전송에 실패했습니다."
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님~ 혹시 곧 시간 되시나요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "드디어 짐 정리가 끝나서 아케나인을 느긋히 구경할 수 있을 거 같아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님의 추천 스팟 같은 걸 소개받고 싶은데~"
+      },
+      {
+        "speaker": "아키",
+        "message": "우리 서로 대화하는 시간을 가져요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "함께 알아가는 느낌~"
+      },
+      {
+        "speaker": "아키",
+        "message": "좋은 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "좋은 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "와아!!!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "정말요!?"
+      },
+      {
+        "speaker": "아키",
+        "message": "기뻐라~!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "아키에 대해 더 알고 싶어"
+      },
+      {
+        "speaker": "아키",
+        "message": "아키에 대해 더 알고 싶어"
+      },
+      {
+        "speaker": "아키",
+        "message": "네에? 저에 대해 더 알고 싶으시다구요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "흠…"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 구원자님! 하루 동안 제 조수 해보실래요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "제가 일하는 모습을 보시면"
+      },
+      {
+        "speaker": "아키",
+        "message": "저에 대해 많이 알게 되실 거 같아요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "확실히 그럴 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "확실히 그럴 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "헤헷. 그럼 이따가 뵈어요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "광장에서 기다리고 있을게요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 진짜 진지하게 위험한 상황인데요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래? 무슨 일인데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래? 무슨 일인데?"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 좀 도와주시면 안될까요"
+      },
+      {
+        "speaker": "아키",
+        "message": "부탁이에요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님만이 절 구원해주실 수 있어요 ㅜㅜㅜ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 무슨 일인지 설명해줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 무슨 일인지 설명해줘"
+      },
+      {
+        "speaker": "아키",
+        "message": "ㅜㅜㅜㅜ 네 ㅜㅜㅜ 좀이따가 카페서 뵈어도 될까요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응"
+      },
+      {
+        "speaker": "아키",
+        "message": "감사해요 ㅜㅜㅜㅜ"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님 최고!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님~~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "잠깐 괜찮으세요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응? 괜찮아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응? 괜찮아"
+      },
+      {
+        "speaker": "아키",
+        "message": "해결사 일이 좀 한가해져서요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "혹시 뭐 도와드릴 거 없나 싶어서 연락드렸어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "이전에 도와주신 거도 있고 하니까 ㅎㅎ"
+      },
+      {
+        "speaker": "아키",
+        "message": "어떠세요? 서비스해드릴게요♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "이런 기회 흔치 않다구요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안그래도 마침 부탁하고 싶은 게 있었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안그래도 마침 부탁하고 싶은 게 있었어"
+      },
+      {
+        "speaker": "아키",
+        "message": "와아!"
+      },
+      {
+        "speaker": "아키",
+        "message": "나이스 타이밍!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 얼른 찾아뵐게요!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 이제부터 숲으로 나가봐야 할 거 같은데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 이제부터 숲으로 나가봐야 할 거 같은데"
+      },
+      {
+        "speaker": "아키",
+        "message": "그러세요? "
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 좋을 거 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러면 좋을 거 같아"
+      },
+      {
+        "speaker": "아키",
+        "message": "네~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그럼 숲 입구에서 뵈어요♪"
+      },
+      {
+        "speaker": "아키",
+        "message": "으으으으"
+      },
+      {
+        "speaker": "아키",
+        "message": "엄청 떨려요 진짜 잘할 수 있을까요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "긴장하고 있는 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "긴장하고 있는 거야?"
+      },
+      {
+        "speaker": "아키",
+        "message": "그야 당연히 긴장하죠!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님이 설마 이렇게 큰 서프라이즈를 준비하실 줄은"
+      },
+      {
+        "speaker": "아키",
+        "message": "상상도 못했어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제가 직접 최애 주인공을 연기하는 거라고요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "너무 떨려요 ㅠㅠ"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응원하러 갈게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응원하러 갈게"
+      },
+      {
+        "speaker": "아키",
+        "message": "!!!"
+      },
+      {
+        "speaker": "아키",
+        "message": "진짜죠?"
+      },
+      {
+        "speaker": "아키",
+        "message": "약속하신 거예요!"
+      },
+      {
+        "speaker": "아키",
+        "message": "안녕하세요 구원자님!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕"
+      },
+      {
+        "speaker": "구원자",
+        "message": "안녕"
+      },
+      {
+        "speaker": "아키",
+        "message": "ㅎㅎ 요즘 엄청 컨디션이 좋아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "하고 싶은 것도 잔뜩이고"
+      },
+      {
+        "speaker": "아키",
+        "message": "뭔가 주변 애들도 친절하고"
+      },
+      {
+        "speaker": "아키",
+        "message": "덕친도 생겨서 그런가"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 좋아 보여서 정말 다행이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 좋아 보여서 정말 다행이야"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님 덕이죠 뭐~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "그러고보니 며칠간은 조사 때문에 좀 바쁠 거 같아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "연락이 안 되어도 너무 섭섭해하시지 마시기예요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 없으면 좀 쓸쓸할지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아키가 없으면 좀 쓸쓸할지도"
+      },
+      {
+        "speaker": "아키",
+        "message": "금방 돌아올테니 너무 걱정 마시구요~!"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜?"
+      },
+      {
+        "speaker": "아키",
+        "message": "오늘 시간 좀 내주실 수 있으세요?"
+      },
+      {
+        "speaker": "아키",
+        "message": "중요한 이야기를 하고 싶어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "아키",
+        "message": "저 역시 안 될 거 같아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "이젠 한계예요"
+      },
+      {
+        "speaker": "아키",
+        "message": "죄송해요"
+      },
+      {
+        "speaker": "아키",
+        "message": "혹시 저를 발견하더라도"
+      },
+      {
+        "speaker": "아키",
+        "message": "도망쳐주세요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제발"
+      },
+      {
+        "speaker": "아키",
+        "message": "이런 결말을 바란 게 아니었어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "이렇게 된 건 다 제 욕심때문이겠죠"
+      },
+      {
+        "speaker": "아키",
+        "message": "죄송해요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제 주제에 너무 과분한 사랑을 받았나봐요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님"
+      },
+      {
+        "speaker": "아키",
+        "message": "사랑했어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "타인의 불행으로 성립하는 행복 따위"
+      },
+      {
+        "speaker": "아키",
+        "message": "저는 믿지 않아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "그러니까 저는 괜찮아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님께서 여태까지 해주신 것만으로도 충분해요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제발 스스로를 소중히 여겨주세요"
+      },
+      {
+        "speaker": "아키",
+        "message": "무리하지 말아주세요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제 마지막 부탁이에요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님을 믿고 있어요"
+      },
+      {
+        "speaker": "아키",
+        "message": "구원자님이 하시는 말이"
+      },
+      {
+        "speaker": "아키",
+        "message": "행동이"
+      },
+      {
+        "speaker": "아키",
+        "message": "저를 구원할 것이라 믿어 의심치 않아요"
+      },
+      {
+        "speaker": "아키",
+        "message": "제 이야기가 그 어떤 결말으로 이어지더라도"
+      },
+      {
+        "speaker": "아키",
+        "message": "절대로 후회하지 않을게요"
+      }
+    ]
+  }
+}

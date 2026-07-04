@@ -1,0 +1,44 @@
+{
+  "id": "410",
+  "name": "무명",
+  "name_en": "Nameless",
+  "grade": "레어",
+  "race": "불사형",
+  "class": "워리어",
+  "sub_class": "버프",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "잊혀진 이름",
+    "constellation": "전갈자리",
+    "union": "팀 언더테이커",
+    "birthday": "1118",
+    "height": 157,
+    "weight": 45,
+    "cv_ko": "강시현",
+    "cv_jp": "Makoto Koichi",
+    "like": [
+      "새 투구",
+      "장갑"
+    ],
+    "dislike": [
+      "여름",
+      "묘지기"
+    ],
+    "hobby": [
+      "목소리 관리"
+    ],
+    "speciality": [
+      "겁 주기"
+    ]
+  },
+  "personality": {
+    "description": "크르륵…… …크르…",
+    "greeting": "여…긴…?"
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

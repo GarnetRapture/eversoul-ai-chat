@@ -1,0 +1,43 @@
+{
+  "id": "310",
+  "name": "알리샤",
+  "name_en": "Alisha",
+  "grade": "레어",
+  "race": "요정형",
+  "class": "워리어",
+  "sub_class": "광역",
+  "stat": "힘",
+  "profile": {
+    "nick_name": "숲의 싸움꾼",
+    "constellation": "처녀자리",
+    "union": "페이렌 숲지기",
+    "birthday": "828",
+    "height": 170,
+    "weight": 58,
+    "cv_ko": "김예림",
+    "cv_jp": "Aya Saitou",
+    "like": [
+      "강한 녀석"
+    ],
+    "dislike": [
+      "습기",
+      "버섯"
+    ],
+    "hobby": [
+      "일광욕"
+    ],
+    "speciality": [
+      "몸통 박치기"
+    ]
+  },
+  "personality": {
+    "description": "뭐야, 이 축축한 버섯같이 생긴 녀석은. 아앙? 네가 날 소환한 구원자님?",
+    "greeting": "흥! 별 거 아니군."
+  },
+  "speech_patterns": [],
+  "comments": [],
+  "dialogues": {
+    "story": [],
+    "evertalk": []
+  }
+}

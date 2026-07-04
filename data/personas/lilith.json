@@ -1,0 +1,1952 @@
+{
+  "id": "1080",
+  "name": "릴리트",
+  "name_en": "Lilith",
+  "grade": "에픽",
+  "race": "인간형",
+  "class": "레인저",
+  "sub_class": "디버프",
+  "stat": "지능",
+  "profile": {
+    "nick_name": "오퍼레이터 나인",
+    "constellation": "처녀자리",
+    "union": "방주 오퍼레이터",
+    "birthday": "909",
+    "height": 168,
+    "weight": null,
+    "cv_ko": "윤미나",
+    "cv_jp": "윤미나",
+    "like": [
+      "완벽한 관리"
+    ],
+    "dislike": [
+      "오류",
+      "통제 불가능한 상황"
+    ],
+    "hobby": [
+      "자가 메인터넌스"
+    ],
+    "speciality": [
+      "데이터 연산"
+    ]
+  },
+  "personality": {
+    "description": "생체 신호 확인 완료.",
+    "greeting": "오퍼레이터 나인, 릴리트."
+  },
+  "speech_patterns": [
+    "안녕하세요, 특이점.",
+    "이게 바로 정령들이 만든 통신장치군요.",
+    "제 메시지는 잘 보이시나요?",
+    "이런 시스템으로 의사소통하는 모양이네요.",
+    "꽤 흥미롭군요.",
+    "앞으로 용건이 생기면",
+    "그럼 좋은 하루 보내시길.",
+    "직접 이렇게 들어보니",
+    "그 흑심이 남들이 보기에",
+    "좀 이해가 되셨나요?",
+    "하…….",
+    "정말 말이 안 통하는 분이시군요.",
+    "그런 당연한 질문을 하시다니.",
+    "당연히 정성스럽게 끓여 적절한 온도로 식히고",
+    "생수가 가장 적당하죠.",
+    "특이점.",
+    "인간이 쾌적하게 음용할 수 있는",
+    "이 우주에서 가장 귀한 자원 중 하나랍니다.",
+    "게다가 수분 보충을 하는 것도",
+    "그러니 생수로 충분해요.",
+    "하지만 물론 아까 말한 것처럼",
+    "네. 기대할게요.",
+    "아무리 생각해도",
+    "굳이 당신이 직접",
+    "제게는 무용한 일이라고 느껴지네요.",
+    "어디서 습격이 들어오더라도",
+    "굳이 위험을 사서 감수할 필요는 없죠.",
+    "다음부터는 그런 사소한 일 때문에",
+    ".",
+    "좋아요.",
+    "그럼 이렇게 하죠.",
+    "당신이 그 몸으로",
+    "드론을 사용하면 돼요.",
+    "시야각 360도, 당신의 키와 걸음걸이에 맞춰",
+    "공간을 자동 인식하여 사물 굴절이 반영되는",
+    "이 정도면 집무실에 앉아서",
+    "그렇죠?",
+    "…….",
+    "하아.",
+    "소심한 건지 대범한 건지 모를 인간이네요.",
+    "특이점, 9개의 방주는 저마다",
+    "예를 들면 민간인을 태우기 위한",
+    "제가 맡은 9호 방주 카마엘의 사명은",
+    "네. 무엇을 선도하는 힘이고,",
+    "그것은 각자가",
+    "저는 제가 수행해야 할 임무와",
+    "새로운 시대를 향해 인류를 선도하는 힘과,",
+    "하지만 지금 생각하면…",
+    "저는 자신의 사명을",
+    "처음부터 정확하게 미래를 예측하여,"
+  ],
+  "comments": [
+    {
+      "writer": "벨레드",
+      "comment": "귀여운 우리 막내! 항상 모든 일에 정성을 다하는 착한 아이예요♡"
+    },
+    {
+      "writer": "바이스",
+      "comment": "oO(한 번만 방주 조종간에 앉아보고 싶다고 하면 들어줄까…"
+    },
+    {
+      "writer": "오닉스",
+      "comment": "방주에서 태어난 정령이라니, 엄청 재미있어!"
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "릴리트",
+        "message": "안녕하세요, 특이점."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이게 바로 정령들이 만든 통신장치군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제 메시지는 잘 보이시나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 보여"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 보여"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이런 시스템으로 의사소통하는 모양이네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "꽤 흥미롭군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "앞으로 용건이 생기면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그럼 좋은 하루 보내시길."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "직접 이렇게 들어보니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그 흑심이 남들이 보기에"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "좀 이해가 되셨나요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 정말 모르겠는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "난 정말 모르겠는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그리고 억울해…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그리고 억울해…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하……."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정말 말이 안 통하는 분이시군요."
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 혹시 무슨 차를 대접해야 했던 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 혹시 무슨 차를 대접해야 했던 거야?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런 당연한 질문을 하시다니."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당연히 정성스럽게 끓여 적절한 온도로 식히고"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "생수가 가장 적당하죠."
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오히려 그게 실례 아냐?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "오히려 그게 실례 아냐?!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "인간이 쾌적하게 음용할 수 있는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이 우주에서 가장 귀한 자원 중 하나랍니다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "게다가 수분 보충을 하는 것도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그러니 생수로 충분해요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만 물론 아까 말한 것처럼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력하겠습니다…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "노력하겠습니다…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네. 기대할게요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아무리 생각해도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "굳이 당신이 직접"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제게는 무용한 일이라고 느껴지네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어디서 습격이 들어오더라도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "굳이 위험을 사서 감수할 필요는 없죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "다음부터는 그런 사소한 일 때문에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 그것도 내가 해야 할 의무인걸."
+      },
+      {
+        "speaker": "구원자",
+        "message": "하지만 그것도 내가 해야 할 의무인걸."
+      },
+      {
+        "speaker": "구원자",
+        "message": "공사하는 정령들도 반가워해 줬고."
+      },
+      {
+        "speaker": "구원자",
+        "message": "공사하는 정령들도 반가워해 줬고."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "좋아요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그럼 이렇게 하죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 그 몸으로"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "드론을 사용하면 돼요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "시야각 360도, 당신의 키와 걸음걸이에 맞춰"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "공간을 자동 인식하여 사물 굴절이 반영되는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이 정도면 집무실에 앉아서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정말 대단하네…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "정말 대단하네…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇죠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런데 너무 대단해서 부탁하기가 좀…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런데 너무 대단해서 부탁하기가 좀…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 내가 직접 가는 게 나을 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "역시 내가 직접 가는 게 나을 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "걱정해 줘서 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "걱정해 줘서 고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "꼭 조심하면서 다닐게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "꼭 조심하면서 다닐게"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "……."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하아."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "소심한 건지 대범한 건지 모를 인간이네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점, 9개의 방주는 저마다"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "예를 들면 민간인을 태우기 위한"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제가 맡은 9호 방주 카마엘의 사명은"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선도하는 힘과 지배?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선도하는 힘과 지배?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네. 무엇을 선도하는 힘이고,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그것은 각자가"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 제가 수행해야 할 임무와"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "새로운 시대를 향해 인류를 선도하는 힘과,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만 지금 생각하면…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 자신의 사명을"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "처음부터 정확하게 미래를 예측하여,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "무용한 리소스를 낭비하지 않고,"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트의 말을 완전히 이해하지는 못했지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트의 말을 완전히 이해하지는 못했지만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "모든 이들에게는 각자 저마다의 사정이 있고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "모든 이들에게는 각자 저마다의 사정이 있고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이미 지난 과거에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이미 지난 과거에"
+      },
+      {
+        "speaker": "구원자",
+        "message": "만약이라는 정답은 없는 게 아닐까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "만약이라는 정답은 없는 게 아닐까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리는 앞으로도 미래를 살아가야 하니까"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리는 앞으로도 미래를 살아가야 하니까"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그게 당신 나름의 위로인가요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 내 생각을 말한 것뿐이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그냥 내 생각을 말한 것뿐이야"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…능숙한 건지, 서툰 건지 모를 인간이네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇지만…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "잘 기억해 두겠어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점."
+      },
+      {
+        "speaker": "구원자",
+        "message": "회의는 잘 끝났어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "회의는 잘 끝났어?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네."
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "원래 서면으로 제출드릴 예정이었던"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "다소 의견이 일치되지 않은 지점이 있어서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 얘기가 잘 안됐어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "혹시 얘기가 잘 안됐어?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아뇨 전혀요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "서로의 의견을 교환하는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그랬다면 다행이네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그랬다면 다행이네"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그보다, 왜인지 모르겠지만…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터라면 꼭 한 벌씩"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터 파이브가"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 동의한 적이 없는데,"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트는 무슨 동물이야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트는 무슨 동물이야?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터 파이브가 말하기로는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터 원도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이상하게 생긴 동물 인형을"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런데 애초에 왜 파자마에"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어딜 봐도 필요 없는 장식 아닌가요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음… 푹신푹신하고 부드러워서…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "음… 푹신푹신하고 부드러워서…?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "잠옷은 잘 때 거추장스럽지 않으면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그래서 이미 골라둔 잠옷이 있긴 하지만…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어쩔 수 없네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "친분의 표시로 준 선물을"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어디까지나 정치적인 입장을 고려해서,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이런 유치한 물건들,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "자세히 만져보니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐 그렇게 되었으니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만 질문에 답하기 전에,"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 기억해야 해?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "뭘 기억해야 해?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이건 어디까지나"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "공적인 효율성을 위해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "절대 사적인 마음을 품고 하는 질문이"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이해했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이해했어"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "좋아요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "예, 아니오 중 하나의 대답만"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "1. 실내 활동보다 야외활동을 선호한다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "2. 건강한 음식보다 자극적인 음식을 선호한다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "3. 예술 활동보다 체육 활동을 선호한다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "4. 산보다 바다를 더 선호한다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "5. 캠핑을 간다면 산보다 들판을 더 선호한다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐만"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠깐만"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "6. 산에 간다면 되도록 높은 산을 선호한다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "대체 몇 개까지 있는 거야?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "대체 몇 개까지 있는 거야?!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "간단한 성향 테스트만 진행하려고 했으니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "딱 99개만 준비했답니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 많지 않아?!?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "너무 많지 않아?!?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "음?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신의 성향을 파악하고 이해해야"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇지만… 듣고보니,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "질문지 파일을 만들어 보낼 테니,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "걱정 마세요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 어떤 성향을 가지고 있든,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 했던 어떤 데이트보다"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그러니 99개의 문항 중 하나도 빠짐없이."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "꼭이에요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "일전에는 신세가 많았습니다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그 후 지내시는 곳까지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "혹시라도 그 일 직후에"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "신체적, 정신적 피해가"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어떤 피해든 가능한 한 보상하기 위해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 딱딱하게 말하지 않아도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 딱딱하게 말하지 않아도 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트는 잘 들어갔어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트는 잘 들어갔어?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "……."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네……."
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 다행이네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 다행이네"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "혹시나 해서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정말로 혹시나 해서 말씀드리지만"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "평소에는 절대로 어떤 일이 있어도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런 실수를 연발하지 않으니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이번 일이 지극히 이례적인 사례였다고 할까"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신을 만족시켜야겠다는 생각만 해서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어쨌든 평소의 저라면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이제 와서 이렇게 말해봐야"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그래도 혹시 제가 당신을"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "평소에도 이렇게 얼빠진"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런 오해는 모쪼록 없었으면 해서…!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 재미있었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 재미있었어"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "."
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트의 새로운 모습도 알게 됐고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트의 새로운 모습도 알게 됐고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 다음에 또 같이 가자"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그러니까 다음에 또 같이 가자"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "속이 좋은 건지, 바보인 건지"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇게 엉망이었는데도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정말… 이상한 사람…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저번에 구두 굽이 부러져서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "기억하고 계신가요?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응. 기억해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응. 기억해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그때 부러진 구두는 물론"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "앞으로는 혹시라도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "바로 대비할 수 있도록"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새 구두다!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "새 구두다!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "실용성을 가장 우선적으로 고려해서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "좀… 별로인가요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제 손으로 직접"
+      },
+      {
+        "speaker": "구원자",
+        "message": "예쁜 구두네!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "예쁜 구두네!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런가요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "예뻐서 산 물건은 아니지만,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 보기에 괜찮다면"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트한테 잘 어울리는 걸 골랐네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트한테 잘 어울리는 걸 골랐네"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 최신형 오퍼레이터니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "물건의 질을 구분하는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "원하시면 다음에 당신의 옷도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "."
+      },
+      {
+        "speaker": "구원자",
+        "message": "골라줄 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "골라줄 거야?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정 원하신다면… 뭐…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어려운 일은 아니니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그 정도 일은 지난 일에 대한 사죄 겸,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 꼭 원하신다면요."
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 다음에 부탁할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 다음에 부탁할게"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "조"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "좋아요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신의 체형과 신체 특성에 맞춰"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만 어쨌든 디자인이라는 것도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "최근에 에덴에 유행한 패션부터"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그리고 이왕에 맞춘다면 정장부터 외출복,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그래요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그래서 완벽하게"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "딱 좋군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "조금이라도 당신에게"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이 시대에 오기 전까지"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터 원과 오퍼레이터 파이브는"
+      },
+      {
+        "speaker": "구원자",
+        "message": "메피랑 벨레드?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "메피랑 벨레드?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "…네."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "여러 면에서 당신과 닮았어요."
+      },
+      {
+        "speaker": "구원자",
+        "message": "나를?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나를?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "대책은 없으면서 묘하게 해맑고"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "수치로 계산할 수 없는 행복이나 자유 같은"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그래서 궁금해지는군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "우연히 두 분이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그리고 그렇기 때문에"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그 두 분이 당신과 함께하는 오퍼레이터로"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그것도 아니라면 함께 시간을 보내며"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 릴리트랑 케이린도 닮았겠네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럼 릴리트랑 케이린도 닮았겠네"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "?!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그건… 그럴지도 모르겠네요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 폐하를 위해 만들어진"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그분과 가장 상성이 잘 맞는 건"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정말로 당연한 일이니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신치고는 그럭저럭…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "케이린과 닮았다는 게 기뻐?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "케이린과 닮았다는 게 기뻐?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "뭐…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "다른 오퍼레이터들은 잘 모르겠지만…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 처음부터 마스터 케이린을 돕기 위해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "마스터 케이린을 위해 만들어졌고,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그녀의 사명이 바로 저의 사명이며,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그것은 단순히 사실로써 존재하는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "쓰임에 적합하다는 칭찬을 들어서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제가 느끼는 감정이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그에 비해 얼마나 부족한지."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이런 감정을 느끼게 만드는 원천이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "솔직히 말씀드리자면,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 제 사명만 이룰 수 있다면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "타인의 감정이든, 저의 감정이든,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "분명 바로 이것이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "작전을 수행하기 위해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "영원 같은 시간을 기다리면서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇다고 미래에 하등 도움이 되지 않을"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오래 고민한 끝에,"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트가 말하는 전력이라면…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트가 말하는 전력이라면…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 릴리트가 부리던 마물들?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "설마 릴리트가 부리던 마물들?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "맞아요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "미래를 위해 전력을 보강해 두면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "물론 초인류들이 사용하던 정령들이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "앞으로 싸워야 할 상대는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "혹시 모를 변수는 막는 편이 좋잖아요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그러니 정령을 대신해 양산이 가능하고"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제 마물들은 정령이 사용하는 힘에"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아니… 일단 피와 살을 가지고 움직이니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "정해진 메커니즘에 자동적으로 따를 뿐인"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "음… 굳이 따지자면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특히 고래형 마물은"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "에덴의 정령들도 저희를 상대하기 위해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저희에게도 절대 질 수 없는 싸움이었으니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이쪽의 전력에 비하면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "심지어 정령은 인간과 달리 죽지 않고,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "최대한 단기전으로,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그게 대체 얼마나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리가 볼 때는 항상 여유로워 보였는데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "우리가 볼 때는 항상 여유로워 보였는데…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "물론 전부 예상 범주 내였고,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "작전을 짤 때는 참 까다로웠어도,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신이 중간에 끼어들면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "지금 생각하면 그 모든 계획조차…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "폐하를 위해 움직이고 있다고 생각했는데,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "세상은 그마저도 포함해서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "모든 것을 준비하고 있었던 게 아니었을지."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "종말에게 승리한 당신을 보았을 때,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그리고 지금은 그 생각이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신은 틀림없이"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 그렇게 대단한 존재가 아니야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나는 그렇게 대단한 존재가 아니야"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "사자에게 자각이 없다고 해서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "걱정 마시길."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "언젠가 반드시,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그리고 언젠가 그 순간을 맞이할"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는… 절대로 제 선택을 후회하지 않겠어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "평안히 지내고 계신가요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "혹시 시간이 있으시다면"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "지금 9호 방주로 와 주실 수 있나요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아무에게도 알리지 말고, 은밀하게."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "기다리고 있을게요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "새롭게 정리한 양식으로"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "다양한 영양 밸런스를 고려한 새로운 식단을"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오늘 온 우편물들도 전부"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "폭발물이 들었거나"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그리고"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고맙긴 한데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고맙긴 한데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 하나씩 차근차근 말해주면 안 될까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "일단 하나씩 차근차근 말해주면 안 될까?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저도 가끔은 과거를 반추할 때가 있어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "실수와 실패에서 착안점을 얻어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트도 실수할 때가 있어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트도 실수할 때가 있어?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저 역시 인간이 만든 창조물이니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그런 경험이 없었다고는 할 수 없겠죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그 경험이 어떤 경험이었는지는,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오퍼레이터 원과 오퍼레이터 파이브에게는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그들의 주인인 당신에게도"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이후 저희가 나아갈 방향성에 대해"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "우선 오퍼레이터끼리 만나"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "회의에서 결정된 향후 계획은"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇구나"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셋이서 잘 놀고 와!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "셋이서 잘 놀고 와!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아니"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "회의라니까요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그렇게 말하면 제가 놀고 싶어서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "모쪼록 제대로 알아두시길"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오늘은 에덴의 미래를 건"
+      },
+      {
+        "speaker": "구원자",
+        "message": "특이점."
+      },
+      {
+        "speaker": "구원자",
+        "message": "특이점?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "메시지가 잘 보이시나요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점."
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안해 지금 봤어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "미안해 지금 봤어"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네 그런 것 같네요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 급한 일이라도 생겼어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 급한 일이라도 생겼어?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "아뇨 딱히 그런 건 아니랍니다"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오늘도 밀린 서류가"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신의 책상 위에 많겠죠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 그런데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그건 그런데…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그럼 제가 처리해 드리러 가야겠네요"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "지금 집무실에 있지요?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "지금 찾아갈게요"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "드디어 해가 밝았군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "준비는 완벽하답니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠은 잔 거 맞지…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잠은 잔 거 맞지…?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "물론이죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "에스코트하는 데 필요한"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 그런 뜻이 아닌데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니, 그런 뜻이 아닌데…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그럼 약속 시간에 맞춰서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "당신은 아무것도 준비하지 않아도 되니,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "곧 뵙도록 하죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "평안히 지내고 계신가요, 특이점?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "릴리트?"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "네."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저랍니다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "준비가 쉽게 끝나지 않아서"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만 이제 준비가 끝났어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "옷 같은 것보다 더욱 좋은 방법으로"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저번에는 제가 많이 부족했었죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "하지만, 이번엔 모든 것이 완벽해요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이번에야말로."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "가장 완벽한 모습을 보여드리겠어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "9호 방주로 와 주시길."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "제가 있는 가장 깊은 방까지 올 수 있도록,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저도 이제 정답을 깨달았어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "절대적이고, 유일한 단 하나의 정답."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점, 한 번 더 말씀드리겠어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 절대로 후회하지 않을 거예요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저도 이제 정답을 깨달았어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이 간단한 진리를…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "특이점, 한 번 더 말씀드리겠어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저는 절대로 후회하지 않을 거예요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "저도 이제 정답을 깨달았어요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "로맨스 소설은 어느 작품을 봐야"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어느 브랜드의 과자가"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "어느 제조사의 이불이"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "전부 완벽히 파악했답니다."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "원하신다면 제 조사 결과를 공유해 드리죠."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그러니…"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "그"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "오늘도 퇴근하신 후 꼭 들러주세요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "기다리고 있을게요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "새해가 밝았군요."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "목표하신 바를 이룰 수 있는"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "이건 제 약소한 성의 표시랍니다."
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 잘 간직할게."
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 잘 간직할게."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "평소에 신세지고 있는 만큼,"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "받아주시길."
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 릴리트!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 릴리트!"
+      },
+      {
+        "speaker": "릴리트",
+        "message": "메리 크리스마스, 특이점."
+      },
+      {
+        "speaker": "릴리트",
+        "message": "착한 아이는 선물을 받는 날이죠."
+      },
+      {
+        "speaker": "구원자",
+        "message": "고맙게 받을게, 릴리트…!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고맙게 받을게, 릴리트…!"
+      }
+    ]
+  }
+}

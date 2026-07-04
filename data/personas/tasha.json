@@ -1,0 +1,1156 @@
+{
+  "id": "2080",
+  "name": "타샤",
+  "name_en": "Tasha",
+  "grade": "에픽",
+  "race": "야수형",
+  "class": "레인저",
+  "sub_class": "암살",
+  "stat": "민첩",
+  "profile": {
+    "nick_name": "가면의 이면",
+    "constellation": "사자자리",
+    "union": "종말십자회",
+    "birthday": "727",
+    "height": 158,
+    "weight": 46,
+    "cv_ko": "손정민",
+    "cv_jp": "Ayumi Mano",
+    "like": [
+      "인기",
+      "예술품"
+    ],
+    "dislike": [
+      "무관심"
+    ],
+    "hobby": [
+      "에버스타그램 서치"
+    ],
+    "speciality": [
+      "메이크업"
+    ]
+  },
+  "personality": {
+    "description": "저기, 너 말이야. 내 팬이지?",
+    "greeting": "원래 미녀는 잠꾸러기인 법이야."
+  },
+  "speech_patterns": [
+    "소원을 이뤄준다는 별님 에버톡 맞죠?",
+    "꺅?! 답장이 왔어!",
+    "여기에 소원을 빌면 이뤄진다는 게 진짜구나",
+    "에버스타그램 팔로워가 더 늘게 해 주세요",
+    "모두가 나를 좋아하게 해 주세요",
+    "그리고 이왕이면 애인도 생기게 해 줘♡",
+    "에이~ 왜 그래요?",
+    "설마 이 정도 소원도 못 이뤄 주는 거야?",
+    "그러면 한 가지만 빌게요",
+    "잘생기고 멋지고 섹시한 애인이 생기게 해 주세요!!!",
+    "아앗?!",
+    "나랑 진실 게임 할래?",
+    "침묵 놀이 하기로 했잖아!",
+    "말하면 안 되니까 에버톡 보내는 중",
+    "싫어!!!",
+    "이런 외딴곳에서 심심하다고",
+    "너 아니면 누구랑 놀아?",
+    "빨리 진실 게임 하자~",
+    "서로한테 궁금한 점을 하나씩 질문하고",
+    "솔직하게 대답하면 돼",
+    "나부터 질문한다?",
+    "첫 번째 질문",
+    "나랑 단둘이 있으면서 야한 생각해 봤어?",
+    "예 아니오로 대답하면 돼",
+    "거짓말!!!",
+    "이 타샤를 두고 아무 감정도 없다니",
+    "지금 그 귀찮다는 표정은 뭔데!",
+    "잘 돌아갔어?",
+    "몸은 좀 어때?",
+    "주변에서 다들 걱정하지 않아?",
+    "다행이다",
+    "다음에 아케나인 광장 놀러 갈게",
+    "거기 분수가 포토존이라면서?",
+    "사진 찍어서 에버스타그램에 올려야지♡",
+    "으으 고민이야",
+    "응 쇼핑하고 있는데",
+    "바지 사이즈를 허리에 맞추면 엉덩이가 끼고",
+    "그렇다고 엉덩이에 맞추면 허리가 너무 남아!",
+    "하아~ 난 정말 죄 많은 몸이야♡",
+    "으응? 아니…",
+    "지금 그게 중요한 게 아니잖아",
+    "내 사진에 대한 대답이 그게 다야?!",
+    "바지 얘기는 그만!!!",
+    "이렇게 섹시한 사진을 보냈는데",
+    "눈치가 없는 거야? 없는 척하는 거야?!",
+    "나한테 집중해 줘",
+    "구원자 그거 써 봤어?",
+    "그거라니?",
+    "제목이 엄청 재밌어 보였어",
+    "이 꿈은 다른 장르일 거야"
+  ],
+  "comments": [
+    {
+      "writer": "아키",
+      "comment": "연애 상담을 잘하셔서 언니인 줄 알았는데,"
+    },
+    {
+      "writer": "레베카",
+      "comment": "에버스타그램에 민간인인 척 사진을 올려둔 걸 봤는데…"
+    },
+    {
+      "writer": "라리마",
+      "comment": "승리를 위해서는 수단과 방법을 가리지 않는 비열함."
+    }
+  ],
+  "dialogues": {
+    "story": [],
+    "evertalk": [
+      {
+        "speaker": "타샤",
+        "message": "소원을 이뤄준다는 별님 에버톡 맞죠?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아닙니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아닙니다"
+      },
+      {
+        "speaker": "타샤",
+        "message": "꺅?! 답장이 왔어!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "여기에 소원을 빌면 이뤄진다는 게 진짜구나"
+      },
+      {
+        "speaker": "타샤",
+        "message": "에버스타그램 팔로워가 더 늘게 해 주세요"
+      },
+      {
+        "speaker": "타샤",
+        "message": "모두가 나를 좋아하게 해 주세요"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그리고 이왕이면 애인도 생기게 해 줘♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소원을 이뤄주는 능력은 없어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소원을 이뤄주는 능력은 없어요"
+      },
+      {
+        "speaker": "타샤",
+        "message": "에이~ 왜 그래요?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "설마 이 정도 소원도 못 이뤄 주는 거야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그러면 한 가지만 빌게요"
+      },
+      {
+        "speaker": "타샤",
+        "message": "잘생기고 멋지고 섹시한 애인이 생기게 해 주세요!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "유감이지만 저는 별님이 아닙니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "유감이지만 저는 별님이 아닙니다"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 에버톡 잘못 보내셨어요"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진짜 에버톡 잘못 보내셨어요"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아앗?!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나랑 진실 게임 할래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "옆에 있는데 왜 에버톡을 보내"
+      },
+      {
+        "speaker": "구원자",
+        "message": "옆에 있는데 왜 에버톡을 보내"
+      },
+      {
+        "speaker": "타샤",
+        "message": "침묵 놀이 하기로 했잖아!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "말하면 안 되니까 에버톡 보내는 중"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 놀이 안 하면 되잖아…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 놀이 안 하면 되잖아…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "싫어!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이런 외딴곳에서 심심하다고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "너 아니면 누구랑 놀아?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "빨리 진실 게임 하자~"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게 하는 건데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어떻게 하는 건데?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "서로한테 궁금한 점을 하나씩 질문하고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "솔직하게 대답하면 돼"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나부터 질문한다?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "첫 번째 질문"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나랑 단둘이 있으면서 야한 생각해 봤어?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "예 아니오로 대답하면 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니오"
+      },
+      {
+        "speaker": "구원자",
+        "message": "아니오"
+      },
+      {
+        "speaker": "타샤",
+        "message": "거짓말!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진실인데"
+      },
+      {
+        "speaker": "구원자",
+        "message": "진실인데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이 타샤를 두고 아무 감정도 없다니"
+      },
+      {
+        "speaker": "타샤",
+        "message": "지금 그 귀찮다는 표정은 뭔데!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "잘 돌아갔어?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "몸은 좀 어때?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 좋아졌어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "많이 좋아졌어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "주변에서 다들 걱정하지 않아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 이야기했어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "잘 이야기했어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "다행이다"
+      },
+      {
+        "speaker": "타샤",
+        "message": "다음에 아케나인 광장 놀러 갈게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "거기 분수가 포토존이라면서?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "사진 찍어서 에버스타그램에 올려야지♡"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으으 고민이야"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고민?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고민?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "응 쇼핑하고 있는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "바지 사이즈를 허리에 맞추면 엉덩이가 끼고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그렇다고 엉덩이에 맞추면 허리가 너무 남아!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "하아~ 난 정말 죄 많은 몸이야♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "허리가 큰 바지를 사고 벨트를 하면 돼"
+      },
+      {
+        "speaker": "구원자",
+        "message": "허리가 큰 바지를 사고 벨트를 하면 돼"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으응? 아니…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "지금 그게 중요한 게 아니잖아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내 사진에 대한 대답이 그게 다야?!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "확실히 바지가 작아 보이네…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "확실히 바지가 작아 보이네…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "바지 얘기는 그만!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이렇게 섹시한 사진을 보냈는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "눈치가 없는 거야? 없는 척하는 거야?!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나한테 집중해 줘"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자 그거 써 봤어?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그거라니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그거라니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 골라 준 꿈가루 말이야"
+      },
+      {
+        "speaker": "타샤",
+        "message": "제목이 엄청 재밌어 보였어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "로맨스코미디 같은 꿈을 꿀 수 있으려나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "이 꿈은 다른 장르일 거야"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이 꿈은 다른 장르일 거야"
+      },
+      {
+        "speaker": "타샤",
+        "message": "다른 장르?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "말하기는 좀 그런데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "말하기는 좀 그런데…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그렇게 설명하기 어려운 내용이야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내가 형이상적인 꿈가루를 골라 줬나…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "궁금한데 다음에 나랑 같이 써 볼래?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그건 더 곤란해"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그건 더 곤란해"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자는 여행하는 거 좋아해?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나는 아우렐리아 말고 다른 나라에 가본 기억이 없어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아니 애초에 기억이 사라졌으니까"
+      },
+      {
+        "speaker": "타샤",
+        "message": "여행한 기억을 잊은 거려나?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 많이 다니면 되지"
+      },
+      {
+        "speaker": "구원자",
+        "message": "앞으로 많이 다니면 되지"
+      },
+      {
+        "speaker": "타샤",
+        "message": "근데 혼자 여행은 심심할 것 같아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "감흥을 주는 여행지라고 하더라도"
+      },
+      {
+        "speaker": "타샤",
+        "message": "사랑하는 연인이랑 함께라면 감동이 두 배이지 않을까♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럴지도 몰라"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그럴지도 몰라"
+      },
+      {
+        "speaker": "타샤",
+        "message": "저기 나중에 괜찮으면"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그러니까 진짜 나중에라도"
+      },
+      {
+        "speaker": "타샤",
+        "message": "여행 같이 가자"
+      },
+      {
+        "speaker": "타샤",
+        "message": "물론! 우리가 사귀는 사이는 아니지만!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그래도 나름 동거도 했으니까!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "동거?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "동거?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "뭐야 그 반응은?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "설마 우리 오두막 생활은 아무것도 아니었단 거야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "바람둥이!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자는 원래 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아니 그러니까"
+      },
+      {
+        "speaker": "타샤",
+        "message": "원래 그렇게 모두에게 친절한가 싶어서"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아냐!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아아아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "에버톡 잘못 보냈어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 나쁘게 대했으면 좋겠어?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내가 나쁘게 대했으면 좋겠어?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아니 그런 건 아니지만"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으음 근데 "
+      },
+      {
+        "speaker": "타샤",
+        "message": "나쁘게 대하는 구원자 섹시할지도"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "구원자",
+        "message": "???"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나는 손에 땀이 많아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "보이는 것보다 수줍음도 많고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "의외로 적극적으로 리드하지 못할 수도 있어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 말을 하고 싶은 거야?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "무슨 말을 하고 싶은 거야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그래도 괜찮으면 나 "
+      },
+      {
+        "speaker": "타샤",
+        "message": "나랑 사귀"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으 아니야!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "조금만 기다려 줘"
+      },
+      {
+        "speaker": "타샤",
+        "message": "떳떳하게 전하고 싶은 말이 있어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그때 우리가 찍었던 사진"
+      },
+      {
+        "speaker": "타샤",
+        "message": "인화해서 뽑으려고 하는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "괜찮으면 한 장 가질래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 좋아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "응 좋아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "혼자 찍은 사진은 인화해 봤는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "함께 찍은 사진을 뽑는 건 처음이야"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나는 오두막에 붙여 두려고!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 간직할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나도 잘 간직할게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "응응 진짜지?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "잘 보이는 데다 둬야 해"
+      },
+      {
+        "speaker": "타샤",
+        "message": "액자도 주문해야겠다!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "더는 '구원자'가 아니게 되더라도"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나를 기억해 줄래?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "에버폰이 닿지 않고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "얼굴을 보기 힘든 곳에 있어도"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나를 잊지 마"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기억할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "기억할게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "고마워"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자랑 함께했던 추억만큼은"
+      },
+      {
+        "speaker": "타샤",
+        "message": "잊어버리고 싶지 않아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "저기"
+      },
+      {
+        "speaker": "타샤",
+        "message": "너는 누구야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "왜 나를 구해 준 거야?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내가 누구인지 알고 있어?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "의식이 없는데 이렇게 에버톡 보내는 게 의미 없겠지만"
+      },
+      {
+        "speaker": "타샤",
+        "message": "얼른 깨어나 줘"
+      },
+      {
+        "speaker": "타샤",
+        "message": "점심 뭐 먹을까?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조금 전에 아침 먹었잖아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "조금 전에 아침 먹었잖아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그러니까 점심 메뉴를 정해야지!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "지금 여기저기 살펴보고 있는데 먹을만한 게 마땅치 않네"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어딘데?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "어딘데?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "너 자는 사이에 숲으로 나왔어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "엇 잠깐"
+      },
+      {
+        "speaker": "타샤",
+        "message": "꺄아!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "왜 그래?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "닭 발견!!!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "후훗 역시 나, 타샤는 유능해♡"
+      },
+      {
+        "speaker": "타샤",
+        "message": "조금만 기다려!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "에버스타그램으로 아케나인 사진 봤는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "예쁜 곳 엄청 많다~"
+      },
+      {
+        "speaker": "타샤",
+        "message": "맛집 추천해 줘"
+      },
+      {
+        "speaker": "구원자",
+        "message": "시장에서 파는 토스트가 유명해"
+      },
+      {
+        "speaker": "구원자",
+        "message": "시장에서 파는 토스트가 유명해"
+      },
+      {
+        "speaker": "타샤",
+        "message": "아 진짜? 길거리 음식은 많이 안 먹어 봤는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "도전해야겠다!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "앗"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그런데 돈이 없잖아…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "빌려줄게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "빌려줄게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "후훗 걱정하지 마"
+      },
+      {
+        "speaker": "타샤",
+        "message": "광장 분수대 밑을 뒤지면 돼"
+      },
+      {
+        "speaker": "타샤",
+        "message": "원래 분수대 밑에 동전이 많거든"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자도 같이 동전 주울래?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "앞치마 두 벌을 오두막에서 발견했는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "핑크랑 블루 중에 어떤 색이 더 좋아?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "블루?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "블루?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "꺄앗 구원자도 그렇게 생각하지?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내 아이라인 컬러도 블루니까 그쪽이 좋으려나"
+      },
+      {
+        "speaker": "타샤",
+        "message": "으음 하지만 핑크도 귀여운데!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "핑크도 괜찮을 것 같아"
+      },
+      {
+        "speaker": "구원자",
+        "message": "핑크도 괜찮을 것 같아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그럼 블루를 포기해야 하는데…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "앗 그럼 반씩 잘라서 꿰매면 되잖아?!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "역시 나, 타샤는 천재야♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내 대답은 중요하지 않았구나…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "내 대답은 중요하지 않았구나…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나한테 할 말이 있다니…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "엄청 진지한 표정이었어 구원자"
+      },
+      {
+        "speaker": "타샤",
+        "message": "설마…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이, 이건 그 타이밍인가…?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 타이밍?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그 타이밍?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "꺄아아!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "왜 대답해!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한테 에버톡을 보냈잖아…"
+      },
+      {
+        "speaker": "구원자",
+        "message": "나한테 에버톡을 보냈잖아…"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자 에버톡은 내 메모장이나 마찬가지야!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "일일이 다 대답할 필요는 없어!!!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 건 에버스타그램에 올려"
+      },
+      {
+        "speaker": "구원자",
+        "message": "그런 건 에버스타그램에 올려"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내 맘이야!"
+      },
+      {
+        "speaker": "타샤",
+        "message": "잠이 안 와"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 산 꿈가루는?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "같이 산 꿈가루는?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "쓰려고 했는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "왠지 두려워서"
+      },
+      {
+        "speaker": "구원자",
+        "message": "두렵다니?"
+      },
+      {
+        "speaker": "구원자",
+        "message": "두렵다니?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "행복한 꿈을 꾸고 일어났는데"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나 혼자 오두막에 남아 있으면"
+      },
+      {
+        "speaker": "타샤",
+        "message": "오히려 현실이 더 외롭게 느껴질 것 같아"
+      },
+      {
+        "speaker": "타샤",
+        "message": "그래도 일찍 자 볼게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "너무 걱정하지 마"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내가 무너지지 않게 도와줘"
+      },
+      {
+        "speaker": "타샤",
+        "message": "껍데기뿐인 인형이 된다고 하더라도"
+      },
+      {
+        "speaker": "타샤",
+        "message": "기억을 되찾지 않을래"
+      },
+      {
+        "speaker": "타샤",
+        "message": "미안해 구원자"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자를 공격하려 할지도 모르고"
+      },
+      {
+        "speaker": "타샤",
+        "message": "기억이 뒤섞여서 정신이 불안정해지겠지만"
+      },
+      {
+        "speaker": "타샤",
+        "message": "제대로 살아갈 수 있게 노력하고 싶어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "기억을 되찾고 싶어"
+      },
+      {
+        "speaker": "타샤",
+        "message": "남은 시간은 속죄하며 보낼 수 있도록"
+      },
+      {
+        "speaker": "타샤",
+        "message": "도와줄래?"
+      },
+      {
+        "speaker": "타샤",
+        "message": "이런 날에 구원자는 선물 많이 받겠지만"
+      },
+      {
+        "speaker": "타샤",
+        "message": "내 선물은 조금쯤이라도 특별하게 여겨 줘!"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물 고마워, 타샤"
+      },
+      {
+        "speaker": "구원자",
+        "message": "선물 고마워, 타샤"
+      },
+      {
+        "speaker": "타샤",
+        "message": "나는 꽃가루를 싫어하지만"
+      },
+      {
+        "speaker": "타샤",
+        "message": "구원자는 꽃이나 봄이 어울리니까"
+      },
+      {
+        "speaker": "타샤",
+        "message": "선물하고 싶었어"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소중히 간직할게"
+      },
+      {
+        "speaker": "구원자",
+        "message": "소중히 간직할게"
+      },
+      {
+        "speaker": "타샤",
+        "message": "손을 꼭 잡고 눈 오는 거리를 걷고 싶은 날이야"
+      },
+      {
+        "speaker": "타샤",
+        "message": "로맨틱한 선물이 되었기를♡"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 타샤"
+      },
+      {
+        "speaker": "구원자",
+        "message": "고마워, 타샤"
+      }
+    ]
+  }
+}

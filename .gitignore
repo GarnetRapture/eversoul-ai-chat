@@ -69,3 +69,4 @@ ai/
 .agents/
 .vscode/
 .git/
+database/
