@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { ChatMessage, ChatRoom } from '../chat';
 import type { LlmStatus } from '../llm';
-import type { PersonaConfig, SpiritDetail } from '../persona';
+import type { BondRankingEntry, PersonaConfig, SpiritDetail } from '../persona';
 import type { AppSettings, ResetSummary } from '../settings';
 import type { StyleProfile } from '../style';
 import type { TrainingSummary } from '../training';
@@ -21,7 +21,7 @@ export interface TalkChoice {
 }
 export type ApiConnectionState = 'checking' | 'ready' | 'warning' | 'error';
 export type RosterTab = 'list' | 'bondRanking' | 'familiarity';
-export type StageTab = 'chat' | 'gallery' | 'backgrounds';
+export type StageTab = 'chat' | 'gallery';
 export interface ApiStatusItem {
     id: string;
     label: string;
@@ -36,6 +36,8 @@ export interface SpiritRosterProps {
     loadError: string | null;
     activeTab: RosterTab;
     collapsed: boolean;
+    bondRanking: BondRankingEntry[];
+    bondRankingLoading: boolean;
     onSearchChange: (value: string) => void;
     onSelect: (spirit: PersonaConfig) => void;
     onSetDefault: (spiritId: string) => void;
@@ -53,7 +55,7 @@ export interface ChatStageProps {
     onInputChange: (value: string) => void;
     onSendMessage: (event: React.FormEvent) => void;
     onStageTabChange: (tab: StageTab) => void;
-    messageEndRef: React.RefObject<HTMLDivElement | null>;
+    messagesListRef: React.RefObject<HTMLDivElement | null>;
 }
 export interface SpiritProfilePanelProps {
     activeDetail: SpiritDetail | null;
@@ -66,6 +68,7 @@ export interface SpiritProfilePanelProps {
     onSelectStyle: (styleId: string) => void;
     onToggleCollapsed: () => void;
     onOpenSettings: () => void;
+    onOpenBackgroundGallery: () => void;
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
     trainingError: string | null;
@@ -82,6 +85,10 @@ export interface SettingsPanelProps {
     resetError: string | null;
     onClose: () => void;
     onReset: () => void;
+}
+export interface BackgroundGalleryPanelProps {
+    open: boolean;
+    onClose: () => void;
 }
 export interface EverTalkController {
     appInitializing: boolean;
@@ -104,8 +111,9 @@ export interface EverTalkController {
     styles: StyleProfile[];
     activeStyle: StyleProfile | null;
     isSyncing: boolean;
-    messageEndRef: React.RefObject<HTMLDivElement | null>;
+    messagesListRef: React.RefObject<HTMLDivElement | null>;
     settingsOpen: boolean;
+    backgroundGalleryOpen: boolean;
     appSettings: AppSettings | null;
     isResetting: boolean;
     resetSummary: ResetSummary | null;
@@ -113,6 +121,8 @@ export interface EverTalkController {
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
     trainingError: string | null;
+    bondRanking: BondRankingEntry[];
+    bondRankingLoading: boolean;
     setSearchQuery: (value: string) => void;
     setInputText: (value: string) => void;
     setActiveRosterTab: (tab: RosterTab) => void;
@@ -126,6 +136,8 @@ export interface EverTalkController {
     selectStyle: (styleId: string) => Promise<void>;
     openSettings: () => Promise<void>;
     closeSettings: () => void;
+    openBackgroundGallery: () => void;
+    closeBackgroundGallery: () => void;
     resetAppData: () => Promise<void>;
     trainPersona: () => Promise<void>;
 }

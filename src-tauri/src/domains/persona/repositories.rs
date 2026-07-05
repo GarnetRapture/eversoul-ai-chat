@@ -4,7 +4,6 @@ use rusqlite::{params, Connection, Result};
 pub struct PersonaRepository;
 
 impl PersonaRepository {
-
     pub fn save_persona(conn: &Connection, config: &PersonaConfig) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO persona_profile (
@@ -82,5 +81,4 @@ impl PersonaRepository {
         }
         Ok(list)
     }
-
 }

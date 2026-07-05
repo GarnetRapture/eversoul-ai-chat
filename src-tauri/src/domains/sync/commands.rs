@@ -1,5 +1,5 @@
 use super::services::SyncService;
-use super::types::{SyncError, SyncResult};
+use super::types::{LocalStatusSnapshot, SyncError, SyncResult};
 use crate::domains::auth::commands::{DbState, HttpState};
 use tauri::State;
 
@@ -31,4 +31,15 @@ pub async fn sync_run(
             Err(err)
         }
     }
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn sync_get_local_status(
+    db_state: State<'_, DbState>,
+) -> Result<LocalStatusSnapshot, SyncError> {
+    let conn = db_state
+        .0
+        .lock()
+        .map_err(|e| SyncError::Database(e.to_string()))?;
+    SyncService::get_local_status(&conn)
 }

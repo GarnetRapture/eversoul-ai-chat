@@ -53,8 +53,14 @@ pub fn tokenize_example(
     let input_ids = &input_ids[..seq_len];
     let labels = &labels[..seq_len.min(labels.len())];
 
-    let mask: Vec<f32> = labels.iter().map(|&l| if l == IGNORE_INDEX { 0.0 } else { 1.0 }).collect();
-    let labels_u32: Vec<u32> = labels.iter().map(|&l| if l == IGNORE_INDEX { 0 } else { l as u32 }).collect();
+    let mask: Vec<f32> = labels
+        .iter()
+        .map(|&l| if l == IGNORE_INDEX { 0.0 } else { 1.0 })
+        .collect();
+    let labels_u32: Vec<u32> = labels
+        .iter()
+        .map(|&l| if l == IGNORE_INDEX { 0 } else { l as u32 })
+        .collect();
 
     let input_ids = Tensor::from_vec(input_ids.to_vec(), (1, seq_len), device)?;
     let labels = Tensor::from_vec(labels_u32, (seq_len,), device)?;

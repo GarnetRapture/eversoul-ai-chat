@@ -8,6 +8,18 @@ pub struct SyncResult {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LocalStatusSnapshot {
+    pub persona_count: usize,
+    pub chat_room_count: usize,
+    pub chat_message_count: usize,
+    pub style_count: usize,
+    pub knowledge_chunk_count: usize,
+    pub memory_count: usize,
+    pub last_sync_status: Option<String>,
+    pub last_sync_error: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RemoteDataPack {
     pub personas: Vec<crate::domains::persona::types::PersonaConfig>,
     pub knowledges: Vec<crate::domains::knowledge::types::KnowledgePayload>,

@@ -8,7 +8,9 @@ use tauri::State;
 pub struct SettingsState(pub Mutex<SettingsManager>);
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn settings_get(settings_state: State<'_, SettingsState>) -> Result<AppSettings, SettingsError> {
+pub fn settings_get(
+    settings_state: State<'_, SettingsState>,
+) -> Result<AppSettings, SettingsError> {
     let settings = settings_state
         .0
         .lock()

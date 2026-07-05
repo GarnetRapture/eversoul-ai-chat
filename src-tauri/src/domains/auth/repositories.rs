@@ -4,7 +4,6 @@ use rusqlite::{params, Connection, Result};
 pub struct AuthRepository;
 
 impl AuthRepository {
-
     pub fn save_session(conn: &Connection, session: &UserSession) -> Result<()> {
         conn.execute("DELETE FROM auth_session", [])?;
         conn.execute(

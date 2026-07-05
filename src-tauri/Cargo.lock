@@ -1360,7 +1360,7 @@ dependencies = [
 
 [[package]]
 name = "eversoul-ai-chat"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "anyhow",
  "candle-core",
@@ -1371,6 +1371,7 @@ dependencies = [
  "hex",
  "hf-hub",
  "llama-cpp-2",
+ "num_cpus",
  "reqwest",
  "rusqlite",
  "rust-ini",

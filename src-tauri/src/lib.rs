@@ -36,7 +36,6 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .setup(|app| {
-
             let db_path = app
                 .path()
                 .app_local_data_dir()
@@ -50,6 +49,13 @@ pub fn run() {
                     let _ = std::fs::create_dir_all(&db_dir);
                     db_dir.join("eversoul.db")
                 });
+
+            #[cfg(debug_assertions)]
+            {
+                let _ = std::fs::remove_file(&db_path);
+                let _ = std::fs::remove_file(format!("{}-wal", db_path.display()));
+                let _ = std::fs::remove_file(format!("{}-shm", db_path.display()));
+            }
 
             let db_mgr = DatabaseManager::new(db_path);
             let conn = db_mgr

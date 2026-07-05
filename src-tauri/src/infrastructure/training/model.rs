@@ -167,9 +167,10 @@ impl Attention {
         let attn_weights = candle_nn::ops::softmax_last_dim(&attn_weights)?;
 
         let attn_out = attn_weights.matmul(&v)?;
-        let attn_out = attn_out
-            .transpose(1, 2)?
-            .reshape((b, seq_len, self.num_heads * self.head_dim))?;
+        let attn_out =
+            attn_out
+                .transpose(1, 2)?
+                .reshape((b, seq_len, self.num_heads * self.head_dim))?;
 
         self.o_proj.forward(&attn_out)
     }
@@ -234,7 +235,11 @@ impl DecoderLayer {
                 device,
             )?,
             mlp: Mlp::load(cfg, vb.pp("mlp"))?,
-            input_layernorm: RmsNorm::load(cfg.hidden_size, cfg.rms_norm_eps, vb.pp("input_layernorm"))?,
+            input_layernorm: RmsNorm::load(
+                cfg.hidden_size,
+                cfg.rms_norm_eps,
+                vb.pp("input_layernorm"),
+            )?,
             post_attention_layernorm: RmsNorm::load(
                 cfg.hidden_size,
                 cfg.rms_norm_eps,
@@ -265,7 +270,6 @@ pub struct Qwen2Model {
 }
 
 impl Qwen2Model {
-
     pub fn load(
         cfg: &Qwen2Config,
         vb: VarBuilder,
@@ -275,7 +279,10 @@ impl Qwen2Model {
         device: &Device,
     ) -> Result<Self> {
         let embed_tokens = Embedding::new(
-            vb.get((cfg.vocab_size, cfg.hidden_size), "model.embed_tokens.weight")?,
+            vb.get(
+                (cfg.vocab_size, cfg.hidden_size),
+                "model.embed_tokens.weight",
+            )?,
             cfg.hidden_size,
         );
 
@@ -297,7 +304,12 @@ impl Qwen2Model {
 
         let lm_head_weight = vb
             .get((cfg.vocab_size, cfg.hidden_size), "lm_head.weight")
-            .or_else(|_| vb.get((cfg.vocab_size, cfg.hidden_size), "model.embed_tokens.weight"))?;
+            .or_else(|_| {
+                vb.get(
+                    (cfg.vocab_size, cfg.hidden_size),
+                    "model.embed_tokens.weight",
+                )
+            })?;
         let lm_head = Linear::new(lm_head_weight, None);
 
         let rope = RotaryEmbedding::new(cfg, device)?;

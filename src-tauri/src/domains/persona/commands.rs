@@ -1,5 +1,7 @@
 use super::services::PersonaService;
-use super::types::{BondRankingEntry, PersonaConfig, PersonaError, UpdatePersonaRequest};
+use super::types::{
+    BondRankingEntry, FamiliarityEntry, PersonaConfig, PersonaError, UpdatePersonaRequest,
+};
 use crate::domains::auth::commands::DbState;
 use crate::domains::settings::commands::SettingsState;
 use crate::infrastructure::compress::PersonaLoader;
@@ -97,4 +99,16 @@ pub fn persona_bond_ranking(
         .map_err(|e| PersonaError::Database(e.to_string()))?;
     let service = PersonaService::new(&conn);
     service.get_bond_ranking()
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn persona_familiarity_list(
+    db_state: State<'_, DbState>,
+) -> Result<Vec<FamiliarityEntry>, PersonaError> {
+    let conn = db_state
+        .0
+        .lock()
+        .map_err(|e| PersonaError::Database(e.to_string()))?;
+    let service = PersonaService::new(&conn);
+    service.get_familiarity_list()
 }

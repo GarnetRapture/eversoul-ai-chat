@@ -1,5 +1,6 @@
 use super::services::{LlmLoadError, LlmService};
 use super::types::{LlmError, LlmInferResponse, LlmStatus};
+use crate::domains::training::commands::TrainingState;
 use crate::infrastructure::llm::LlmEngine;
 use crate::infrastructure::llm::LlmError as InfraLlmError;
 use std::sync::Mutex;
@@ -37,6 +38,7 @@ fn map_load_error(err: LlmLoadError) -> LlmError {
 pub fn llm_load(
     app_handle: AppHandle,
     llm_state: State<'_, LlmState>,
+    training_state: State<'_, TrainingState>,
 ) -> Result<LlmStatus, LlmError> {
     let mut engine_lock = llm_state
         .0
@@ -56,7 +58,13 @@ pub fn llm_load(
         .resource_dir()
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
 
-    match LlmService::load_engine(&app_root) {
+    let adapters_dir = training_state
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .clone();
+
+    match LlmService::load_engine(&app_root, adapters_dir) {
         Ok(engine) => {
             let model_path_str = engine.model_path().to_string_lossy().to_string();
             *engine_lock = Some(engine);

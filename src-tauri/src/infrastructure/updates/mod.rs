@@ -13,7 +13,6 @@ pub struct UpdateManager {
 }
 
 impl UpdateManager {
-
     pub fn new(current_version: String) -> Self {
         Self { current_version }
     }

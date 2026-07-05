@@ -1,4 +1,3 @@
-/* App-specific custom animations & classes if needed (Tailwind is the primary style engine) */
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: 0 0 12px rgba(255, 46, 126, 0.3);

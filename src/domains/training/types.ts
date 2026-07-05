@@ -4,6 +4,7 @@ export interface TrainingSummary {
     steps: number;
     final_loss: number;
     adapter_path: string;
+    gguf_adapter_path: string;
 }
 export type TrainingError = {
     Database: string;

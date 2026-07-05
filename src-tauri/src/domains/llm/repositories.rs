@@ -3,7 +3,6 @@ use rusqlite::{params, Connection, Result};
 pub struct LlmRepository;
 
 impl LlmRepository {
-
     pub fn save_setting(conn: &Connection, key: &str, value: &str) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO sync_metadata (key, value, updated_at) VALUES (?1, ?2, datetime('now'))",

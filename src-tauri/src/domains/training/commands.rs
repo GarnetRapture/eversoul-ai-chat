@@ -14,7 +14,6 @@ pub fn training_run(
     training_state: State<'_, TrainingState>,
     persona_id: String,
 ) -> Result<TrainingSummary, TrainingError> {
-
     let examples = {
         let conn = db_state
             .0
@@ -41,5 +40,6 @@ pub fn training_run(
         steps: report.steps,
         final_loss: report.final_loss,
         adapter_path: report.adapter_path.to_string_lossy().to_string(),
+        gguf_adapter_path: report.gguf_adapter_path.to_string_lossy().to_string(),
     })
 }

@@ -8,7 +8,6 @@ pub struct HttpManager {
 }
 
 impl HttpManager {
-
     pub fn new(base_url: String) -> Self {
         let client = Client::builder()
             .timeout(Duration::from_secs(30))

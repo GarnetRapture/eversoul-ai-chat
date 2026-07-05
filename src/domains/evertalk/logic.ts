@@ -52,6 +52,15 @@ export function pickRandomSpeechLine(detail: SpiritDetail | null): string {
     const index = Math.floor(Math.random() * candidates.length);
     return candidates[index];
 }
+export function pickPokeReactionLine(detail: SpiritDetail | null, excluding: string): string {
+    if (!detail || detail.speech_patterns.length === 0) {
+        return '';
+    }
+    const candidates = detail.speech_patterns.filter((line) => line.trim().length > 0 && line !== excluding);
+    const pool = candidates.length > 0 ? candidates : detail.speech_patterns;
+    const index = Math.floor(Math.random() * pool.length);
+    return pool[index];
+}
 export function createConversationSummary(detail: SpiritDetail | null): string {
     if (!detail) {
         return '';

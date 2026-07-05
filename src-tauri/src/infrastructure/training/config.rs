@@ -1,4 +1,3 @@
-
 #[derive(Debug, Clone)]
 pub struct Qwen2Config {
     pub vocab_size: usize,

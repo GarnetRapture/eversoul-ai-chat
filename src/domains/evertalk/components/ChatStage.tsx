@@ -1,8 +1,7 @@
-import { memo, useMemo } from 'react';
-import { GalleryHorizontal, Images, MessageCircle, Send, Sparkles, X } from 'lucide-react';
-import { ASSET_ROOT, getRaceTone, getSpiritVisualAssets } from '../../persona';
-import { createConversationSummary, createTalkChoices, pickRandomSpeechLine } from '../logic';
-import { BACKGROUND_ASSET_FILES } from '../backgroundAssets';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
+import { Images, MessageCircle, Send, Sparkles, X } from 'lucide-react';
+import { getRaceTone, getSpiritVisualAssets } from '../../persona';
+import { createConversationSummary, createTalkChoices, pickRandomSpeechLine, pickPokeReactionLine } from '../logic';
 import type { ChatMessage } from '../../chat';
 import type { SpiritVisualAssets } from '../../persona';
 import type { ChatStageProps } from '../types';
@@ -21,7 +20,7 @@ const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandi
       <div className="ever-message__bubble">{message.content}</div>
     </div>);
 });
-export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, inputText, isTyping, activeStageTab, onInputChange, onSendMessage, onStageTabChange, messageEndRef, }: ChatStageProps) {
+export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, inputText, isTyping, activeStageTab, onInputChange, onSendMessage, onStageTabChange, messagesListRef, }: ChatStageProps) {
     const assets: SpiritVisualAssets | null = useMemo(() => (activeDetail ? getSpiritVisualAssets(activeDetail) : null), [activeDetail]);
     const tone = useMemo(() => (activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral'), [activeDetail]);
     const choices = useMemo(() => createTalkChoices(activeDetail), [activeDetail]);
@@ -29,6 +28,31 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
     const galleryCandidates = useMemo(() => (assets ? [...assets.avatarCandidates, ...assets.portraitCandidates] : []), [assets]);
     const speechLine = useMemo(() => pickRandomSpeechLine(activeDetail), [activeDetail?.id]);
     const canUseComposer = Boolean(activeDetail && llmStatus?.is_loaded && !isTyping);
+    const [poked, setPoked] = useState(false);
+    const [displayLine, setDisplayLine] = useState(speechLine);
+    const pokeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    useEffect(() => {
+        setDisplayLine(speechLine);
+        setPoked(false);
+        return () => {
+            if (pokeTimeoutRef.current) {
+                clearTimeout(pokeTimeoutRef.current);
+            }
+        };
+    }, [activeDetail?.id]);
+    function handlePortraitPoke() {
+        if (!activeDetail) {
+            return;
+        }
+        setDisplayLine(pickPokeReactionLine(activeDetail, displayLine));
+        setPoked(true);
+        if (pokeTimeoutRef.current) {
+            clearTimeout(pokeTimeoutRef.current);
+        }
+        pokeTimeoutRef.current = setTimeout(() => {
+            setPoked(false);
+        }, 1600);
+    }
     return (<main className={`ever-stage ${tone}`}>
       {assets && <img className="ever-stage__background" src={assets.background} alt=""/>}
       <div className="ever-stage__shade"/>
@@ -46,9 +70,18 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
 
       <section className="ever-stage__body">
         <div className="ever-character" key={activeDetail?.id ?? 'none'}>
-          <div className="ever-character__figure">
-            {speechLine && <div className="ever-character__speech">{speechLine}</div>}
-            <LoadableAssetImage candidates={assets?.portraitCandidates ?? []} alt={activeDetail?.name ?? ''} className="ever-character__portrait" fallback={<div className="ever-character__fallback">{activeDetail?.name.charAt(0) ?? 'E'}</div>}/>
+          <div className={`ever-character__figure ${poked ? 'is-poked' : ''}`}>
+            {displayLine && <div className="ever-character__speech">{displayLine}</div>}
+            <button
+              type="button"
+              className="ever-character__touch-target"
+              aria-label={activeDetail ? `${activeDetail.name} 반응 보기` : '정령 반응 보기'}
+              disabled={!activeDetail}
+              onClick={handlePortraitPoke}
+            >
+              <LoadableAssetImage candidates={assets?.portraitCandidates ?? []} alt={activeDetail?.name ?? ''} className="ever-character__portrait" fallback={<div className="ever-character__fallback">{activeDetail?.name.charAt(0) ?? 'E'}</div>}/>
+              <span className="ever-character__blush" aria-hidden="true" />
+            </button>
           </div>
           {activeDetail && (<div className="ever-character__caption">
               <strong>{activeDetail.name_en}</strong>
@@ -61,7 +94,7 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
               <strong>{activeRoom?.title ?? activeDetail?.name ?? '인연 채널'}</strong>
               <span>{summary}</span>
             </div>
-            <div className="ever-messages">
+            <div className="ever-messages" ref={messagesListRef}>
               {messages.length === 0 && (<div className="ever-messages__empty">
                   <strong>저장된 대화가 없습니다</strong>
                   <span>첫 메시지를 보내면 SQLite 세션에 대화가 누적됩니다.</span>
@@ -75,7 +108,6 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
                     <span className="ever-typing"><i /><i /><i /></span>
                   </div>
                 </div>)}
-              <div ref={messageEndRef}/>
             </div>
             <form className="ever-composer" onSubmit={onSendMessage}>
               {choices.length > 0 && (<div className="ever-choice-strip">
@@ -89,21 +121,15 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
                 <Send aria-hidden="true" size={22}/>
               </button>
             </form>
-          </div>) : activeStageTab === 'gallery' ? (<div className="ever-gallery-panel">
+          </div>) : (<div className="ever-gallery-panel">
             <div className="ever-chat-panel__room">
               <strong>{activeDetail?.name ?? '정령'} 이미지 갤러리</strong>
               <span>{assets?.assetFolder ?? ''}</span>
             </div>
             <div className="ever-gallery-grid">
-              {galleryCandidates.map((candidate) => (<LoadableAssetImage key={candidate} candidates={[candidate]} alt={activeDetail?.name ?? ''} className="ever-gallery-image" fallback={<span>{candidate.split('/').slice(-1)[0]}</span>}/>))}
-            </div>
-          </div>) : (<div className="ever-gallery-panel">
-            <div className="ever-chat-panel__room">
-              <strong>배경 갤러리</strong>
-              <span>{BACKGROUND_ASSET_FILES.length}개 배경</span>
-            </div>
-            <div className="ever-gallery-grid">
-              {BACKGROUND_ASSET_FILES.map((file) => (<img key={file} className="ever-gallery-image" src={`${ASSET_ROOT}/backgrounds/talk/${file}`} alt={file} loading="lazy"/>))}
+              {galleryCandidates.map((candidate) => (<div key={candidate} className="ever-gallery-tile">
+                  <LoadableAssetImage candidates={[candidate]} alt={activeDetail?.name ?? ''} fallback={<span>{candidate.split('/').slice(-1)[0]}</span>}/>
+                </div>))}
             </div>
           </div>)}
       </section>
@@ -115,10 +141,6 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
         <button className={activeStageTab === 'gallery' ? 'is-active' : ''} type="button" onClick={() => onStageTabChange('gallery')}>
           <Images aria-hidden="true" size={25}/>
           <span>갤러리</span>
-        </button>
-        <button className={activeStageTab === 'backgrounds' ? 'is-active' : ''} type="button" onClick={() => onStageTabChange('backgrounds')}>
-          <GalleryHorizontal aria-hidden="true" size={25}/>
-          <span>배경</span>
         </button>
       </nav>
     </main>);

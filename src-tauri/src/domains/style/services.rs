@@ -15,8 +15,8 @@ impl<'a> StyleService<'a> {
         &self,
         active_style_id: Option<&str>,
     ) -> Result<Vec<StyleProfile>, StyleError> {
-        let styles =
-            StyleRepository::list_styles(self.conn).map_err(|e| StyleError::Database(e.to_string()))?;
+        let styles = StyleRepository::list_styles(self.conn)
+            .map_err(|e| StyleError::Database(e.to_string()))?;
 
         Ok(styles
             .into_iter()

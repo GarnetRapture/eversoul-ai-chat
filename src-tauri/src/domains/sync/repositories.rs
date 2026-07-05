@@ -4,7 +4,6 @@ use std::time::SystemTime;
 pub struct SyncRepository;
 
 impl SyncRepository {
-
     pub fn set_metadata(conn: &Connection, key: &str, value: &str) -> Result<()> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -28,5 +27,11 @@ impl SyncRepository {
         } else {
             Ok(None)
         }
+    }
+
+    pub fn count_table(conn: &Connection, table_name: &str) -> Result<usize> {
+        let sql = format!("SELECT COUNT(*) FROM {table_name}");
+        let count: i64 = conn.query_row(&sql, [], |row| row.get(0))?;
+        Ok(count as usize)
     }
 }

@@ -52,6 +52,7 @@ export function useEverTalkController(): EverTalkController {
     const [activeStyle, setActiveStyle] = useState<StyleProfile | null>(null);
     const [isSyncing, setIsSyncing] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [backgroundGalleryOpen, setBackgroundGalleryOpen] = useState(false);
     const [appSettings, setAppSettings] = useState<AppSettings | null>(null);
     const [isResetting, setIsResetting] = useState(false);
     const [resetSummary, setResetSummary] = useState<ResetSummary | null>(null);
@@ -61,7 +62,7 @@ export function useEverTalkController(): EverTalkController {
     const [trainingError, setTrainingError] = useState<string | null>(null);
     const [bondRanking, setBondRanking] = useState<BondRankingEntry[]>([]);
     const [bondRankingLoading, setBondRankingLoading] = useState(false);
-    const messageEndRef = useRef<HTMLDivElement>(null);
+    const messagesListRef = useRef<HTMLDivElement>(null);
     const appInitStartedRef = useRef(false);
     const filteredSpirits = useMemo(() => filterSpirits(spirits, searchQuery), [searchQuery, spirits]);
     function setSystemStatus(status: ApiStatusItem) {
@@ -191,6 +192,12 @@ export function useEverTalkController(): EverTalkController {
     function closeSettings() {
         setSettingsOpen(false);
     }
+    function openBackgroundGallery() {
+        setBackgroundGalleryOpen(true);
+    }
+    function closeBackgroundGallery() {
+        setBackgroundGalleryOpen(false);
+    }
     async function resetAppData() {
         setIsResetting(true);
         setResetError(null);
@@ -311,7 +318,11 @@ export function useEverTalkController(): EverTalkController {
         initApp();
     }, []);
     useEffect(() => {
-        messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        const listEl = messagesListRef.current;
+        if (!listEl) {
+            return;
+        }
+        listEl.scrollTop = listEl.scrollHeight;
     }, [messages]);
     useEffect(() => {
         if (activeRosterTab !== 'bondRanking') {
@@ -359,8 +370,9 @@ export function useEverTalkController(): EverTalkController {
         styles,
         activeStyle,
         isSyncing,
-        messageEndRef,
+        messagesListRef,
         settingsOpen,
+        backgroundGalleryOpen,
         appSettings,
         isResetting,
         resetSummary,
@@ -368,6 +380,8 @@ export function useEverTalkController(): EverTalkController {
         isTraining,
         trainingSummary,
         trainingError,
+        bondRanking,
+        bondRankingLoading,
         setSearchQuery,
         setInputText,
         setActiveRosterTab,
@@ -381,6 +395,8 @@ export function useEverTalkController(): EverTalkController {
         selectStyle,
         openSettings,
         closeSettings,
+        openBackgroundGallery,
+        closeBackgroundGallery,
         resetAppData,
         trainPersona,
     };

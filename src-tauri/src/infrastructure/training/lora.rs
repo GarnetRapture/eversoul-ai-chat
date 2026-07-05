@@ -9,7 +9,6 @@ pub struct LoraLinear {
 }
 
 impl LoraLinear {
-
     pub fn new(
         base_weight: Tensor,
         in_features: usize,

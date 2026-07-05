@@ -6,7 +6,6 @@ use rusqlite::Connection;
 pub struct SettingsService;
 
 impl SettingsService {
-
     pub fn get_settings(settings: &SettingsManager) -> AppSettings {
         AppSettings {
             default_persona_id: settings.get_default_persona_id(),
@@ -18,10 +17,12 @@ impl SettingsService {
         conn: &Connection,
         settings: &SettingsManager,
     ) -> Result<ResetSummary, SettingsError> {
-        let counts =
-            DatabaseManager::reset_data(conn).map_err(|e| SettingsError::Database(e.to_string()))?;
+        let counts = DatabaseManager::reset_data(conn)
+            .map_err(|e| SettingsError::Database(e.to_string()))?;
 
-        settings.reset().map_err(|e| SettingsError::Io(e.to_string()))?;
+        settings
+            .reset()
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
 
         Ok(ResetSummary {
             cleared_chat_rooms: counts.chat_rooms,

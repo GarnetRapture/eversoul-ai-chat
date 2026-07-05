@@ -4,7 +4,6 @@ use rusqlite::{params, Connection, Result, Row};
 pub struct StyleRepository;
 
 impl StyleRepository {
-
     pub fn save_style(conn: &Connection, style: &StyleProfile) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO style_profile (

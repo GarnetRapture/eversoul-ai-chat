@@ -7,6 +7,7 @@ pub struct TrainingSummary {
     pub steps: usize,
     pub final_loss: f32,
     pub adapter_path: String,
+    pub gguf_adapter_path: String,
 }
 
 #[derive(Debug, thiserror::Error, serde::Serialize)]

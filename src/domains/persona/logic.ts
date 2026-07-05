@@ -1,21 +1,32 @@
 import type { PersonaConfig, SpiritDetail, SpiritVisualAssets } from './types';
 export const ASSET_ROOT = '/eversoul-assets';
 const explicitAssetFolders: Record<string, string> = {
+    'Ayame': 'Oyome',
     'Bryce': 'Blyce',
     'Catherine (Radiance)': 'CatherineBrave',
+    'Cherrie': 'Catarina',
     'Cherrie (Romantic)': 'CherrieRoman',
+    'Claire': 'Beatrice',
+    'Flynn': 'Milia',
+    'Garnet': 'Olivia',
     'Garnet (Rapture)': 'GarnetRapture',
+    'Haru': 'Mia',
     'Haru (Kamuy)': 'HaruKamuy',
     'Honglan (Peerless)': 'HonglanCombat',
+    'Kurumi Tokisaki': 'Tokisaki',
     'Mephistopheles': 'Mephisto',
     'Mephistopheles (Dawn)': 'MephistoDawn',
     'Miriam (Afterimage)': 'MiriamMirage',
     'Naiah': 'Nyah',
     'Petra (Awakened Soul)': 'PetraAwaken',
+    'Renee': 'Leah',
     'Renee (Argent)': 'ReneeSilver',
     'Rose (Prominence)': 'RoseCrimson',
     'Sakuyo (Inferno)': 'SakuyoShin',
+    'Sharinne': 'Sharing',
     'Soonie': 'Sunny',
+    'Tohka Yatogami': 'Yatogami',
+    'Violette': 'Amelia',
     'Yuria (Apollyon)': 'YuriaApollyon',
 };
 const knownAssetFolders = new Set([
@@ -24,12 +35,12 @@ const knownAssetFolders = new Set([
     'CatherineBrave', 'CherrieRoman', 'Chloe', 'Clara', 'Claudia',
     'ClaudiaArchangel', 'Daphne', 'Dominique', 'Dora', 'Edith', 'Eileen',
     'Erika', 'Erusha', 'Eve', 'GarnetRapture', 'Hanul', 'HaruKamuy', 'Hazel',
-    'Honglan', 'HonglanCombat', 'Jacqueline', 'Jade', 'Jiho', 'JihoMir',
-    'Joanne', 'Kanna', 'Larimar', 'Laura', 'Leah', 'Lilith', 'Linzy',
+    'Honglan', 'HonglanCombat', 'Ina', 'Jacqueline', 'Jade', 'Jiho', 'JihoMir',
+    'Joanne', 'Kanna', 'Karen', 'Larimar', 'Laura', 'Leah', 'Lewayne', 'Lilith', 'Linzy',
     'LinzyThanatos', 'Lizelotte', 'Lute', 'Manon', 'Melfice', 'Mephisto',
-    'MephistoDawn', 'Mia', 'Mica', 'Milia', 'Miriam', 'MiriamMirage', 'Naomi',
+    'MephistoDawn', 'Meryl', 'Mia', 'Mica', 'Milia', 'Miriam', 'MiriamMirage', 'Nameless', 'Naomi',
     'Nia', 'Nicole', 'Nini', 'Nyah', 'Olivia', 'Onyx', 'Otoha', 'Oyome',
-    'Petra', 'PetraAwaken', 'Prim', 'Rebecca', 'ReneeSilver', 'RoseCrimson',
+    'Petra', 'PetraAwaken', 'Prim', 'Rebecca', 'ReneeSilver', 'Rita', 'RoseCrimson', 'Rose', 'Ruri',
     'Sakuyo', 'SakuyoShin', 'Seeha', 'Sigrid', 'Sunny', 'Talia', 'Tasha',
     'Velanna', 'Vivienne', 'Weiss', 'Wheri', 'Xiaolian', 'Yuria',
     'YuriaApollyon', 'YuriaQueen',
@@ -51,7 +62,10 @@ export function resolveSpiritAssetFolder(nameEn: string): string | null {
         return explicit;
     }
     const compact = nameEn.replace(/[^a-zA-Z0-9]/g, '');
-    return knownAssetFolders.has(compact) ? compact : null;
+    if (knownAssetFolders.has(compact)) {
+        return compact;
+    }
+    return null;
 }
 export function getSpiritVisualAssets(detail: SpiritDetail): SpiritVisualAssets {
     const assetFolder = resolveSpiritAssetFolder(detail.name_en);

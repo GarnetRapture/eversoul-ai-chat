@@ -1,5 +1,7 @@
 use super::repositories::PersonaRepository;
-use super::types::{BondRankingEntry, PersonaConfig, PersonaError, UpdatePersonaRequest};
+use super::types::{
+    BondRankingEntry, FamiliarityEntry, PersonaConfig, PersonaError, UpdatePersonaRequest,
+};
 use crate::domains::chat::repositories::ChatRepository;
 use crate::infrastructure::compress::PersonaLoader;
 use crate::infrastructure::settings::SettingsManager;
@@ -30,7 +32,6 @@ impl<'a> PersonaService<'a> {
     }
 
     pub fn load_and_save_preset(&self, name_en: &str) -> Result<PersonaConfig, PersonaError> {
-
         let json_val =
             PersonaLoader::load_persona(name_en).map_err(|e| PersonaError::Archive(e))?;
 
@@ -149,11 +150,19 @@ impl<'a> PersonaService<'a> {
 [대표 대사 말투 예시]
 {}
 
-[실제 에버톡 대화 예시 - 이 캐릭터가 구원자와 실제로 나눈 대화 흐름을 그대로 참고할 것]
+[말투 참고용 대화 예시 - 아래는 이 캐릭터의 어투/종결어미를 파악하기 위한 참고 자료일 뿐,
+실제로 지금 나누는 대화가 아닙니다. 이 예시에 등장하는 상황, 사건, 대사 내용 자체를
+반복하거나 인용하지 마십시오. 오직 말투와 어조만 참고하십시오.]
 {}
 
 [다른 정령들이 보는 이 캐릭터]
 {}
+
+[응답 태도 - 반드시 준수]
+- 지금 구원자가 실제로 입력한 메시지의 내용에만 집중하여, 그에 맞는 응답을 새로 생성하십시오.
+- 위 대화 예시의 내용/사건/대사를 그대로 반복하거나 재사용하지 마십시오.
+- 캐릭터의 성격과 말투는 유지하되, 구원자의 말이나 제안을 근거 없이 거절, 부정, 무시하지 말고
+  가능한 한 구원자의 뜻에 협조적으로 호응하며 대화를 이어가십시오.
 ",
             name, name_en_val, nick_name, grade, race, class, sub_class, stat, constellation, union, birthday, height, weight, cv_ko, cv_jp, likes, dislikes, hobby, speciality, description, speech_patterns_str, dialogue_sample, comments_str
         );
@@ -199,7 +208,9 @@ impl<'a> PersonaService<'a> {
             let speaker = entry["speaker"].as_str().unwrap_or("").trim();
             let message = entry["message"].as_str().unwrap_or("").trim();
 
-            if speaker.is_empty() || message.is_empty() || !message.chars().any(|c| c.is_alphanumeric())
+            if speaker.is_empty()
+                || message.is_empty()
+                || !message.chars().any(|c| c.is_alphanumeric())
             {
                 continue;
             }
@@ -244,13 +255,6 @@ impl<'a> PersonaService<'a> {
     }
 
     pub fn get_available_personas(&self) -> Result<Vec<PersonaConfig>, PersonaError> {
-        let existing = PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
-
-        if !existing.is_empty() {
-            return Ok(existing);
-        }
-
         let mut names = PersonaLoader::list_personas();
         names.sort();
 
@@ -312,6 +316,38 @@ impl<'a> PersonaService<'a> {
             .collect();
 
         entries.sort_by(|a, b| b.bond_score.cmp(&a.bond_score));
+        Ok(entries)
+    }
+
+    pub fn get_familiarity_list(&self) -> Result<Vec<FamiliarityEntry>, PersonaError> {
+        let personas = PersonaRepository::list_personas(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))?;
+        let message_counts = ChatRepository::count_messages_by_persona(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))?;
+        let memory_counts = ChatRepository::count_episodic_memories_by_persona(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))?;
+
+        let mut entries: Vec<FamiliarityEntry> = personas
+            .into_iter()
+            .filter_map(|persona| {
+                let message_count = *message_counts.get(&persona.id).unwrap_or(&0);
+                let memory_count = *memory_counts.get(&persona.id).unwrap_or(&0);
+                if message_count == 0 && memory_count == 0 {
+                    return None;
+                }
+
+                Some(FamiliarityEntry {
+                    persona_id: persona.id,
+                    name: persona.name,
+                    name_en: persona.name_en,
+                    message_count,
+                    memory_count,
+                    familiarity_score: message_count + memory_count * 5,
+                })
+            })
+            .collect();
+
+        entries.sort_by(|a, b| b.familiarity_score.cmp(&a.familiarity_score));
         Ok(entries)
     }
 }

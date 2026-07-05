@@ -1,14 +1,17 @@
-import { BrainCircuit, PanelRightClose, PanelRightOpen, Settings } from 'lucide-react';
+import { BrainCircuit, Images, PanelRightClose, PanelRightOpen, Settings } from 'lucide-react';
 import { getRaceTone, getSpiritVisualAssets } from '../../persona';
 import { createTalkChoices } from '../logic';
 import type { SpiritProfilePanelProps } from '../types';
 import { SystemStatusPanel } from './SystemStatusPanel';
-export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, isTraining, trainingSummary, trainingError, onTrainPersona, }: SpiritProfilePanelProps) {
+export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, onTrainPersona, }: SpiritProfilePanelProps) {
     const assets = activeDetail ? getSpiritVisualAssets(activeDetail) : null;
     const tone = activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral';
     const choices = createTalkChoices(activeDetail);
     return (<aside className={`ever-profile ${tone} ${collapsed ? 'is-collapsed' : ''}`}>
       <div className="ever-profile__toolbar">
+        <button className="ever-profile__toggle" type="button" aria-label="배경 갤러리 열기" onClick={onOpenBackgroundGallery}>
+          <Images aria-hidden="true" size={20}/>
+        </button>
         <button className="ever-profile__toggle" type="button" aria-label="설정 열기" onClick={onOpenSettings}>
           <Settings aria-hidden="true" size={20}/>
         </button>

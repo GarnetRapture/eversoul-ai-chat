@@ -6,6 +6,7 @@ use tokenizers::Tokenizer;
 use super::config::Qwen2Config;
 use super::dataset::{tokenize_example, ConversationExample};
 use super::downloader::ensure_base_model_files;
+use super::gguf_export::export_lora_to_gguf;
 use super::lora::{new_lora_varmap, save_lora_weights};
 use super::model::Qwen2Model;
 
@@ -17,6 +18,7 @@ pub struct TrainingReport {
     pub steps: usize,
     pub final_loss: f32,
     pub adapter_path: std::path::PathBuf,
+    pub gguf_adapter_path: std::path::PathBuf,
 }
 
 pub fn train_persona_lora(
@@ -58,7 +60,9 @@ pub fn train_persona_lora(
         let logits = logits.reshape((seq_len, vocab_size))?;
 
         let log_probs = candle_nn::ops::log_softmax(&logits, D::Minus1)?;
-        let picked = log_probs.gather(&batch.labels.unsqueeze(1)?, 1)?.squeeze(1)?;
+        let picked = log_probs
+            .gather(&batch.labels.unsqueeze(1)?, 1)?
+            .squeeze(1)?;
         let loss_per_token = picked.neg()?;
         let masked = (loss_per_token * &batch.loss_mask)?;
         let valid_count = batch.loss_mask.sum_all()?;
@@ -75,9 +79,13 @@ pub fn train_persona_lora(
     }
     save_lora_weights(&lora_varmap, output_path)?;
 
+    let gguf_adapter_path = output_path.with_extension("gguf");
+    export_lora_to_gguf(&lora_varmap, &cfg, LORA_ALPHA, &gguf_adapter_path)?;
+
     Ok(TrainingReport {
         steps,
         final_loss,
         adapter_path: output_path.to_path_buf(),
+        gguf_adapter_path,
     })
 }

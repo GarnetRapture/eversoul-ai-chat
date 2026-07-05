@@ -14,6 +14,11 @@
 }
 
 @layer base {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+
   body {
     background-color: var(--color-bg-main);
     color: #ffffff;
@@ -21,12 +26,16 @@
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    background-image: 
+    background-image:
       radial-gradient(circle at 10% 20%, rgba(255, 46, 126, 0.05) 0%, transparent 40%),
       radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
   }
 
-  /* 스크롤바 최적화 */
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }

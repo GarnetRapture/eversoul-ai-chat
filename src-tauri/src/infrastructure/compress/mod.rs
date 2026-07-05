@@ -16,7 +16,6 @@ static PERSONA_INDEX: OnceLock<HashMap<String, PersonaEntry>> = OnceLock::new();
 pub struct PersonaLoader;
 
 impl PersonaLoader {
-
     fn init_index() -> HashMap<String, PersonaEntry> {
         let mut index = HashMap::new();
         if PERSONAS_ARCHIVE.len() < 4 {

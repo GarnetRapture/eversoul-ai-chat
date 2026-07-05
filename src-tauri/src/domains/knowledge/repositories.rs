@@ -4,7 +4,6 @@ use rusqlite::{params, Connection, Result};
 pub struct KnowledgeRepository;
 
 impl KnowledgeRepository {
-
     pub fn insert_chunk(conn: &Connection, payload: &KnowledgePayload) -> Result<()> {
         conn.execute(
             "INSERT OR REPLACE INTO knowledge_chunk (id, document_name, chunk_text, created_at)

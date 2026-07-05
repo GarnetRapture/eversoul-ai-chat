@@ -1,3 +1,4 @@
+use super::memory::{cosine_similarity, deserialize_vector, serialize_vector};
 use super::types::{ChatMessage, ChatRoom};
 use rusqlite::{params, Connection, Result};
 use std::collections::HashMap;
@@ -5,7 +6,6 @@ use std::collections::HashMap;
 pub struct ChatRepository;
 
 impl ChatRepository {
-
     pub fn create_room(conn: &Connection, room: &ChatRoom) -> Result<()> {
         conn.execute(
             "INSERT INTO chat_room (id, title, persona_id, session_started_at, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
@@ -114,6 +114,37 @@ impl ChatRepository {
         Ok(list)
     }
 
+    pub fn list_recent_messages(
+        conn: &Connection,
+        room_id: &str,
+        limit: usize,
+    ) -> Result<Vec<ChatMessage>> {
+        let mut stmt = conn.prepare(
+            "SELECT id, room_id, role, content, created_at FROM chat_message
+             WHERE room_id = ?1
+             ORDER BY created_at DESC
+             LIMIT ?2",
+        )?;
+        let rows = stmt.query_map(params![room_id, limit as i64], |row| {
+            Ok(ChatMessage {
+                id: row.get(0)?,
+                room_id: row.get(1)?,
+                role: row.get(2)?,
+                content: row.get(3)?,
+                created_at: row.get(4)?,
+            })
+        })?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(message) = item {
+                list.push(message);
+            }
+        }
+        list.reverse();
+        Ok(list)
+    }
+
     pub fn insert_message(conn: &Connection, msg: &ChatMessage) -> Result<()> {
         conn.execute(
             "INSERT INTO chat_message (id, room_id, role, content, created_at) VALUES (?1, ?2, ?3, ?4, ?5)",
@@ -138,12 +169,19 @@ impl ChatRepository {
         id: &str,
         persona_id: &str,
         memory_text: &str,
+        memory_vector: &[f32],
         created_at: &str,
     ) -> Result<()> {
         conn.execute(
-            "INSERT INTO persona_memory (id, persona_id, memory_type, memory_text, created_at)
-             VALUES (?1, ?2, 'episodic', ?3, ?4)",
-            params![id, persona_id, memory_text, created_at],
+            "INSERT INTO persona_memory (id, persona_id, memory_type, memory_text, memory_vector, created_at)
+             VALUES (?1, ?2, 'episodic', ?3, ?4, ?5)",
+            params![
+                id,
+                persona_id,
+                memory_text,
+                serialize_vector(memory_vector),
+                created_at
+            ],
         )?;
         Ok(())
     }
@@ -167,7 +205,9 @@ impl ChatRepository {
              WHERE persona_id = ?1 AND memory_type = 'episodic'
              ORDER BY created_at DESC LIMIT ?2",
         )?;
-        let rows = stmt.query_map(params![persona_id, limit as i64], |row| row.get::<_, String>(0))?;
+        let rows = stmt.query_map(params![persona_id, limit as i64], |row| {
+            row.get::<_, String>(0)
+        })?;
 
         let mut list = Vec::new();
         for item in rows {
@@ -178,17 +218,69 @@ impl ChatRepository {
         Ok(list)
     }
 
+    pub fn search_episodic_memories(
+        conn: &Connection,
+        persona_id: &str,
+        query_vector: &[f32],
+        limit: usize,
+        candidate_limit: usize,
+    ) -> Result<Vec<String>> {
+        if query_vector.is_empty() {
+            return Ok(Vec::new());
+        }
+
+        let mut stmt = conn.prepare(
+            "SELECT memory_text, memory_vector FROM persona_memory
+             WHERE persona_id = ?1 AND memory_type = 'episodic' AND length(memory_vector) > 0
+             ORDER BY created_at DESC LIMIT ?2",
+        )?;
+        let rows = stmt.query_map(params![persona_id, candidate_limit as i64], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, Vec<u8>>(1)?))
+        })?;
+
+        let mut scored = Vec::new();
+        for item in rows {
+            if let Ok((memory_text, vector_bytes)) = item {
+                if let Some(memory_vector) = deserialize_vector(&vector_bytes) {
+                    if let Some(score) = cosine_similarity(query_vector, &memory_vector) {
+                        scored.push((score, memory_text));
+                    }
+                }
+            }
+        }
+
+        scored.sort_by(|left, right| {
+            right
+                .0
+                .partial_cmp(&left.0)
+                .unwrap_or(std::cmp::Ordering::Equal)
+        });
+
+        Ok(scored
+            .into_iter()
+            .take(limit)
+            .map(|(_, memory_text)| memory_text)
+            .collect())
+    }
+
     pub fn upsert_semantic_memory(
         conn: &Connection,
         persona_id: &str,
         memory_text: &str,
+        memory_vector: &[f32],
         created_at: &str,
     ) -> Result<()> {
         let id = format!("semantic-{}", persona_id);
         conn.execute(
-            "INSERT OR REPLACE INTO persona_memory (id, persona_id, memory_type, memory_text, created_at)
-             VALUES (?1, ?2, 'semantic', ?3, ?4)",
-            params![id, persona_id, memory_text, created_at],
+            "INSERT OR REPLACE INTO persona_memory (id, persona_id, memory_type, memory_text, memory_vector, created_at)
+             VALUES (?1, ?2, 'semantic', ?3, ?4, ?5)",
+            params![
+                id,
+                persona_id,
+                memory_text,
+                serialize_vector(memory_vector),
+                created_at
+            ],
         )?;
         Ok(())
     }

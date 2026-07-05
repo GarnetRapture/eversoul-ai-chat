@@ -10,14 +10,15 @@ pub const MIN_EXAMPLES: usize = 5;
 pub struct TrainingService;
 
 impl TrainingService {
-
     pub fn collect_training_examples(
         conn: &Connection,
         persona_id: &str,
     ) -> Result<Vec<ConversationExample>, TrainingError> {
         let persona = PersonaRepository::get_persona(conn, persona_id)
             .map_err(|e| TrainingError::Database(e.to_string()))?
-            .ok_or_else(|| TrainingError::Database(format!("정령을 찾을 수 없습니다: {persona_id}")))?;
+            .ok_or_else(|| {
+                TrainingError::Database(format!("정령을 찾을 수 없습니다: {persona_id}"))
+            })?;
 
         let rooms = ChatRepository::list_rooms_by_persona(conn, persona_id)
             .map_err(|e| TrainingError::Database(e.to_string()))?;
