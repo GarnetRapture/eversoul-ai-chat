@@ -1,375 +1,393 @@
 const fs = require('fs');
 const path = require('path');
-const cp = require('child_process');
-const zlib = require('zlib');
 
-// 경로 수정: tools/ 하위에서 프로젝트 전체를 상대 경로로 참조
-const dbPath = path.join(__dirname, '..', 'ai', 'TBL', 'tbl_map.sqlite');
+const tblJsonDir = path.join(__dirname, '..', 'ai', 'tbl_json');
 const outputDir = path.join(__dirname, '..', 'data', 'personas');
 
+const LANGUAGES = ['ko', 'en', 'zh_tw', 'zh_cn'];
+const STRING_FILE_PREFIX = 'String';
+const MAX_SPEECH_PATTERNS = 50;
+
+if (!fs.existsSync(tblJsonDir)) {
+  console.error(`TBL JSON 경로가 존재하지 않습니다: ${tblJsonDir}`);
+  process.exit(1);
+}
+
 if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  fs.mkdirSync(outputDir, { recursive: true });
 }
 
-console.log('1. 다국어 스트링 리소스 로드 및 메모리 캐싱 중...');
-const stringLookupHexPath = path.join(__dirname, 'string_lookup_dump.txt');
-cp.execSync(`sqlite3 "${dbPath}" ".headers off" ".mode list" ".separator |" ".output ${stringLookupHexPath}" "select value, kr from string_lookup;"`);
+function loadTable(tableName) {
+  const filePath = path.join(tblJsonDir, `${tableName}.json`);
+  if (!fs.existsSync(filePath)) {
+    return [];
+  }
 
-const stringMap = {};
-if (fs.existsSync(stringLookupHexPath)) {
-    const content = fs.readFileSync(stringLookupHexPath, 'utf8');
-    const lines = content.split(/\r?\n/);
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        const idx = line.indexOf('|');
-        if (idx === -1) continue;
-        const val = line.substring(0, idx).trim();
-        const kr = line.substring(idx + 1);
-        stringMap[val] = kr;
+  const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  return Array.isArray(parsed.json) ? parsed.json : [];
+}
+
+function normalizeLocalizedRow(row) {
+  const ko = String(row.kr ?? '').trim();
+  const en = String(row.en ?? '').trim();
+  const zhTw = String(row.zh_tw ?? '').trim();
+  const zhCn = String(row.zh_cn ?? '').trim();
+
+  return {
+    ko,
+    en: en || ko,
+    zh_tw: zhTw || zhCn || en || ko,
+    zh_cn: zhCn || zhTw || en || ko,
+  };
+}
+
+function loadStringMap() {
+  const map = new Map();
+  const files = fs
+    .readdirSync(tblJsonDir)
+    .filter((file) => file.startsWith(STRING_FILE_PREFIX) && file.endsWith('.json'));
+
+  for (const file of files) {
+    const rows = loadTable(path.basename(file, '.json'));
+    for (const row of rows) {
+      if (row.no === undefined || row.no === null) {
+        continue;
+      }
+      map.set(String(row.no), normalizeLocalizedRow(row));
     }
-    fs.unlinkSync(stringLookupHexPath);
-}
-console.log(`- 캐싱 완료: ${Object.keys(stringMap).length}개 스트링 리소스 확보`);
+  }
 
-function decompressTable(tableName) {
-    const hexPath = path.join(__dirname, `hex_${tableName}.txt`);
-    cp.execSync(`sqlite3 "${dbPath}" ".headers off" ".mode list" ".output ${hexPath}" "select row_key, hex(raw_json_zlib) from rows where table_name='${tableName}';"`);
-    
-    const result = {};
-    if (fs.existsSync(hexPath)) {
-        const content = fs.readFileSync(hexPath, 'utf8');
-        const lines = content.split(/\r?\n/);
-        for (const line of lines) {
-            if (!line.trim()) continue;
-            const idx = line.indexOf('|');
-            if (idx === -1) continue;
-            const key = line.substring(0, idx).trim();
-            const hex = line.substring(idx + 1).trim();
-            try {
-                const decompressed = zlib.inflateSync(Buffer.from(hex, 'hex')).toString('utf8');
-                result[key] = JSON.parse(decompressed);
-            } catch (e) {
-                // 패스
-            }
-        }
-        fs.unlinkSync(hexPath);
-    }
-    return result;
+  return map;
 }
 
-console.log('2. 기초 메타데이터(Hero, HeroDesc, TalkActor, HeroComment) 파싱 중...');
-const rawRefsPath = path.join(__dirname, 'raw_refs.txt');
-cp.execSync(`sqlite3 "${dbPath}" ".headers off" ".mode list" ".separator |" ".output ${rawRefsPath}" "select table_name, row_key, field_path, label_json from resolved_refs where table_name in ('HeroDesc', 'Hero');"`);
-
-const spirits = {};
-const descToHeroMap = {};
-
-if (fs.existsSync(rawRefsPath)) {
-    const rawContent = fs.readFileSync(rawRefsPath, 'utf8');
-    const lines = rawContent.split(/\r?\n/);
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        const parts = line.split('|');
-        if (parts.length < 4) continue;
-
-        const tableName = parts[0];
-        const rowKey = parts[1];
-        const fieldPath = parts[2];
-        const labelJsonStr = parts.slice(3).join('|');
-
-        let krVal = '';
-        let enVal = '';
-        let targetRowKey = '';
-
-        try {
-            const parsed = JSON.parse(labelJsonStr);
-            krVal = parsed.kr || '';
-            enVal = parsed.en || '';
-            if (parsed.target_row_key) targetRowKey = parsed.target_row_key;
-            else if (parsed.no) targetRowKey = parsed.no;
-        } catch (e) {
-            continue;
-        }
-
-        if (tableName === 'Hero') {
-            if (!spirits[rowKey]) {
-                spirits[rowKey] = {
-                    id: rowKey,
-                    name: '',
-                    name_en: '',
-                    grade: '',
-                    race: '',
-                    class: '',
-                    sub_class: '',
-                    stat: '',
-                    nick_name: '',
-                    like: '',
-                    dislike: '',
-                    hobby: '',
-                    speciality: '',
-                    introduction: '',
-                    ment: '',
-                    cv: '',
-                    cv_jp: '',
-                    constellation: '',
-                    union: '',
-                    height: null,
-                    weight: null,
-                    birthday: null,
-                    comments: [],
-                    story_dialogues: [],
-                    evertalk_dialogues: []
-                };
-            }
-            const s = spirits[rowKey];
-            if (fieldPath === 'name_sno') {
-                s.name = krVal;
-                s.name_en = enVal;
-            }
-            else if (fieldPath === 'grade_sno') s.grade = krVal;
-            else if (fieldPath === 'race_sno') s.race = krVal;
-            else if (fieldPath === 'class_sno') s.class = krVal;
-            else if (fieldPath === 'sub_class_sno') s.sub_class = krVal;
-            else if (fieldPath === 'stat_sno') s.stat = krVal;
-
-        } else if (tableName === 'HeroDesc') {
-            if (fieldPath === 'hero_no' && targetRowKey) {
-                descToHeroMap[rowKey] = targetRowKey;
-            }
-        }
-    }
-    fs.unlinkSync(rawRefsPath);
+function emptyText() {
+  return { ko: '', en: '', zh_tw: '', zh_cn: '' };
 }
 
-const heroDescRows = decompressTable('HeroDesc');
-for (const descKey in heroDescRows) {
-    const row = heroDescRows[descKey];
-    const heroId = row.hero_no;
-    if (heroId && spirits[heroId]) {
-        const s = spirits[heroId];
-        s.height = row.height || null;
-        s.weight = row.weight || null;
-        s.birthday = row.birthday || null;
-        
-        if (row.nick_name_sno) s.nick_name = stringMap[row.nick_name_sno] || s.nick_name;
-        if (row.like_sno) s.like = stringMap[row.like_sno] || s.like;
-        if (row.dislike_sno) s.dislike = stringMap[row.dislike_sno] || s.dislike;
-        if (row.hobby_sno) s.hobby = stringMap[row.hobby_sno] || s.hobby;
-        if (row.speciality_sno) s.speciality = stringMap[row.speciality_sno] || s.speciality;
-        if (row.introduction_sno) s.introduction = stringMap[row.introduction_sno] || s.introduction;
-        if (row.ment_sno) s.ment = stringMap[row.ment_sno] || s.ment;
-        if (row.cv_sno) s.cv = stringMap[row.cv_sno] || s.cv;
-        if (row.cv_jp_sno) s.cv_jp = stringMap[row.cv_jp_sno] || s.cv_jp;
-        if (row.constellation_sno) s.constellation = stringMap[row.constellation_sno] || s.constellation;
-        if (row.union_sno) s.union = stringMap[row.union_sno] || s.union;
-    }
+function textBySno(stringMap, sno) {
+  if (sno === undefined || sno === null || sno === '') {
+    return emptyText();
+  }
+  return stringMap.get(String(sno)) ?? emptyText();
 }
 
-const talkActors = decompressTable('TalkActor');
-const actorToHeroMap = {};
-for (const actorKey in talkActors) {
-    const actor = talkActors[actorKey];
-    const nameKr = stringMap[actor.name_sno];
-    if (nameKr) {
-        actorToHeroMap[actor.no] = nameKr;
-    }
+function primary(text) {
+  return text.ko || text.en || text.zh_tw || text.zh_cn || '';
 }
 
-const heroComments = decompressTable('HeroComment');
-const heroIdToNameMap = {};
-for (const id in spirits) {
-    heroIdToNameMap[id] = spirits[id].name;
-}
-for (const commentKey in heroComments) {
-    const comment = heroComments[commentKey];
-    const targetHeroId = comment.hero_no;
-    if (targetHeroId && spirits[targetHeroId]) {
-        const writerName = heroIdToNameMap[comment.comment_hero_no] || '정령';
-        const commentText = stringMap[comment.comment_desc] || '';
-        
-        if (commentText && commentText.trim() !== '퀘스트' && commentText.trim() !== '테스트') {
-            spirits[targetHeroId].comments.push({
-                writer: writerName,
-                comment: commentText
-            });
-        }
-    }
+function parseCsvList(value) {
+  if (!value) {
+    return [];
+  }
+  return value
+    .split(',')
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
 }
 
-const validSpirits = {};
-for (const id in spirits) {
-    const s = spirits[id];
-    if (s.name && s.name_en && s.cv && s.cv.trim() !== '') {
-        const keyName = s.name.trim();
-        if (!validSpirits[keyName]) {
-            validSpirits[keyName] = s;
-        }
-    }
-}
-const validHeroIds = Object.values(validSpirits).map(s => s.id);
-console.log(`- 필터링 완료: 플레이어블 정령 캐릭터 ${validHeroIds.length}명 선점`);
-
-console.log('3. 정령 대화 및 메신저 전문 (Talk / EverTalkDesc) 매핑 및 노이즈 필터링 중...');
-
-function isDummyMessage(msg) {
-    if (!msg) return true;
-    const trimmed = msg.trim();
-    if (trimmed === '' || 
-        trimmed === '퀘스트' || 
-        trimmed === '테스트' || 
-        trimmed === 'test' || 
-        trimmed === 'system' ||
-        trimmed.startsWith('<display:')
-    ) {
-        return true;
-    }
-    return false;
-}
-
-const talkHexPath = path.join(__dirname, 'temp_talk.txt');
-cp.execSync(`sqlite3 "${dbPath}" ".headers off" ".mode list" ".output ${talkHexPath}" "select hex(raw_json_zlib) from rows where table_name='Talk' and row_key in (select row_key from cell_values where table_name='Talk' and field_path='hero_no' and value in (${validHeroIds.map(id => `'${id}'`).join(',')}));"`);
-
-if (fs.existsSync(talkHexPath)) {
-    const content = fs.readFileSync(talkHexPath, 'utf8');
-    const lines = content.split(/\r?\n/);
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        try {
-            const decompressed = zlib.inflateSync(Buffer.from(line.trim(), 'hex')).toString('utf8');
-            const row = JSON.parse(decompressed);
-            const heroId = row.hero_no;
-            const speakerName = actorToHeroMap[row.speaker_no] || '구원자';
-            const dialogueText = stringMap[row.speaking] || '';
-            
-            if (heroId && dialogueText && !isDummyMessage(dialogueText)) {
-                for (const name in validSpirits) {
-                    if (validSpirits[name].id === String(heroId)) {
-                        validSpirits[name].story_dialogues.push({
-                            speaker: speakerName,
-                            message: dialogueText
-                        });
-                    }
-                }
-            }
-        } catch (e) {
-            // 패스
-        }
-    }
-    fs.unlinkSync(talkHexPath);
-}
-
-const everTalkHexPath = path.join(__dirname, 'temp_evertalk.txt');
-cp.execSync(`sqlite3 "${dbPath}" ".headers off" ".mode list" ".output ${everTalkHexPath}" "select hex(raw_json_zlib) from rows where table_name='EverTalkDesc' and row_key in (select row_key from cell_values where table_name='EverTalkDesc' and field_path='hero_no' and value in (${validHeroIds.map(id => `'${id}'`).join(',')}));"`);
-
-if (fs.existsSync(everTalkHexPath)) {
-    const content = fs.readFileSync(everTalkHexPath, 'utf8');
-    const lines = content.split(/\r?\n/);
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        try {
-            const decompressed = zlib.inflateSync(Buffer.from(line.trim(), 'hex')).toString('utf8');
-            const row = JSON.parse(decompressed);
-            const heroId = row.hero_no;
-            const speakerName = row.speaker_no === 0 ? '구원자' : (heroIdToNameMap[row.speaker_no] || '정령');
-            const dialogueText = stringMap[row.no] || '';
-            
-            if (heroId && dialogueText && !isDummyMessage(dialogueText)) {
-                for (const name in validSpirits) {
-                    if (validSpirits[name].id === String(heroId)) {
-                        validSpirits[name].evertalk_dialogues.push({
-                            speaker: speakerName,
-                            message: dialogueText
-                        });
-                    }
-                }
-            }
-        } catch (e) {
-            // 패스
-        }
-    }
-    fs.unlinkSync(everTalkHexPath);
-}
-
-console.log('4. 완성된 종합 페르소나 데이터팩 개별 JSON 파일 저장 중...');
-let writtenCount = 0;
-
-function parseCsvList(str) {
-    if (!str) return [];
-    return str.split(',').map(item => item.trim()).filter(item => item.length > 0);
+function parseLocalizedCsvList(text) {
+  const result = {};
+  for (const language of LANGUAGES) {
+    result[language] = parseCsvList(text[language]);
+  }
+  return result;
 }
 
 function getSafeEnglishFileName(enName) {
-    return enName.toLowerCase()
-        .replace(/[^a-z0-9\s_-]/g, '')
-        .trim()
-        .replace(/\s+/g, '_');
+  return enName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s_-]/g, '')
+    .trim()
+    .replace(/\s+/g, '_');
 }
 
-for (const name in validSpirits) {
-    const s = validSpirits[name];
+function isDummyMessage(message) {
+  const trimmed = String(message ?? '').trim();
+  return (
+    trimmed.length === 0 ||
+    trimmed === '퀘스트' ||
+    trimmed === '테스트' ||
+    trimmed.toLowerCase() === 'test' ||
+    trimmed.toLowerCase() === 'system' ||
+    trimmed.startsWith('<display:')
+  );
+}
 
-    const selfSpeechPatterns = [];
-    const maxPatterns = 50;
-    
-    for (const d of s.story_dialogues) {
-        if (d.speaker === s.name && !isDummyMessage(d.message) && !selfSpeechPatterns.includes(d.message)) {
-            selfSpeechPatterns.push(d.message);
-            if (selfSpeechPatterns.length >= maxPatterns) break;
-        }
-    }
-    
-    if (selfSpeechPatterns.length < maxPatterns) {
-        for (const d of s.evertalk_dialogues) {
-            if (d.speaker === s.name && !isDummyMessage(d.message) && !selfSpeechPatterns.includes(d.message)) {
-                selfSpeechPatterns.push(d.message);
-                if (selfSpeechPatterns.length >= maxPatterns) break;
-            }
-        }
-    }
+function isPlayableSpirit(spirit) {
+  return Boolean(spirit.name.ko && spirit.name.en && spirit.profile.cv_ko.ko);
+}
 
-    const completeData = {
-        id: s.id,
-        name: s.name,
-        name_en: s.name_en,
-        grade: s.grade,
-        race: s.race,
-        class: s.class,
-        sub_class: s.sub_class,
-        stat: s.stat,
-        profile: {
-            nick_name: s.nick_name || null,
-            constellation: s.constellation || null,
-            union: s.union || null,
-            birthday: s.birthday ? String(s.birthday) : null,
-            height: s.height ? Number(s.height) : null,
-            weight: s.weight ? Number(s.weight) : null,
-            cv_ko: s.cv || null,
-            cv_jp: s.cv_jp || null,
-            like: parseCsvList(s.like),
-            dislike: parseCsvList(s.dislike),
-            hobby: parseCsvList(s.hobby),
-            speciality: parseCsvList(s.speciality)
-        },
-        personality: {
-            description: s.introduction || null,
-            greeting: s.ment || null
-        },
-        speech_patterns: selfSpeechPatterns,
-        comments: s.comments,
-        dialogues: {
-            story: s.story_dialogues,
-            evertalk: s.evertalk_dialogues
-        }
+function createSpiritFromHero(row, stringMap) {
+  return {
+    id: String(row.no),
+    name: textBySno(stringMap, row.name_sno),
+    grade: textBySno(stringMap, row.grade_sno),
+    race: textBySno(stringMap, row.race_sno),
+    class: textBySno(stringMap, row.class_sno),
+    sub_class: textBySno(stringMap, row.sub_class_sno),
+    stat: textBySno(stringMap, row.stat_sno),
+    profile: {
+      nick_name: emptyText(),
+      constellation: emptyText(),
+      union: emptyText(),
+      birthday: row.birthday ? String(row.birthday) : null,
+      height: null,
+      weight: null,
+      cv_ko: emptyText(),
+      cv_jp: emptyText(),
+      like: emptyText(),
+      dislike: emptyText(),
+      hobby: emptyText(),
+      speciality: emptyText(),
+    },
+    personality: {
+      description: emptyText(),
+      greeting: emptyText(),
+    },
+    comments: [],
+    story_dialogues: [],
+    evertalk_dialogues: [],
+  };
+}
+
+function localizedDialogue(speaker, message) {
+  const value = {};
+  for (const language of LANGUAGES) {
+    value[language] = {
+      speaker: speaker[language] || speaker.ko || speaker.en || '정령',
+      message: message[language] || message.ko || message.en || '',
     };
-
-    const safeEnName = getSafeEnglishFileName(s.name_en);
-    if (!safeEnName) continue;
-
-    const fileName = `${safeEnName}.json`;
-    const filePath = path.join(outputDir, fileName);
-
-    fs.writeFileSync(filePath, JSON.stringify(completeData, null, 2), 'utf8');
-    writtenCount++;
+  }
+  return value;
 }
 
-console.log(`\n🎉 [완벽한 아키텍처 데이터 구축 완료] 총 ${writtenCount}명 정령의 신체 프로필, 정령평가, 인연/메인 스토리 대사 전문, 에버톡 전문이 결합된 종합 데이터팩 JSON을 저장했습니다.`);
+console.log('1. ai/tbl_json 문자열 리소스 로드 중...');
+const stringMap = loadStringMap();
+console.log(`- 문자열 리소스 ${stringMap.size}개 로드`);
+
+console.log('2. Hero/HeroDesc/HeroComment/TalkActor 파싱 중...');
+const spiritsById = new Map();
+for (const hero of loadTable('Hero')) {
+  const spirit = createSpiritFromHero(hero, stringMap);
+  if (primary(spirit.name)) {
+    spiritsById.set(spirit.id, spirit);
+  }
+}
+
+for (const desc of loadTable('HeroDesc')) {
+  const spirit = spiritsById.get(String(desc.hero_no));
+  if (!spirit) {
+    continue;
+  }
+
+  spirit.profile.height = desc.height ? Number(desc.height) : null;
+  spirit.profile.weight = desc.weight ? Number(desc.weight) : null;
+  spirit.profile.birthday = desc.birthday ? String(desc.birthday) : null;
+  spirit.profile.nick_name = textBySno(stringMap, desc.nick_name_sno);
+  spirit.profile.constellation = textBySno(stringMap, desc.constellation_sno);
+  spirit.profile.union = textBySno(stringMap, desc.union_sno);
+  spirit.profile.cv_ko = textBySno(stringMap, desc.cv_sno);
+  spirit.profile.cv_jp = textBySno(stringMap, desc.cv_jp_sno);
+  spirit.profile.like = textBySno(stringMap, desc.like_sno);
+  spirit.profile.dislike = textBySno(stringMap, desc.dislike_sno);
+  spirit.profile.hobby = textBySno(stringMap, desc.hobby_sno);
+  spirit.profile.speciality = textBySno(stringMap, desc.speciality_sno);
+  spirit.personality.description = textBySno(stringMap, desc.introduction_sno);
+  spirit.personality.greeting = textBySno(stringMap, desc.ment_sno);
+}
+
+const actorNameByNo = new Map();
+for (const actor of loadTable('TalkActor')) {
+  actorNameByNo.set(String(actor.no), textBySno(stringMap, actor.name_sno));
+}
+
+const heroNameById = new Map();
+for (const [id, spirit] of spiritsById) {
+  heroNameById.set(id, spirit.name);
+}
+
+for (const comment of loadTable('HeroComment')) {
+  const spirit = spiritsById.get(String(comment.hero_no));
+  if (!spirit) {
+    continue;
+  }
+
+  const writer = heroNameById.get(String(comment.comment_hero_no)) ?? {
+    ko: '정령',
+    en: 'Soul',
+    zh_tw: '精靈',
+    zh_cn: '精灵',
+  };
+  const commentText = textBySno(stringMap, comment.comment_desc);
+  if (!isDummyMessage(commentText.ko)) {
+    spirit.comments.push({
+      writer: primary(writer),
+      comment: primary(commentText),
+      i18n: localizedDialogue(writer, commentText),
+    });
+  }
+}
+
+const playableSpirits = [...spiritsById.values()].filter(isPlayableSpirit);
+const playableHeroIds = new Set(playableSpirits.map((spirit) => spirit.id));
+console.log(`- 플레이어블 정령 ${playableSpirits.length}명 확인`);
+
+console.log('3. Talk/EverTalkDesc 전문 연결 중...');
+for (const talk of loadTable('Talk')) {
+  const spirit = spiritsById.get(String(talk.hero_no));
+  if (!spirit || !playableHeroIds.has(spirit.id)) {
+    continue;
+  }
+
+  const speaker =
+    actorNameByNo.get(String(talk.speaker_no)) ??
+    heroNameById.get(String(talk.speaker_no)) ?? {
+      ko: '구원자',
+      en: 'Savior',
+      zh_tw: '救援者',
+      zh_cn: '救援者',
+    };
+  const message = textBySno(stringMap, talk.speaking);
+  if (!isDummyMessage(message.ko)) {
+    spirit.story_dialogues.push({
+      speaker: primary(speaker),
+      message: primary(message),
+      i18n: localizedDialogue(speaker, message),
+    });
+  }
+}
+
+for (const talk of loadTable('EverTalkDesc')) {
+  const spirit = spiritsById.get(String(talk.hero_no));
+  if (!spirit || !playableHeroIds.has(spirit.id)) {
+    continue;
+  }
+
+  const speaker =
+    Number(talk.speaker_no) === 0
+      ? { ko: '구원자', en: 'Savior', zh_tw: '救援者', zh_cn: '救援者' }
+      : heroNameById.get(String(talk.speaker_no)) ?? spirit.name;
+  const message = textBySno(stringMap, talk.no);
+  if (!isDummyMessage(message.ko)) {
+    spirit.evertalk_dialogues.push({
+      speaker: primary(speaker),
+      message: primary(message),
+      i18n: localizedDialogue(speaker, message),
+    });
+  }
+}
+
+console.log('4. data/personas JSON 저장 중...');
+let writtenCount = 0;
+
+for (const spirit of playableSpirits) {
+  const speechPatterns = [];
+  const speechPatternsI18n = [];
+  const collectSpeech = (dialogues) => {
+    for (const dialogue of dialogues) {
+      if (
+        dialogue.speaker === spirit.name.ko &&
+        !isDummyMessage(dialogue.message) &&
+        !speechPatterns.includes(dialogue.message)
+      ) {
+        speechPatterns.push(dialogue.message);
+        speechPatternsI18n.push(dialogue.i18n);
+        if (speechPatterns.length >= MAX_SPEECH_PATTERNS) {
+          return;
+        }
+      }
+    }
+  };
+
+  collectSpeech(spirit.story_dialogues);
+  if (speechPatterns.length < MAX_SPEECH_PATTERNS) {
+    collectSpeech(spirit.evertalk_dialogues);
+  }
+
+  const completeData = {
+    id: spirit.id,
+    name: spirit.name.ko,
+    name_en: spirit.name.en,
+    grade: spirit.grade.ko,
+    race: spirit.race.ko,
+    class: spirit.class.ko,
+    sub_class: spirit.sub_class.ko,
+    stat: spirit.stat.ko,
+    profile: {
+      nick_name: spirit.profile.nick_name.ko || null,
+      constellation: spirit.profile.constellation.ko || null,
+      union: spirit.profile.union.ko || null,
+      birthday: spirit.profile.birthday,
+      height: spirit.profile.height,
+      weight: spirit.profile.weight,
+      cv_ko: spirit.profile.cv_ko.ko || null,
+      cv_jp: spirit.profile.cv_jp.ko || null,
+      like: parseCsvList(spirit.profile.like.ko),
+      dislike: parseCsvList(spirit.profile.dislike.ko),
+      hobby: parseCsvList(spirit.profile.hobby.ko),
+      speciality: parseCsvList(spirit.profile.speciality.ko),
+    },
+    personality: {
+      description: spirit.personality.description.ko || null,
+      greeting: spirit.personality.greeting.ko || null,
+    },
+    speech_patterns: speechPatterns,
+    comments: spirit.comments.map((comment) => ({
+      writer: comment.writer,
+      comment: comment.comment,
+    })),
+    dialogues: {
+      story: spirit.story_dialogues.map((dialogue) => ({
+        speaker: dialogue.speaker,
+        message: dialogue.message,
+      })),
+      evertalk: spirit.evertalk_dialogues.map((dialogue) => ({
+        speaker: dialogue.speaker,
+        message: dialogue.message,
+      })),
+    },
+    i18n: {
+      name: spirit.name,
+      grade: spirit.grade,
+      race: spirit.race,
+      class: spirit.class,
+      sub_class: spirit.sub_class,
+      stat: spirit.stat,
+      profile: {
+        nick_name: spirit.profile.nick_name,
+        constellation: spirit.profile.constellation,
+        union: spirit.profile.union,
+        cv_ko: spirit.profile.cv_ko,
+        cv_jp: spirit.profile.cv_jp,
+        like: parseLocalizedCsvList(spirit.profile.like),
+        dislike: parseLocalizedCsvList(spirit.profile.dislike),
+        hobby: parseLocalizedCsvList(spirit.profile.hobby),
+        speciality: parseLocalizedCsvList(spirit.profile.speciality),
+      },
+      personality: {
+        description: spirit.personality.description,
+        greeting: spirit.personality.greeting,
+      },
+      speech_patterns: speechPatternsI18n,
+      comments: spirit.comments.map((comment) => comment.i18n),
+      dialogues: {
+        story: spirit.story_dialogues.map((dialogue) => dialogue.i18n),
+        evertalk: spirit.evertalk_dialogues.map((dialogue) => dialogue.i18n),
+      },
+    },
+  };
+
+  const safeEnName = getSafeEnglishFileName(spirit.name.en);
+  if (!safeEnName) {
+    continue;
+  }
+
+  fs.writeFileSync(
+    path.join(outputDir, `${safeEnName}.json`),
+    JSON.stringify(completeData, null, 2),
+    'utf8',
+  );
+  writtenCount++;
+}
+
+console.log(`\n완료: ${writtenCount}명 정령 persona JSON을 ai/tbl_json 기반으로 갱신했습니다.`);
