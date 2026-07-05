@@ -144,6 +144,23 @@
   line-height: 1.1;
 }
 
+.ever-stage__profile-button {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.ever-stage__profile-button:disabled {
+  cursor: default;
+}
+
 .ever-roster__top span {
   color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
@@ -537,6 +554,12 @@
   animation: ever-fade-in 0.4s ease-out;
 }
 
+.ever-character__caption--button {
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
 .ever-character__caption span {
   color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
@@ -903,7 +926,7 @@
 .ever-background-zoom-overlay {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 100;
   display: grid;
   place-items: center;
   padding: 40px;
@@ -969,6 +992,17 @@
 
 .ever-profile-card h2 {
   font-size: 24px;
+}
+
+.ever-profile-card__name {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: left;
 }
 
 .ever-profile-card > span,
@@ -1070,6 +1104,111 @@
   place-items: center;
   padding: 24px;
   background: rgba(15, 17, 28, 0.62);
+}
+
+.ever-language-gate {
+  z-index: 120;
+}
+
+.ever-language-gate__modal {
+  width: min(420px, calc(100vw - 32px));
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 8px;
+  background: #f7f2e8;
+  color: #26293b;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  box-shadow: 0 28px 80px rgba(10, 12, 20, 0.42);
+}
+
+.ever-language-gate__modal h2,
+.ever-language-gate__modal p {
+  margin: 0;
+}
+
+.ever-language-gate__modal p {
+  color: #666c79;
+  line-height: 1.6;
+}
+
+.ever-language-gate__options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ever-language-gate__options button {
+  min-height: 44px;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  border-radius: 8px;
+  background: #fffaf1;
+  color: #303445;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.ever-language-gate__options button.is-active {
+  background: #4c4a68;
+  color: #fff;
+}
+
+.ever-profile-detail-modal {
+  width: min(860px, calc(100vw - 40px));
+  max-height: min(860px, calc(100vh - 40px));
+  overflow: auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: #292d42;
+  color: #f9f7f1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 80px rgba(10, 12, 20, 0.48);
+}
+
+.ever-profile-detail-modal .ever-settings-modal__header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: -20px -20px 16px;
+}
+
+.ever-profile-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ever-profile-detail-grid div,
+.ever-profile-detail-dialogues div {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ever-profile-detail-grid small,
+.ever-profile-detail-dialogues small {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 11px;
+}
+
+.ever-profile-detail-grid strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ever-profile-detail-dialogues {
+  display: grid;
+  gap: 8px;
+}
+
+.ever-profile-detail-dialogues span {
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.55;
+  white-space: pre-wrap;
 }
 
 .ever-settings-modal {
@@ -1178,6 +1317,29 @@
 
 .ever-settings-result strong {
   color: #63e69a;
+}
+
+.ever-settings-language {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ever-settings-language span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ever-settings-language select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #25273a;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 12px;
 }
 
 .ever-settings-reset-button {

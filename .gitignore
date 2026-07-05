@@ -18,6 +18,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.codex-run/
 
 # 환경 변수 및 로컬 비밀값
 .env

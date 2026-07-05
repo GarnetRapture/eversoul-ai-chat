@@ -10,7 +10,22 @@ impl SettingsService {
         AppSettings {
             default_persona_id: settings.get_default_persona_id(),
             active_style_id: settings.get_active_style_id(),
+            language: settings.get_language(),
+            language_configured: settings.has_language(),
         }
+    }
+
+    pub fn set_language(
+        settings: &SettingsManager,
+        language: &str,
+    ) -> Result<AppSettings, SettingsError> {
+        if !matches!(language, "ko" | "en" | "zh_cn") {
+            return Err(SettingsError::Validation(language.to_string()));
+        }
+        settings
+            .set_language(language)
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
+        Ok(Self::get_settings(settings))
     }
 
     pub fn reset_all(

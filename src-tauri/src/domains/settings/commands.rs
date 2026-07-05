@@ -33,3 +33,15 @@ pub fn settings_reset(
         .map_err(|e| SettingsError::Io(e.to_string()))?;
     SettingsService::reset_all(&conn, &settings)
 }
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn settings_set_language(
+    settings_state: State<'_, SettingsState>,
+    language: String,
+) -> Result<AppSettings, SettingsError> {
+    let settings = settings_state
+        .0
+        .lock()
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    SettingsService::set_language(&settings, &language)
+}

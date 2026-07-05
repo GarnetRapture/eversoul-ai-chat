@@ -1,4 +1,5 @@
-import type { PersonaConfig, SpiritDetail, SpiritVisualAssets } from './types';
+import type { AppLanguage } from '../../shared/types';
+import type { LocalizedDialogue, LocalizedList, LocalizedText, PersonaConfig, SpiritDetail, SpiritVisualAssets } from './types';
 export const ASSET_ROOT = '/eversoul-assets';
 const explicitAssetFolders: Record<string, string> = {
     'Ayame': 'Oyome',
@@ -53,8 +54,83 @@ const raceBackgrounds: Record<string, string> = {
     '천사형': 'Talk_BG_Castleout.png',
     '악마형': 'Talk_BG_Galaxy.png',
 };
-export function parseSpiritDetail(persona: PersonaConfig): SpiritDetail {
-    return JSON.parse(persona.raw_json) as SpiritDetail;
+function localizedText(source: LocalizedText | undefined, fallback: string | null | undefined, language: AppLanguage): string {
+    if (!source) {
+        return fallback ?? '';
+    }
+    return source[language] || source.ko || source.en || source.zh_tw || fallback || '';
+}
+function nullableLocalizedText(source: LocalizedText | undefined, fallback: string | null | undefined, language: AppLanguage): string | null {
+    const value = localizedText(source, fallback, language).trim();
+    return value.length > 0 ? value : null;
+}
+function localizedList(source: LocalizedList | undefined, fallback: string[] | undefined, language: AppLanguage): string[] {
+    if (!source) {
+        return fallback ?? [];
+    }
+    const selected = source[language] ?? source.ko ?? source.en ?? source.zh_tw ?? [];
+    return selected.filter((item) => item.trim().length > 0);
+}
+function localizedDialogue(source: Record<AppLanguage | 'zh_tw', LocalizedDialogue> | undefined, language: AppLanguage): LocalizedDialogue | null {
+    if (!source) {
+        return null;
+    }
+    const selected = source[language] ?? source.ko ?? source.en ?? source.zh_tw;
+    if (!selected || selected.message.trim().length === 0) {
+        return null;
+    }
+    return selected;
+}
+export function parseSpiritDetail(persona: PersonaConfig, language: AppLanguage = 'ko'): SpiritDetail {
+    const detail = JSON.parse(persona.raw_json) as SpiritDetail;
+    const i18n = detail.i18n;
+    if (!i18n) {
+        return detail;
+    }
+    const speechPatterns = (i18n.speech_patterns ?? [])
+        .map((entry) => localizedDialogue(entry, language)?.message ?? '')
+        .filter((message) => message.trim().length > 0);
+    const comments = (i18n.comments ?? [])
+        .map((entry) => localizedDialogue(entry, language))
+        .filter((entry): entry is LocalizedDialogue => entry !== null)
+        .map((entry) => ({ writer: entry.speaker, comment: entry.message }));
+    const evertalk = (i18n.dialogues?.evertalk ?? [])
+        .map((entry) => localizedDialogue(entry, language))
+        .filter((entry): entry is LocalizedDialogue => entry !== null);
+    const story = (i18n.dialogues?.story ?? [])
+        .map((entry) => localizedDialogue(entry, language))
+        .filter((entry): entry is LocalizedDialogue => entry !== null);
+    return {
+        ...detail,
+        name: localizedText(i18n.name, detail.name, language),
+        grade: localizedText(i18n.grade, detail.grade, language),
+        race: localizedText(i18n.race, detail.race, language),
+        class: localizedText(i18n.class, detail.class, language),
+        sub_class: localizedText(i18n.sub_class, detail.sub_class, language),
+        stat: localizedText(i18n.stat, detail.stat, language),
+        profile: {
+            ...detail.profile,
+            nick_name: nullableLocalizedText(i18n.profile?.nick_name, detail.profile.nick_name, language),
+            constellation: nullableLocalizedText(i18n.profile?.constellation, detail.profile.constellation, language),
+            union: nullableLocalizedText(i18n.profile?.union, detail.profile.union, language),
+            cv_ko: nullableLocalizedText(i18n.profile?.cv_ko, detail.profile.cv_ko, language),
+            cv_jp: nullableLocalizedText(i18n.profile?.cv_jp, detail.profile.cv_jp, language),
+            like: localizedList(i18n.profile?.like, detail.profile.like, language),
+            dislike: localizedList(i18n.profile?.dislike, detail.profile.dislike, language),
+            hobby: localizedList(i18n.profile?.hobby, detail.profile.hobby, language),
+            speciality: localizedList(i18n.profile?.speciality, detail.profile.speciality, language),
+        },
+        personality: {
+            description: nullableLocalizedText(i18n.personality?.description, detail.personality.description, language),
+            greeting: nullableLocalizedText(i18n.personality?.greeting, detail.personality.greeting, language),
+        },
+        speech_patterns: speechPatterns.length > 0 ? speechPatterns : detail.speech_patterns,
+        comments: comments.length > 0 ? comments : detail.comments,
+        dialogues: {
+            story,
+            evertalk,
+        },
+    };
 }
 export function resolveSpiritAssetFolder(nameEn: string): string | null {
     const explicit = explicitAssetFolders[nameEn];

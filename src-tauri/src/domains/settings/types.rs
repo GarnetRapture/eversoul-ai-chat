@@ -4,6 +4,8 @@ use serde::{Deserialize, Serialize};
 pub struct AppSettings {
     pub default_persona_id: Option<String>,
     pub active_style_id: Option<String>,
+    pub language: String,
+    pub language_configured: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -22,4 +24,6 @@ pub enum SettingsError {
     Io(String),
     #[error("데이터베이스 오류: {0}")]
     Database(String),
+    #[error("지원하지 않는 언어 설정: {0}")]
+    Validation(String),
 }

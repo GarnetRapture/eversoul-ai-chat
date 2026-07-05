@@ -1,5 +1,5 @@
 import { invokeCommand, tauriCommands } from '../../shared/api';
-import { BondRankingEntry, PersonaConfig } from './types';
+import { BondRankingEntry, FamiliarityEntry, PersonaConfig } from './types';
 export const personaClient = {
     async list(): Promise<PersonaConfig[]> {
         return invokeCommand<PersonaConfig[]>(tauriCommands.persona.list);
@@ -24,5 +24,8 @@ export const personaClient = {
     },
     async getBondRanking(): Promise<BondRankingEntry[]> {
         return invokeCommand<BondRankingEntry[]>(tauriCommands.persona.bondRanking);
+    },
+    async getFamiliarityList(): Promise<FamiliarityEntry[]> {
+        return invokeCommand<FamiliarityEntry[]>(tauriCommands.persona.familiarityList);
     },
 };

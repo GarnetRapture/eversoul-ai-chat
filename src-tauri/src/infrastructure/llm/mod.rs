@@ -1,12 +1,10 @@
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use std::sync::Mutex;
 
 use llama_cpp_2::{
     context::params::{LlamaContextParams, LlamaPoolingType},
     llama_backend::LlamaBackend,
     llama_batch::LlamaBatch,
-    model::{params::LlamaModelParams, LlamaLoraAdapter, LlamaModel},
+    model::{params::LlamaModelParams, LlamaModel},
     sampling::LlamaSampler,
     TokenToStringError,
 };
@@ -44,7 +42,6 @@ pub struct LlmEngine {
     model: LlamaModel,
     model_path: PathBuf,
     adapters_dir: PathBuf,
-    lora_adapters: Mutex<HashMap<String, LlamaLoraAdapter>>,
 }
 
 impl LlmEngine {
@@ -79,7 +76,6 @@ impl LlmEngine {
             model,
             model_path,
             adapters_dir,
-            lora_adapters: Mutex::new(HashMap::new()),
         })
     }
 
@@ -94,10 +90,6 @@ impl LlmEngine {
         persona_id: Option<&str>,
     ) -> Result<String, LlmError> {
         let max_tokens = max_tokens.unwrap_or(DEFAULT_MAX_TOKENS);
-        if let Some(id) = persona_id {
-            self.mount_persona_adapter(id)?;
-        }
-
         let physical_cores = num_cpus::get_physical() as i32;
         let n_threads = (physical_cores - 1).max(1);
 
@@ -112,12 +104,13 @@ impl LlmEngine {
             .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
 
         if let Some(id) = persona_id {
-            let mut adapters = self
-                .lora_adapters
-                .lock()
-                .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
-            if let Some(adapter) = adapters.get_mut(id) {
-                ctx.lora_adapter_set(adapter, 1.0)
+            let adapter_path = self.adapters_dir.join(format!("{id}.gguf"));
+            if adapter_path.exists() {
+                let mut adapter = self
+                    .model
+                    .lora_adapter_init(&adapter_path)
+                    .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
+                ctx.lora_adapter_set(&mut adapter, 1.0)
                     .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
             }
         }
@@ -195,19 +188,6 @@ impl LlmEngine {
             return Ok(false);
         }
 
-        let mut adapters = self
-            .lora_adapters
-            .lock()
-            .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
-        if adapters.contains_key(persona_id) {
-            return Ok(true);
-        }
-
-        let adapter = self
-            .model
-            .lora_adapter_init(&adapter_path)
-            .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
-        adapters.insert(persona_id.to_string(), adapter);
         Ok(true)
     }
 

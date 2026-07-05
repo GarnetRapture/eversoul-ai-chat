@@ -1,6 +1,10 @@
+import type { AppLanguage } from '../../shared/types';
+
 export interface AppSettings {
     default_persona_id: string | null;
     active_style_id: string | null;
+    language: AppLanguage;
+    language_configured: boolean;
 }
 export interface ResetSummary {
     cleared_chat_rooms: number;

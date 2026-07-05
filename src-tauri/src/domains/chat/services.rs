@@ -93,8 +93,9 @@ impl<'a> ChatService<'a> {
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
         let persona_service = PersonaService::new(self.conn);
+        let language = settings.get_language();
         let mut system_prompt = persona_service
-            .get_assembled_system_prompt(&req.persona_id)
+            .get_assembled_system_prompt(&req.persona_id, &language)
             .map_err(|e| ChatError::Database(e))?;
 
         let knowledge_service = KnowledgeService::new(self.conn);

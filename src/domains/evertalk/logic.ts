@@ -1,4 +1,5 @@
 import type { PersonaConfig, SpiritDetail } from '../persona';
+import type { EverTalkLabels } from './i18n';
 import type { ApiConnectionState, ApiStatusItem, SpiritRosterMeta, TalkChoice } from './types';
 export function filterSpirits(spirits: PersonaConfig[], searchQuery: string): PersonaConfig[] {
     const query = searchQuery.trim().toLowerCase();
@@ -10,16 +11,13 @@ export function filterSpirits(spirits: PersonaConfig[], searchQuery: string): Pe
         spirit.race.toLowerCase().includes(query) ||
         spirit.class.toLowerCase().includes(query)));
 }
-export function createRoomTitle(spiritName: string): string {
-    return `${spiritName}의 인연스토리`;
-}
 export function createRosterMeta(spirit: PersonaConfig): SpiritRosterMeta {
     const preview = spirit.greeting || spirit.class || spirit.race;
     return {
         preview,
     };
 }
-export function createTalkChoices(detail: SpiritDetail | null): TalkChoice[] {
+export function createTalkChoices(detail: SpiritDetail | null, labels: EverTalkLabels): TalkChoice[] {
     if (!detail) {
         return [];
     }
@@ -27,17 +25,17 @@ export function createTalkChoices(detail: SpiritDetail | null): TalkChoice[] {
         ...detail.profile.like.map((label, index) => ({
             id: `like-${index}-${label}`,
             label,
-            source: '좋아하는 것',
+            source: labels.like,
         })),
         ...detail.profile.hobby.map((label, index) => ({
             id: `hobby-${index}-${label}`,
             label,
-            source: '취미',
+            source: labels.hobby,
         })),
         ...detail.profile.speciality.map((label, index) => ({
             id: `speciality-${index}-${label}`,
             label,
-            source: '특기',
+            source: labels.speciality,
         })),
     ].filter((choice) => choice.label.trim().length > 0);
 }
@@ -60,6 +58,10 @@ export function pickPokeReactionLine(detail: SpiritDetail | null, excluding: str
     const pool = candidates.length > 0 ? candidates : detail.speech_patterns;
     const index = Math.floor(Math.random() * pool.length);
     return pool[index];
+}
+export function createRoomTitle(name: string): string {
+    const trimmed = name.trim();
+    return trimmed.length > 0 ? trimmed : 'EverTalk';
 }
 export function createConversationSummary(detail: SpiritDetail | null): string {
     if (!detail) {

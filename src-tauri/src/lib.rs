@@ -17,14 +17,16 @@ use crate::domains::chat::commands::{
 use crate::domains::knowledge::commands::knowledge_search;
 use crate::domains::llm::commands::{llm_infer, llm_load, llm_status};
 use crate::domains::persona::commands::{
-    persona_bond_ranking, persona_get_default, persona_get_pack, persona_list,
-    persona_list_archive, persona_select_preset, persona_set_default, persona_update,
+    persona_bond_ranking, persona_familiarity_list, persona_get_default, persona_get_pack,
+    persona_list, persona_list_archive, persona_select_preset, persona_set_default, persona_update,
 };
-use crate::domains::settings::commands::{settings_get, settings_reset, SettingsState};
+use crate::domains::settings::commands::{
+    settings_get, settings_reset, settings_set_language, SettingsState,
+};
 use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
 };
-use crate::domains::sync::commands::sync_run;
+use crate::domains::sync::commands::{sync_get_local_status, sync_run};
 use crate::domains::training::commands::{training_run, TrainingState};
 use crate::infrastructure::settings::SettingsManager;
 
@@ -75,6 +77,10 @@ pub fn run() {
                     let _ = std::fs::create_dir_all(&config_dir);
                     config_dir.join("settings.ini")
                 });
+            #[cfg(debug_assertions)]
+            {
+                let _ = std::fs::remove_file(&settings_path);
+            }
             let settings_mgr = SettingsManager::new(settings_path);
 
             let adapters_dir = app
@@ -112,6 +118,7 @@ pub fn run() {
             auth_logout,
             auth_get_session,
             sync_run,
+            sync_get_local_status,
             persona_list,
             persona_update,
             persona_list_archive,
@@ -120,6 +127,7 @@ pub fn run() {
             persona_get_default,
             persona_set_default,
             persona_bond_ranking,
+            persona_familiarity_list,
             knowledge_search,
             chat_create_room,
             chat_create_session_room,
@@ -136,6 +144,7 @@ pub fn run() {
             style_get_active,
             settings_get,
             settings_reset,
+            settings_set_language,
             training_run
         ])
         .run(tauri::generate_context!())

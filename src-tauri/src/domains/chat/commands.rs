@@ -11,6 +11,7 @@ pub fn chat_create_room(
     title: String,
 ) -> Result<ChatRoom, ChatError> {
     let conn = db_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -25,6 +26,7 @@ pub fn chat_create_session_room(
     persona_id: String,
 ) -> Result<ChatRoom, ChatError> {
     let conn = db_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -35,6 +37,7 @@ pub fn chat_create_session_room(
 #[tauri::command(rename_all = "snake_case")]
 pub fn chat_list_rooms(db_state: State<'_, DbState>) -> Result<Vec<ChatRoom>, ChatError> {
     let conn = db_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -48,6 +51,7 @@ pub fn chat_get_latest_session_room(
     persona_id: String,
 ) -> Result<Option<ChatRoom>, ChatError> {
     let conn = db_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -61,6 +65,7 @@ pub fn chat_list_messages(
     room_id: String,
 ) -> Result<Vec<ChatMessage>, ChatError> {
     let conn = db_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -85,6 +90,7 @@ pub fn chat_send_message(
 
     let query_vector = {
         let engine_lock = llm_state
+            .inner()
             .0
             .lock()
             .map_err(|e| ChatError::Unknown(e.to_string()))?;
@@ -96,10 +102,12 @@ pub fn chat_send_message(
 
     let (system_prompt, history) = {
         let conn = db_state
+            .inner()
             .0
             .lock()
             .map_err(|e| ChatError::Database(e.to_string()))?;
         let settings = settings_state
+            .inner()
             .0
             .lock()
             .map_err(|e| ChatError::Unknown(e.to_string()))?;
@@ -108,6 +116,7 @@ pub fn chat_send_message(
     };
 
     let engine_lock = llm_state
+        .inner()
         .0
         .lock()
         .map_err(|e| ChatError::Unknown(e.to_string()))?;
@@ -135,6 +144,7 @@ pub fn chat_send_message(
 
     let ai_msg = {
         let conn = db_state
+            .inner()
             .0
             .lock()
             .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -143,8 +153,8 @@ pub fn chat_send_message(
     };
 
     {
-        let engine_lock = llm_state.0.lock();
-        let db_lock = db_state.0.lock();
+        let engine_lock = llm_state.inner().0.lock();
+        let db_lock = db_state.inner().0.lock();
         if let (Ok(engine_lock), Ok(conn)) = (engine_lock, db_lock) {
             if let Some(ref engine_instance) = *engine_lock {
                 let service = ChatService::new(&conn);

@@ -1,10 +1,13 @@
 import type React from 'react';
+import type { AppLanguage } from '../../shared/types';
 import type { ChatMessage, ChatRoom } from '../chat';
 import type { LlmStatus } from '../llm';
-import type { BondRankingEntry, PersonaConfig, SpiritDetail } from '../persona';
+import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } from '../persona';
 import type { AppSettings, ResetSummary } from '../settings';
 import type { StyleProfile } from '../style';
+import type { LocalStatusSnapshot } from '../sync';
 import type { TrainingSummary } from '../training';
+import type { EverTalkLabels } from './i18n';
 export interface LoadableAssetImageProps {
     candidates: string[];
     alt: string;
@@ -38,6 +41,10 @@ export interface SpiritRosterProps {
     collapsed: boolean;
     bondRanking: BondRankingEntry[];
     bondRankingLoading: boolean;
+    familiarityList: FamiliarityEntry[];
+    familiarityLoading: boolean;
+    labels: EverTalkLabels;
+    appLanguage: AppLanguage;
     onSearchChange: (value: string) => void;
     onSelect: (spirit: PersonaConfig) => void;
     onSetDefault: (spiritId: string) => void;
@@ -56,6 +63,8 @@ export interface ChatStageProps {
     onSendMessage: (event: React.FormEvent) => void;
     onStageTabChange: (tab: StageTab) => void;
     messagesListRef: React.RefObject<HTMLDivElement | null>;
+    labels: EverTalkLabels;
+    onOpenProfileDetail: () => void;
 }
 export interface SpiritProfilePanelProps {
     activeDetail: SpiritDetail | null;
@@ -72,10 +81,14 @@ export interface SpiritProfilePanelProps {
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
     trainingError: string | null;
+    localStatus: LocalStatusSnapshot | null;
+    labels: EverTalkLabels;
     onTrainPersona: () => void;
+    onOpenProfileDetail: () => void;
 }
 export interface SystemStatusPanelProps {
     statuses: ApiStatusItem[];
+    labels: EverTalkLabels;
 }
 export interface SettingsPanelProps {
     open: boolean;
@@ -83,11 +96,26 @@ export interface SettingsPanelProps {
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
+    labels: EverTalkLabels;
     onClose: () => void;
     onReset: () => void;
+    onSetLanguage: (language: AppLanguage) => Promise<void>;
 }
 export interface BackgroundGalleryPanelProps {
     open: boolean;
+    labels: EverTalkLabels;
+    onClose: () => void;
+}
+export interface LanguageGatePanelProps {
+    open: boolean;
+    language: AppLanguage;
+    labels: EverTalkLabels;
+    onSelectLanguage: (language: AppLanguage) => Promise<void>;
+}
+export interface ProfileDetailPanelProps {
+    open: boolean;
+    activeDetail: SpiritDetail | null;
+    labels: EverTalkLabels;
     onClose: () => void;
 }
 export interface EverTalkController {
@@ -123,6 +151,13 @@ export interface EverTalkController {
     trainingError: string | null;
     bondRanking: BondRankingEntry[];
     bondRankingLoading: boolean;
+    familiarityList: FamiliarityEntry[];
+    familiarityLoading: boolean;
+    appLanguage: AppLanguage;
+    labels: EverTalkLabels;
+    localStatus: LocalStatusSnapshot | null;
+    languageGateOpen: boolean;
+    profileDetailOpen: boolean;
     setSearchQuery: (value: string) => void;
     setInputText: (value: string) => void;
     setActiveRosterTab: (tab: RosterTab) => void;
@@ -140,4 +175,8 @@ export interface EverTalkController {
     closeBackgroundGallery: () => void;
     resetAppData: () => Promise<void>;
     trainPersona: () => Promise<void>;
+    setLanguage: (language: AppLanguage) => Promise<void>;
+    closeLanguageGate: () => void;
+    openProfileDetail: () => void;
+    closeProfileDetail: () => void;
 }

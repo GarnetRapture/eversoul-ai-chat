@@ -1,6 +1,6 @@
 <p align="right">
-  <img src="https://flagcdn.com/20x15/kr.png" width="20" height="15" alt="KR" /> <strong>한국어</strong> &nbsp;|&nbsp;
-  <a href="README.en.md"><img src="https://flagcdn.com/20x15/us.png" width="20" height="15" alt="US" /> English</a> &nbsp;|&nbsp;
+  <a href="README.md"><img src="https://flagcdn.com/20x15/kr.png" width="20" height="15" alt="KR" /> 한국어</a> &nbsp;|&nbsp;
+  <img src="https://flagcdn.com/20x15/us.png" width="20" height="15" alt="US" /> <strong>English</strong> &nbsp;|&nbsp;
   <a href="README.zh-CN.md"><img src="https://flagcdn.com/20x15/cn.png" width="20" height="15" alt="CN" /> 简体中文</a>
 </p>
 
@@ -9,7 +9,7 @@
 </p>
 
 <h1 align="center">EverSoul AI Chat</h1>
-<p align="center"><i>완전한 로컬 구동 AI 채팅 클라이언트</i></p>
+<p align="center"><i>A fully local AI chat client that carries the voices of the spirits</i></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.0.7-blue?style=flat-square" alt="Version" />
@@ -25,13 +25,13 @@
 
 ---
 
-## 🌟 개요
+## 🌟 Overview
 
-**EverSoul AI Chat**은 에버소울을 간직할 새로운 로컬 AI 채팅 프로젝트입니다. 정령들의 기억을 보존한다는 의미로 만들었습니다. 에버소울에 등장하는 정령 95명을 실제 게임 데이터 그대로 불러와, 각자의 성격과 말투로 자유롭게 대화할 수 있습니다.
+**EverSoul AI Chat** is a new local AI chat project made to keep EverSoul close. It was built with one idea in mind: preserving the memories of the spirits. It brings all 95 spirits from EverSoul to life using the real game data, so you can talk with each of them in their own personality and voice.
 
-대화를 만들어내는 AI는 전부 내 컴퓨터 안에서만 돌아갑니다. 어떤 대화 내용도 밖으로 나가지 않고, 정령과 나눈 이야기는 전부 내 컴퓨터 안에서만 오갑니다.
+The AI that generates every reply runs entirely on your own computer. Nothing you say ever leaves your machine — every conversation with a spirit stays local, start to finish.
 
-그래서 정령 95명 전원의 실제 게임 그림, 대화 배경 522장, 에버톡 화면에서 쓰던 UI까지 프로젝트 안에 그대로 담아뒀습니다. 각 정령의 이름과 성격, 말투는 `data/personas/`에 정령마다 하나씩 정리되어 있고, 한국어·영어·중국어(번체/간체) 네 개 언어로 미리 준비해 두었기 때문에 언어를 바꿔도 그 정령다움은 그대로 유지됩니다.
+That's why the full official artwork of all 95 spirits, 522 conversation backgrounds, and the UI that EverTalk itself used are all bundled directly into this project. Each spirit's name, personality, and speech patterns are organized one file at a time under `data/personas/`, prepared in Korean, English, and Chinese (Traditional/Simplified) in advance — so switching languages never breaks what makes that spirit feel like itself.
 
 <p align="center">
   <img src="public/eversoul-assets/spirits/GarnetRapture/base/GarnetRapture_1024.png" width="120" alt="GarnetRapture" />
@@ -44,9 +44,9 @@
 
 ---
 
-## 🎨 전체 정령 갤러리 (95종)
+## 🎨 Full Spirit Gallery (95 Spirits)
 
-`data/personas/*.json` 95개 파일을 전부 살펴서 정령 그림과 한국어(ko)·영어(en)·중국어 간체(zh_cn) 이름을 실제 데이터 그대로 나열한 도감입니다. 그림 폴더 이름은 `src/domains/persona/logic.ts`의 `resolveSpiritAssetFolder`가 찾는 방식 그대로 가져왔습니다(게임 내 표시명과 실제 그림 폴더명이 다른 26명은 `explicitAssetFolders` 매핑을 그대로 따랐습니다).
+A complete gallery built by looking through all 95 `data/personas/*.json` files, listing each spirit's artwork alongside its real Korean (ko), English (en), and Simplified Chinese (zh_cn) names exactly as stored in the data. The artwork folder names are taken exactly the way `resolveSpiritAssetFolder` in `src/domains/persona/logic.ts` looks them up (26 spirits whose in-game display name differs from their actual artwork folder name follow the `explicitAssetFolders` mapping as-is).
 
 <table>
 <tr>
@@ -171,7 +171,7 @@
 </tr>
 </table>
 
-정령마다 그림이 한 장으로 끝나지 않습니다. `base`(평소 모습), `costume`(의상), `raid`, `gacha`, `srg` 폴더로 나뉘어서 같은 정령이라도 여러 장의 그림이 준비되어 있습니다.
+Each spirit's artwork doesn't stop at a single picture. It's split across folders — `base` (everyday look), `costume`, `raid`, `gacha`, `srg` — so the same spirit has several different pictures on hand.
 
 <p align="center">
   <img src="public/eversoul-assets/spirits/Adrianne/base/Adrianne_1024.png" width="110" alt="Adrianne base" />
@@ -179,19 +179,19 @@
   <img src="public/eversoul-assets/spirits/Adrianne/gacha/Adrianne_Gacha_2048.png" width="110" alt="Adrianne gacha" />
   <img src="public/eversoul-assets/spirits/Adrianne/raid/Adrianne_Raid_2048.png" width="110" alt="Adrianne raid" />
 </p>
-<p align="center"><sub>아드리안 폴더에 있는 그림들 — 왼쪽부터 base, costume, gacha, raid</sub></p>
+<p align="center"><sub>What's in Adrianne's folder — from left, base, costume, gacha, raid</sub></p>
 
 ---
 
-## 🚀 주요 기능
+## 🚀 Key Features
 
-- 💻 **내 컴퓨터만으로 돌아가는 AI**: GPU가 없어도 `llama.cpp` 기반으로 대화를 만들어냅니다. CPU 물리 코어 수에 맞춰 스레드를 잡기 때문에 무리 없이 안정적으로 대답합니다.
-- 🎭 **95명의 정령, 각자의 성격 그대로**: 이름과 등급, 종족, 직업은 물론 성우, 생일, 좋아하는 것까지 정령마다 정리해 둔 자료를 불러와서, 대화할 때마다 그 정령답게 말하도록 합니다.
-- 🧠 **정령이 나와의 대화를 기억함**: 대화를 나눌 때마다 그 정령이 스스로 "기억할 만한 게 있었는지" 되짚어보고, 있으면 남겨둡니다. 기억이 쌓이면 한 번씩 다시 정리해서, 다음에 만났을 때도 그 기억을 그대로 안고 이야기합니다.
-- 🌐 **언어를 바꿔도 그 정령 그대로**: 이름과 소개, 말투가 한국어·영어·중국어(번체/간체) 네 언어로 다 준비되어 있어서, 앱 언어를 바꾸면 정령의 이름과 소개도 바로 그 언어로 바뀝니다.
-- 🧬 **대화가 쌓일수록 더 그 정령다워지는 학습**: Python 없이 순수 Rust(`candle`)로 Qwen2 모델을 직접 구현해서, 정령마다 나눈 대화를 바탕으로 내 컴퓨터에서 바로 미세조정(LoRA) 학습을 돌릴 수 있습니다.
-- 📂 **대화는 전부 내 컴퓨터에 저장**: 나눈 대화, 정령 프로필, 말투 설정 모두 가벼운 SQLite 데이터베이스에 그대로 남습니다.
-- 🖼️ **대화 배경도 그대로**: 에버소울 정식 일러스트 배경 522장을 언제든 꺼내서 대화창 분위기를 바꿀 수 있습니다.
+- 💻 **AI that runs on your computer alone**: Built on `llama.cpp`, generating replies without a GPU. Threads are sized to your CPU's physical core count, so it stays stable without overloading your machine.
+- 🎭 **95 spirits, each with their own personality**: Name, grade, race, class, voice actor, birthday, likes — everything organized per spirit gets loaded and assembled so every spirit speaks like themselves.
+- 🧠 **A spirit that remembers talking with you**: After every exchange, the spirit checks itself for anything worth remembering and keeps it. Those memories get re-summarized from time to time, so the spirit carries them into the next conversation too.
+- 🌐 **Switch languages, the spirit stays the same**: Names, introductions, and speech patterns are all ready in Korean, English, and Chinese (Traditional/Simplified), so changing the app language instantly changes the spirit's name and introduction too.
+- 🧬 **Fine-tuning that makes a spirit more itself over time**: A Qwen2 model built from scratch in pure Rust (`candle`), no Python involved — you can run local fine-tuning (LoRA) right on your own machine, trained on that spirit's own conversations.
+- 📂 **Everything stays on your computer**: Conversations, spirit profiles, and speech-pattern settings all stay in a lightweight SQLite database.
+- 🖼️ **Backgrounds stay too**: All 522 official EverSoul illustration backgrounds are ready to pull up and change the mood of the conversation whenever you like.
 
 <p align="center">
   <img src="public/eversoul-assets/backgrounds/talk/Talk_BG_Castle.png" width="150" alt="Talk BG Castle" />
@@ -204,14 +204,14 @@
 
 ---
 
-## 🏗 아키텍처
+## 🏗 Architecture
 
-프론트엔드(React)와 백엔드(Rust)가 각각 동일한 이름의 도메인 모듈로 대칭 구성되어 있으며, Tauri IPC(`invoke`)로만 통신합니다.
+The React frontend and Rust backend are structured as symmetric domain modules of the same name, communicating exclusively through Tauri IPC (`invoke`).
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#cde2fb', 'primaryBorderColor': '#2a78d6', 'primaryTextColor': '#0b0b0b', 'lineColor': '#52514e', 'clusterBkg': '#fcfcfb', 'clusterBorder': '#c3c2b7', 'fontFamily': 'system-ui, -apple-system, Segoe UI, sans-serif'}}}%%
 flowchart TB
-    subgraph FE["프론트엔드 · src/domains"]
+    subgraph FE["Frontend · src/domains"]
         direction LR
         FE1["auth · chat · knowledge"]
         FE2["llm · persona · settings"]
@@ -219,17 +219,17 @@ flowchart TB
         FE4["evertalk<br/>SpiritRoster · ChatStage · SettingsPanel"]
     end
 
-    FE == "Tauri invoke<br/>31개 커맨드" ==> BE
+    FE == "Tauri invoke<br/>31 commands" ==> BE
 
-    subgraph BE["백엔드 · src-tauri/src/domains + infrastructure"]
+    subgraph BE["Backend · src-tauri/src/domains + infrastructure"]
         direction LR
         BE1["auth · chat · knowledge"]
         BE2["llm · persona · settings"]
         BE3["style · sync · training"]
     end
 
-    BE -- "대화방 · 메시지 · 정령 프로필 · 기억" --> DB[("SQLite<br/>eversoul.db")]
-    BE -- "정령별 LoRA 어댑터 장착 추론" --> LLM["GGUF 로컬 모델<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
+    BE -- "rooms · messages · spirit profiles · memories" --> DB[("SQLite<br/>eversoul.db")]
+    BE -- "inference with the spirit's own LoRA adapter" --> LLM["Local GGUF model<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
 
     classDef feStyle fill:#cde2fb,stroke:#2a78d6,stroke-width:2px,color:#0b0b0b
     classDef beStyle fill:#e3ddf7,stroke:#4a3aa7,stroke-width:2px,color:#0b0b0b
@@ -242,93 +242,86 @@ flowchart TB
     class LLM llmStyle
 ```
 
-- **로컬 DB 경로**: OS별 앱 데이터 디렉터리 하위 `database/eversoul.db` (디버그 빌드 시 매 실행마다 초기화).
-- **설정 파일**: 앱 데이터 디렉터리 하위 `config/settings.ini` (`rust-ini`로 읽기/쓰기, 기본 정령·활성 스타일·언어 저장).
-- **LoRA 어댑터 저장소**: 앱 데이터 디렉터리 하위 `lora_adapters/` (정령별 파인튜닝 결과 격리 저장).
+- **Local DB path**: `database/eversoul.db` under the OS app-data directory (reset on every launch in debug builds).
+- **Settings file**: `config/settings.ini` under the app-data directory (read/written via `rust-ini`; stores default spirit, active style, and language).
+- **LoRA adapter storage**: `lora_adapters/` under the app-data directory (per-spirit fine-tuning results kept isolated).
 
-정령 데이터 빌드 파이프라인, 대화 처리 시퀀스, LoRA 학습 흐름, 데이터베이스 구조까지 더 자세한 다이어그램은 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)에 있습니다.
+More detailed diagrams — the spirit-data build pipeline, the conversation sequence, the LoRA training flow, and the database structure — are in [docs/ARCHITECTURE.en.md](docs/ARCHITECTURE.en.md).
 
 ---
 
-## 🛠 기술 스택
+## 🛠 Tech Stack
 
 ### Frontend Stack
-
 - **Framework**: `React 19.1` + `TypeScript 6.0` + `Vite 8`
-- **State Management**: `TanStack React Query v5`(비동기 서버 상태), `Zustand v5`(전역 클라이언트 상태)
-- **Styling**: `Tailwind CSS v4`(`@tailwindcss/vite`) + `clsx`(클래스 믹싱)
+- **State Management**: `TanStack React Query v5` (async server state), `Zustand v5` (global client state)
+- **Styling**: `Tailwind CSS v4` (`@tailwindcss/vite`) + `clsx` (class composition)
 - **Icons**: `lucide-react`
 - **Tauri Plugins**: `@tauri-apps/plugin-dialog`, `plugin-fs`, `plugin-opener`, `plugin-shell`
 
 ### Desktop Runtime & Backend Stack
-
-- **Core Runtime**: `Tauri v2` (Rust 2021 edition), release 빌드는 `codegen-units=1` + `lto=true` + `opt-level=3` + `panic=abort` + `strip`로 최적화.
+- **Core Runtime**: `Tauri v2` (Rust 2021 edition); release builds are optimized with `codegen-units=1` + `lto=true` + `opt-level=3` + `panic=abort` + `strip`.
 - **Local Database**: `SQLite3` (`rusqlite` bundled)
-- **HTTP Client**: `reqwest`(rustls, json, stream 기능)
-- **AI Inference Engine**: `llama.cpp` (`llama-cpp-2` C-bindings, GGUF 포맷) + `num_cpus`(물리 코어 기준 스레드 산정)
-- **On-device Fine-tuning**: `candle-core` / `candle-nn` 0.8 (Qwen2 아키텍처 + LoRA 어댑터 직접 구현), `hf-hub`, `tokenizers`(BPE, `onig` 기능)
+- **HTTP Client**: `reqwest` (rustls, json, stream features)
+- **AI Inference Engine**: `llama.cpp` (`llama-cpp-2` C-bindings, GGUF format) + `num_cpus` (physical-core-based thread sizing)
+- **On-device Fine-tuning**: `candle-core` / `candle-nn` 0.8 (Qwen2 architecture + hand-built LoRA adapter), `hf-hub`, `tokenizers` (BPE, `onig` feature)
 - **Serialization / Utilities**: `serde`, `serde_json`, `anyhow`, `thiserror`, `tracing` + `tracing-subscriber`, `uuid`, `directories`, `sha2`, `hex`, `flate2`, `rust-ini`
 
 ---
 
-## 📦 로컬 모델
+## 📦 Local Model
 
-고품질 한국어 성능을 위해 단일 고정 모델을 씁니다. 배포판에는 이 모델이 이미 포함되어 있어 따로 받을 필요가 없습니다.
+A single fixed model is used for high-quality Korean performance. The shipped build already includes this model, so there's nothing extra to download.
 
-- **이름**: `MyeongHo0621/Qwen2.5-3B-Korean Q4_K_M`
-- **위치**: `ai/model/qwen25-3b-korean-Q4_K_M.gguf`
+- **Name**: `MyeongHo0621/Qwen2.5-3B-Korean Q4_K_M`
+- **Location**: `ai/model/qwen25-3b-korean-Q4_K_M.gguf`
 
 ---
 
-## 💻 실행 및 빌드 가이드
+## 💻 Run & Build Guide
 
-### 빌드 사전 요구사항
+### Build Prerequisites
+To build the local LLM inference binding (`llama-cpp-2`), the following tools must be installed beforehand.
+- [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/) (including the C++ compiler)
+- [CMake](https://cmake.org/download/) (version 3.20 or later)
+- [Clang](https://releases.llvm.org/download.html) (C/C++ parser for Bindgen)
 
-로컬 LLM 추론 바인딩(`llama-cpp-2`)을 빌드하기 위해 아래 도구들의 사전 설치가 필요합니다.
-
-- [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/) (C++ 컴파일러 포함)
-- [CMake](https://cmake.org/download/) (버전 3.20 이상)
-- [Clang](https://releases.llvm.org/download.html) (Bindgen용 C/C++ 파서)
-
-### 의존성 설치
-
+### Install Dependencies
 ```bash
 npm install
 ```
 
-### 개발 모드 실행
-
+### Run in Development Mode
 ```bash
 npm run tauri dev
 ```
 
-### 상용 배포 빌드
-
+### Production Build
 ```bash
 npm run tauri build
 ```
 
 ---
 
-## 🧩 정령(페르소나) 데이터 스키마
+## 🧩 Spirit (Persona) Data Schema
 
-정령은 종족(`race`)에 따라 일곱 갈래로 나뉩니다.
+Spirits fall into seven races (`race`).
 
 <table>
 <tr>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/beast.svg" width="64" alt="야수형" /><br/><sub>야수형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/human.svg" width="64" alt="인간형" /><br/><sub>인간형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/elf.svg" width="64" alt="요정형" /><br/><sub>요정형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/undead.svg" width="64" alt="불사형" /><br/><sub>불사형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/chaos.svg" width="64" alt="혼돈형" /><br/><sub>혼돈형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/angel.svg" width="64" alt="천사형" /><br/><sub>천사형</sub></td>
-<td align="center"><img src="public/eversoul-assets/ui/race-badges/demon.svg" width="64" alt="악마형" /><br/><sub>악마형</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/beast.svg" width="64" alt="Beast" /><br/><sub>Beast</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/human.svg" width="64" alt="Human" /><br/><sub>Human</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/elf.svg" width="64" alt="Elf" /><br/><sub>Elf</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/undead.svg" width="64" alt="Undead" /><br/><sub>Undead</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/chaos.svg" width="64" alt="Chaos" /><br/><sub>Chaos</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/angel.svg" width="64" alt="Angel" /><br/><sub>Angel</sub></td>
+<td align="center"><img src="public/eversoul-assets/ui/race-badges/demon.svg" width="64" alt="Demon" /><br/><sub>Demon</sub></td>
 </tr>
 </table>
 
-앱이 실제로 대화할 때 정령의 이름·성격·말투를 읽어오는 곳은 SQLite `persona_profile.raw_json` 컬럼입니다. 정령 목록을 조회할 때마다 `PersonaService::get_available_personas`가 `personas.bin`에서 다시 불러와 이 컬럼에 매번 덮어써서(upsert) 저장하고, 실제 LLM 시스템 프롬프트는 `PersonaService::build_localized_system_prompt`가 이 `raw_json`을 파싱해서 조립합니다.
+When the app is actually chatting, it reads a spirit's name, personality, and speech patterns from the SQLite `persona_profile.raw_json` column. Every time the spirit list is queried, `PersonaService::get_available_personas` reloads it from `personas.bin` and upserts it into that column, and the system prompt actually sent to the LLM is assembled by `PersonaService::build_localized_system_prompt` parsing that same `raw_json`.
 
-이 데이터의 원본은 `data/personas/*.json` 95개 파일이며, `tools/build_complete_personas.cjs`가 이를 `ko / en / zh_tw / zh_cn` 4개 언어 배열(`LANGUAGES`)로 정규화해 `personas.bin`으로 빌드해 둡니다. 아래는 그 원본 JSON 하나(아드리안)의 실제 필드 구조입니다.
+The source of that data is the 95 `data/personas/*.json` files. `tools/build_complete_personas.cjs` normalizes them into the 4-language array (`LANGUAGES = ['ko', 'en', 'zh_tw', 'zh_cn']`) and builds them into `personas.bin`. Below is the real field structure of one of those source files (Adrianne's).
 
 ```json
 {
@@ -357,67 +350,42 @@ npm run tauri build
   "personality": { "description": "...", "greeting": "..." },
   "speech_patterns": ["...", "..."],
   "i18n": {
-    "name": {
-      "ko": "아드리안",
-      "en": "Adrianne",
-      "zh_tw": "阿德里安",
-      "zh_cn": "阿德里安"
-    },
+    "name": { "ko": "아드리안", "en": "Adrianne", "zh_tw": "阿德里安", "zh_cn": "阿德里安" },
     "grade": { "ko": "에픽", "en": "Epic", "zh_tw": "史詩", "zh_cn": "史詩" },
-    "race": {
-      "ko": "천사형",
-      "en": "Angel",
-      "zh_tw": "天使型",
-      "zh_cn": "天使型"
-    },
-    "class": {
-      "ko": "디펜더",
-      "en": "Defender",
-      "zh_tw": "捍衛者",
-      "zh_cn": "捍衛者"
-    },
+    "race": { "ko": "천사형", "en": "Angel", "zh_tw": "天使型", "zh_cn": "天使型" },
+    "class": { "ko": "디펜더", "en": "Defender", "zh_tw": "捍衛者", "zh_cn": "捍衛者" },
     "profile": {
-      "nick_name": {
-        "ko": "정의의 빛",
-        "en": "Light of Justice",
-        "zh_tw": "正義之光",
-        "zh_cn": "正義之光"
-      },
-      "constellation": {
-        "ko": "천칭자리",
-        "en": "Libra",
-        "zh_tw": "天秤座",
-        "zh_cn": "天秤座"
-      }
+      "nick_name": { "ko": "정의의 빛", "en": "Light of Justice", "zh_tw": "正義之光", "zh_cn": "正義之光" },
+      "constellation": { "ko": "천칭자리", "en": "Libra", "zh_tw": "天秤座", "zh_cn": "天秤座" }
     }
   }
 }
 ```
 
-- `i18n` 블록은 필드 이름을 키로 두고 그 아래 `{ ko, en, zh_tw, zh_cn }` 4개 언어 값을 나란히 갖는 **필드-우선 구조**이며, `name` · `grade` · `race` · `class` · `sub_class` · `stat`은 물론 `profile.nick_name` · `profile.constellation` · `profile.union` · `profile.cv_ko` · `profile.cv_jp` · `profile.like` · `profile.dislike` · `profile.hobby` · `profile.speciality`까지 세부 필드 단위로 번역이 존재합니다.
-- 화면에 보여줄 때는 `src/domains/persona/logic.ts`의 `parseSpiritDetail`이 이 `raw_json`을 파싱해 언어별로 골라내고, 실제 LLM에게 보낼 시스템 프롬프트는 이것과 별개로 Rust 백엔드의 `PersonaService::build_localized_system_prompt`가 `raw_json`을 다시 파싱해 직접 조립합니다 — 두 곳 다 최종적으로는 SQLite의 `raw_json`을 소스로 씁니다.
-- 정령별 원화는 `public/eversoul-assets/spirits/{영문명}/` 하위에 `base`(기본 일러스트 512/1024/2048), `costume`(코스튬), `gacha`(가챠 연출), `raid`(레이드 연출), `srg`(스토리) 등 카테고리 폴더로 분리되어 있으며, `LoadableAssetImage` 컴포넌트(`src/domains/evertalk/components/LoadableAssetImage.tsx`)가 후보 경로 배열을 순차 시도(`useFirstLoadableImage`)해 존재하는 첫 이미지를 렌더링합니다.
+- The `i18n` block is a **field-first structure**: each field name is the key, and beneath it sit the 4 language values `{ ko, en, zh_tw, zh_cn }`. Translations exist down to the individual field level for `name` · `grade` · `race` · `class` · `sub_class` · `stat`, as well as `profile.nick_name` · `profile.constellation` · `profile.union` · `profile.cv_ko` · `profile.cv_jp` · `profile.like` · `profile.dislike` · `profile.hobby` · `profile.speciality`.
+- For display, `parseSpiritDetail` in `src/domains/persona/logic.ts` parses this same `raw_json` and picks the right language. The system prompt actually sent to the LLM is assembled separately — the Rust backend's `PersonaService::build_localized_system_prompt` re-parses `raw_json` on its own — but both ultimately read from SQLite's `raw_json`.
+- Each spirit's artwork lives under `public/eversoul-assets/spirits/{EnglishName}/`, split into category folders: `base` (base illustration at 512/1024/2048), `costume`, `gacha`, `raid`, and `srg` (story). The `LoadableAssetImage` component (`src/domains/evertalk/components/LoadableAssetImage.tsx`) tries a list of candidate paths in order (`useFirstLoadableImage`) and renders the first one that actually loads.
 
 ---
 
-## 📌 버전 관리 규칙
+## 📌 Versioning Rule
 
-이 저장소는 **커밋 1회당 patch 버전 +1**을 원칙으로 합니다. `package.json` · `src-tauri/Cargo.toml` · `src-tauri/tauri.conf.json` 세 파일의 `version` 필드는 항상 동일한 값으로 동기화되어야 하며, 기능 변경이 포함된 커밋을 생성할 때마다 세 파일을 함께 갱신합니다.
+This repository follows the principle of **incrementing the patch version by 1 for every commit**. The `version` field in `package.json`, `src-tauri/Cargo.toml`, and `src-tauri/tauri.conf.json` must always stay in sync, and all three files are updated together whenever a commit containing a functional change is created.
 
-| 버전  | 커밋                                      |
-| ----- | ----------------------------------------- |
-| 0.0.1 | `first`                                   |
-| 0.0.2 | `초기세팅`                                |
-| 0.0.3 | `초기세팅2`                               |
-| 0.0.4 | `초기세팅3`                               |
-| 0.0.5 | `초기셋팅4`                               |
-| 0.0.6 | `update_i18n : en , kr , zh_tw , zh_cn`   |
-| 0.0.7 | 다국어 README 3종 정비 + 버전 규칙 문서화 |
+| Version | Commit |
+| --- | --- |
+| 0.0.1 | `first` |
+| 0.0.2 | `초기세팅` |
+| 0.0.3 | `초기세팅2` |
+| 0.0.4 | `초기세팅3` |
+| 0.0.5 | `초기셋팅4` |
+| 0.0.6 | `update_i18n : en , kr , zh_tw , zh_cn` |
+| 0.0.7 | Trilingual README overhaul + versioning rule documentation |
 | 0.0.7 | `up` |
 
 ---
 
-## 📄 라이선스
+## 📄 License
 
 This project is licensed under the **Apache License 2.0**.
 GGUF Model (`Qwen2.5-3B-Korean`) is created by `MyeongHo0621` and distributed under **Apache License 2.0**.

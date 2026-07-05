@@ -29,6 +29,7 @@ export const tauriCommands = {
         getDefault: 'persona_get_default',
         setDefault: 'persona_set_default',
         bondRanking: 'persona_bond_ranking',
+        familiarityList: 'persona_familiarity_list',
     },
     style: {
         list: 'style_list',
@@ -38,10 +39,12 @@ export const tauriCommands = {
     },
     sync: {
         run: 'sync_run',
+        localStatus: 'sync_get_local_status',
     },
     settings: {
         get: 'settings_get',
         reset: 'settings_reset',
+        setLanguage: 'settings_set_language',
     },
     training: {
         run: 'training_run',

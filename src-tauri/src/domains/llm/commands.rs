@@ -41,6 +41,7 @@ pub fn llm_load(
     training_state: State<'_, TrainingState>,
 ) -> Result<LlmStatus, LlmError> {
     let mut engine_lock = llm_state
+        .inner()
         .0
         .lock()
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
@@ -59,6 +60,7 @@ pub fn llm_load(
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
 
     let adapters_dir = training_state
+        .inner()
         .0
         .lock()
         .map_err(|e| LlmError::Unknown(e.to_string()))?
@@ -85,6 +87,7 @@ pub fn llm_load(
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_status(llm_state: State<'_, LlmState>) -> Result<LlmStatus, LlmError> {
     let engine_lock = llm_state
+        .inner()
         .0
         .lock()
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
@@ -111,6 +114,7 @@ pub fn llm_infer(
     max_tokens: Option<u32>,
 ) -> Result<LlmInferResponse, LlmError> {
     let engine_lock = llm_state
+        .inner()
         .0
         .lock()
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
