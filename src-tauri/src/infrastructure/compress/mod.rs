@@ -121,7 +121,7 @@ mod tests {
 
     #[test]
     fn personas_archive_lists_embedded_entries() {
-        assert_eq!(PersonaLoader::list_personas().len(), 95);
+        assert_eq!(PersonaLoader::list_personas().len(), 99);
     }
 
     #[test]

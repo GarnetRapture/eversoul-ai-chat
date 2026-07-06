@@ -60,6 +60,19 @@ pub fn chat_get_latest_session_room(
 }
 
 #[tauri::command(rename_all = "snake_case")]
+pub fn chat_get_evertalk_session_room(
+    db_state: State<'_, DbState>,
+) -> Result<ChatRoom, ChatError> {
+    let conn = db_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| ChatError::Database(e.to_string()))?;
+    let service = ChatService::new(&conn);
+    service.get_or_create_evertalk_session_room()
+}
+
+#[tauri::command(rename_all = "snake_case")]
 pub fn chat_list_messages(
     db_state: State<'_, DbState>,
     room_id: String,
@@ -71,6 +84,21 @@ pub fn chat_list_messages(
         .map_err(|e| ChatError::Database(e.to_string()))?;
     let service = ChatService::new(&conn);
     service.get_room_messages(&room_id)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn chat_list_messages_for_persona(
+    db_state: State<'_, DbState>,
+    room_id: String,
+    persona_id: String,
+) -> Result<Vec<ChatMessage>, ChatError> {
+    let conn = db_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| ChatError::Database(e.to_string()))?;
+    let service = ChatService::new(&conn);
+    service.get_room_messages_for_persona(&room_id, &persona_id)
 }
 
 #[tauri::command(rename_all = "snake_case")]
@@ -156,7 +184,7 @@ pub fn chat_send_message(
             .lock()
             .map_err(|e| ChatError::Database(e.to_string()))?;
         let service = ChatService::new(&conn);
-        service.save_ai_response(&room_id, ai_text.clone())?
+        service.save_ai_response(&room_id, &req.persona_id, ai_text.clone())?
     };
 
     let background_persona_id = req.persona_id.clone();

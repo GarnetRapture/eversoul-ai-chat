@@ -213,7 +213,8 @@ pub fn llm_infer(
         .map_err(|e| LlmError::Unknown(e.to_string()))?;
 
     if let Some(ref handle) = *engine_lock {
-        let result = LlmService::run_inference(handle, &prompt, max_tokens).map_err(map_engine_error);
+        let result =
+            LlmService::run_inference(handle, &prompt, max_tokens).map_err(map_engine_error);
         startup_debug_log("command:llm_infer:done");
         result
     } else {

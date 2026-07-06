@@ -1,5 +1,5 @@
 import type { AppLanguage } from '../../shared/types';
-import type { LocalizedDialogue, LocalizedList, LocalizedText, PersonaConfig, SpiritDetail, SpiritVisualAssets } from './types';
+import type { LocalizedDialogue, LocalizedList, LocalizedText, PersonaConfig, SpiritDetail, SpiritSkinVisualAsset, SpiritVisualAssets } from './types';
 export const ASSET_ROOT = '/eversoul-assets';
 const explicitAssetFolders: Record<string, string> = {
     'Ayame': 'Oyome',
@@ -33,19 +33,130 @@ const explicitAssetFolders: Record<string, string> = {
 const knownAssetFolders = new Set([
     'Adrianne', 'Aira', 'Aki', 'Alisha', 'Amelia', 'Apollyon', 'AyameTsukuyomi',
     'Beatrice', 'Beleth', 'Blyce', 'Carnelian', 'Catarina', 'Catherine',
-    'CatherineBrave', 'CherrieRoman', 'Chloe', 'Clara', 'Claudia',
+    'Canney', 'Casper', 'CatherineBrave', 'CherrieRoman', 'Chloe', 'Clara', 'Claudia',
     'ClaudiaArchangel', 'Daphne', 'Dominique', 'Dora', 'Edith', 'Eileen',
     'Erika', 'Erusha', 'Eve', 'GarnetRapture', 'Hanul', 'HaruKamuy', 'Hazel',
-    'Honglan', 'HonglanCombat', 'Ina', 'Jacqueline', 'Jade', 'Jiho', 'JihoMir',
+    'Honglan', 'HonglanCombat', 'Ina', 'Irene', 'Jacqueline', 'Jade', 'Jiho', 'JihoMir',
     'Joanne', 'Kanna', 'Karen', 'Larimar', 'Laura', 'Leah', 'Lewayne', 'Lilith', 'Linzy',
     'LinzyThanatos', 'Lizelotte', 'Lute', 'Manon', 'Melfice', 'Mephisto',
     'MephistoDawn', 'Meryl', 'Mia', 'Mica', 'Milia', 'Miriam', 'MiriamMirage', 'Nameless', 'Naomi',
     'Nia', 'Nicole', 'Nini', 'Nyah', 'Olivia', 'Onyx', 'Otoha', 'Oyome',
-    'Petra', 'PetraAwaken', 'Prim', 'Rebecca', 'ReneeSilver', 'Rita', 'RoseCrimson', 'Rose', 'Ruri',
+    'Petra', 'PetraAwaken', 'Pixie', 'Prim', 'Rebecca', 'ReneeSilver', 'Rita', 'RoseCrimson', 'Rose', 'Ruri',
     'Sakuyo', 'SakuyoShin', 'Seeha', 'Sigrid', 'Sunny', 'Talia', 'Tasha',
     'Velanna', 'Vivienne', 'Weiss', 'Wheri', 'Xiaolian', 'Yuria',
     'YuriaApollyon', 'YuriaQueen',
 ]);
+const assetFilePrefixes: Record<string, string> = {
+    Canney: 'Beast',
+    Casper: 'Ghost',
+    Irene: 'Apprentice',
+};
+const costumeIndexesByAssetFolder: Record<string, number[]> = {
+    Adrianne: [1, 2, 3],
+    Aira: [2, 3, 4],
+    Aki: [1, 2, 3, 4, 6],
+    Amelia: [1, 2],
+    AyameTsukuyomi: [1, 2],
+    Beatrice: [1, 2],
+    Beleth: [1, 2],
+    Blyce: [1, 2, 3],
+    Carnelian: [1, 2],
+    Catarina: [1, 2],
+    Catherine: [1, 2, 3, 4, 6],
+    CatherineBrave: [1, 3, 4],
+    CherrieRoman: [1, 2],
+    Chloe: [1, 2, 3, 4],
+    Clara: [1, 2],
+    Claudia: [1, 2],
+    ClaudiaArchangel: [1, 2],
+    Daphne: [1, 2],
+    Dominique: [1, 2],
+    Dora: [1, 2],
+    Edith: [1, 2, 3],
+    Eileen: [1, 2, 3],
+    Erika: [1, 2],
+    Erusha: [2, 3],
+    Eve: [1, 2],
+    GarnetRapture: [1, 2],
+    Hanul: [1, 2],
+    HaruKamuy: [1, 2],
+    Hazel: [1],
+    Honglan: [1, 2, 3, 4],
+    HonglanCombat: [1, 2],
+    Jacqueline: [1, 2, 4],
+    Jade: [1, 2],
+    Jiho: [1, 2],
+    JihoMir: [1, 2],
+    Joanne: [1, 2],
+    Kanna: [1, 2],
+    Larimar: [1, 2],
+    Laura: [1, 2],
+    Leah: [2, 3],
+    Lilith: [1, 2],
+    Linzy: [1, 2, 3],
+    LinzyThanatos: [1, 2],
+    Lizelotte: [1, 2, 3],
+    Lute: [1, 2],
+    Manon: [1, 2],
+    Melfice: [1, 2],
+    Mephisto: [1, 2, 3, 4],
+    MephistoDawn: [1, 2, 3],
+    Mia: [1, 2],
+    Mica: [1, 2, 3],
+    Milia: [1, 2],
+    Miriam: [1, 2],
+    MiriamMirage: [1, 2],
+    Naomi: [1, 2],
+    Nia: [1, 2, 3],
+    Nicole: [1, 2, 3],
+    Nini: [1, 2],
+    Nyah: [1, 2, 3],
+    Olivia: [1, 2, 3],
+    Onyx: [1, 2],
+    Otoha: [1, 3],
+    Oyome: [1, 2, 3],
+    Petra: [1, 2],
+    PetraAwaken: [1, 3],
+    Prim: [1, 2],
+    Rebecca: [1, 2],
+    ReneeSilver: [1, 2],
+    RoseCrimson: [1, 2],
+    Sakuyo: [1],
+    SakuyoShin: [1, 2, 3],
+    Seeha: [1, 2, 3],
+    Sigrid: [1],
+    Sunny: [1, 2, 3, 4],
+    Talia: [1, 2],
+    Tasha: [1],
+    Velanna: [1, 2],
+    Vivienne: [1, 2, 3, 5],
+    Weiss: [1, 2, 3],
+    Wheri: [1, 2],
+    Xiaolian: [1, 2],
+    Yuria: [1, 2],
+    YuriaApollyon: [1, 2, 3],
+    YuriaQueen: [1, 2],
+};
+const skinFilePrefixes: Record<string, string> = {
+    Yuria: 'YuriaQueen',
+};
+const baseVariantFilePrefixes: Record<string, string[]> = {
+    Yuria: ['YuriaQueen'],
+};
+const raidFilePrefixesByAssetFolder: Record<string, string[]> = {
+    Adrianne: ['Adrianne_Raid', 'Adrianne_RaidMinion'],
+    Aira: ['Aira_Raid'],
+    Aki: ['Aki_Raid', 'Aki_GaonFestivalRaid'],
+    Catherine: ['Catherine_Raid'],
+    Eileen: ['Eileen_WeddingRaid'],
+    Eve: ['Eve_SummerRaid'],
+    Jacqueline: ['Jacqueline_Raid'],
+    Lizelotte: ['Lizelotte_Raid', 'Lizelotte_HalloweenRaid'],
+    Nyah: ['Nyah_Raid'],
+    Oyome: ['Oyome_Raid'],
+    Vivienne: ['Vivienne_Raid', 'Vivienne_SummerRaid'],
+    Xiaolian: ['Xiaolian_ValentineRaid'],
+};
 const raceBackgrounds: Record<string, string> = {
     '인간형': 'Talk_BG_StreetCafe.png',
     '요정형': 'Talk_BG_LuckyFlowerField.png',
@@ -143,6 +254,74 @@ export function resolveSpiritAssetFolder(nameEn: string): string | null {
     }
     return null;
 }
+function baseSkin(assetFolder: string, assetFilePrefix: string): SpiritSkinVisualAsset {
+    return {
+        id: 'base',
+        label: '기본',
+        avatarCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFilePrefix}_512.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFilePrefix}_1024.png`,
+        ],
+        portraitCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFilePrefix}_2048.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFilePrefix}_1024.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFilePrefix}_512.png`,
+        ],
+    };
+}
+function costumeSkin(assetFolder: string, assetFilePrefix: string, index: number): SpiritSkinVisualAsset {
+    const padded = index.toString().padStart(2, '0');
+    return {
+        id: `costume-${padded}`,
+        label: `커스텀 ${index}`,
+        avatarCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFilePrefix}_Costume${padded}_512.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFilePrefix}_Costume${padded}_1024.png`,
+        ],
+        portraitCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFilePrefix}_Costume${padded}_2048.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFilePrefix}_Costume${padded}_1024.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFilePrefix}_Costume${padded}_512.png`,
+        ],
+    };
+}
+function raidSkin(assetFolder: string, assetFilePrefix: string): SpiritSkinVisualAsset {
+    const labelSource = assetFilePrefix.split('_').slice(1).join(' ') || 'Raid';
+    return {
+        id: `raid-${assetFilePrefix}`,
+        label: labelSource.replace(/([a-z])([A-Z])/g, '$1 $2'),
+        avatarCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFilePrefix}_512.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFilePrefix}_1024.png`,
+        ],
+        portraitCandidates: [
+            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFilePrefix}_2048.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFilePrefix}_1024.png`,
+            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFilePrefix}_512.png`,
+        ],
+    };
+}
+function createSkinOptions(assetFolder: string, assetFilePrefix: string): SpiritSkinVisualAsset[] {
+    const options = [baseSkin(assetFolder, assetFilePrefix)];
+    for (const variantPrefix of baseVariantFilePrefixes[assetFolder] ?? []) {
+        options.push({
+            ...baseSkin(assetFolder, variantPrefix),
+            id: `base-${variantPrefix}`,
+            label: '커스텀 기본',
+        });
+    }
+    const skinPrefix = skinFilePrefixes[assetFolder] ?? assetFilePrefix;
+    for (const index of costumeIndexesByAssetFolder[assetFolder] ?? []) {
+        options.push(costumeSkin(assetFolder, skinPrefix, index));
+    }
+    for (const raidPrefix of raidFilePrefixesByAssetFolder[assetFolder] ?? []) {
+        options.push(raidSkin(assetFolder, raidPrefix));
+    }
+    return options;
+}
+function uniqueCandidates(candidates: string[]): string[] {
+    return [...new Set(candidates)];
+}
 export function getSpiritVisualAssets(detail: SpiritDetail): SpiritVisualAssets {
     const assetFolder = resolveSpiritAssetFolder(detail.name_en);
     const backgroundFile = raceBackgrounds[detail.race] ?? 'Talk_BG_Lounge.png';
@@ -152,20 +331,19 @@ export function getSpiritVisualAssets(detail: SpiritDetail): SpiritVisualAssets 
             avatarCandidates: [],
             portraitCandidates: [],
             background: `${ASSET_ROOT}/backgrounds/talk/${backgroundFile}`,
+            skinOptions: [],
         };
     }
+    const assetFilePrefix = assetFilePrefixes[assetFolder] ?? assetFolder;
+    const skinOptions = createSkinOptions(assetFolder, assetFilePrefix);
+    const portraitCandidates = uniqueCandidates(skinOptions.flatMap((skin) => skin.portraitCandidates));
+    const avatarCandidates = uniqueCandidates(skinOptions.flatMap((skin) => skin.avatarCandidates));
     return {
         assetFolder,
-        avatarCandidates: [
-            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFolder}_512.png`,
-            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFolder}_1024.png`,
-        ],
-        portraitCandidates: [
-            `${ASSET_ROOT}/spirits/${assetFolder}/base/${assetFolder}_2048.png`,
-            `${ASSET_ROOT}/spirits/${assetFolder}/costume/${assetFolder}_Costume01_2048.png`,
-            `${ASSET_ROOT}/spirits/${assetFolder}/raid/${assetFolder}_Raid_2048.png`,
-        ],
+        avatarCandidates,
+        portraitCandidates,
         background: `${ASSET_ROOT}/backgrounds/talk/${backgroundFile}`,
+        skinOptions,
     };
 }
 export function getRaceTone(race: string): string {

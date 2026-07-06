@@ -20,12 +20,12 @@ impl TrainingService {
                 TrainingError::Database(format!("정령을 찾을 수 없습니다: {persona_id}"))
             })?;
 
-        let rooms = ChatRepository::list_rooms_by_persona(conn, persona_id)
+        let room_ids = ChatRepository::list_room_ids_by_persona_messages(conn, persona_id)
             .map_err(|e| TrainingError::Database(e.to_string()))?;
 
         let mut examples = Vec::new();
-        for room in rooms {
-            let messages = ChatRepository::list_messages(conn, &room.id)
+        for room_id in room_ids {
+            let messages = ChatRepository::list_messages_for_persona(conn, &room_id, persona_id)
                 .map_err(|e| TrainingError::Database(e.to_string()))?;
 
             let mut history: Vec<(String, String)> = Vec::new();

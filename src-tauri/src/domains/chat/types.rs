@@ -14,6 +14,7 @@ pub struct ChatRoom {
 pub struct ChatMessage {
     pub id: String,
     pub room_id: String,
+    pub persona_id: Option<String>,
     pub role: String,
     pub content: String,
     pub created_at: String,

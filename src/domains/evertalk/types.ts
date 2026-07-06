@@ -12,6 +12,7 @@ export interface LoadableAssetImageProps {
     candidates: string[];
     alt: string;
     className?: string;
+    style?: React.CSSProperties;
     fallback: React.ReactNode;
 }
 export interface SpiritRosterMeta {

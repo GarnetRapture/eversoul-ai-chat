@@ -1,9 +1,10 @@
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
+import type React from 'react';
 import { Images, MessageCircle, Send, Sparkles, X, ZoomIn } from 'lucide-react';
 import { getRaceTone, getSpiritVisualAssets } from '../../persona';
 import { createConversationSummary, createTalkChoices, pickRandomSpeechLine, pickPokeReactionLine } from '../logic';
 import type { ChatMessage } from '../../chat';
-import type { SpiritVisualAssets } from '../../persona';
+import type { SpiritSkinVisualAsset, SpiritVisualAssets } from '../../persona';
 import type { ChatStageProps } from '../types';
 import { LoadableAssetImage } from './LoadableAssetImage';
 interface ChatMessageBubbleProps {
@@ -11,6 +12,21 @@ interface ChatMessageBubbleProps {
     avatarCandidates: string[];
     spiritName: string;
 }
+interface GalleryTileProps {
+    skin: SpiritSkinVisualAsset;
+    spiritName: string;
+    zoomLabel: string;
+    onZoom: (candidates: string[]) => void;
+}
+const GalleryTile = memo(function GalleryTile({ skin, spiritName, zoomLabel, onZoom }: GalleryTileProps) {
+    return (<button type="button" className="ever-gallery-tile ever-gallery-tile--button" aria-label={`${skin.label} ${zoomLabel}`} onClick={() => onZoom(skin.portraitCandidates)}>
+      <LoadableAssetImage candidates={skin.portraitCandidates} alt={spiritName} fallback={<span>{skin.label}</span>}/>
+      <span className="ever-gallery-tile__label">{skin.label}</span>
+      <span className="ever-gallery-tile__zoom-hint" aria-hidden="true">
+        <ZoomIn size={18}/>
+      </span>
+    </button>);
+});
 const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandidates, spiritName, }: ChatMessageBubbleProps) {
     if (message.role === 'system') {
         return (<div className="ever-message is-system">
@@ -30,16 +46,26 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
     const tone = useMemo(() => (activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral'), [activeDetail]);
     const choices = useMemo(() => createTalkChoices(activeDetail, labels), [activeDetail, labels]);
     const summary = useMemo(() => createConversationSummary(activeDetail), [activeDetail]);
-    const galleryCandidates = useMemo(() => (assets ? [...assets.avatarCandidates, ...assets.portraitCandidates] : []), [assets]);
+    const [activeSkinId, setActiveSkinId] = useState('base');
+    const activeSkin = useMemo(() => {
+        if (!assets || assets.skinOptions.length === 0) {
+            return null;
+        }
+        return assets.skinOptions.find((skin) => skin.id === activeSkinId) ?? assets.skinOptions[0];
+    }, [activeSkinId, assets]);
+    const gallerySkins = useMemo(() => assets?.skinOptions ?? [], [assets]);
     const speechLine = useMemo(() => pickRandomSpeechLine(activeDetail), [activeDetail?.id]);
     const canUseComposer = Boolean(activeDetail && llmStatus?.is_loaded && !isTyping);
     const [poked, setPoked] = useState(false);
     const [displayLine, setDisplayLine] = useState(speechLine);
-    const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+    const [zoomedImageCandidates, setZoomedImageCandidates] = useState<string[] | null>(null);
+    const [zoomOffset, setZoomOffset] = useState({ x: 0, y: 0 });
+    const [zoomDragStart, setZoomDragStart] = useState<{ pointerId: number; x: number; y: number; originX: number; originY: number } | null>(null);
     const pokeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     useEffect(() => {
         setDisplayLine(speechLine);
         setPoked(false);
+        setActiveSkinId('base');
         return () => {
             if (pokeTimeoutRef.current) {
                 clearTimeout(pokeTimeoutRef.current);
@@ -58,6 +84,39 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
         pokeTimeoutRef.current = setTimeout(() => {
             setPoked(false);
         }, 1600);
+    }
+    function openZoom(candidates: string[]) {
+        setZoomOffset({ x: 0, y: 0 });
+        setZoomDragStart(null);
+        setZoomedImageCandidates(candidates);
+    }
+    function closeZoom() {
+        setZoomDragStart(null);
+        setZoomedImageCandidates(null);
+    }
+    function beginZoomDrag(event: React.PointerEvent<HTMLDivElement>) {
+        event.currentTarget.setPointerCapture(event.pointerId);
+        setZoomDragStart({
+            pointerId: event.pointerId,
+            x: event.clientX,
+            y: event.clientY,
+            originX: zoomOffset.x,
+            originY: zoomOffset.y,
+        });
+    }
+    function moveZoomDrag(event: React.PointerEvent<HTMLDivElement>) {
+        if (!zoomDragStart || zoomDragStart.pointerId !== event.pointerId) {
+            return;
+        }
+        setZoomOffset({
+            x: zoomDragStart.originX + event.clientX - zoomDragStart.x,
+            y: zoomDragStart.originY + event.clientY - zoomDragStart.y,
+        });
+    }
+    function endZoomDrag(event: React.PointerEvent<HTMLDivElement>) {
+        if (zoomDragStart?.pointerId === event.pointerId) {
+            setZoomDragStart(null);
+        }
     }
     return (<main className={`ever-stage ${tone}`}>
       {assets && <img className="ever-stage__background" src={assets.background} alt=""/>}
@@ -87,10 +146,15 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
               disabled={!activeDetail}
               onClick={handlePortraitPoke}
             >
-              <LoadableAssetImage candidates={assets?.portraitCandidates ?? []} alt={activeDetail?.name ?? ''} className="ever-character__portrait" fallback={<div className="ever-character__fallback">{activeDetail?.name.charAt(0) ?? 'E'}</div>}/>
+              <LoadableAssetImage candidates={activeSkin?.portraitCandidates ?? []} alt={activeDetail?.name ?? ''} className="ever-character__portrait" fallback={<div className="ever-character__fallback">{activeDetail?.name.charAt(0) ?? 'E'}</div>}/>
               <span className="ever-character__blush" aria-hidden="true" />
             </button>
           </div>
+          {assets && assets.skinOptions.length > 1 && (<div className="ever-character__skins" aria-label={`${activeDetail?.name ?? ''} skin`}>
+              {assets.skinOptions.map((skin) => (<button key={skin.id} type="button" className={skin.id === activeSkin?.id ? 'is-active' : ''} onClick={() => setActiveSkinId(skin.id)}>
+                  {skin.label}
+                </button>))}
+            </div>)}
           {activeDetail && (<button type="button" className="ever-character__caption ever-character__caption--button" onClick={onOpenProfileDetail}>
               <strong>{activeDetail.name_en}</strong>
               <span>{activeDetail.profile.nick_name ?? activeDetail.race}</span>
@@ -107,10 +171,10 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
                   <strong>{labels.noSavedMessages}</strong>
                   <span>{labels.firstMessageHint}</span>
                 </div>)}
-              {messages.map((message) => (<ChatMessageBubble key={message.id} message={message} avatarCandidates={assets?.avatarCandidates ?? []} spiritName={activeDetail?.name ?? ''}/>))}
+              {messages.map((message) => (<ChatMessageBubble key={message.id} message={message} avatarCandidates={activeSkin?.avatarCandidates ?? assets?.avatarCandidates ?? []} spiritName={activeDetail?.name ?? ''}/>))}
               {isTyping && (<div className="ever-message is-spirit">
                   <div className="ever-message__avatar">
-                    <LoadableAssetImage candidates={assets?.avatarCandidates ?? []} alt={activeDetail?.name ?? ''} fallback={<span>{activeDetail?.name.charAt(0) ?? 'E'}</span>}/>
+                    <LoadableAssetImage candidates={activeSkin?.avatarCandidates ?? assets?.avatarCandidates ?? []} alt={activeDetail?.name ?? ''} fallback={<span>{activeDetail?.name.charAt(0) ?? 'E'}</span>}/>
                   </div>
                   <div className="ever-message__bubble">
                     <span className="ever-typing"><i /><i /><i /></span>
@@ -135,12 +199,7 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
               <span>{assets?.assetFolder ?? ''}</span>
             </div>
             <div className="ever-gallery-grid">
-              {galleryCandidates.map((candidate) => (<button key={candidate} type="button" className="ever-gallery-tile ever-gallery-tile--button" aria-label={`${candidate} ${labels.zoomImage}`} onClick={() => setZoomedImage(candidate)}>
-                  <LoadableAssetImage candidates={[candidate]} alt={activeDetail?.name ?? ''} fallback={<span>{candidate.split('/').slice(-1)[0]}</span>}/>
-                  <span className="ever-gallery-tile__zoom-hint" aria-hidden="true">
-                    <ZoomIn size={18}/>
-                  </span>
-                </button>))}
+              {gallerySkins.map((skin) => (<GalleryTile key={skin.id} skin={skin} spiritName={activeDetail?.name ?? ''} zoomLabel={labels.zoomImage} onZoom={openZoom}/>))}
             </div>
           </div>)}
       </section>
@@ -154,12 +213,27 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
           <span>{labels.gallery}</span>
         </button>
       </nav>
-      {zoomedImage && (<div className="ever-background-zoom-overlay" role="dialog" aria-modal="true" onClick={() => setZoomedImage(null)}>
-          <button type="button" className="ever-background-zoom-close" aria-label={labels.close} onClick={() => setZoomedImage(null)}>
+      {zoomedImageCandidates && (<div className="ever-background-zoom-overlay" role="dialog" aria-modal="true" onClick={closeZoom}>
+          <button type="button" className="ever-background-zoom-close" aria-label={labels.close} onClick={closeZoom}>
             <X aria-hidden="true" size={24}/>
           </button>
-          <img className="ever-background-zoom-image" src={zoomedImage} alt={activeDetail?.name ?? ''} onClick={(event) => event.stopPropagation()}/>
-          <span className="ever-background-zoom-caption">{zoomedImage.split('/').slice(-1)[0]}</span>
+          <div
+            className={`ever-background-zoom-frame ${zoomDragStart ? 'is-dragging' : ''}`}
+            onClick={(event) => event.stopPropagation()}
+            onPointerDown={beginZoomDrag}
+            onPointerMove={moveZoomDrag}
+            onPointerUp={endZoomDrag}
+            onPointerCancel={endZoomDrag}
+          >
+            <LoadableAssetImage
+              candidates={zoomedImageCandidates}
+              alt={activeDetail?.name ?? ''}
+              className="ever-background-zoom-image"
+              style={{ transform: `translate3d(${zoomOffset.x}px, ${zoomOffset.y}px, 0)` }}
+              fallback={<span>{activeDetail?.name ?? ''}</span>}
+            />
+          </div>
+          <span className="ever-background-zoom-caption">{zoomedImageCandidates[0]?.split('/').slice(-1)[0] ?? ''}</span>
         </div>)}
     </main>);
 }

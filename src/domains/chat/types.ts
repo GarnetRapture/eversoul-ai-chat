@@ -9,6 +9,7 @@ export interface ChatRoom {
 export interface ChatMessage {
     id: string;
     room_id: string;
+    persona_id: string | null;
     role: 'user' | 'assistant' | 'system';
     content: string;
     created_at: string;

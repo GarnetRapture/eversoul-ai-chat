@@ -67,6 +67,29 @@ impl ChatRepository {
         Ok(None)
     }
 
+    pub fn find_latest_global_session_room(conn: &Connection, title: &str) -> Result<Option<ChatRoom>> {
+        let mut stmt = conn.prepare(
+            "SELECT id, title, persona_id, session_started_at, created_at, updated_at
+             FROM chat_room
+             WHERE persona_id IS NULL AND title = ?1
+             ORDER BY updated_at DESC
+             LIMIT 1",
+        )?;
+        let mut rows = stmt.query(params![title])?;
+        if let Some(row) = rows.next()? {
+            return Ok(Some(ChatRoom {
+                id: row.get(0)?,
+                title: row.get(1)?,
+                persona_id: row.get(2)?,
+                session_started_at: row.get(3)?,
+                created_at: row.get(4)?,
+                updated_at: row.get(5)?,
+            }));
+        }
+
+        Ok(None)
+    }
+
     pub fn list_rooms_by_persona(conn: &Connection, persona_id: &str) -> Result<Vec<ChatRoom>> {
         let mut stmt = conn.prepare(
             "SELECT id, title, persona_id, session_started_at, created_at, updated_at FROM chat_room WHERE persona_id = ?1 ORDER BY created_at ASC",
@@ -91,17 +114,74 @@ impl ChatRepository {
         Ok(list)
     }
 
+    pub fn list_room_ids_by_persona_messages(
+        conn: &Connection,
+        persona_id: &str,
+    ) -> Result<Vec<String>> {
+        let mut stmt = conn.prepare(
+            "SELECT cm.room_id
+             FROM chat_message cm
+             JOIN chat_room cr ON cr.id = cm.room_id
+             WHERE cm.persona_id = ?1 OR (cm.persona_id IS NULL AND cr.persona_id = ?1)
+             GROUP BY cm.room_id
+             ORDER BY MIN(cr.created_at) ASC, MIN(cm.created_at) ASC",
+        )?;
+        let rows = stmt.query_map(params![persona_id], |row| row.get::<_, String>(0))?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(room_id) = item {
+                list.push(room_id);
+            }
+        }
+        Ok(list)
+    }
+
     pub fn list_messages(conn: &Connection, room_id: &str) -> Result<Vec<ChatMessage>> {
         let mut stmt = conn.prepare(
-            "SELECT id, room_id, role, content, created_at FROM chat_message WHERE room_id = ?1 ORDER BY created_at ASC",
+            "SELECT id, room_id, persona_id, role, content, created_at FROM chat_message WHERE room_id = ?1 ORDER BY created_at ASC",
         )?;
         let rows = stmt.query_map(params![room_id], |row| {
             Ok(ChatMessage {
                 id: row.get(0)?,
                 room_id: row.get(1)?,
-                role: row.get(2)?,
-                content: row.get(3)?,
-                created_at: row.get(4)?,
+                persona_id: row.get(2)?,
+                role: row.get(3)?,
+                content: row.get(4)?,
+                created_at: row.get(5)?,
+            })
+        })?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(m) = item {
+                list.push(m);
+            }
+        }
+        Ok(list)
+    }
+
+    pub fn list_messages_for_persona(
+        conn: &Connection,
+        room_id: &str,
+        persona_id: &str,
+    ) -> Result<Vec<ChatMessage>> {
+        let mut stmt = conn.prepare(
+            "SELECT cm.id, cm.room_id, cm.persona_id, cm.role, cm.content, cm.created_at
+             FROM chat_message cm
+             JOIN chat_room cr ON cr.id = cm.room_id
+             WHERE cm.room_id = ?1
+               AND (cm.persona_id = ?2 OR (cm.persona_id IS NULL AND cr.persona_id = ?2))
+             ORDER BY cm.created_at ASC",
+        )?;
+        let rows = stmt.query_map(params![room_id, persona_id], |row| {
+            Ok(ChatMessage {
+                id: row.get(0)?,
+                room_id: row.get(1)?,
+                persona_id: row.get(2)?,
+                role: row.get(3)?,
+                content: row.get(4)?,
+                created_at: row.get(5)?,
             })
         })?;
 
@@ -120,7 +200,7 @@ impl ChatRepository {
         limit: usize,
     ) -> Result<Vec<ChatMessage>> {
         let mut stmt = conn.prepare(
-            "SELECT id, room_id, role, content, created_at FROM chat_message
+            "SELECT id, room_id, persona_id, role, content, created_at FROM chat_message
              WHERE room_id = ?1
              ORDER BY created_at DESC
              LIMIT ?2",
@@ -129,9 +209,46 @@ impl ChatRepository {
             Ok(ChatMessage {
                 id: row.get(0)?,
                 room_id: row.get(1)?,
-                role: row.get(2)?,
-                content: row.get(3)?,
-                created_at: row.get(4)?,
+                persona_id: row.get(2)?,
+                role: row.get(3)?,
+                content: row.get(4)?,
+                created_at: row.get(5)?,
+            })
+        })?;
+
+        let mut list = Vec::new();
+        for item in rows {
+            if let Ok(message) = item {
+                list.push(message);
+            }
+        }
+        list.reverse();
+        Ok(list)
+    }
+
+    pub fn list_recent_messages_for_persona(
+        conn: &Connection,
+        room_id: &str,
+        persona_id: &str,
+        limit: usize,
+    ) -> Result<Vec<ChatMessage>> {
+        let mut stmt = conn.prepare(
+            "SELECT cm.id, cm.room_id, cm.persona_id, cm.role, cm.content, cm.created_at
+             FROM chat_message cm
+             JOIN chat_room cr ON cr.id = cm.room_id
+             WHERE cm.room_id = ?1
+               AND (cm.persona_id = ?2 OR (cm.persona_id IS NULL AND cr.persona_id = ?2))
+             ORDER BY cm.created_at DESC
+             LIMIT ?3",
+        )?;
+        let rows = stmt.query_map(params![room_id, persona_id, limit as i64], |row| {
+            Ok(ChatMessage {
+                id: row.get(0)?,
+                room_id: row.get(1)?,
+                persona_id: row.get(2)?,
+                role: row.get(3)?,
+                content: row.get(4)?,
+                created_at: row.get(5)?,
             })
         })?;
 
@@ -147,8 +264,15 @@ impl ChatRepository {
 
     pub fn insert_message(conn: &Connection, msg: &ChatMessage) -> Result<()> {
         conn.execute(
-            "INSERT INTO chat_message (id, room_id, role, content, created_at) VALUES (?1, ?2, ?3, ?4, ?5)",
-            params![msg.id, msg.room_id, msg.role, msg.content, msg.created_at],
+            "INSERT INTO chat_message (id, room_id, persona_id, role, content, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+            params![
+                msg.id,
+                msg.room_id,
+                msg.persona_id.as_deref(),
+                msg.role,
+                msg.content,
+                msg.created_at
+            ],
         )?;
 
         conn.execute(
@@ -299,11 +423,11 @@ impl ChatRepository {
 
     pub fn count_messages_by_persona(conn: &Connection) -> Result<HashMap<String, usize>> {
         let mut stmt = conn.prepare(
-            "SELECT cr.persona_id, COUNT(cm.id)
+            "SELECT COALESCE(cm.persona_id, cr.persona_id), COUNT(cm.id)
              FROM chat_room cr
              JOIN chat_message cm ON cm.room_id = cr.id
-             WHERE cr.persona_id IS NOT NULL
-             GROUP BY cr.persona_id",
+             WHERE COALESCE(cm.persona_id, cr.persona_id) IS NOT NULL
+             GROUP BY COALESCE(cm.persona_id, cr.persona_id)",
         )?;
         let rows = stmt.query_map([], |row| {
             Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)? as usize))

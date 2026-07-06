@@ -303,6 +303,15 @@ impl LlmWorkerHandle {
                 Ok(text)
             }
             Err(first_error) => {
+                if let Some(target) = stream {
+                    target.emit_done(
+                        request_id,
+                        cancel_flag.load(Ordering::SeqCst),
+                        Some(first_error.to_string()),
+                    );
+                    return Err(first_error);
+                }
+
                 let mut rebuilt_session =
                     Self::create_persona_session(engine, persona_id, current_access)?;
                 let result = engine
@@ -325,9 +334,6 @@ impl LlmWorkerHandle {
                 request_registry.update_generation(request_id, &result);
                 rebuilt_session.cached_tokens = result.cached_tokens;
                 *session = rebuilt_session;
-                if let Some(target) = stream {
-                    target.emit_done(request_id, false, None);
-                }
                 Ok(text)
             }
         }

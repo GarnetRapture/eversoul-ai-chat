@@ -11,7 +11,8 @@ use crate::infrastructure::http::HttpManager;
 
 use crate::domains::auth::commands::{auth_get_session, auth_login, auth_logout};
 use crate::domains::chat::commands::{
-    chat_create_room, chat_create_session_room, chat_get_latest_session_room, chat_list_messages,
+    chat_create_room, chat_create_session_room, chat_get_evertalk_session_room,
+    chat_get_latest_session_room, chat_list_messages, chat_list_messages_for_persona,
     chat_list_rooms, chat_send_message,
 };
 use crate::domains::knowledge::commands::knowledge_search;
@@ -153,9 +154,11 @@ pub fn run() {
             knowledge_search,
             chat_create_room,
             chat_create_session_room,
+            chat_get_evertalk_session_room,
             chat_get_latest_session_room,
             chat_list_rooms,
             chat_list_messages,
+            chat_list_messages_for_persona,
             chat_send_message,
             llm_load,
             llm_unload,

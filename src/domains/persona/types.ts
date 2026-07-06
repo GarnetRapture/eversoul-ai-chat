@@ -97,6 +97,13 @@ export interface SpiritVisualAssets {
     avatarCandidates: string[];
     portraitCandidates: string[];
     background: string;
+    skinOptions: SpiritSkinVisualAsset[];
+}
+export interface SpiritSkinVisualAsset {
+    id: string;
+    label: string;
+    avatarCandidates: string[];
+    portraitCandidates: string[];
 }
 export interface BondRankingEntry {
     persona_id: string;

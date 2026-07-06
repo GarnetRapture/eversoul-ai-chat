@@ -9,7 +9,7 @@ import { settingsClient, type AppSettings, type HardwareProfile, type ResetSumma
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
 import { trainingClient, type TrainingSummary } from '../training';
-import { createApiStatus, createRoomTitle, filterSpirits, formatUnknownError, } from './logic';
+import { createApiStatus, filterSpirits, formatUnknownError, } from './logic';
 import { getEverTalkLabels } from './i18n';
 import type { ApiStatusItem, EverTalkController, RosterTab, StageTab } from './types';
 function frontendDebugLog(stage: string) {
@@ -198,7 +198,7 @@ export function useEverTalkController(): EverTalkController {
         catch (err) {
             setSystemStatus(createApiStatus('chat-db', initLabels.chatDb, 'error', formatUnknownError(err)));
         }
-        const sortedList = dbList.sort((a, b) => a.name.localeCompare(b.name));
+        const sortedList = [...dbList].sort((a, b) => a.name.localeCompare(b.name));
         setSpirits(sortedList);
         const savedDefault = savedDefaultId
             ? sortedList.find((persona) => persona.id === savedDefaultId)
@@ -255,13 +255,9 @@ export function useEverTalkController(): EverTalkController {
         setActiveSpiritId(spirit.id);
         const detail = parseSpiritDetail(spirit, languageOverride ?? appLanguage);
         setActiveDetail(detail);
-        const roomTitle = createRoomTitle(detail.name);
-        let room = await chatClient.getLatestSessionRoom(spirit.id);
-        if (!room) {
-            room = await chatClient.createSessionRoom(roomTitle, spirit.id);
-        }
+        const room = await chatClient.getEverTalkSessionRoom();
         setActiveRoom(room);
-        const history = await chatClient.listMessages(room.id);
+        const history = await chatClient.listMessagesForPersona(room.id, spirit.id);
         setMessages(history);
         await refreshLocalStatus();
         await refreshActiveSessions();
@@ -289,6 +285,7 @@ export function useEverTalkController(): EverTalkController {
         const optimisticUserMessage: ChatMessage = {
             id: crypto.randomUUID(),
             room_id: room.id,
+            persona_id: activeSpiritId,
             role: 'user',
             content: userText,
             created_at: new Date().toISOString(),
@@ -305,6 +302,7 @@ export function useEverTalkController(): EverTalkController {
             const errorMessage: ChatMessage = {
                 id: crypto.randomUUID(),
                 room_id: room.id,
+                persona_id: activeSpiritId,
                 role: 'system',
                 content: labels.messageSendFailed,
                 created_at: new Date().toISOString(),

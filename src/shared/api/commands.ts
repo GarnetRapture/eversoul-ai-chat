@@ -7,9 +7,11 @@ export const tauriCommands = {
     chat: {
         createRoom: 'chat_create_room',
         createSessionRoom: 'chat_create_session_room',
+        getEverTalkSessionRoom: 'chat_get_evertalk_session_room',
         getLatestSessionRoom: 'chat_get_latest_session_room',
         listRooms: 'chat_list_rooms',
         listMessages: 'chat_list_messages',
+        listMessagesForPersona: 'chat_list_messages_for_persona',
         sendMessage: 'chat_send_message',
     },
     knowledge: {

@@ -30,6 +30,7 @@ pub struct GenerationPlan {
     pub prompt_tokens: Vec<LlamaToken>,
     pub generation_limit: usize,
     pub context_capacity: usize,
+    pub truncated_prompt_tokens: usize,
     pub overflowed: bool,
 }
 
@@ -145,16 +146,19 @@ impl LlmEngine {
         let generation_limit = self.bounded_generation_limit(requested_max_tokens)?;
         let context_capacity = self.profile.context_size as usize;
         let max_prompt_len = context_capacity - generation_limit;
+        let mut truncated_prompt_tokens = 0;
 
         if prompt_tokens.len() > max_prompt_len {
             let overflow = prompt_tokens.len() - max_prompt_len;
             prompt_tokens.drain(0..overflow);
+            truncated_prompt_tokens = overflow;
         }
 
         Ok(GenerationPlan {
             prompt_tokens,
             generation_limit,
             context_capacity,
+            truncated_prompt_tokens,
             overflowed: original_prompt_len > max_prompt_len,
         })
     }
@@ -187,21 +191,16 @@ impl LlmEngine {
         let backend = LlamaBackend::init().map_err(|e| LlmError::BackendInit(e.to_string()))?;
         startup_debug_log("llm_engine:load:backend_ready");
 
-        let mut model_params = std::pin::pin!(
-            LlamaModelParams::default()
-                .with_n_gpu_layers(0)
-                .with_use_mmap(false)
-                .with_use_mlock(false)
-        );
+        let mut model_params = std::pin::pin!(LlamaModelParams::default()
+            .with_n_gpu_layers(0)
+            .with_use_mmap(false)
+            .with_use_mlock(false));
         model_params.as_mut().add_cpu_buft_override(c".*");
         startup_debug_log("llm_engine:load:model_params:cpu_direct_no_mmap");
 
-        let model = LlamaModel::load_from_file(
-            &backend,
-            &model_path,
-            model_params.as_ref().get_ref(),
-        )
-            .map_err(|e| LlmError::ModelLoad(e.to_string()))?;
+        let model =
+            LlamaModel::load_from_file(&backend, &model_path, model_params.as_ref().get_ref())
+                .map_err(|e| LlmError::ModelLoad(e.to_string()))?;
         startup_debug_log("llm_engine:load:model_ready");
 
         Ok(Self {
@@ -394,10 +393,9 @@ impl LlmEngine {
         max_tokens: u32,
         runtime: &mut GenerationRuntime<'_>,
     ) -> Result<CacheGenerationResult, LlmError> {
-        let original_prompt_tokens = self.count_tokens(prompt)?;
         let plan = self.generation_plan(prompt, max_tokens)?;
         let prompt_tokens = plan.prompt_tokens;
-        let truncated_prompt_tokens = original_prompt_tokens.saturating_sub(prompt_tokens.len());
+        let truncated_prompt_tokens = plan.truncated_prompt_tokens;
         let mut cache_reset = false;
 
         if plan.overflowed {
@@ -413,7 +411,7 @@ impl LlmEngine {
             .zip(prompt_tokens.iter())
             .take_while(|(cached, incoming)| cached == incoming)
             .count();
-        let common_len = matching_len.min(prompt_tokens.len().saturating_sub(1));
+        let mut common_len = matching_len.min(prompt_tokens.len().saturating_sub(1));
 
         if common_len < effective_cached_tokens.len() {
             let removed = ctx
@@ -422,6 +420,7 @@ impl LlmEngine {
             if !removed {
                 ctx.clear_kv_cache();
                 cache_reset = true;
+                common_len = 0;
             }
         }
 

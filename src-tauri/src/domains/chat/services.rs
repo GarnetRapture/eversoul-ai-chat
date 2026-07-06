@@ -20,6 +20,8 @@ const CONSOLIDATION_INTERVAL: usize = 10;
 
 const CONSOLIDATION_SOURCE_LIMIT: usize = 30;
 
+pub const EVERTALK_SESSION_TITLE: &str = "EverTalk Session";
+
 pub struct ChatService<'a> {
     conn: &'a Connection,
 }
@@ -66,8 +68,30 @@ impl<'a> ChatService<'a> {
             .map_err(|e| ChatError::Database(e.to_string()))
     }
 
+    pub fn get_or_create_evertalk_session_room(&self) -> Result<ChatRoom, ChatError> {
+        if let Some(room) = ChatRepository::find_latest_global_session_room(
+            self.conn,
+            EVERTALK_SESSION_TITLE,
+        )
+            .map_err(|e| ChatError::Database(e.to_string()))?
+        {
+            return Ok(room);
+        }
+
+        self.create_chat_session_room(EVERTALK_SESSION_TITLE, None)
+    }
+
     pub fn get_room_messages(&self, room_id: &str) -> Result<Vec<ChatMessage>, ChatError> {
         ChatRepository::list_messages(self.conn, room_id)
+            .map_err(|e| ChatError::Database(e.to_string()))
+    }
+
+    pub fn get_room_messages_for_persona(
+        &self,
+        room_id: &str,
+        persona_id: &str,
+    ) -> Result<Vec<ChatMessage>, ChatError> {
+        ChatRepository::list_messages_for_persona(self.conn, room_id, persona_id)
             .map_err(|e| ChatError::Database(e.to_string()))
     }
 
@@ -85,6 +109,7 @@ impl<'a> ChatService<'a> {
         let user_msg = ChatMessage {
             id: Uuid::new_v4().to_string(),
             room_id: req.room_id.clone(),
+            persona_id: Some(req.persona_id.clone()),
             role: "user".to_string(),
             content: req.content.clone(),
             created_at: now,
@@ -140,9 +165,13 @@ impl<'a> ChatService<'a> {
             system_prompt.push_str(&memory_block);
         }
 
-        let history =
-            ChatRepository::list_recent_messages(self.conn, &req.room_id, PROMPT_HISTORY_LIMIT)
-                .map_err(|e| ChatError::Database(e.to_string()))?;
+        let history = ChatRepository::list_recent_messages_for_persona(
+            self.conn,
+            &req.room_id,
+            &req.persona_id,
+            PROMPT_HISTORY_LIMIT,
+        )
+        .map_err(|e| ChatError::Database(e.to_string()))?;
 
         Ok((system_prompt, history))
     }
@@ -210,7 +239,12 @@ impl<'a> ChatService<'a> {
         Ok(full_prompt)
     }
 
-    pub fn save_ai_response(&self, room_id: &str, text: String) -> Result<ChatMessage, ChatError> {
+    pub fn save_ai_response(
+        &self,
+        room_id: &str,
+        persona_id: &str,
+        text: String,
+    ) -> Result<ChatMessage, ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
@@ -219,6 +253,7 @@ impl<'a> ChatService<'a> {
         let ai_msg = ChatMessage {
             id: Uuid::new_v4().to_string(),
             room_id: room_id.to_string(),
+            persona_id: Some(persona_id.to_string()),
             role: "assistant".to_string(),
             content: text,
             created_at: now,
