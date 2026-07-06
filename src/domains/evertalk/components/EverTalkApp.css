@@ -288,6 +288,7 @@
 }
 
 .ever-spirit-row__icon {
+  position: relative;
   width: 46px;
   height: 46px;
   overflow: hidden;
@@ -299,6 +300,18 @@
   color: #303445;
   font-weight: 900;
   box-shadow: 0 8px 20px rgba(40, 42, 62, 0.14);
+}
+
+.ever-spirit-row__session-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4caf6d;
+  border: 1.5px solid #fff;
+  z-index: 1;
 }
 
 .ever-spirit-row__icon img {
@@ -630,6 +643,20 @@
 .ever-message.is-user {
   grid-template-columns: minmax(0, 1fr);
   justify-items: end;
+}
+
+.ever-message.is-system {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.ever-message.is-system .ever-message__bubble {
+  max-width: min(420px, 90%);
+  background: #fdece8;
+  border-color: #e2a89c;
+  color: #9c3b2a;
+  font-size: 13px;
+  text-align: center;
 }
 
 .ever-message__avatar {
@@ -1151,6 +1178,139 @@
 .ever-language-gate__options button.is-active {
   background: #4c4a68;
   color: #fff;
+}
+
+.ever-performance-gate {
+  z-index: 120;
+}
+
+.ever-performance-gate__modal {
+  width: min(520px, calc(100vw - 32px));
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 8px;
+  background: #f7f2e8;
+  color: #26293b;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  box-shadow: 0 28px 80px rgba(10, 12, 20, 0.42);
+}
+
+.ever-performance-gate__modal h2,
+.ever-performance-gate__modal p {
+  margin: 0;
+}
+
+.ever-performance-gate__modal p {
+  color: #666c79;
+  line-height: 1.6;
+}
+
+.ever-performance-gate__hardware {
+  font-size: 12px;
+  font-weight: 700;
+  color: #494252 !important;
+}
+
+.ever-performance-gate__options {
+  display: grid;
+  gap: 10px;
+}
+
+.ever-performance-gate__options button {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  border-radius: 8px;
+  background: #fffaf1;
+  color: #303445;
+  cursor: pointer;
+}
+
+.ever-performance-gate__options button strong {
+  font-size: 14px;
+}
+
+.ever-performance-gate__options button span {
+  font-size: 12px;
+  color: #666c79;
+  line-height: 1.5;
+}
+
+.ever-performance-gate__options button em {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #ffe08a;
+  color: #494252;
+}
+
+.ever-performance-gate__options button.is-active {
+  background: #4c4a68;
+  border-color: #4c4a68;
+}
+
+.ever-performance-gate__options button.is-active strong,
+.ever-performance-gate__options button.is-active span {
+  color: #fff;
+}
+
+.ever-setup-progress {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #26293b;
+}
+
+.ever-setup-progress__modal {
+  width: min(420px, calc(100vw - 32px));
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 8px;
+  background: #f7f2e8;
+  color: #26293b;
+  box-shadow: 0 28px 80px rgba(10, 12, 20, 0.42);
+  text-align: center;
+}
+
+.ever-setup-progress__modal h2,
+.ever-setup-progress__modal p {
+  margin: 0;
+}
+
+.ever-setup-progress__modal p {
+  color: #666c79;
+}
+
+.ever-setup-progress__bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #e2ded5;
+  overflow: hidden;
+}
+
+.ever-setup-progress__bar-fill {
+  height: 100%;
+  background: #4c4a68;
+  transition: width 0.2s ease;
+}
+
+.ever-setup-progress__count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #494252;
 }
 
 .ever-profile-detail-modal {

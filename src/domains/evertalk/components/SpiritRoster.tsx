@@ -3,7 +3,7 @@ import { getRaceTone, getSpiritVisualAssets, parseSpiritDetail } from '../../per
 import { createConversationSummary } from '../logic';
 import type { SpiritRosterProps } from '../types';
 import { LoadableAssetImage } from './LoadableAssetImage';
-export function SpiritRoster({ spirits, activeSpiritId, searchQuery, loadError, defaultPersonaId, activeTab, collapsed, bondRanking, bondRankingLoading, familiarityList, familiarityLoading, labels, appLanguage, onSearchChange, onSelect, onSetDefault, onTabChange, onToggleCollapsed, }: SpiritRosterProps) {
+export function SpiritRoster({ spirits, activeSpiritId, searchQuery, loadError, defaultPersonaId, activeTab, collapsed, bondRanking, bondRankingLoading, familiarityList, familiarityLoading, labels, appLanguage, activeSessionIds, onSearchChange, onSelect, onSetDefault, onTabChange, onToggleCollapsed, }: SpiritRosterProps) {
     const hasSpirits = spirits.length > 0;
     return (<aside className={`ever-roster ${collapsed ? 'is-collapsed' : ''}`}>
       <div className="ever-roster__top">
@@ -29,6 +29,7 @@ export function SpiritRoster({ spirits, activeSpiritId, searchQuery, loadError, 
         {activeTab === 'list' && spirits.map((spirit) => {
                 const active = activeSpiritId === spirit.id;
                 const isDefault = defaultPersonaId === spirit.id;
+                const isSessionActive = activeSessionIds.includes(spirit.id);
                 const detail = parseSpiritDetail(spirit, appLanguage);
                 const assets = getSpiritVisualAssets(detail);
                 const preview = detail.personality.greeting || createConversationSummary(detail);
@@ -36,6 +37,7 @@ export function SpiritRoster({ spirits, activeSpiritId, searchQuery, loadError, 
                 <button className="ever-spirit-row__select" type="button" onClick={() => onSelect(spirit)}>
                   <span className="ever-spirit-row__icon">
                     <LoadableAssetImage candidates={assets.avatarCandidates} alt={detail.name} fallback={<span>{detail.name.charAt(0)}</span>}/>
+                    {isSessionActive && (<span className="ever-spirit-row__session-badge" title={labels.activeSessionBadge}/>)}
                   </span>
                   <span className="ever-spirit-row__copy">
                     <strong>{detail.name}</strong>

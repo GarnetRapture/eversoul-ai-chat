@@ -1,6 +1,7 @@
 use super::repositories::PersonaRepository;
 use super::types::{
-    BondRankingEntry, FamiliarityEntry, PersonaConfig, PersonaError, UpdatePersonaRequest,
+    BondRankingEntry, FamiliarityEntry, PersonaConfig, PersonaError, PersonaLocalizedPrompt,
+    UpdatePersonaRequest,
 };
 use crate::domains::chat::repositories::ChatRepository;
 use crate::infrastructure::compress::PersonaLoader;
@@ -629,8 +630,34 @@ impl<'a> PersonaService<'a> {
         let persona = PersonaRepository::get_persona(self.conn, id).map_err(|e| e.to_string())?;
 
         if let Some(p) = persona {
-            let (localized_name, localized_prompt) = Self::build_localized_system_prompt(&p, language);
-            let prompt = match Self::supported_language(language) {
+            let normalized_language = Self::supported_language(language).to_string();
+            let cached = PersonaRepository::get_localized_prompt(
+                self.conn,
+                &p.id,
+                &normalized_language,
+                &p.created_at,
+            )
+            .map_err(|e| e.to_string())?;
+
+            if let Some(entry) = cached {
+                return Ok(entry.assembled_prompt);
+            }
+
+            let prompt = Self::assemble_and_cache_prompt(self.conn, &p, &normalized_language)?;
+            return Ok(prompt);
+        }
+
+        Err(format!("페르소나 정보를 찾을 수 없습니다: {}", id))
+    }
+
+    fn assemble_and_cache_prompt(
+        conn: &Connection,
+        p: &PersonaConfig,
+        normalized_language: &str,
+    ) -> Result<String, String> {
+        let (localized_name, localized_prompt) =
+            Self::build_localized_system_prompt(p, normalized_language);
+        let prompt = match normalized_language {
                 "en" => format!(
                     "You are {name}. Follow the guidelines, character profile, and tone guide below for this bond-chat conversation.\n\n{body}\n\n\
                     [Name & Addressing Rules - Must Follow]\n\
@@ -672,13 +699,31 @@ impl<'a> PersonaService<'a> {
                     body = localized_prompt
                 ),
             };
-            Ok(prompt)
-        } else {
-            Err(format!("페르소나 정보를 찾을 수 없습니다: {}", id))
-        }
+
+        let cached_at = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .map(|d| d.as_secs().to_string())
+            .unwrap_or_default();
+        let cache_entry = PersonaLocalizedPrompt {
+            persona_id: p.id.clone(),
+            language: normalized_language.to_string(),
+            localized_name,
+            assembled_prompt: prompt.clone(),
+            source_updated_at: p.created_at.clone(),
+            cached_at,
+        };
+        PersonaRepository::save_localized_prompt(conn, &cache_entry).map_err(|e| e.to_string())?;
+
+        Ok(prompt)
     }
 
     pub fn get_available_personas(&self) -> Result<Vec<PersonaConfig>, PersonaError> {
+        let existing = PersonaRepository::list_personas(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))?;
+        if !existing.is_empty() {
+            return Ok(existing);
+        }
+
         let mut names = PersonaLoader::list_personas();
         names.sort();
 

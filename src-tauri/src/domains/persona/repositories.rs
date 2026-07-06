@@ -1,5 +1,5 @@
-use super::types::PersonaConfig;
-use rusqlite::{params, Connection, Result};
+use super::types::{PersonaConfig, PersonaLocalizedPrompt};
+use rusqlite::{params, Connection, OptionalExtension, Result};
 
 pub struct PersonaRepository;
 
@@ -80,5 +80,55 @@ impl PersonaRepository {
             }
         }
         Ok(list)
+    }
+
+    pub fn get_localized_prompt(
+        conn: &Connection,
+        persona_id: &str,
+        language: &str,
+        source_updated_at: &str,
+    ) -> Result<Option<PersonaLocalizedPrompt>> {
+        conn.query_row(
+            "SELECT persona_id, language, localized_name, assembled_prompt, source_updated_at, cached_at
+             FROM persona_localized_prompt
+             WHERE persona_id = ?1 AND language = ?2 AND source_updated_at = ?3",
+            params![persona_id, language, source_updated_at],
+            |row| {
+                Ok(PersonaLocalizedPrompt {
+                    persona_id: row.get(0)?,
+                    language: row.get(1)?,
+                    localized_name: row.get(2)?,
+                    assembled_prompt: row.get(3)?,
+                    source_updated_at: row.get(4)?,
+                    cached_at: row.get(5)?,
+                })
+            },
+        )
+        .optional()
+    }
+
+    pub fn save_localized_prompt(conn: &Connection, entry: &PersonaLocalizedPrompt) -> Result<()> {
+        conn.execute(
+            "INSERT OR REPLACE INTO persona_localized_prompt (
+                persona_id, language, localized_name, assembled_prompt, source_updated_at, cached_at
+             ) VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+            params![
+                entry.persona_id,
+                entry.language,
+                entry.localized_name,
+                entry.assembled_prompt,
+                entry.source_updated_at,
+                entry.cached_at
+            ],
+        )?;
+        Ok(())
+    }
+
+    pub fn count_localized_prompts_for_language(conn: &Connection, language: &str) -> Result<i64> {
+        conn.query_row(
+            "SELECT COUNT(*) FROM persona_localized_prompt WHERE language = ?1",
+            params![language],
+            |row| row.get(0),
+        )
     }
 }

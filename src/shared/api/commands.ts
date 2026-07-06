@@ -17,8 +17,16 @@ export const tauriCommands = {
     },
     llm: {
         load: 'llm_load',
+        unload: 'llm_unload',
         status: 'llm_status',
         infer: 'llm_infer',
+        inferStream: 'llm_infer_stream',
+        cancelRequest: 'llm_cancel_request',
+        activeSessions: 'llm_active_sessions',
+        sessionStatuses: 'llm_session_statuses',
+        requestStatuses: 'llm_request_statuses',
+        verifyModel: 'llm_verify_model',
+        selfTest: 'llm_self_test',
     },
     persona: {
         list: 'persona_list',
@@ -45,6 +53,9 @@ export const tauriCommands = {
         get: 'settings_get',
         reset: 'settings_reset',
         setLanguage: 'settings_set_language',
+        setPerformanceTier: 'settings_set_performance_tier',
+        detectHardware: 'settings_detect_hardware',
+        completeInitialSetup: 'settings_complete_initial_setup',
     },
     training: {
         run: 'training_run',

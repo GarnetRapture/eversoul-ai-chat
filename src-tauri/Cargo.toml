@@ -1,6 +1,6 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.7"
+version = "0.0.8"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
@@ -43,6 +43,7 @@ llama-cpp-2 = "0.1"
 # 논리 코어(하이퍼스레딩 포함) 대신 물리 코어 수를 기준으로 추론 스레드를 산정하기 위함.
 # CPU 추론은 메모리 대역폭 바운드라 논리 코어까지 다 쓰면 캐시/메모리 경합으로 오히려 느려진다.
 num_cpus = "1"
+sysinfo = "0.32"
 futures-util = "0.3.32"
 sha2 = "0.11.0"
 hex = "0.4.3"

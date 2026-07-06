@@ -12,6 +12,11 @@ interface ChatMessageBubbleProps {
     spiritName: string;
 }
 const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandidates, spiritName, }: ChatMessageBubbleProps) {
+    if (message.role === 'system') {
+        return (<div className="ever-message is-system">
+          <div className="ever-message__bubble">{message.content}</div>
+        </div>);
+    }
     const fromUser = message.role === 'user';
     return (<div className={`ever-message ${fromUser ? 'is-user' : 'is-spirit'}`}>
       {!fromUser && (<div className="ever-message__avatar">

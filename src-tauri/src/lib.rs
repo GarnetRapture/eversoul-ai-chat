@@ -15,13 +15,18 @@ use crate::domains::chat::commands::{
     chat_list_rooms, chat_send_message,
 };
 use crate::domains::knowledge::commands::knowledge_search;
-use crate::domains::llm::commands::{llm_infer, llm_load, llm_status};
+use crate::domains::llm::commands::{
+    llm_active_sessions, llm_cancel_request, llm_infer, llm_infer_stream, llm_load,
+    llm_request_statuses, llm_self_test, llm_session_statuses, llm_status, llm_unload,
+    llm_verify_model,
+};
 use crate::domains::persona::commands::{
     persona_bond_ranking, persona_familiarity_list, persona_get_default, persona_get_pack,
     persona_list, persona_list_archive, persona_select_preset, persona_set_default, persona_update,
 };
 use crate::domains::settings::commands::{
-    settings_get, settings_reset, settings_set_language, SettingsState,
+    settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
+    settings_set_language, settings_set_performance_tier, SettingsState,
 };
 use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
@@ -30,14 +35,44 @@ use crate::domains::sync::commands::{sync_get_local_status, sync_run};
 use crate::domains::training::commands::{training_run, TrainingState};
 use crate::infrastructure::settings::SettingsManager;
 
+pub(crate) fn startup_debug_log(stage: &str) {
+    use std::io::Write;
+
+    eprintln!("[eversoul-startup] {stage}");
+    let _ = std::io::stderr().flush();
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
-        .plugin(tauri_plugin_opener::init())
-        .plugin(tauri_plugin_shell::init())
-        .plugin(tauri_plugin_dialog::init())
-        .plugin(tauri_plugin_fs::init())
+    startup_debug_log("run:start");
+
+    let app = tauri::Builder::default()
+        .plugin({
+            startup_debug_log("plugin:opener:init:before");
+            let plugin = tauri_plugin_opener::init();
+            startup_debug_log("plugin:opener:init:after");
+            plugin
+        })
+        .plugin({
+            startup_debug_log("plugin:shell:init:before");
+            let plugin = tauri_plugin_shell::init();
+            startup_debug_log("plugin:shell:init:after");
+            plugin
+        })
+        .plugin({
+            startup_debug_log("plugin:dialog:init:before");
+            let plugin = tauri_plugin_dialog::init();
+            startup_debug_log("plugin:dialog:init:after");
+            plugin
+        })
+        .plugin({
+            startup_debug_log("plugin:fs:init:before");
+            let plugin = tauri_plugin_fs::init();
+            startup_debug_log("plugin:fs:init:after");
+            plugin
+        })
         .setup(|app| {
+            startup_debug_log("setup:start");
             let db_path = app
                 .path()
                 .app_local_data_dir()
@@ -52,17 +87,12 @@ pub fn run() {
                     db_dir.join("eversoul.db")
                 });
 
-            #[cfg(debug_assertions)]
-            {
-                let _ = std::fs::remove_file(&db_path);
-                let _ = std::fs::remove_file(format!("{}-wal", db_path.display()));
-                let _ = std::fs::remove_file(format!("{}-shm", db_path.display()));
-            }
-
+            startup_debug_log("setup:database:path_ready");
             let db_mgr = DatabaseManager::new(db_path);
             let conn = db_mgr
                 .connect()
                 .map_err(|e| -> Box<dyn std::error::Error> { Box::new(e) })?;
+            startup_debug_log("setup:database:connected");
 
             let settings_path = app
                 .path()
@@ -77,11 +107,8 @@ pub fn run() {
                     let _ = std::fs::create_dir_all(&config_dir);
                     config_dir.join("settings.ini")
                 });
-            #[cfg(debug_assertions)]
-            {
-                let _ = std::fs::remove_file(&settings_path);
-            }
             let settings_mgr = SettingsManager::new(settings_path);
+            startup_debug_log("setup:settings:ready");
 
             let adapters_dir = app
                 .path()
@@ -89,28 +116,23 @@ pub fn run() {
                 .map(|p| p.join("lora_adapters"))
                 .unwrap_or_else(|_| std::path::PathBuf::from("lora_adapters"));
             let _ = std::fs::create_dir_all(&adapters_dir);
-
-            let check_empty: Result<i64, _> =
-                conn.query_row("SELECT COUNT(*) FROM persona_profile", [], |r| r.get(0));
-            if let Ok(count) = check_empty {
-                if count == 0 {
-                    let service = crate::domains::persona::services::PersonaService::new(&conn);
-                    let archive_names =
-                        crate::infrastructure::compress::PersonaLoader::list_personas();
-                    for name in archive_names {
-                        let _ = service.load_and_save_preset(&name);
-                    }
-                }
-            }
+            startup_debug_log("setup:lora_adapters:ready");
 
             let http_mgr = HttpManager::new("https://api.eversoul-ai.chat".to_string());
+            startup_debug_log("setup:http:ready");
 
             app.manage(DbState(Mutex::new(conn)));
+            startup_debug_log("setup:state:db");
             app.manage(HttpState(http_mgr));
+            startup_debug_log("setup:state:http");
             app.manage(LlmState(Mutex::new(None)));
+            startup_debug_log("setup:state:llm");
             app.manage(SettingsState(Mutex::new(settings_mgr)));
+            startup_debug_log("setup:state:settings");
             app.manage(TrainingState(Mutex::new(adapters_dir)));
+            startup_debug_log("setup:state:training");
 
+            startup_debug_log("setup:done");
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
@@ -136,8 +158,16 @@ pub fn run() {
             chat_list_messages,
             chat_send_message,
             llm_load,
+            llm_unload,
             llm_status,
             llm_infer,
+            llm_infer_stream,
+            llm_cancel_request,
+            llm_active_sessions,
+            llm_session_statuses,
+            llm_request_statuses,
+            llm_verify_model,
+            llm_self_test,
             style_list,
             style_update,
             style_select_active,
@@ -145,8 +175,26 @@ pub fn run() {
             settings_get,
             settings_reset,
             settings_set_language,
+            settings_set_performance_tier,
+            settings_detect_hardware,
+            settings_complete_initial_setup,
             training_run
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running eversoul-ai-chat application");
+        .build({
+            startup_debug_log("context:generate:before");
+            let context = tauri::generate_context!();
+            startup_debug_log("context:generate:after");
+            startup_debug_log("tauri:build:before");
+            context
+        })
+        .expect("error while building eversoul-ai-chat application");
+
+    startup_debug_log("tauri:build:after");
+    startup_debug_log("tauri:run:before");
+    app.run(|_app_handle, event| {
+        if !matches!(event, tauri::RunEvent::MainEventsCleared) {
+            startup_debug_log(&format!("tauri:event:{event:?}"));
+        }
+    });
+    startup_debug_log("tauri:run:returned");
 }

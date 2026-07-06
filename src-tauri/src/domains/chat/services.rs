@@ -7,7 +7,7 @@ use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::knowledge::services::KnowledgeService;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::style::services::StyleService;
-use crate::infrastructure::llm::LlmEngine;
+use crate::infrastructure::llm::worker::LlmWorkerHandle;
 use crate::infrastructure::settings::SettingsManager;
 
 const EPISODIC_INJECT_LIMIT: usize = 5;
@@ -147,6 +147,69 @@ impl<'a> ChatService<'a> {
         Ok((system_prompt, history))
     }
 
+    fn render_chat_message(msg: &ChatMessage) -> String {
+        format!("<|im_start|>{}\n{}<|im_end|>\n", msg.role, msg.content)
+    }
+
+    pub fn build_llm_chat_prompt(system_prompt: &str, history: &[ChatMessage]) -> String {
+        let mut full_prompt = String::new();
+        full_prompt.push_str(&format!(
+            "<|im_start|>system\n{}<|im_end|>\n",
+            system_prompt
+        ));
+
+        for msg in history {
+            full_prompt.push_str(&Self::render_chat_message(msg));
+        }
+
+        full_prompt.push_str("<|im_start|>assistant\n");
+        full_prompt
+    }
+
+    pub fn build_llm_chat_prompt_with_budget<F>(
+        system_prompt: &str,
+        history: &[ChatMessage],
+        max_prompt_tokens: usize,
+        mut count_tokens: F,
+    ) -> Result<String, ChatError>
+    where
+        F: FnMut(&str) -> Result<usize, ChatError>,
+    {
+        let system_block = format!("<|im_start|>system\n{}<|im_end|>\n", system_prompt);
+        let assistant_block = "<|im_start|>assistant\n";
+        let base_prompt = format!("{}{}", system_block, assistant_block);
+
+        if count_tokens(&base_prompt)? >= max_prompt_tokens {
+            return Ok(base_prompt);
+        }
+
+        let mut selected_blocks: Vec<String> = Vec::new();
+        for msg in history.iter().rev() {
+            let block = Self::render_chat_message(msg);
+            let mut candidate = String::new();
+            candidate.push_str(&system_block);
+            for selected in selected_blocks.iter().rev() {
+                candidate.push_str(selected);
+            }
+            candidate.push_str(&block);
+            candidate.push_str(assistant_block);
+
+            if count_tokens(&candidate)? > max_prompt_tokens {
+                continue;
+            }
+
+            selected_blocks.push(block);
+        }
+
+        let mut full_prompt = String::new();
+        full_prompt.push_str(&system_block);
+        for block in selected_blocks.iter().rev() {
+            full_prompt.push_str(block);
+        }
+        full_prompt.push_str(assistant_block);
+        Ok(full_prompt)
+    }
+
     pub fn save_ai_response(&self, room_id: &str, text: String) -> Result<ChatMessage, ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -171,7 +234,7 @@ impl<'a> ChatService<'a> {
         persona_id: &str,
         user_text: &str,
         ai_text: &str,
-        engine: &LlmEngine,
+        engine: &LlmWorkerHandle,
     ) -> Result<(), ChatError> {
         let extraction_prompt = format!(
             "<|im_start|>system\n다음은 정령 캐릭터와 구원자(사용자) 사이의 대화 한 턴이다. \
@@ -219,7 +282,7 @@ impl<'a> ChatService<'a> {
     fn consolidate_semantic_memory(
         &self,
         persona_id: &str,
-        engine: &LlmEngine,
+        engine: &LlmWorkerHandle,
     ) -> Result<(), ChatError> {
         let episodic = ChatRepository::list_episodic_memories(
             self.conn,

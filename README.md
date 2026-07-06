@@ -12,7 +12,7 @@
 <p align="center"><i>완전한 로컬 구동 AI 채팅 클라이언트</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.7-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.8-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -414,6 +414,7 @@ npm run tauri build
 | 0.0.6 | `update_i18n : en , kr , zh_tw , zh_cn`   |
 | 0.0.7 | 다국어 README 3종 정비 + 버전 규칙 문서화 |
 | 0.0.7 | `up` |
+| 0.0.8 | `bugfix` |
 
 ---
 

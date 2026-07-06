@@ -140,6 +140,24 @@ export interface EverTalkLabels {
     defaultProfileSet: (id: string) => string;
     loraTrainingNote: string;
     appLoading: string;
+    performanceGateTitle: string;
+    performanceGateDescription: string;
+    performanceTierLight: string;
+    performanceTierBalanced: string;
+    performanceTierPerformance: string;
+    performanceTierLightDescription: string;
+    performanceTierBalancedDescription: string;
+    performanceTierPerformanceDescription: string;
+    hardwareDetected: (cores: number, memoryGb: number) => string;
+    recommendedTier: string;
+    activeSessionBadge: string;
+    messageSendFailed: string;
+    setupProgressTitle: string;
+    setupStagePersonas: string;
+    setupStageCaching: string;
+    setupStageModel: string;
+    setupStageDone: string;
+    setupProgressCount: (current: number, total: number) => string;
 }
 
 export type EverTalkLabelBag = {
@@ -287,6 +305,24 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         defaultProfileSet: (id) => `기본 프로필 ${id}`,
         loraTrainingNote: 'CPU에서 수 분~수 시간이 걸릴 수 있으며, 최초 실행 시 기반 모델을 내려받습니다.',
         appLoading: '에버톡 로컬 데이터베이스 연결 중',
+        performanceGateTitle: '성능 등급 선택',
+        performanceGateDescription: '이 PC의 사양을 감지했습니다. 응답 속도와 정확도의 균형을 선택하세요. 언제든 설정에서 변경할 수 있습니다.',
+        performanceTierLight: '가벼움',
+        performanceTierBalanced: '균형',
+        performanceTierPerformance: '고성능',
+        performanceTierLightDescription: '스레드/컨텍스트를 최소로 사용해 저사양 PC에서도 안정적으로 작동합니다.',
+        performanceTierBalancedDescription: '대부분의 PC에 적합한 기본 균형 설정입니다.',
+        performanceTierPerformanceDescription: '코어와 컨텍스트를 최대로 사용해 더 빠르고 긴 대화를 처리합니다.',
+        hardwareDetected: (cores, memoryGb) => `감지된 사양: 물리 코어 ${cores}개 · 메모리 ${memoryGb}GB`,
+        recommendedTier: '이 PC에 추천',
+        activeSessionBadge: '세션 활성',
+        setupProgressTitle: '에버톡 초기 구성 중',
+        setupStagePersonas: '정령 데이터 준비 중',
+        setupStageCaching: '선택 언어로 대화 데이터 캐싱 중',
+        setupStageModel: '로컬 모델 로딩 중',
+        setupStageDone: '구성 완료',
+        setupProgressCount: (current, total) => `${current} / ${total}`,
+        messageSendFailed: '응답 생성에 실패했습니다. 다시 시도해 주세요.',
     },
     en: {
         languageGateTitle: 'Choose Language',
@@ -428,6 +464,24 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         defaultProfileSet: (id) => `Default profile ${id}`,
         loraTrainingNote: 'This can take minutes to hours on CPU and downloads the base model on first run.',
         appLoading: 'Connecting EverTalk local database',
+        performanceGateTitle: 'Choose Performance Tier',
+        performanceGateDescription: 'We detected this PC\'s specs. Choose the balance between response speed and accuracy. You can change this later in Settings.',
+        performanceTierLight: 'Light',
+        performanceTierBalanced: 'Balanced',
+        performanceTierPerformance: 'Performance',
+        performanceTierLightDescription: 'Uses minimal threads/context so it stays stable on lower-spec PCs.',
+        performanceTierBalancedDescription: 'Default balanced setting suited to most PCs.',
+        performanceTierPerformanceDescription: 'Uses maximum cores and context for faster, longer conversations.',
+        hardwareDetected: (cores, memoryGb) => `Detected: ${cores} physical cores · ${memoryGb}GB memory`,
+        recommendedTier: 'Recommended for this PC',
+        activeSessionBadge: 'Session active',
+        setupProgressTitle: 'Setting up EverTalk',
+        setupStagePersonas: 'Preparing soul data',
+        setupStageCaching: 'Caching conversation data for the selected language',
+        setupStageModel: 'Loading local model',
+        setupStageDone: 'Setup complete',
+        setupProgressCount: (current, total) => `${current} / ${total}`,
+        messageSendFailed: 'Failed to generate a response. Please try again.',
     },
     zh_cn: {
         languageGateTitle: '选择语言',
@@ -569,6 +623,24 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         defaultProfileSet: (id) => `默认资料 ${id}`,
         loraTrainingNote: 'CPU 执行可能需要数分钟到数小时，首次执行时会下载基础模型。',
         appLoading: '正在连接 EverTalk 本地数据库',
+        performanceGateTitle: '选择性能等级',
+        performanceGateDescription: '已检测此电脑的规格。请选择响应速度与准确度之间的平衡。之后可在设置中随时更改。',
+        performanceTierLight: '轻量',
+        performanceTierBalanced: '均衡',
+        performanceTierPerformance: '高性能',
+        performanceTierLightDescription: '使用最少的线程/上下文，即使在低配置电脑上也能稳定运行。',
+        performanceTierBalancedDescription: '适合大多数电脑的默认均衡设置。',
+        performanceTierPerformanceDescription: '最大化使用核心与上下文，处理更快、更长的对话。',
+        hardwareDetected: (cores, memoryGb) => `检测到的规格：物理核心 ${cores} 个 · 内存 ${memoryGb}GB`,
+        recommendedTier: '推荐用于此电脑',
+        activeSessionBadge: '会话已激活',
+        setupProgressTitle: '正在初始化 EverTalk',
+        setupStagePersonas: '正在准备精灵数据',
+        setupStageCaching: '正在按所选语言缓存对话数据',
+        setupStageModel: '正在加载本地模型',
+        setupStageDone: '配置完成',
+        setupProgressCount: (current, total) => `${current} / ${total}`,
+        messageSendFailed: '生成回复失败，请重试。',
     },
 };
 

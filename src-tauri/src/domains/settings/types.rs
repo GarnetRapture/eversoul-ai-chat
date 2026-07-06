@@ -6,6 +6,23 @@ pub struct AppSettings {
     pub active_style_id: Option<String>,
     pub language: String,
     pub language_configured: bool,
+    pub performance_tier: String,
+    pub performance_configured: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct HardwareProfile {
+    pub physical_core_count: usize,
+    pub logical_core_count: usize,
+    pub total_memory_mb: u64,
+    pub recommended_tier: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SetupProgress {
+    pub stage: String,
+    pub current: usize,
+    pub total: usize,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

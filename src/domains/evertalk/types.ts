@@ -1,9 +1,9 @@
 import type React from 'react';
-import type { AppLanguage } from '../../shared/types';
+import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import type { ChatMessage, ChatRoom } from '../chat';
-import type { LlmStatus } from '../llm';
+import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus } from '../llm';
 import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } from '../persona';
-import type { AppSettings, ResetSummary } from '../settings';
+import type { AppSettings, HardwareProfile, ResetSummary, SetupProgress } from '../settings';
 import type { StyleProfile } from '../style';
 import type { LocalStatusSnapshot } from '../sync';
 import type { TrainingSummary } from '../training';
@@ -45,6 +45,7 @@ export interface SpiritRosterProps {
     familiarityLoading: boolean;
     labels: EverTalkLabels;
     appLanguage: AppLanguage;
+    activeSessionIds: string[];
     onSearchChange: (value: string) => void;
     onSelect: (spirit: PersonaConfig) => void;
     onSetDefault: (spiritId: string) => void;
@@ -93,6 +94,9 @@ export interface SystemStatusPanelProps {
 export interface SettingsPanelProps {
     open: boolean;
     settings: AppSettings | null;
+    modelValidation: LlmModelValidation | null;
+    llmSessionStatuses: LlmSessionStatus[];
+    llmRequestStatuses: LlmRequestStatus[];
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
@@ -112,11 +116,23 @@ export interface LanguageGatePanelProps {
     labels: EverTalkLabels;
     onSelectLanguage: (language: AppLanguage) => Promise<void>;
 }
+export interface PerformanceGatePanelProps {
+    open: boolean;
+    tier: PerformanceTier;
+    hardwareProfile: HardwareProfile | null;
+    labels: EverTalkLabels;
+    onSelectTier: (tier: PerformanceTier) => Promise<void>;
+}
 export interface ProfileDetailPanelProps {
     open: boolean;
     activeDetail: SpiritDetail | null;
     labels: EverTalkLabels;
     onClose: () => void;
+}
+export interface SetupProgressPanelProps {
+    open: boolean;
+    progress: SetupProgress | null;
+    labels: EverTalkLabels;
 }
 export interface EverTalkController {
     appInitializing: boolean;
@@ -143,6 +159,9 @@ export interface EverTalkController {
     settingsOpen: boolean;
     backgroundGalleryOpen: boolean;
     appSettings: AppSettings | null;
+    modelValidation: LlmModelValidation | null;
+    llmSessionStatuses: LlmSessionStatus[];
+    llmRequestStatuses: LlmRequestStatus[];
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
@@ -158,6 +177,11 @@ export interface EverTalkController {
     localStatus: LocalStatusSnapshot | null;
     languageGateOpen: boolean;
     profileDetailOpen: boolean;
+    performanceGateOpen: boolean;
+    hardwareProfile: HardwareProfile | null;
+    activeSessionIds: string[];
+    setupInProgress: boolean;
+    setupProgress: SetupProgress | null;
     setSearchQuery: (value: string) => void;
     setInputText: (value: string) => void;
     setActiveRosterTab: (tab: RosterTab) => void;
@@ -179,4 +203,5 @@ export interface EverTalkController {
     closeLanguageGate: () => void;
     openProfileDetail: () => void;
     closeProfileDetail: () => void;
+    setPerformanceTier: (tier: PerformanceTier) => Promise<void>;
 }

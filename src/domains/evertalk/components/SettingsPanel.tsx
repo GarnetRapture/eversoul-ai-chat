@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 import { RotateCcw, X } from 'lucide-react';
 import type { AppLanguage } from '../../../shared/types';
 import type { SettingsPanelProps } from '../types';
-export function SettingsPanel({ open, settings, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, }: SettingsPanelProps) {
+export function SettingsPanel({ open, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, }: SettingsPanelProps) {
     const [confirming, setConfirming] = useState(false);
     if (!open) {
         return null;
@@ -56,6 +56,36 @@ export function SettingsPanel({ open, settings, isResetting, resetSummary, reset
               <option value="zh_cn">{labels.languageZhCn}</option>
             </select>
           </label>
+        </section>
+
+        <section className="ever-panel-section">
+          <h3>로컬 LLM 코어</h3>
+          <div className="ever-profile-grid">
+            <div>
+              <small>모델 파일</small>
+              <strong>{modelValidation ? `${Math.round(modelValidation.size_bytes / 1024 / 1024)} MB` : labels.notConfigured}</strong>
+            </div>
+            <div>
+              <small>SHA-256</small>
+              <strong>{modelValidation?.sha256.slice(0, 16) ?? labels.notConfigured}</strong>
+            </div>
+            <div>
+              <small>사이드카 해시</small>
+              <strong>{modelValidation?.hash_matches_sidecar === null ? labels.notConfigured : modelValidation?.hash_matches_sidecar ? '일치' : '불일치'}</strong>
+            </div>
+          </div>
+          <div className="ever-settings-result">
+            <strong>세션 상태</strong>
+            {llmSessionStatuses.length === 0 ? (<span>{labels.notConfigured}</span>) : llmSessionStatuses.map((session) => (<span key={session.persona_id}>
+                {session.persona_id} · KV {session.cached_tokens} · LoRA {session.lora_adapter_mounted ? 'on' : 'off'} · 재사용 {session.last_generation?.reused_prefix_tokens ?? 0}
+              </span>))}
+          </div>
+          <div className="ever-settings-result">
+            <strong>요청 상태</strong>
+            {llmRequestStatuses.length === 0 ? (<span>{labels.notConfigured}</span>) : llmRequestStatuses.map((request) => (<span key={request.request_id}>
+                {request.state} · prompt {request.prompt_tokens} · gen {request.generated_tokens} · cut {request.truncated_prompt_tokens}
+              </span>))}
+          </div>
         </section>
 
         <section className="ever-panel-section ever-settings-danger">

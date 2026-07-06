@@ -5,7 +5,10 @@ const SECTION_GENERAL: &str = "general";
 const KEY_DEFAULT_PERSONA_ID: &str = "default_persona_id";
 const KEY_ACTIVE_STYLE_ID: &str = "active_style_id";
 const KEY_LANGUAGE: &str = "language";
+const KEY_PERFORMANCE_TIER: &str = "performance_tier";
 const DEFAULT_LANGUAGE: &str = "ko";
+const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
+const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
 
 pub struct SettingsManager {
     ini_path: PathBuf,
@@ -78,6 +81,32 @@ impl SettingsManager {
         };
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_LANGUAGE, normalized);
+        self.persist(&conf)
+    }
+
+    pub fn get_performance_tier(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_PERFORMANCE_TIER)
+            .filter(|value| SUPPORTED_PERFORMANCE_TIERS.contains(value))
+            .unwrap_or(DEFAULT_PERFORMANCE_TIER)
+            .to_string()
+    }
+
+    pub fn has_performance_tier(&self) -> bool {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_PERFORMANCE_TIER)
+            .is_some_and(|value| SUPPORTED_PERFORMANCE_TIERS.contains(&value))
+    }
+
+    pub fn set_performance_tier(&self, tier: &str) -> std::io::Result<()> {
+        let mut conf = self.load();
+        let normalized = if SUPPORTED_PERFORMANCE_TIERS.contains(&tier) {
+            tier
+        } else {
+            DEFAULT_PERFORMANCE_TIER
+        };
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_PERFORMANCE_TIER, normalized);
         self.persist(&conf)
     }
 

@@ -3,7 +3,7 @@ use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::auth::commands::DbState;
 use crate::domains::llm::commands::LlmState;
 use crate::domains::settings::commands::SettingsState;
-use tauri::State;
+use tauri::{AppHandle, Manager, State};
 
 #[tauri::command(rename_all = "snake_case")]
 pub fn chat_create_room(
@@ -75,6 +75,7 @@ pub fn chat_list_messages(
 
 #[tauri::command(rename_all = "snake_case")]
 pub fn chat_send_message(
+    app_handle: AppHandle,
     db_state: State<'_, DbState>,
     llm_state: State<'_, LlmState>,
     settings_state: State<'_, SettingsState>,
@@ -122,23 +123,29 @@ pub fn chat_send_message(
         .map_err(|e| ChatError::Unknown(e.to_string()))?;
     let engine_instance = engine_lock.as_ref().ok_or(ChatError::LlmEngineNotLoaded)?;
 
-    let mut full_prompt = String::new();
-    full_prompt.push_str(&format!(
-        "<|im_start|>system\n{}<|im_end|>\n",
-        system_prompt
-    ));
-
-    for msg in &history {
-        full_prompt.push_str(&format!(
-            "<|im_start|>{}\n{}<|im_end|>\n",
-            msg.role, msg.content
-        ));
-    }
-
-    full_prompt.push_str("<|im_start|>assistant\n");
+    let response_max_tokens = engine_instance.profile().max_tokens;
+    let max_prompt_tokens = engine_instance
+        .profile()
+        .context_size
+        .saturating_sub(response_max_tokens)
+        .max(1) as usize;
+    let full_prompt = ChatService::build_llm_chat_prompt_with_budget(
+        &system_prompt,
+        &history,
+        max_prompt_tokens,
+        |candidate| {
+            engine_instance
+                .count_tokens(candidate)
+                .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))
+        },
+    )?;
 
     let ai_text = engine_instance
-        .infer(&full_prompt, Some(256), Some(&req.persona_id))
+        .infer(
+            &full_prompt,
+            Some(response_max_tokens),
+            Some(&req.persona_id),
+        )
         .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
     drop(engine_lock);
 
@@ -152,15 +159,17 @@ pub fn chat_send_message(
         service.save_ai_response(&room_id, ai_text.clone())?
     };
 
-    {
-        let engine_lock = llm_state.inner().0.lock();
-        let db_lock = db_state.inner().0.lock();
+    let background_persona_id = req.persona_id.clone();
+    let background_content = req.content.clone();
+    std::thread::spawn(move || {
+        let engine_lock = app_handle.state::<LlmState>().inner().0.lock();
+        let db_lock = app_handle.state::<DbState>().inner().0.lock();
         if let (Ok(engine_lock), Ok(conn)) = (engine_lock, db_lock) {
             if let Some(ref engine_instance) = *engine_lock {
                 let service = ChatService::new(&conn);
                 if let Err(err) = service.accumulate_memory(
-                    &req.persona_id,
-                    &req.content,
+                    &background_persona_id,
+                    &background_content,
                     &ai_text,
                     engine_instance,
                 ) {
@@ -168,7 +177,7 @@ pub fn chat_send_message(
                 }
             }
         }
-    }
+    });
 
     Ok(ai_msg)
 }
