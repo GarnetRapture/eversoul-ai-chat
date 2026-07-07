@@ -139,7 +139,14 @@ pub fn llm_load(
     );
     startup_debug_log("command:llm_load:profile_ready");
 
-    match LlmService::load_engine(&app_root, adapters_dir, profile) {
+    let active_model = settings_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .get_active_model();
+
+    match LlmService::load_engine(&app_root, adapters_dir, profile, &active_model) {
         Ok(handle) => {
             startup_debug_log("command:llm_load:engine_loaded");
             let model_path_str = handle.model_path().to_string_lossy().to_string();
@@ -160,20 +167,30 @@ pub fn llm_load(
     }
 }
 
-fn model_destination_path(app_handle: &AppHandle) -> std::path::PathBuf {
+fn model_destination_path(app_handle: &AppHandle, active_model: &str) -> std::path::PathBuf {
     let app_root = app_handle
         .path()
         .resource_dir()
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
-    LlmService::model_destination_path(&app_root)
+    LlmService::model_destination_path(&app_root, active_model)
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub async fn llm_download_model(app_handle: AppHandle) -> Result<(), LlmError> {
-    let dest_path = model_destination_path(&app_handle);
+pub async fn llm_download_model(
+    app_handle: AppHandle,
+    settings_state: State<'_, SettingsState>,
+) -> Result<(), LlmError> {
+    let active_model = settings_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .get_active_model();
+
+    let dest_path = model_destination_path(&app_handle, &active_model);
 
     let emitter = app_handle.clone();
-    download_model_file(&dest_path, move |progress| {
+    download_model_file(&dest_path, &active_model, move |progress| {
         let _ = emitter.emit("model_download_progress", progress);
     })
     .await
@@ -362,13 +379,23 @@ pub fn llm_request_statuses(
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn llm_verify_model(app_handle: AppHandle) -> Result<LlmModelValidation, LlmError> {
+pub fn llm_verify_model(
+    app_handle: AppHandle,
+    settings_state: State<'_, SettingsState>,
+) -> Result<LlmModelValidation, LlmError> {
     startup_debug_log("command:llm_verify_model:start");
+    let active_model = settings_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .get_active_model();
+
     let app_root = app_handle
         .path()
         .resource_dir()
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
-    let result = LlmService::validate_model(&app_root)
+    let result = LlmService::validate_model(&app_root, &active_model)
         .map(map_model_validation)
         .map_err(map_load_error);
     startup_debug_log("command:llm_verify_model:done");

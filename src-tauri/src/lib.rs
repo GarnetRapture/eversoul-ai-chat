@@ -76,13 +76,16 @@ pub fn run() {
         .setup(|app| {
             startup_debug_log("setup:start");
             
-            let exe_dir = std::env::current_exe()
+            #[cfg(debug_assertions)]
+            let base_dir = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
+            #[cfg(not(debug_assertions))]
+            let base_dir = std::env::current_exe()
                 .ok()
                 .and_then(|p| p.parent().map(|p| p.to_path_buf()))
                 .unwrap_or_else(|| std::path::PathBuf::from("."));
 
             let db_path = {
-                let db_dir = exe_dir.join("database");
+                let db_dir = base_dir.join("database");
                 let _ = std::fs::create_dir_all(&db_dir);
                 db_dir.join("eversoul.db")
             };
@@ -95,7 +98,7 @@ pub fn run() {
             startup_debug_log("setup:database:connected");
 
             let settings_path = {
-                let config_dir = exe_dir.join("config");
+                let config_dir = base_dir.join("config");
                 let _ = std::fs::create_dir_all(&config_dir);
                 config_dir.join("settings.ini")
             };
@@ -104,7 +107,7 @@ pub fn run() {
             startup_debug_log("setup:settings:ready");
 
             let adapters_dir = {
-                let p = exe_dir.join("lora_adapters");
+                let p = base_dir.join("lora_adapters");
                 let _ = std::fs::create_dir_all(&p);
                 p
             };

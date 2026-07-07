@@ -8,9 +8,12 @@ const KEY_LANGUAGE: &str = "language";
 const KEY_PERFORMANCE_TIER: &str = "performance_tier";
 const KEY_SETUP_STAGE: &str = "setup_stage";
 const KEY_SHOW_REASONING: &str = "show_reasoning";
+const KEY_ACTIVE_MODEL: &str = "active_model";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
+pub const DEFAULT_MODEL: &str = "qwen25";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
+pub const SUPPORTED_MODELS: [&str; 2] = ["qwen25", "gemma"];
 
 pub const SETUP_STAGE_LANGUAGE: &str = "language";
 pub const SETUP_STAGE_DOWNLOAD: &str = "download";
@@ -68,6 +71,25 @@ impl SettingsManager {
         let mut conf = self.load();
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_ACTIVE_STYLE_ID, id);
+        self.persist(&conf)
+    }
+
+    pub fn get_active_model(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_ACTIVE_MODEL)
+            .map(|s| s.to_string())
+            .unwrap_or_else(|| DEFAULT_MODEL.to_string())
+    }
+
+    pub fn set_active_model(&self, model: &str) -> std::io::Result<()> {
+        let model = if SUPPORTED_MODELS.contains(&model) {
+            model
+        } else {
+            DEFAULT_MODEL
+        };
+        let mut conf = self.load();
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_ACTIVE_MODEL, model);
         self.persist(&conf)
     }
 

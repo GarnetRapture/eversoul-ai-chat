@@ -224,7 +224,8 @@ pub fn settings_complete_initial_setup(
                 hardware.physical_core_count,
             );
 
-            if let Ok(handle) = LlmService::load_engine(&app_root, adapters_dir, profile) {
+            let active_model = settings.get_active_model();
+            if let Ok(handle) = LlmService::load_engine(&app_root, adapters_dir, profile, &active_model) {
                 *engine_lock = Some(handle);
             }
         }

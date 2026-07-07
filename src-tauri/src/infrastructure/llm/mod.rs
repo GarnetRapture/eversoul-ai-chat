@@ -22,7 +22,15 @@ use thiserror::Error;
 use crate::infrastructure::hardware::InferenceProfile;
 use crate::startup_debug_log;
 
-pub const MODEL_RELATIVE_PATH: &str = "ai/model/qwen25-3b-korean-Q4_K_M.gguf";
+pub const QWEN_MODEL_PATH: &str = "ai/model/qwen25-3b-korean-Q4_K_M.gguf";
+pub const GEMMA_MODEL_PATH: &str = "ai/model/gemma-2-2b-it-Q4_K_M.gguf";
+
+pub fn get_model_relative_path(active_model: &str) -> &'static str {
+    match active_model {
+        "gemma" => GEMMA_MODEL_PATH,
+        _ => QWEN_MODEL_PATH,
+    }
+}
 
 pub const EPHEMERAL_CONTEXT_SIZE: u32 = 4096;
 
@@ -181,8 +189,9 @@ impl LlmEngine {
         app_root: &Path,
         adapters_dir: PathBuf,
         profile: InferenceProfile,
+        model_relative_path: &str,
     ) -> Result<Self, LlmError> {
-        let model_path = app_root.join(MODEL_RELATIVE_PATH);
+        let model_path = app_root.join(model_relative_path);
 
         if !model_path.exists() {
             return Err(LlmError::ModelFileNotFound {
@@ -666,7 +675,7 @@ mod tests {
     use crate::infrastructure::llm::validation::validate_model_file;
     use crate::infrastructure::llm::worker::LlmWorkerHandle;
 
-    use super::{LlmEngine, MODEL_RELATIVE_PATH};
+    use super::{LlmEngine, QWEN_MODEL_PATH};
 
     fn project_root() -> PathBuf {
         PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("..")
@@ -683,7 +692,7 @@ mod tests {
 
     #[test]
     fn llm_model_file_validation_uses_real_model() {
-        let model_path = project_root().join(MODEL_RELATIVE_PATH);
+        let model_path = project_root().join(QWEN_MODEL_PATH);
         let validation = validate_model_file(&model_path).expect("실제 GGUF 모델 파일 검증 실패");
         assert!(validation.size_bytes > 0);
         assert_eq!(validation.sha256.len(), 64);
@@ -695,7 +704,7 @@ mod tests {
     #[test]
     fn llm_real_model_generates_text() {
         let root = project_root();
-        let engine = LlmEngine::load(&root, root.join("lora_adapters"), test_profile())
+        let engine = LlmEngine::load(&root, root.join("lora_adapters"), test_profile(), QWEN_MODEL_PATH)
             .expect("실제 GGUF 모델 로드 실패");
         let output = engine
             .infer(
@@ -714,6 +723,7 @@ mod tests {
             root.clone(),
             root.join("lora_adapters"),
             test_profile(),
+            QWEN_MODEL_PATH,
         )
         .expect("전용 워커 스택에서 실제 GGUF 모델 로드 실패");
         let output = handle
@@ -729,7 +739,7 @@ mod tests {
     #[test]
     fn llm_kv_cache_reuse_regression_uses_real_context() {
         let root = project_root();
-        let engine = LlmEngine::load(&root, root.join("lora_adapters"), test_profile())
+        let engine = LlmEngine::load(&root, root.join("lora_adapters"), test_profile(), QWEN_MODEL_PATH)
             .expect("실제 GGUF 모델 로드 실패");
         let mut ctx = engine.create_context().expect("LLM 컨텍스트 생성 실패");
         let prompt = "<|im_start|>system\n한국어로 짧게 답하십시오.<|im_end|>\n<|im_start|>user\n테스트<|im_end|>\n<|im_start|>assistant\n";

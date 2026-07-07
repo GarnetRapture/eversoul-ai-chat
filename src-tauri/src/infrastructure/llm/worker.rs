@@ -125,22 +125,24 @@ impl LlmWorkerHandle {
         app_root: PathBuf,
         adapters_dir: PathBuf,
         profile: InferenceProfile,
+        model_relative_path: &str,
     ) -> Result<Self, LlmError> {
         startup_debug_log("llm_worker:load_and_spawn:start");
-        let model_path = app_root.join(super::MODEL_RELATIVE_PATH);
+        let model_path = app_root.join(model_relative_path);
         let (sender, receiver) = mpsc::channel::<WorkerCommand>();
         let (ready_sender, ready_receiver) = mpsc::channel::<Result<(), LlmError>>();
         let request_registry = RequestRegistry::new();
         let worker_request_registry = request_registry.clone();
 
         startup_debug_log("llm_worker:load_and_spawn:thread_spawn:before");
+        let model_relative_path_owned = model_relative_path.to_string();
         thread::Builder::new()
             .name("eversoul-llm-worker".to_string())
             .stack_size(LLM_WORKER_STACK_SIZE_BYTES)
             .spawn(move || {
                 startup_debug_log("llm_worker:thread:started");
                 startup_debug_log("llm_worker:thread:engine_load:start");
-                let engine = match LlmEngine::load(&app_root, adapters_dir, profile) {
+                let engine = match LlmEngine::load(&app_root, adapters_dir, profile, &model_relative_path_owned) {
                     Ok(engine) => engine,
                     Err(error) => {
                         startup_debug_log("llm_worker:thread:engine_load:error");
@@ -340,14 +342,24 @@ impl LlmWorkerHandle {
             .ok_or_else(|| LlmError::Infer(format!("LLM 세션 생성 실패: {persona_id}")))?;
         session.last_access = current_access;
 
-        let mut cache_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let mut cache_dir = {
+            #[cfg(debug_assertions)]
+            let base = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
+            #[cfg(not(debug_assertions))]
+            let base = std::env::current_exe()
+                .ok()
+                .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+                .unwrap_or_else(|| std::path::PathBuf::from("."));
+            base
+        };
         cache_dir.push("ai");
         cache_dir.push("cache");
         let _ = std::fs::create_dir_all(&cache_dir);
-        let cache_path = cache_dir.join(format!("{}.bin", persona_id));
+        let _cache_path = cache_dir.join(format!("{}.bin", persona_id));
         
+        #[cfg(not(debug_assertions))]
         if session.cached_tokens.is_empty() {
-            if let Ok(loaded_tokens) = session.context.state_load_file(&cache_path, 4096) {
+            if let Ok(loaded_tokens) = session.context.state_load_file(&_cache_path, 4096) {
                 session.cached_tokens = loaded_tokens;
             }
         }
@@ -376,7 +388,10 @@ impl LlmWorkerHandle {
         let stats = Self::generation_stats(&result);
         session.last_generation = Some(stats.clone());
         session.cached_tokens = result.cached_tokens;
-        let _ = session.context.state_save_file(&cache_path, &session.cached_tokens);
+        
+        #[cfg(not(debug_assertions))]
+        let _ = session.context.state_save_file(&_cache_path, &session.cached_tokens);
+        
         Ok(stats)
     }
 

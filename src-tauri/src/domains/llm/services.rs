@@ -3,7 +3,7 @@ use crate::infrastructure::hardware::InferenceProfile;
 use crate::infrastructure::llm::validation::{validate_model_file, ModelFileValidation};
 use crate::infrastructure::llm::worker::LlmWorkerHandle;
 use crate::infrastructure::llm::LlmError as InfraLlmError;
-use crate::infrastructure::llm::MODEL_RELATIVE_PATH;
+use crate::infrastructure::llm::get_model_relative_path;
 use crate::startup_debug_log;
 use std::path::{Path, PathBuf};
 
@@ -49,9 +49,10 @@ impl LlmService {
         unique
     }
 
-    pub fn model_destination_path(app_root: &Path) -> PathBuf {
+    pub fn model_destination_path(app_root: &Path, active_model: &str) -> PathBuf {
+        let relative_path = get_model_relative_path(active_model);
         for root in Self::model_roots(app_root) {
-            let model_path = root.join(MODEL_RELATIVE_PATH);
+            let model_path = root.join(relative_path);
             if model_path.exists() {
                 return model_path;
             }
@@ -59,22 +60,24 @@ impl LlmService {
 
         if let Ok(exe_path) = std::env::current_exe() {
             if let Some(exe_dir) = exe_path.parent() {
-                return exe_dir.join(MODEL_RELATIVE_PATH);
+                return exe_dir.join(relative_path);
             }
         }
 
-        app_root.join(MODEL_RELATIVE_PATH)
+        app_root.join(relative_path)
     }
 
     pub fn load_engine(
         app_root: &Path,
         adapters_dir: PathBuf,
         profile: InferenceProfile,
+        active_model: &str,
     ) -> Result<LlmWorkerHandle, LlmLoadError> {
         startup_debug_log("llm_service:load_engine:start");
         let mut attempted_paths = Vec::new();
+        let relative_path = get_model_relative_path(active_model);
         for root in Self::model_roots(app_root) {
-            let model_path = root.join(MODEL_RELATIVE_PATH);
+            let model_path = root.join(relative_path);
             if attempted_paths.contains(&model_path) {
                 continue;
             }
@@ -90,7 +93,7 @@ impl LlmService {
                 validate_model_file(&model_path).map_err(LlmLoadError::EngineError)?;
                 startup_debug_log("llm_service:load_engine:validate:done");
                 startup_debug_log("llm_service:load_engine:worker_load:start");
-                return LlmWorkerHandle::load_and_spawn(root, adapters_dir, profile)
+                return LlmWorkerHandle::load_and_spawn(root, adapters_dir, profile, relative_path)
                     .map_err(LlmLoadError::EngineError);
             }
         }
@@ -99,11 +102,12 @@ impl LlmService {
         Err(LlmLoadError::ModelFileNotFound(attempted_paths))
     }
 
-    pub fn validate_model(app_root: &Path) -> Result<ModelFileValidation, LlmLoadError> {
+    pub fn validate_model(app_root: &Path, active_model: &str) -> Result<ModelFileValidation, LlmLoadError> {
         startup_debug_log("llm_service:validate_model:start");
         let mut attempted_paths = Vec::new();
+        let relative_path = get_model_relative_path(active_model);
         for root in Self::model_roots(app_root) {
-            let model_path = root.join(MODEL_RELATIVE_PATH);
+            let model_path = root.join(relative_path);
             if attempted_paths.contains(&model_path) {
                 continue;
             }

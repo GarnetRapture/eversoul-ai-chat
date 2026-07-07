@@ -5,8 +5,17 @@ use futures_util::StreamExt;
 use serde::Serialize;
 use thiserror::Error;
 
-pub const MODEL_DOWNLOAD_URL: &str =
+pub const QWEN_MODEL_DOWNLOAD_URL: &str =
     "https://huggingface.co/MyeongHo0621/Qwen2.5-3B-Korean/resolve/main/gguf/qwen25-3b-korean-Q4_K_M.gguf";
+pub const GEMMA_MODEL_DOWNLOAD_URL: &str =
+    "https://huggingface.co/bartowski/gemma-2-2b-it-GGUF/resolve/main/gemma-2-2b-it-Q4_K_M.gguf";
+
+pub fn get_model_download_url(active_model: &str) -> &'static str {
+    match active_model {
+        "gemma" => GEMMA_MODEL_DOWNLOAD_URL,
+        _ => QWEN_MODEL_DOWNLOAD_URL,
+    }
+}
 
 #[derive(Debug, Clone, Serialize)]
 pub struct ModelDownloadProgress {
@@ -54,6 +63,7 @@ fn partial_path(dest_path: &Path) -> PathBuf {
 
 pub async fn download_model_file<F>(
     dest_path: &Path,
+    active_model: &str,
     mut on_progress: F,
 ) -> Result<(), ModelDownloadError>
 where
@@ -64,8 +74,9 @@ where
     }
 
     let client = reqwest::Client::new();
+    let url = get_model_download_url(active_model);
     let response = client
-        .get(MODEL_DOWNLOAD_URL)
+        .get(url)
         .send()
         .await
         .map_err(|e| ModelDownloadError::Request(e.to_string()))?
