@@ -3,23 +3,29 @@ use super::types::{LocalStatusSnapshot, RemoteDataPack, SyncError, SyncResult};
 use crate::domains::knowledge::repositories::KnowledgeRepository;
 use crate::domains::persona::repositories::PersonaRepository;
 use crate::domains::style::repositories::StyleRepository;
-use crate::infrastructure::http::HttpManager;
+use crate::infrastructure::compress::PersonaLoader;
 use rusqlite::Connection;
 
-pub struct SyncService<'a> {
-    http: &'a HttpManager,
-}
+pub struct SyncService;
 
-impl<'a> SyncService<'a> {
-    pub fn new(http: &'a HttpManager) -> Self {
-        Self { http }
-    }
+impl SyncService {
+    pub fn extract_local_pack() -> Result<RemoteDataPack, SyncError> {
+        let mut personas = Vec::new();
+        
+        let persona_names = PersonaLoader::list_personas();
+        for name in persona_names {
+            if let Ok(value) = PersonaLoader::load_persona(&name) {
+                if let Ok(config) = serde_json::from_value::<crate::domains::persona::types::PersonaConfig>(value) {
+                    personas.push(config);
+                }
+            }
+        }
 
-    pub async fn fetch_remote_pack(&self) -> Result<RemoteDataPack, SyncError> {
-        self.http
-            .get::<RemoteDataPack>("/sync/fetch")
-            .await
-            .map_err(|e| SyncError::Network(e.to_string()))
+        Ok(RemoteDataPack {
+            personas,
+            knowledges: vec![],
+            styles: vec![],
+        })
     }
 
     pub fn persist_pack(conn: &Connection, pack: &RemoteDataPack) -> Result<SyncResult, SyncError> {

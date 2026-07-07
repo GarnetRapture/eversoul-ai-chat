@@ -107,6 +107,21 @@ pub fn settings_detect_hardware() -> Result<HardwareProfile, SettingsError> {
 }
 
 #[tauri::command(rename_all = "snake_case")]
+pub fn settings_set_show_reasoning(
+    settings_state: State<'_, SettingsState>,
+    show_reasoning: bool,
+) -> Result<AppSettings, SettingsError> {
+    startup_debug_log("command:settings_set_show_reasoning:start");
+    let settings = settings_state
+        .0
+        .lock()
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    let result = SettingsService::set_show_reasoning(&settings, show_reasoning);
+    startup_debug_log("command:settings_set_show_reasoning:done");
+    result
+}
+
+#[tauri::command(rename_all = "snake_case")]
 pub fn settings_complete_initial_setup(
     app_handle: AppHandle,
     db_state: State<'_, DbState>,
@@ -130,6 +145,7 @@ pub fn settings_complete_initial_setup(
 
     SettingsService::set_language_without_warmup(&settings, &language)?;
     SettingsService::set_performance_tier(&settings, &tier)?;
+    SettingsService::set_setup_stage(&settings, "done")?;
     startup_debug_log("command:settings_complete_initial_setup:settings_saved");
 
     let mut archive_names = PersonaLoader::list_personas();

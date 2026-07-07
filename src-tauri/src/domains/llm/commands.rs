@@ -169,16 +169,8 @@ fn model_destination_path(app_handle: &AppHandle) -> std::path::PathBuf {
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn llm_model_present(app_handle: AppHandle) -> Result<bool, LlmError> {
-    Ok(model_destination_path(&app_handle).exists())
-}
-
-#[tauri::command(rename_all = "snake_case")]
 pub async fn llm_download_model(app_handle: AppHandle) -> Result<(), LlmError> {
     let dest_path = model_destination_path(&app_handle);
-    if dest_path.exists() {
-        return Ok(());
-    }
 
     let emitter = app_handle.clone();
     download_model_file(&dest_path, move |progress| {

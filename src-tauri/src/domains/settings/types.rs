@@ -9,6 +9,7 @@ pub struct AppSettings {
     pub performance_tier: String,
     pub performance_configured: bool,
     pub setup_stage: String,
+    pub show_reasoning: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

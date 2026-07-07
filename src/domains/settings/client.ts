@@ -23,4 +23,7 @@ export const settingsClient = {
     async setSetupStage(stage: string): Promise<AppSettings> {
         return invokeCommand<AppSettings>(tauriCommands.settings.setSetupStage, { stage });
     },
+    async setShowReasoning(showReasoning: boolean): Promise<AppSettings> {
+        return invokeCommand<AppSettings>('settings_set_show_reasoning', { showReasoning });
+    },
 };

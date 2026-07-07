@@ -1,24 +1,21 @@
 use super::repositories::AuthRepository;
 use super::types::{AuthError, LoginRequest, UserSession};
-use crate::infrastructure::http::HttpManager;
 use rusqlite::Connection;
 
-pub struct AuthService<'a> {
-    http: &'a HttpManager,
-}
+pub struct AuthService;
 
-impl<'a> AuthService<'a> {
-    pub fn new(http: &'a HttpManager) -> Self {
-        Self { http }
-    }
+impl AuthService {
+    pub fn local_auth_session(conn: &Connection, req: LoginRequest) -> Result<UserSession, AuthError> {
+        let username = req.email.split('@').next().unwrap_or("LocalUser").to_string();
+        let session = UserSession {
+            token: req.token,
+            email: req.email,
+            username,
+            created_at: String::new(),
+        };
 
-    pub async fn verify_remote_session(&self, req: LoginRequest) -> Result<UserSession, AuthError> {
-        let path = format!("/auth/verify?email={}&token={}", req.email, req.token);
-
-        self.http
-            .get::<UserSession>(&path)
-            .await
-            .map_err(|e| AuthError::Network(e.to_string()))
+        Self::persist_session(conn, &session)?;
+        Ok(session)
     }
 
     pub fn persist_session(conn: &Connection, session: &UserSession) -> Result<(), AuthError> {

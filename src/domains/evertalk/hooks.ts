@@ -254,8 +254,7 @@ export function useEverTalkController(): EverTalkController {
             setSetupProgress(event.payload);
         });
         try {
-            await settingsClient.completeInitialSetup(language, tier);
-            const staged = await settingsClient.setSetupStage('done');
+            const staged = await settingsClient.completeInitialSetup(language, tier);
             setAppSettings(staged);
             setAppLanguage(staged.language);
             await loadMainAppData(staged.language);
@@ -471,6 +470,7 @@ export function useEverTalkController(): EverTalkController {
                 performance_tier: 'balanced',
                 performance_configured: false,
                 setup_stage: 'language',
+                show_reasoning: true,
             });
             setAppLanguage('ko');
             pendingLanguageRef.current = null;
@@ -534,6 +534,12 @@ export function useEverTalkController(): EverTalkController {
             setActiveDetail(parseSpiritDetail(activeSpirit, updated.language));
         }
     }
+    
+    async function setShowReasoning(show: boolean) {
+        const updated = await settingsClient.setShowReasoning(show);
+        setAppSettings(updated);
+    }
+
     async function startModelDownload() {
         if (isDownloading) {
             return;
@@ -546,8 +552,14 @@ export function useEverTalkController(): EverTalkController {
         });
         try {
             await llmClient.downloadModel();
-            const staged = await settingsClient.setSetupStage('performance');
-            setAppSettings(staged);
+            
+            const validation = await llmClient.verifyModel();
+            setDownloadProgress({ 
+                downloaded_bytes: validation.size_bytes, 
+                total_bytes: validation.size_bytes, 
+                ratio: 1.0, 
+                done: true 
+            });
         }
         catch (err) {
             console.error('모델 다운로드 실패:', err);
@@ -558,6 +570,16 @@ export function useEverTalkController(): EverTalkController {
             setIsDownloading(false);
         }
     }
+    
+    async function goToPerformanceStage() {
+        try {
+            const staged = await settingsClient.setSetupStage('performance');
+            setAppSettings(staged);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     useEffect(() => {
         frontendDebugLog('initEffect:entered');
         if (appInitStartedRef.current) {
@@ -727,6 +749,7 @@ export function useEverTalkController(): EverTalkController {
         resetAppData,
         trainPersona,
         setLanguage,
+        setShowReasoning,
         closeLanguageGate,
         openProfileDetail,
         closeProfileDetail,
@@ -736,5 +759,6 @@ export function useEverTalkController(): EverTalkController {
         downloadError,
         isDownloading,
         startModelDownload,
+        goToPerformanceStage,
     };
 }

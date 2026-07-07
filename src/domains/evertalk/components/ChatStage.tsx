@@ -11,6 +11,7 @@ interface ChatMessageBubbleProps {
     message: ChatMessage;
     avatarCandidates: string[];
     spiritName: string;
+    showReasoning: boolean;
 }
 interface GalleryTileProps {
     skin: SpiritSkinVisualAsset;
@@ -27,7 +28,24 @@ const GalleryTile = memo(function GalleryTile({ skin, spiritName, zoomLabel, onZ
       </span>
     </button>);
 });
-const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandidates, spiritName, }: ChatMessageBubbleProps) {
+function parseThinkBlocks(text: string) {
+    const parts: { type: 'think' | 'text'; content: string }[] = [];
+    const regex = /<think>([\s\S]*?)(?:<\/think>|$)/gi;
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+        if (match.index > lastIndex) {
+            parts.push({ type: 'text', content: text.substring(lastIndex, match.index) });
+        }
+        parts.push({ type: 'think', content: match[1] });
+        lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+        parts.push({ type: 'text', content: text.substring(lastIndex) });
+    }
+    return parts;
+}
+const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandidates, spiritName, showReasoning }: ChatMessageBubbleProps) {
     if (message.role === 'system') {
         return (<div className="ever-message is-system">
           <div className="ever-message__bubble">{message.content}</div>
@@ -38,10 +56,21 @@ const ChatMessageBubble = memo(function ChatMessageBubble({ message, avatarCandi
       {!fromUser && (<div className="ever-message__avatar">
           <LoadableAssetImage candidates={avatarCandidates} alt={spiritName} fallback={<span>{spiritName.charAt(0) || 'E'}</span>}/>
         </div>)}
-      <div className="ever-message__bubble">{message.content}</div>
+      <div className="ever-message__bubble">
+        {fromUser ? (
+           message.content
+        ) : (
+           parseThinkBlocks(message.content).map((block, idx) => {
+               if (block.type === 'think') {
+                   return showReasoning ? <div key={idx} className="ever-message__think" style={{ opacity: 0.7, fontSize: '0.9em', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '8px', marginBottom: '8px', whiteSpace: 'pre-wrap' }}>{block.content}</div> : null;
+               }
+               return <span key={idx} style={{ whiteSpace: 'pre-wrap' }}>{block.content}</span>;
+           })
+        )}
+      </div>
     </div>);
 });
-export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, inputText, isTyping, activeStageTab, onInputChange, onSendMessage, onStageTabChange, messagesListRef, labels, onOpenProfileDetail, }: ChatStageProps) {
+export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, inputText, isTyping, activeStageTab, onInputChange, onSendMessage, onStageTabChange, messagesListRef, labels, onOpenProfileDetail, showReasoning }: ChatStageProps) {
     const assets: SpiritVisualAssets | null = useMemo(() => (activeDetail ? getSpiritVisualAssets(activeDetail) : null), [activeDetail]);
     const tone = useMemo(() => (activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral'), [activeDetail]);
     const choices = useMemo(() => createTalkChoices(activeDetail, labels), [activeDetail, labels]);
@@ -171,7 +200,7 @@ export function ChatStage({ activeDetail, activeRoom, llmStatus, messages, input
                   <strong>{labels.noSavedMessages}</strong>
                   <span>{labels.firstMessageHint}</span>
                 </div>)}
-              {messages.map((message) => (<ChatMessageBubble key={message.id} message={message} avatarCandidates={activeSkin?.avatarCandidates ?? assets?.avatarCandidates ?? []} spiritName={activeDetail?.name ?? ''}/>))}
+              {messages.map((message) => (<ChatMessageBubble key={message.id} message={message} avatarCandidates={activeSkin?.avatarCandidates ?? assets?.avatarCandidates ?? []} spiritName={activeDetail?.name ?? ''} showReasoning={showReasoning} />))}
               {isTyping && (<div className="ever-message is-spirit">
                   <div className="ever-message__avatar">
                     <LoadableAssetImage candidates={activeSkin?.avatarCandidates ?? assets?.avatarCandidates ?? []} alt={activeDetail?.name ?? ''} fallback={<span>{activeDetail?.name.charAt(0) ?? 'E'}</span>}/>

@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 import { RotateCcw, X } from 'lucide-react';
 import type { AppLanguage } from '../../../shared/types';
 import type { SettingsPanelProps } from '../types';
-export function SettingsPanel({ open, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, }: SettingsPanelProps) {
+export function SettingsPanel({ open, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, onSetShowReasoning }: SettingsPanelProps) {
     const [confirming, setConfirming] = useState(false);
     if (!open) {
         return null;
@@ -55,6 +55,15 @@ export function SettingsPanel({ open, settings, modelValidation, llmSessionStatu
               <option value="en">{labels.languageEn}</option>
               <option value="zh_cn">{labels.languageZhCn}</option>
             </select>
+          </label>
+          <label className="ever-settings-language" style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span>{labels.showReasoning}</span>
+            <input 
+              type="checkbox" 
+              checked={settings?.show_reasoning ?? true} 
+              onChange={(e) => void onSetShowReasoning(e.target.checked)} 
+              style={{ width: 'auto' }}
+            />
           </label>
         </section>
 

@@ -65,6 +65,7 @@ export interface ChatStageProps {
     onSendMessage: (event: React.FormEvent) => void;
     onStageTabChange: (tab: StageTab) => void;
     messagesListRef: React.RefObject<HTMLDivElement | null>;
+    showReasoning: boolean;
     labels: EverTalkLabels;
     onOpenProfileDetail: () => void;
 }
@@ -105,6 +106,7 @@ export interface SettingsPanelProps {
     onClose: () => void;
     onReset: () => void;
     onSetLanguage: (language: AppLanguage) => Promise<void>;
+    onSetShowReasoning: (show: boolean) => Promise<void>;
 }
 export interface BackgroundGalleryPanelProps {
     open: boolean;
@@ -147,6 +149,7 @@ export interface SetupWizardProps {
     labels: EverTalkLabels;
     onSelectLanguage: (language: AppLanguage) => Promise<void>;
     onStartDownload: () => Promise<void>;
+    onNextStage: () => Promise<void>;
     onSelectTier: (tier: PerformanceTier) => Promise<void>;
 }
 export interface AppInfoPanelProps {
@@ -218,6 +221,7 @@ export interface EverTalkController {
     resetAppData: () => Promise<void>;
     trainPersona: () => Promise<void>;
     setLanguage: (language: AppLanguage) => Promise<void>;
+    setShowReasoning: (show: boolean) => Promise<void>;
     closeLanguageGate: () => void;
     openProfileDetail: () => void;
     closeProfileDetail: () => void;
@@ -227,4 +231,5 @@ export interface EverTalkController {
     downloadError: string | null;
     isDownloading: boolean;
     startModelDownload: () => Promise<void>;
+    goToPerformanceStage: () => Promise<void>;
 }

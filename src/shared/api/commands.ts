@@ -30,7 +30,6 @@ export const tauriCommands = {
         requestStatuses: 'llm_request_statuses',
         verifyModel: 'llm_verify_model',
         selfTest: 'llm_self_test',
-        modelPresent: 'llm_model_present',
         downloadModel: 'llm_download_model',
     },
     persona: {
@@ -59,6 +58,7 @@ export const tauriCommands = {
         reset: 'settings_reset',
         setLanguage: 'settings_set_language',
         setPerformanceTier: 'settings_set_performance_tier',
+        setShowReasoning: 'settings_set_show_reasoning',
         detectHardware: 'settings_detect_hardware',
         completeInitialSetup: 'settings_complete_initial_setup',
         setSetupStage: 'settings_set_setup_stage',

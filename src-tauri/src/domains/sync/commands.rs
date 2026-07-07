@@ -1,28 +1,26 @@
 use super::services::SyncService;
 use super::types::{LocalStatusSnapshot, SyncError, SyncResult};
-use crate::domains::auth::commands::{DbState, HttpState};
+use crate::domains::auth::commands::DbState;
 use crate::startup_debug_log;
 use tauri::State;
 
 #[tauri::command(rename_all = "snake_case")]
 pub async fn sync_run(
     db_state: State<'_, DbState>,
-    http_state: State<'_, HttpState>,
 ) -> Result<SyncResult, SyncError> {
     startup_debug_log("command:sync_run:start");
-    let service = SyncService::new(&http_state.inner().0);
 
-    let pack = match service.fetch_remote_pack().await {
+    let pack = match SyncService::extract_local_pack() {
         Ok(pack) => pack,
         Err(err) => {
             if let Ok(conn) = db_state.inner().0.lock() {
                 let _ = SyncService::record_failure(&conn, &err.to_string());
             }
-            startup_debug_log("command:sync_run:remote_error");
+            startup_debug_log("command:sync_run:local_extract_error");
             return Err(err);
         }
     };
-    startup_debug_log("command:sync_run:remote_pack_fetched");
+    startup_debug_log("command:sync_run:local_pack_extracted");
 
     let conn = db_state
         .inner()

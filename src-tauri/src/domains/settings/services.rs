@@ -18,6 +18,7 @@ impl SettingsService {
             performance_tier: settings.get_performance_tier(),
             performance_configured: settings.has_performance_tier(),
             setup_stage: settings.get_setup_stage(),
+            show_reasoning: settings.get_show_reasoning(),
         }
     }
 
@@ -40,6 +41,16 @@ impl SettingsService {
     ) -> Result<AppSettings, SettingsError> {
         settings
             .set_setup_stage(stage)
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
+        Ok(Self::get_settings(settings))
+    }
+
+    pub fn set_show_reasoning(
+        settings: &SettingsManager,
+        show: bool,
+    ) -> Result<AppSettings, SettingsError> {
+        settings
+            .set_show_reasoning(show)
             .map_err(|e| SettingsError::Io(e.to_string()))?;
         Ok(Self::get_settings(settings))
     }

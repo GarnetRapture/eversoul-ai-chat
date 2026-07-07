@@ -17,6 +17,7 @@ export function SetupWizard({
     labels,
     onSelectLanguage,
     onStartDownload,
+    onNextStage,
     onSelectTier,
 }: SetupWizardProps) {
     if (!open) {
@@ -134,13 +135,22 @@ export function SetupWizard({
                         {downloadError && (
                             <p className="ever-setup-wizard__error">{downloadError}</p>
                         )}
-                        <button
-                            type="button"
-                            disabled={isDownloading}
-                            onClick={() => void onStartDownload()}
-                        >
-                            {labels.downloadStart}
-                        </button>
+                        {downloadProgress?.done ? (
+                            <button
+                                type="button"
+                                onClick={() => void onNextStage()}
+                            >
+                                {labels.continue ?? '다음'}
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                disabled={isDownloading}
+                                onClick={() => void onStartDownload()}
+                            >
+                                {labels.downloadStart}
+                            </button>
+                        )}
                     </div>
                 )}
 

@@ -59,6 +59,8 @@ export type LlmError = {
         path: string;
     };
 } | {
+    ModelDownload: string;
+} | {
     BackendInit: string;
 } | {
     ModelLoad: string;

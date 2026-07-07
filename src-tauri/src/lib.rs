@@ -4,10 +4,9 @@ pub mod infrastructure;
 use std::sync::Mutex;
 use tauri::Manager;
 
-use crate::domains::auth::commands::{DbState, HttpState};
+use crate::domains::auth::commands::DbState;
 use crate::domains::llm::commands::LlmState;
 use crate::infrastructure::database::DatabaseManager;
-use crate::infrastructure::http::HttpManager;
 
 use crate::domains::auth::commands::{auth_get_session, auth_login, auth_logout};
 use crate::domains::chat::commands::{
@@ -18,7 +17,7 @@ use crate::domains::chat::commands::{
 use crate::domains::knowledge::commands::knowledge_search;
 use crate::domains::llm::commands::{
     llm_active_sessions, llm_cancel_request, llm_download_model, llm_infer, llm_infer_stream,
-    llm_load, llm_model_present, llm_request_statuses, llm_self_test, llm_session_statuses,
+    llm_load, llm_request_statuses, llm_self_test, llm_session_statuses,
     llm_status, llm_unload, llm_verify_model,
 };
 use crate::domains::persona::commands::{
@@ -27,7 +26,7 @@ use crate::domains::persona::commands::{
 };
 use crate::domains::settings::commands::{
     settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
-    settings_set_language, settings_set_performance_tier, settings_set_setup_stage, SettingsState,
+    settings_set_language, settings_set_performance_tier, settings_set_setup_stage, settings_set_show_reasoning, SettingsState,
 };
 use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
@@ -76,19 +75,17 @@ pub fn run() {
         })
         .setup(|app| {
             startup_debug_log("setup:start");
-            let db_path = app
-                .path()
-                .app_local_data_dir()
-                .map(|p| {
-                    let db_dir = p.join("database");
-                    let _ = std::fs::create_dir_all(&db_dir);
-                    db_dir.join("eversoul.db")
-                })
-                .unwrap_or_else(|_| {
-                    let db_dir = std::path::PathBuf::from("database");
-                    let _ = std::fs::create_dir_all(&db_dir);
-                    db_dir.join("eversoul.db")
-                });
+            
+            let exe_dir = std::env::current_exe()
+                .ok()
+                .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+                .unwrap_or_else(|| std::path::PathBuf::from("."));
+
+            let db_path = {
+                let db_dir = exe_dir.join("database");
+                let _ = std::fs::create_dir_all(&db_dir);
+                db_dir.join("eversoul.db")
+            };
 
             startup_debug_log("setup:database:path_ready");
             let db_mgr = DatabaseManager::new(db_path);
@@ -97,38 +94,24 @@ pub fn run() {
                 .map_err(|e| -> Box<dyn std::error::Error> { Box::new(e) })?;
             startup_debug_log("setup:database:connected");
 
-            let settings_path = app
-                .path()
-                .app_local_data_dir()
-                .map(|p| {
-                    let config_dir = p.join("config");
-                    let _ = std::fs::create_dir_all(&config_dir);
-                    config_dir.join("settings.ini")
-                })
-                .unwrap_or_else(|_| {
-                    let config_dir = std::path::PathBuf::from("config");
-                    let _ = std::fs::create_dir_all(&config_dir);
-                    config_dir.join("settings.ini")
-                });
+            let settings_path = {
+                let config_dir = exe_dir.join("config");
+                let _ = std::fs::create_dir_all(&config_dir);
+                config_dir.join("settings.ini")
+            };
             let settings_mgr = SettingsManager::new(settings_path);
             let _ = settings_mgr.ensure_initialized();
             startup_debug_log("setup:settings:ready");
 
-            let adapters_dir = app
-                .path()
-                .app_local_data_dir()
-                .map(|p| p.join("lora_adapters"))
-                .unwrap_or_else(|_| std::path::PathBuf::from("lora_adapters"));
-            let _ = std::fs::create_dir_all(&adapters_dir);
+            let adapters_dir = {
+                let p = exe_dir.join("lora_adapters");
+                let _ = std::fs::create_dir_all(&p);
+                p
+            };
             startup_debug_log("setup:lora_adapters:ready");
-
-            let http_mgr = HttpManager::new("https://api.eversoul-ai.chat".to_string());
-            startup_debug_log("setup:http:ready");
 
             app.manage(DbState(Mutex::new(conn)));
             startup_debug_log("setup:state:db");
-            app.manage(HttpState(http_mgr));
-            startup_debug_log("setup:state:http");
             app.manage(LlmState(Mutex::new(None)));
             startup_debug_log("setup:state:llm");
             app.manage(SettingsState(Mutex::new(settings_mgr)));
@@ -165,7 +148,6 @@ pub fn run() {
             chat_prepare_persona_cache,
             chat_send_message,
             llm_load,
-            llm_model_present,
             llm_download_model,
             llm_unload,
             llm_status,
@@ -186,6 +168,7 @@ pub fn run() {
             settings_set_language,
             settings_set_performance_tier,
             settings_set_setup_stage,
+            settings_set_show_reasoning,
             settings_detect_hardware,
             settings_complete_initial_setup,
             training_run,

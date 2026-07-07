@@ -81,10 +81,20 @@ where
 
     let mut downloaded_bytes: u64 = 0;
     let mut stream = response.bytes_stream();
-    while let Some(chunk) = stream.next().await {
-        let chunk = chunk.map_err(|e| ModelDownloadError::Request(e.to_string()))?;
-        file.write_all(&chunk)
-            .map_err(|e| ModelDownloadError::Io(e.to_string()))?;
+    while let Some(chunk_result) = stream.next().await {
+        let chunk = match chunk_result {
+            Ok(c) => c,
+            Err(e) => {
+                drop(file);
+                let _ = std::fs::remove_file(&tmp_path);
+                return Err(ModelDownloadError::Request(e.to_string()));
+            }
+        };
+        if let Err(e) = file.write_all(&chunk) {
+            drop(file);
+            let _ = std::fs::remove_file(&tmp_path);
+            return Err(ModelDownloadError::Io(e.to_string()));
+        }
         downloaded_bytes += chunk.len() as u64;
         on_progress(ModelDownloadProgress::new(downloaded_bytes, total_bytes, false));
     }

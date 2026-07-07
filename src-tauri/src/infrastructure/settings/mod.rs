@@ -7,6 +7,7 @@ const KEY_ACTIVE_STYLE_ID: &str = "active_style_id";
 const KEY_LANGUAGE: &str = "language";
 const KEY_PERFORMANCE_TIER: &str = "performance_tier";
 const KEY_SETUP_STAGE: &str = "setup_stage";
+const KEY_SHOW_REASONING: &str = "show_reasoning";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
@@ -139,6 +140,19 @@ impl SettingsManager {
         };
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_SETUP_STAGE, normalized);
+        self.persist(&conf)
+    }
+
+    pub fn get_show_reasoning(&self) -> bool {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_SHOW_REASONING)
+            .map_or(true, |v| v == "true") // 기본값 true
+    }
+
+    pub fn set_show_reasoning(&self, value: bool) -> std::io::Result<()> {
+        let mut conf = self.load();
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_SHOW_REASONING, if value { "true" } else { "false" });
         self.persist(&conf)
     }
 

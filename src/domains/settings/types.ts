@@ -9,6 +9,7 @@ export interface AppSettings {
     performance_tier: PerformanceTier;
     performance_configured: boolean;
     setup_stage: SetupPhase;
+    show_reasoning: boolean;
 }
 export interface HardwareProfile {
     physical_core_count: number;

@@ -57,6 +57,7 @@ export interface EverTalkLabels {
     activeStyle: string;
     language: string;
     displayResponseLanguage: string;
+    showReasoning: string;
     resetData: string;
     resetDescription: string;
     resetComplete: string;
@@ -173,6 +174,7 @@ export interface EverTalkLabels {
     appInfoDeveloper: string;
     appInfoContact: string;
     appInfoWebsite: string;
+    downloadError: string;
 }
 
 export type EverTalkLabelBag = {
@@ -237,6 +239,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         activeStyle: '활성 스타일',
         language: '언어',
         displayResponseLanguage: '표시 및 응답 언어',
+        showReasoning: 'AI의 추론 과정 표시 (<think>)',
         resetData: '데이터 초기화',
         resetDescription: '대화 기록, 정령/스타일/지식팩 데이터, 정령별 누적 기억과 설정값을 모두 삭제해 앱을 초기 상태로 되돌립니다.',
         resetComplete: '초기화 완료',
@@ -319,7 +322,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         modelNotLoaded: '모델 미로드',
         defaultProfileSet: (id) => `기본 프로필 ${id}`,
         loraTrainingNote: 'CPU에서 수 분~수 시간이 걸릴 수 있으며, 최초 실행 시 기반 모델을 내려받습니다.',
-        appLoading: '에버톡 로컬 데이터베이스 연결 중',
+        appLoading: 'Connecting to EverTalk Local Database...',
         performanceGateTitle: '성능 등급 선택',
         performanceGateDescription: '이 PC의 사양을 감지했습니다. 응답 속도와 정확도의 균형을 선택하세요. 언제든 설정에서 변경할 수 있습니다.',
         performanceTierLight: '가벼움',
@@ -353,6 +356,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         appInfoContact: '문의',
         appInfoWebsite: '웹사이트',
         messageSendFailed: '응답 생성에 실패했습니다. 다시 시도해 주세요.',
+        downloadError: '모델 파일 다운로드를 실패했거나 찾을 수 없습니다.',
     },
     en: {
         languageGateTitle: 'Choose Language',
@@ -411,6 +415,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         activeStyle: 'Active Style',
         language: 'Language',
         displayResponseLanguage: 'Display and response language',
+        showReasoning: 'Show AI Reasoning Process (<think>)',
         resetData: 'Reset Data',
         resetDescription: 'Deletes chat history, soul/style/knowledge data, saved memories, and settings.',
         resetComplete: 'Reset complete',
@@ -527,6 +532,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         appInfoContact: 'Contact',
         appInfoWebsite: 'Website',
         messageSendFailed: 'Failed to generate a response. Please try again.',
+        downloadError: 'Model file download failed or file is missing.',
     },
     zh_cn: {
         languageGateTitle: '选择语言',
@@ -585,6 +591,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         activeStyle: '启用风格',
         language: '语言',
         displayResponseLanguage: '显示与回复语言',
+        showReasoning: '显示 AI 推理过程 (<think>)',
         resetData: '重置数据',
         resetDescription: '删除聊天记录、精灵/风格/知识数据、累积记忆与设置。',
         resetComplete: '重置完成',
@@ -701,6 +708,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         appInfoContact: '联系',
         appInfoWebsite: '网站',
         messageSendFailed: '生成回复失败，请重试。',
+        downloadError: '模型文件下载失败或找不到文件。',
     },
 };
 
