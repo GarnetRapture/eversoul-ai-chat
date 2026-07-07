@@ -242,7 +242,8 @@ pub fn chat_send_message(
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn chat_prepare_persona_cache(
+pub async fn chat_prepare_persona_cache(
+    app_handle: tauri::AppHandle,
     db_state: State<'_, DbState>,
     llm_state: State<'_, LlmState>,
     settings_state: State<'_, SettingsState>,
@@ -264,14 +265,22 @@ pub fn chat_prepare_persona_cache(
     };
     let system_prefix = ChatService::build_llm_system_prefix(&system_prompt);
 
-    let engine_lock = llm_state
-        .inner()
-        .0
-        .lock()
-        .map_err(|e| ChatError::Unknown(e.to_string()))?;
-    let engine_instance = engine_lock.as_ref().ok_or(ChatError::LlmEngineNotLoaded)?;
-    engine_instance
-        .warm_persona(&persona_id, &system_prefix)
-        .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
+    let engine_instance = {
+        let engine_lock = llm_state
+            .inner()
+            .0
+            .lock()
+            .map_err(|e| ChatError::Unknown(e.to_string()))?;
+        engine_lock.as_ref().cloned().ok_or(ChatError::LlmEngineNotLoaded)?
+    };
+
+    tauri::async_runtime::spawn_blocking(move || {
+        engine_instance
+            .warm_persona(&persona_id, &system_prefix, app_handle)
+            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))
+    })
+    .await
+    .map_err(|e| ChatError::Unknown(format!("스레드 패닉: {}", e)))??;
+
     Ok(true)
 }

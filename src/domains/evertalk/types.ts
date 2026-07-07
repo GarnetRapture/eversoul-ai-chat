@@ -137,6 +137,22 @@ export interface SetupProgressPanelProps {
     progress: SetupProgress | null;
     labels: EverTalkLabels;
 }
+export interface WarmProgress {
+    persona_id: string;
+    current: number;
+    total: number;
+}
+export interface WarmupState {
+    isActive: boolean;
+    currentIndex: number;
+    totalPersonas: number;
+    currentPersonaName: string;
+    progress: WarmProgress | null;
+}
+export interface WarmupOverlayProps {
+    warmupState: WarmupState;
+    labels: EverTalkLabels;
+}
 export interface SetupWizardProps {
     open: boolean;
     stage: SetupPhase;
@@ -176,6 +192,9 @@ export interface EverTalkController {
     styles: StyleProfile[];
     activeStyle: StyleProfile | null;
     isSyncing: boolean;
+    isTraining: boolean;
+    trainingSummary: TrainingSummary | null;
+    trainingError: string | null;
     messagesListRef: React.RefObject<HTMLDivElement | null>;
     settingsOpen: boolean;
     backgroundGalleryOpen: boolean;
@@ -186,9 +205,6 @@ export interface EverTalkController {
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
-    isTraining: boolean;
-    trainingSummary: TrainingSummary | null;
-    trainingError: string | null;
     bondRanking: BondRankingEntry[];
     bondRankingLoading: boolean;
     familiarityList: FamiliarityEntry[];
@@ -203,6 +219,7 @@ export interface EverTalkController {
     activeSessionIds: string[];
     setupInProgress: boolean;
     setupProgress: SetupProgress | null;
+    warmupState: WarmupState;
     setSearchQuery: (value: string) => void;
     setInputText: (value: string) => void;
     setActiveRosterTab: (tab: RosterTab) => void;

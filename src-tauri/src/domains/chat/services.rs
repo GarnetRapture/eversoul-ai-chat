@@ -110,23 +110,12 @@ impl<'a> ChatService<'a> {
             persona_id: Some(req.persona_id.clone()),
             role: "user".to_string(),
             content: req.content.clone(),
-            created_at: now,
+            created_at: now.clone(),
         };
         ChatRepository::insert_message(self.conn, &user_msg)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        let mut system_prompt = self.build_persona_base_system_prompt(&req.persona_id, settings)?;
-
-        let knowledge_service = KnowledgeService::new(self.conn);
-        if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, Some(2)) {
-            if !chunks.is_empty() {
-                let mut knowledge_context = String::from("\n[참고 지식 데이터]\n");
-                for (i, chunk) in chunks.iter().enumerate() {
-                    knowledge_context.push_str(&format!("{}. {}\n", i + 1, chunk.chunk_text));
-                }
-                system_prompt.push_str(&knowledge_context);
-            }
-        }
+        let system_prompt = self.build_persona_base_system_prompt(&req.persona_id, settings)?;
 
         let history = ChatRepository::list_recent_messages_for_persona(
             self.conn,
@@ -136,7 +125,29 @@ impl<'a> ChatService<'a> {
         )
         .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        Ok((system_prompt, history))
+        // KV 캐시 파괴 방지: 지식 검색 결과는 시스템 프롬프트(고정)가 아닌 가장 최신 컨텍스트(history 직전)에 삽입
+        let mut final_history = history.clone();
+        let knowledge_service = KnowledgeService::new(self.conn);
+        if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, Some(2)) {
+            if !chunks.is_empty() {
+                let mut knowledge_context = String::from("[시스템 주입 지식 데이터]\n");
+                for (i, chunk) in chunks.iter().enumerate() {
+                    knowledge_context.push_str(&format!("{}. {}\n", i + 1, chunk.chunk_text));
+                }
+                knowledge_context.push_str("위 지식을 바탕으로 자연스럽게 대답할 것.");
+                
+                final_history.insert(0, ChatMessage {
+                    id: "system_knowledge_injection".to_string(),
+                    room_id: req.room_id.clone(),
+                    persona_id: Some(req.persona_id.clone()),
+                    role: "system".to_string(),
+                    content: knowledge_context,
+                    created_at: now.clone(),
+                });
+            }
+        }
+
+        Ok((system_prompt, final_history))
     }
 
     pub fn build_persona_base_system_prompt(
@@ -175,6 +186,19 @@ impl<'a> ChatService<'a> {
             }
             system_prompt.push_str(&memory_block);
         }
+
+        let target_lang_str = match language.as_str() {
+            "en" => "English",
+            "zh_cn" => "Chinese (Simplified)",
+            _ => "한국어",
+        };
+
+        let qwen_instruction = format!("\n\n[중요 절대 지침]\n\
+            1. 너는 AI가 아니라 설정된 정령 캐릭터 본인이다. 어색한 기계적 번역투(예: '저는 ~에 온 지 꽤 오래되었어요', '역할을 맡게 되어 기뻐요')를 절대 피하고 자연스러운 {lang}로 말해라.\n\
+            2. 매 턴 똑같은 인사말이나 자기소개를 반복하지 말고, 직전 사용자의 말(대화 맥락)에 직접적으로 반응해라.\n\
+            3. 실제 대답을 출력하기 전에 반드시 <think> 태그를 열고 너의 내면의 생각, 감정 변화, 행동 의도를 {lang}로 먼저 작성해라. 생각 과정이 끝나면 </think> 태그를 닫고 대답을 이어가라.\n\
+            (형식 예시: <think>구원자가 내 반응을 보고 싶어하는 것 같다.</think>정말이지, 구원자님도 참!)", lang=target_lang_str);
+        system_prompt.push_str(&qwen_instruction);
 
         Ok(system_prompt)
     }
@@ -303,10 +327,7 @@ impl<'a> ChatService<'a> {
         self.build_consolidation_prompt(persona_id)
     }
 
-    fn build_consolidation_prompt(
-        &self,
-        persona_id: &str,
-    ) -> Result<Option<String>, ChatError> {
+    fn build_consolidation_prompt(&self, persona_id: &str) -> Result<Option<String>, ChatError> {
         let episodic = ChatRepository::list_episodic_memories(
             self.conn,
             persona_id,
@@ -356,13 +377,7 @@ impl<'a> ChatService<'a> {
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
             .unwrap_or_default();
-        ChatRepository::upsert_semantic_memory(
-            self.conn,
-            persona_id,
-            trimmed,
-            summary_vector,
-            &now,
-        )
-        .map_err(|e| ChatError::Database(e.to_string()))
+        ChatRepository::upsert_semantic_memory(self.conn, persona_id, trimmed, summary_vector, &now)
+            .map_err(|e| ChatError::Database(e.to_string()))
     }
 }

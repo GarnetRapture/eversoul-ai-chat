@@ -8,7 +8,8 @@ use std::thread;
 use llama_cpp_2::context::LlamaContext;
 use llama_cpp_2::model::LlamaLoraAdapter;
 use llama_cpp_2::token::LlamaToken;
-use tauri::AppHandle;
+use serde::Serialize;
+use tauri::{AppHandle, Emitter};
 use uuid::Uuid;
 
 use crate::infrastructure::hardware::InferenceProfile;
@@ -41,6 +42,13 @@ pub struct WorkerSessionStatus {
     pub last_generation: Option<SessionGenerationStats>,
 }
 
+#[derive(Serialize, Clone)]
+pub struct WarmProgressPayload {
+    pub persona_id: String,
+    pub current: usize,
+    pub total: usize,
+}
+
 enum WorkerCommand {
     Infer {
         request_id: String,
@@ -53,6 +61,7 @@ enum WorkerCommand {
     WarmPersona {
         persona_id: String,
         prompt: String,
+        app_handle: AppHandle,
         respond_to: Sender<Result<SessionGenerationStats, LlmError>>,
     },
     Embed {
@@ -82,6 +91,7 @@ struct PersonaSession<'a> {
     last_generation: Option<SessionGenerationStats>,
 }
 
+#[derive(Clone)]
 pub struct LlmWorkerHandle {
     sender: Sender<WorkerCommand>,
     model_path: PathBuf,
@@ -206,6 +216,7 @@ impl LlmWorkerHandle {
                 WorkerCommand::WarmPersona {
                     persona_id,
                     prompt,
+                    app_handle,
                     respond_to,
                 } => {
                     let result = Self::handle_warm_persona(
@@ -214,6 +225,7 @@ impl LlmWorkerHandle {
                         &mut access_counter,
                         &persona_id,
                         &prompt,
+                        app_handle,
                     );
                     let _ = respond_to.send(result);
                 }
@@ -319,6 +331,7 @@ impl LlmWorkerHandle {
         access_counter: &mut u64,
         persona_id: &str,
         prompt: &str,
+        app_handle: AppHandle,
     ) -> Result<SessionGenerationStats, LlmError> {
         let current_access =
             Self::ensure_persona_session(engine, sessions, access_counter, persona_id)?;
@@ -327,7 +340,33 @@ impl LlmWorkerHandle {
             .ok_or_else(|| LlmError::Infer(format!("LLM 세션 생성 실패: {persona_id}")))?;
         session.last_access = current_access;
 
-        let mut runtime = GenerationRuntime::empty();
+        let mut cache_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        cache_dir.push("ai");
+        cache_dir.push("cache");
+        let _ = std::fs::create_dir_all(&cache_dir);
+        let cache_path = cache_dir.join(format!("{}.bin", persona_id));
+        
+        if session.cached_tokens.is_empty() {
+            if let Ok(loaded_tokens) = session.context.state_load_file(&cache_path, 4096) {
+                session.cached_tokens = loaded_tokens;
+            }
+        }
+
+        let persona_id_clone = persona_id.to_string();
+        let mut progress_callback = |processed: usize, total: usize| {
+            let _ = app_handle.emit("warm-progress", WarmProgressPayload {
+                persona_id: persona_id_clone.clone(),
+                current: processed,
+                total,
+            });
+        };
+
+        let mut runtime = GenerationRuntime {
+            cancel_flag: None,
+            token_callback: None,
+            progress_callback: Some(&mut progress_callback),
+        };
+        
         let result = engine.prefill_cache_runtime(
             &mut session.context,
             &session.cached_tokens,
@@ -337,6 +376,7 @@ impl LlmWorkerHandle {
         let stats = Self::generation_stats(&result);
         session.last_generation = Some(stats.clone());
         session.cached_tokens = result.cached_tokens;
+        let _ = session.context.state_save_file(&cache_path, &session.cached_tokens);
         Ok(stats)
     }
 
@@ -361,6 +401,7 @@ impl LlmWorkerHandle {
         let mut runtime = GenerationRuntime {
             cancel_flag: Some(cancel_flag.as_ref()),
             token_callback: Some(&mut callback),
+            progress_callback: None,
         };
         match engine.generate_with_cache_runtime(
             &mut session.context,
@@ -502,12 +543,14 @@ impl LlmWorkerHandle {
         &self,
         persona_id: &str,
         prompt: &str,
+        app_handle: AppHandle,
     ) -> Result<SessionGenerationStats, LlmError> {
         let (respond_to, response) = mpsc::channel();
         self.sender
             .send(WorkerCommand::WarmPersona {
                 persona_id: persona_id.to_string(),
                 prompt: prompt.to_string(),
+                app_handle,
                 respond_to,
             })
             .map_err(|e| LlmError::Infer(format!("LLM 워커 요청 전송 실패: {e}")))?;

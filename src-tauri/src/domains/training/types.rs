@@ -6,16 +6,12 @@ pub struct TrainingSummary {
     pub examples_used: usize,
     pub steps: usize,
     pub final_loss: f32,
-    pub adapter_path: String,
-    pub gguf_adapter_path: String,
 }
 
-#[derive(Debug, thiserror::Error, serde::Serialize)]
-pub enum TrainingError {
-    #[error("데이터베이스 오류: {0}")]
-    Database(String),
-    #[error("학습할 대화 데이터가 부족합니다: {0}")]
-    InsufficientData(String),
-    #[error("LoRA 학습 실패: {0}")]
-    TrainingFailed(String),
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TrainingProgress {
+    pub persona_id: String,
+    pub step: usize,
+    pub total_steps: usize,
+    pub loss: f32,
 }

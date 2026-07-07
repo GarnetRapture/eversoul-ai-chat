@@ -1,6 +1,6 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.11"
+version = "0.0.12"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"

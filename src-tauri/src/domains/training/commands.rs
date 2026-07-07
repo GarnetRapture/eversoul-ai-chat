@@ -1,45 +1,17 @@
-use super::services::TrainingService;
-use super::types::{TrainingError, TrainingSummary};
+use tauri::{AppHandle, State};
 use crate::domains::auth::commands::DbState;
-use crate::infrastructure::training::train_persona_lora;
-use std::path::PathBuf;
-use std::sync::Mutex;
-use tauri::State;
+use super::services::run_training;
+use super::types::TrainingSummary;
 
-pub struct TrainingState(pub Mutex<PathBuf>);
+// Training 뷰나 모듈의 State(어댑터 저장 경로 등)
+pub struct TrainingState(pub std::sync::Mutex<std::path::PathBuf>);
 
-#[tauri::command(rename_all = "snake_case")]
-pub fn training_run(
-    db_state: State<'_, DbState>,
-    training_state: State<'_, TrainingState>,
+#[tauri::command]
+pub async fn train_lora(
     persona_id: String,
-) -> Result<TrainingSummary, TrainingError> {
-    let examples = {
-        let conn = db_state
-            .0
-            .lock()
-            .map_err(|e| TrainingError::Database(e.to_string()))?;
-        TrainingService::collect_training_examples(&conn, &persona_id)?
-    };
-    let examples_used = examples.len();
-
-    let output_path = {
-        let adapters_dir = training_state
-            .0
-            .lock()
-            .map_err(|e| TrainingError::Database(e.to_string()))?;
-        adapters_dir.join(format!("{persona_id}.safetensors"))
-    };
-
-    let report = train_persona_lora(examples, &output_path)
-        .map_err(|e| TrainingError::TrainingFailed(e.to_string()))?;
-
-    Ok(TrainingSummary {
-        persona_id,
-        examples_used,
-        steps: report.steps,
-        final_loss: report.final_loss,
-        adapter_path: report.adapter_path.to_string_lossy().to_string(),
-        gguf_adapter_path: report.gguf_adapter_path.to_string_lossy().to_string(),
-    })
+    app_handle: AppHandle,
+    db_state: State<'_, DbState>,
+) -> Result<TrainingSummary, String> {
+    // 백그라운드 태스크로 구동하더라도, 일단은 await로 결과를 반환
+    run_training(persona_id, app_handle, db_state.inner()).await
 }

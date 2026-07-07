@@ -28,6 +28,7 @@ impl PerformanceTier {
 #[derive(Debug, Clone, Copy)]
 pub struct InferenceProfile {
     pub thread_count: i32,
+    pub batch_thread_count: i32,
     pub context_size: u32,
     pub max_tokens: u32,
     pub max_active_sessions: usize,
@@ -70,22 +71,26 @@ impl HardwareDetector {
         physical_core_count: usize,
     ) -> InferenceProfile {
         let physical_core_count = physical_core_count.max(1) as i32;
+        let logical_core_count = num_cpus::get().max(1) as i32;
 
         match tier {
             PerformanceTier::Light => InferenceProfile {
                 thread_count: (physical_core_count / 2).max(1),
+                batch_thread_count: physical_core_count,
                 context_size: 4096,
                 max_tokens: 256,
                 max_active_sessions: 2,
             },
             PerformanceTier::Balanced => InferenceProfile {
                 thread_count: (physical_core_count - 1).max(1),
+                batch_thread_count: logical_core_count,
                 context_size: 8192,
                 max_tokens: 512,
                 max_active_sessions: 5,
             },
             PerformanceTier::Performance => InferenceProfile {
                 thread_count: physical_core_count,
+                batch_thread_count: logical_core_count,
                 context_size: 16384,
                 max_tokens: 768,
                 max_active_sessions: 8,

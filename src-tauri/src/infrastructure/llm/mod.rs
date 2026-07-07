@@ -49,6 +49,7 @@ pub struct CacheGenerationResult {
 pub struct GenerationRuntime<'a> {
     pub cancel_flag: Option<&'a AtomicBool>,
     pub token_callback: Option<&'a mut dyn FnMut(String) -> Result<(), LlmError>>,
+    pub progress_callback: Option<&'a mut dyn FnMut(usize, usize)>,
 }
 
 impl<'a> GenerationRuntime<'a> {
@@ -56,6 +57,7 @@ impl<'a> GenerationRuntime<'a> {
         Self {
             cancel_flag: None,
             token_callback: None,
+            progress_callback: None,
         }
     }
 
@@ -546,18 +548,34 @@ impl LlmEngine {
 
         let new_tokens = &prompt_tokens[common_len..];
         if !new_tokens.is_empty() {
-            let mut batch = LlamaBatch::new(new_tokens.len(), 1);
-            for (offset, &token) in new_tokens.iter().enumerate() {
-                runtime.ensure_not_cancelled()?;
-                let position = (common_len + offset) as i32;
-                let is_last = offset == new_tokens.len() - 1;
-                batch
-                    .add(token, position, &[0], is_last)
-                    .map_err(|e| LlmError::Infer(e.to_string()))?;
-            }
+            let n_batch = ctx.n_batch() as usize;
+            let mut processed = 0;
+            let total = new_tokens.len();
 
-            ctx.decode(&mut batch)
-                .map_err(|e| LlmError::Infer(e.to_string()))?;
+            for chunk in new_tokens.chunks(n_batch) {
+                runtime.ensure_not_cancelled()?;
+                let mut batch = LlamaBatch::new(chunk.len(), 1);
+                
+                for (offset, &token) in chunk.iter().enumerate() {
+                    let position = (common_len + processed + offset) as i32;
+                    let is_last = (processed + offset) == total - 1;
+                    batch
+                        .add(token, position, &[0], is_last)
+                        .map_err(|e| LlmError::Infer(e.to_string()))?;
+                }
+
+                ctx.decode(&mut batch)
+                    .map_err(|e| LlmError::Infer(e.to_string()))?;
+                
+                processed += chunk.len();
+                if let Some(cb) = runtime.progress_callback.as_deref_mut() {
+                    cb(processed, total);
+                }
+            }
+        } else {
+            if let Some(cb) = runtime.progress_callback.as_deref_mut() {
+                cb(prompt_tokens.len(), prompt_tokens.len());
+            }
         }
 
         let prompt_token_count = prompt_tokens.len();

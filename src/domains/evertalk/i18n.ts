@@ -175,6 +175,11 @@ export interface EverTalkLabels {
     appInfoContact: string;
     appInfoWebsite: string;
     downloadError: string;
+    warmupTitle: string;
+    warmupProgress: (current: number, total: number) => string;
+    warmupOverall: (current: number, total: number) => string;
+    warmupStatusBuilding: (current: number, total: number) => string;
+    warmupStatusDone: string;
 }
 
 export type EverTalkLabelBag = {
@@ -357,6 +362,11 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         appInfoWebsite: '웹사이트',
         messageSendFailed: '응답 생성에 실패했습니다. 다시 시도해 주세요.',
         downloadError: '모델 파일 다운로드를 실패했거나 찾을 수 없습니다.',
+        warmupTitle: '정령 세션 구축 중...',
+        warmupProgress: (current, total) => `${current} / ${total} 토큰`,
+        warmupOverall: (current, total) => `전체 정령 (${current} / ${total})`,
+        warmupStatusBuilding: (current, total) => `전체 세션 사전 구축 중 (${current}/${total})`,
+        warmupStatusDone: '전체 세션 사전 구축 완료',
     },
     en: {
         languageGateTitle: 'Choose Language',
@@ -533,6 +543,11 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         appInfoWebsite: 'Website',
         messageSendFailed: 'Failed to generate a response. Please try again.',
         downloadError: 'Model file download failed or file is missing.',
+        warmupTitle: 'Building soul sessions...',
+        warmupProgress: (current, total) => `${current} / ${total} tokens`,
+        warmupOverall: (current, total) => `All souls (${current} / ${total})`,
+        warmupStatusBuilding: (current, total) => `Building all sessions (${current}/${total})`,
+        warmupStatusDone: 'All sessions built successfully',
     },
     zh_cn: {
         languageGateTitle: '选择语言',
@@ -705,10 +720,15 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         downloadFailed: '下载失败，请重试。',
         appInfoTitle: '程序信息',
         appInfoDeveloper: '开发者',
-        appInfoContact: '联系',
+        appInfoContact: '联系方式',
         appInfoWebsite: '网站',
-        messageSendFailed: '生成回复失败，请重试。',
+        messageSendFailed: '生成响应失败。请重试。',
         downloadError: '模型文件下载失败或找不到文件。',
+        warmupTitle: '正在构建精灵会话...',
+        warmupProgress: (current, total) => `${current} / ${total} tokens`,
+        warmupOverall: (current, total) => `所有精灵 (${current} / ${total})`,
+        warmupStatusBuilding: (current, total) => `正在预构建所有会话 (${current}/${total})`,
+        warmupStatusDone: '所有会话预构建完成',
     },
 };
 

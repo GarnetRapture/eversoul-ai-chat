@@ -12,7 +12,7 @@
 <p align="center"><i>承载精灵之声的完全本地化 AI 聊天客户端</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.11-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.12-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -229,22 +229,26 @@ flowchart TB
     end
 
     BE -- "聊天室 · 消息 · 精灵资料 · 记忆" --> DB[("SQLite<br/>eversoul.db")]
-    BE -- "挂载该精灵专属 LoRA 适配器后推理" --> LLM["本地 GGUF 模型<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
+    BE -- "100% Prefix Reuse<br/>离线数据持久化保存" --> CACHE[("KV Cache<br/>ai/cache/*.bin")]
+    BE -- "本地上下文组装推理" --> LLM["本地 GGUF 模型<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
 
     classDef feStyle fill:#cde2fb,stroke:#2a78d6,stroke-width:2px,color:#0b0b0b
     classDef beStyle fill:#e3ddf7,stroke:#4a3aa7,stroke-width:2px,color:#0b0b0b
     classDef dbStyle fill:#c9f0d8,stroke:#008300,stroke-width:2px,color:#0b0b0b
     classDef llmStyle fill:#fbdcc9,stroke:#eb6834,stroke-width:2px,color:#0b0b0b
+    classDef cacheStyle fill:#fff4cc,stroke:#ffb703,stroke-width:2px,color:#0b0b0b
 
     class FE1,FE2,FE3,FE4 feStyle
     class BE1,BE2,BE3 beStyle
     class DB dbStyle
     class LLM llmStyle
+    class CACHE cacheStyle
 ```
 
 - **本地数据库路径**：操作系统应用数据目录下的 `database/eversoul.db`（调试构建下每次启动都会重置）。
 - **配置文件**：应用数据目录下的 `config/settings.ini`（通过 `rust-ini` 读写，保存默认精灵、当前风格与语言设置）。
-- **LoRA 适配器存储**：应用数据目录下的 `lora_adapters/`（各精灵的微调结果相互隔离保存）。
+- **KV Cache 存储**：应用运行目录下的 `ai/cache/`（将各精灵的 Prompt 组装结果作为物理 `.bin` 文件永久保存，以实现 100% Prefix Token 复用及计算量最小化）。
+- **异步运行时架构**：后端的 LLM 计算独立在 `tauri::async_runtime::spawn_blocking` 工作线程中执行，确保主 UI 线程非阻塞。
 
 精灵数据构建流程、对话处理时序、LoRA 训练流程、数据库结构等更详细的图示，见 [docs/ARCHITECTURE.zh-CN.md](docs/ARCHITECTURE.zh-CN.md)。
 
@@ -387,6 +391,7 @@ npm run tauri build
 | 0.0.9 | `up` |
 | 0.0.10 | `fix` |
 | 0.0.11 | `1` |
+| 0.0.12 | `초기릴리즈` |
 
 ---
 

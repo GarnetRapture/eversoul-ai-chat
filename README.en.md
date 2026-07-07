@@ -12,7 +12,7 @@
 <p align="center"><i>A fully local AI chat client that carries the voices of the spirits</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.11-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.12-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -229,22 +229,26 @@ flowchart TB
     end
 
     BE -- "rooms · messages · spirit profiles · memories" --> DB[("SQLite<br/>eversoul.db")]
-    BE -- "inference with the spirit's own LoRA adapter" --> LLM["Local GGUF model<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
+    BE -- "100% Prefix Reuse<br/>Offline data persistent storage" --> CACHE[("KV Cache<br/>ai/cache/*.bin")]
+    BE -- "Local context assembly inference" --> LLM["Local GGUF model<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
 
     classDef feStyle fill:#cde2fb,stroke:#2a78d6,stroke-width:2px,color:#0b0b0b
     classDef beStyle fill:#e3ddf7,stroke:#4a3aa7,stroke-width:2px,color:#0b0b0b
     classDef dbStyle fill:#c9f0d8,stroke:#008300,stroke-width:2px,color:#0b0b0b
     classDef llmStyle fill:#fbdcc9,stroke:#eb6834,stroke-width:2px,color:#0b0b0b
+    classDef cacheStyle fill:#fff4cc,stroke:#ffb703,stroke-width:2px,color:#0b0b0b
 
     class FE1,FE2,FE3,FE4 feStyle
     class BE1,BE2,BE3 beStyle
     class DB dbStyle
     class LLM llmStyle
+    class CACHE cacheStyle
 ```
 
 - **Local DB path**: `database/eversoul.db` under the OS app-data directory (reset on every launch in debug builds).
 - **Settings file**: `config/settings.ini` under the app-data directory (read/written via `rust-ini`; stores default spirit, active style, and language).
-- **LoRA adapter storage**: `lora_adapters/` under the app-data directory (per-spirit fine-tuning results kept isolated).
+- **KV Cache storage**: `ai/cache/` under the app directory (Saves prompt assembly results per spirit as physical `.bin` files to achieve 100% Prefix Token reuse and minimize computation).
+- **Async Runtime Architecture**: Backend LLM computations are isolated using `tauri::async_runtime::spawn_blocking` to guarantee a non-blocking main UI thread.
 
 More detailed diagrams — the spirit-data build pipeline, the conversation sequence, the LoRA training flow, and the database structure — are in [docs/ARCHITECTURE.en.md](docs/ARCHITECTURE.en.md).
 
@@ -386,6 +390,7 @@ This repository follows the principle of **incrementing the patch version by 1 f
 | 0.0.9 | `up` |
 | 0.0.10 | `fix` |
 | 0.0.11 | `1` |
+| 0.0.12 | `초기릴리즈` |
 
 ---
 

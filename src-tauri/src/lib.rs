@@ -32,7 +32,7 @@ use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
 };
 use crate::domains::sync::commands::{sync_get_local_status, sync_run};
-use crate::domains::training::commands::{training_run, TrainingState};
+use crate::domains::training::commands::{train_lora, TrainingState};
 // [TTS 연동 보류] voice_synthesize: 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 목록에 추가.
 use crate::domains::voice::commands::{voice_get, voice_list};
 use crate::infrastructure::settings::SettingsManager;
@@ -171,7 +171,7 @@ pub fn run() {
             settings_set_show_reasoning,
             settings_detect_hardware,
             settings_complete_initial_setup,
-            training_run,
+            train_lora,
             voice_list,
             voice_get // [TTS 연동 보류] voice_synthesize: 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07).
         ])

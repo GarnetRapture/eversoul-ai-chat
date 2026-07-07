@@ -13,7 +13,7 @@ import { trainingClient, type TrainingSummary } from '../training';
 // import { voiceClient } from '../voice';
 import { createApiStatus, filterSpirits, formatUnknownError, } from './logic';
 import { getEverTalkLabels } from './i18n';
-import type { ApiStatusItem, EverTalkController, RosterTab, StageTab } from './types';
+import type { ApiStatusItem, EverTalkController, RosterTab, StageTab, WarmupState, WarmProgress } from './types';
 function frontendDebugLog(stage: string) {
     console.info(`[eversoul-frontend] ${stage}`);
 }
@@ -58,6 +58,13 @@ export function useEverTalkController(): EverTalkController {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
+    const [warmupState, setWarmupState] = useState<WarmupState>({
+        isActive: false,
+        currentIndex: 0,
+        totalPersonas: 0,
+        currentPersonaName: '',
+        progress: null,
+    });
     const [styles, setStyles] = useState<StyleProfile[]>([]);
     const [activeStyle, setActiveStyle] = useState<StyleProfile | null>(null);
     const [isSyncing, setIsSyncing] = useState(false);
@@ -177,50 +184,97 @@ export function useEverTalkController(): EverTalkController {
     }
     async function loadMainAppData(initialLanguage: AppLanguage) {
         frontendDebugLog('loadMainAppData:start');
+        
         const initLabels = getEverTalkLabels(initialLanguage);
         let dbList: PersonaConfig[] = [];
         let savedDefaultId: string | null = null;
-        try {
-            frontendDebugLog('loadMainAppData:auth_get_session:start');
-            const session = await authClient.getSession();
-            setSystemStatus(createApiStatus('auth', initLabels.authSession, session ? 'ready' : 'warning', session ? initLabels.sessionReady : initLabels.noLocalSession));
-        }
-        catch (err) {
-            console.error('원격 인증 세션 수립 실패:', err);
-            setSystemStatus(createApiStatus('auth', initLabels.authSession, 'error', formatUnknownError(err)));
-        }
-        try {
-            frontendDebugLog('loadMainAppData:persona_list_archive:start');
-            const archiveList = await personaClient.listArchive();
-            setSystemStatus(createApiStatus('persona-archive', initLabels.personaPack, 'ready', initLabels.archiveCount(archiveList.length)));
-        }
-        catch (err) {
-            setSystemStatus(createApiStatus('persona-archive', initLabels.personaPack, 'error', formatUnknownError(err)));
-        }
-        try {
-            frontendDebugLog('loadMainAppData:persona_list:start');
-            dbList = await personaClient.list();
-            frontendDebugLog('loadMainAppData:persona_get_default:start');
-            savedDefaultId = await personaClient.getDefault();
-            setDefaultPersonaId(savedDefaultId);
-            setPersonaLoadError(null);
-            setSystemStatus(createApiStatus('persona-db', initLabels.personaDb, dbList.length > 0 ? 'ready' : 'warning', dbList.length > 0 ? initLabels.loadedCount(dbList.length) : initLabels.noDbRows));
-        }
-        catch (err) {
-            const message = formatUnknownError(err);
-            setPersonaLoadError(message);
-            setSystemStatus(createApiStatus('persona-db', initLabels.personaDb, 'error', message));
-        }
-        try {
-            frontendDebugLog('loadMainAppData:chat_list_rooms:start');
-            const rooms = await chatClient.listRooms();
-            setSystemStatus(createApiStatus('chat-db', initLabels.chatDb, 'ready', initLabels.roomCount(rooms.length)));
-        }
-        catch (err) {
-            setSystemStatus(createApiStatus('chat-db', initLabels.chatDb, 'error', formatUnknownError(err)));
-        }
+
+        const loadPromises = [
+            authClient.getSession().then(session => {
+                setSystemStatus(createApiStatus('auth', initLabels.authSession, session ? 'ready' : 'warning', session ? initLabels.sessionReady : initLabels.noLocalSession));
+            }).catch(err => {
+                setSystemStatus(createApiStatus('auth', initLabels.authSession, 'error', formatUnknownError(err)));
+            }),
+
+            personaClient.listArchive().then(list => {
+                setSystemStatus(createApiStatus('persona-archive', initLabels.personaPack, 'ready', initLabels.archiveCount(list.length)));
+            }).catch(err => {
+                setSystemStatus(createApiStatus('persona-archive', initLabels.personaPack, 'error', formatUnknownError(err)));
+            }),
+
+            Promise.all([personaClient.list(), personaClient.getDefault()]).then(([list, defId]) => {
+                dbList = list;
+                savedDefaultId = defId;
+                setDefaultPersonaId(defId);
+                setPersonaLoadError(null);
+                setSystemStatus(createApiStatus('persona-db', initLabels.personaDb, list.length > 0 ? 'ready' : 'warning', list.length > 0 ? initLabels.loadedCount(list.length) : initLabels.noDbRows));
+            }).catch(err => {
+                const message = formatUnknownError(err);
+                setPersonaLoadError(message);
+                setSystemStatus(createApiStatus('persona-db', initLabels.personaDb, 'error', message));
+            }),
+
+            chatClient.listRooms().then(rooms => {
+                setSystemStatus(createApiStatus('chat-db', initLabels.chatDb, 'ready', initLabels.roomCount(rooms.length)));
+            }).catch(err => {
+                setSystemStatus(createApiStatus('chat-db', initLabels.chatDb, 'error', formatUnknownError(err)));
+            }),
+
+            llmClient.getStatus().then(status => {
+                setLlmStatus(status);
+                setSystemStatus(createApiStatus('llm', initLabels.localModel, status.is_loaded ? 'ready' : 'warning', status.is_loaded ? initLabels.modelLoaded : initLabels.modelNotLoaded));
+            }).catch(err => {
+                setSystemStatus(createApiStatus('llm', initLabels.localModel, 'error', formatUnknownError(err)));
+            }),
+            
+            refreshStyles(),
+            refreshLocalStatus()
+        ];
+
+        await Promise.all(loadPromises);
+
         const sortedList = [...dbList].sort((a, b) => a.name.localeCompare(b.name));
         setSpirits(sortedList);
+        
+        // 전체 정령 대상 초기 구축 스케줄러 (백그라운드)
+        ensureLlmReadyForPersonaCache().then(async llmReady => {
+            if (llmReady && sortedList.length > 0) {
+                const unlistenProgress = await listen<WarmProgress>('warm-progress', (event) => {
+                    setWarmupState(prev => ({ ...prev, progress: event.payload }));
+                });
+
+                setWarmupState(prev => ({
+                    ...prev,
+                    isActive: true,
+                    totalPersonas: sortedList.length,
+                }));
+
+                for (let i = 0; i < sortedList.length; i++) {
+                    const spirit = sortedList[i];
+                    
+                    setWarmupState(prev => ({
+                        ...prev,
+                        currentIndex: i,
+                        currentPersonaName: spirit.name,
+                        progress: null
+                    }));
+
+                    setSystemStatus(createApiStatus('llm', initLabels.localModel, 'warning', initLabels.warmupStatusBuilding(i + 1, sortedList.length)));
+                    try {
+                        await chatClient.preparePersonaCache(spirit.id);
+                    } catch (err) {
+                        console.error(`정령 사전 캐시 준비 실패 (${spirit.id}):`, err);
+                    }
+                }
+                
+                setWarmupState(prev => ({ ...prev, isActive: false }));
+                unlistenProgress();
+                
+                setSystemStatus(createApiStatus('llm', initLabels.localModel, 'ready', initLabels.warmupStatusDone));
+                await refreshActiveSessions();
+            }
+        });
+
         const savedDefault = savedDefaultId
             ? sortedList.find((persona) => persona.id === savedDefaultId)
             : null;
@@ -230,19 +284,6 @@ export function useEverTalkController(): EverTalkController {
         if (defaultSpirit) {
             frontendDebugLog('loadMainAppData:select_default_spirit:start');
             await selectSpirit(defaultSpirit, initialLanguage);
-        }
-        frontendDebugLog('loadMainAppData:refreshStyles:start');
-        await refreshStyles();
-        frontendDebugLog('loadMainAppData:refreshLocalStatus:start');
-        await refreshLocalStatus();
-        try {
-            frontendDebugLog('loadMainAppData:llm_status:start');
-            const status = await llmClient.getStatus();
-            setLlmStatus(status);
-            setSystemStatus(createApiStatus('llm', initLabels.localModel, status.is_loaded ? 'ready' : 'warning', status.is_loaded ? initLabels.modelLoaded : initLabels.modelNotLoaded));
-        }
-        catch (err) {
-            setSystemStatus(createApiStatus('llm', initLabels.localModel, 'error', formatUnknownError(err)));
         }
         frontendDebugLog('loadMainAppData:done');
     }
@@ -276,20 +317,45 @@ export function useEverTalkController(): EverTalkController {
         setActiveSpiritId(spirit.id);
         const detail = parseSpiritDetail(spirit, languageOverride ?? appLanguage);
         setActiveDetail(detail);
-        const room = await chatClient.getEverTalkSessionRoom();
-        setActiveRoom(room);
-        const history = await chatClient.listMessagesForPersona(room.id, spirit.id);
-        setMessages(history);
-        try {
-            const llmReady = await ensureLlmReadyForPersonaCache();
-            if (llmReady) {
-                await chatClient.preparePersonaCache(spirit.id);
+
+        async function selectRoom(room: ChatRoom) {
+            if (room) {
+                setActiveRoom(room);
+                const currentSpiritId = spirit.id;
+                if (currentSpiritId) {
+                    const history = await chatClient.listMessagesForPersona(room.id, currentSpiritId);
+                    setMessages(history);
+                    
+                    ensureLlmReadyForPersonaCache().then(async llmReady => {
+                        if (llmReady) {
+                            try {
+                                await chatClient.preparePersonaCache(currentSpiritId);
+                                await refreshActiveSessions();
+                            } catch (err) {
+                                console.error('채팅방 전환 중 사전 캐시 준비 실패:', err);
+                            }
+                        }
+                    });
+                }
+                await refreshActiveSessions();
             }
         }
-        catch (err) {
-            console.error('정령 사전 캐시 준비 실패:', err);
-            setSystemStatus(createApiStatus('llm', labels.localModel, 'warning', formatUnknownError(err)));
-        }
+
+        const room = await chatClient.getEverTalkSessionRoom();
+        await selectRoom(room);
+        
+        // 프론트엔드 UI 블로킹(프리징) 방지: 프롬프트 캐시 준비는 백그라운드에서 비동기로 실행
+        ensureLlmReadyForPersonaCache().then(async llmReady => {
+            if (llmReady) {
+                try {
+                    await chatClient.preparePersonaCache(spirit.id);
+                } catch (err) {
+                    console.error('정령 사전 캐시 준비 실패:', err);
+                    setSystemStatus(createApiStatus('llm', labels.localModel, 'warning', formatUnknownError(err)));
+                }
+            }
+        });
+
         await refreshLocalStatus();
         await refreshActiveSessions();
         frontendDebugLog(`selectSpirit:done:${spirit.id}`);
@@ -304,24 +370,6 @@ export function useEverTalkController(): EverTalkController {
             setSystemStatus(createApiStatus('persona-db', labels.personaDb, 'error', formatUnknownError(err)));
         }
     }
-    /* [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
-    async function playPersonaVoice(personaId: string, text: string) {
-        if (!text.trim()) {
-            return;
-        }
-        try {
-            const bytes = await voiceClient.synthesize(personaId, text);
-            const blob = new Blob([new Uint8Array(bytes)], { type: 'audio/wav' });
-            const url = URL.createObjectURL(blob);
-            const audio = new Audio(url);
-            audio.onended = () => URL.revokeObjectURL(url);
-            await audio.play();
-        }
-        catch (err) {
-            console.error('정령 음성 합성 재생 실패:', err);
-        }
-    }
-    */
     async function sendMessage(event: React.FormEvent) {
         event.preventDefault();
         if (!inputText.trim() || !activeRoom || !activeDetail || isTyping) {
@@ -344,8 +392,6 @@ export function useEverTalkController(): EverTalkController {
         try {
             aiMessage = await chatClient.sendMessage(room.id, userText, activeSpiritId);
             setMessages((prev) => [...prev, aiMessage as ChatMessage]);
-            // [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
-            // void playPersonaVoice(activeSpiritId, aiMessage.content);
         }
         catch (err) {
             console.error('채팅 응답 수집 실패:', err);
@@ -499,20 +545,18 @@ export function useEverTalkController(): EverTalkController {
         }
     }
     async function trainPersona() {
-        if (!activeSpiritId || isTraining) {
-            return;
-        }
+        if (!activeSpiritId || isTraining) return;
+        
         setIsTraining(true);
         setTrainingError(null);
+        setTrainingSummary(null);
         try {
             const summary = await trainingClient.run(activeSpiritId);
             setTrainingSummary(summary);
-        }
-        catch (err) {
+        } catch (err) {
             console.error('정령 LoRA 학습 실패:', err);
             setTrainingError(formatUnknownError(err));
-        }
-        finally {
+        } finally {
             setIsTraining(false);
         }
     }
@@ -731,6 +775,7 @@ export function useEverTalkController(): EverTalkController {
         activeSessionIds,
         setupInProgress,
         setupProgress,
+        warmupState,
         setSearchQuery,
         setInputText,
         setActiveRosterTab,

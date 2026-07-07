@@ -28,6 +28,7 @@ EverSoul AI Chat은 사용자의 PC에서 직접 실행되는 CPU 기반 로컬 
 - 로컬 LLM 실행 엔진은 서버 추론이 아니라 사용자 PC의 CPU 실행을 전제로 설계한다.
 - 로컬 LLM 모델은 `ai/model/qwen25-3b-korean-Q4_K_M.gguf`로 고정한다 (MyeongHo0621/Qwen2.5-3B-Korean Q4_K_M, Apache 2.0, 한국어 20만 건 파인튜닝).
 - `ai/` 디렉터리는 대용량 GGUF 파일을 포함하며 git 추적에서 제외한다. 모델 파일은 사용자가 별도로 배치해야 한다.
+- **KV Cache 최적화**: 정령별 컨텍스트(Persona, Style, Memory)를 조립하여 `ai/cache/` 디렉터리에 `.bin` 형태의 오프라인 데이터로 영구 보존하며, 프롬프트 변경 시 Prefix Token 비교를 통해 불일치 영역만 재연산하는 100% 부분 캐시 재사용(Prefix Reuse) 알고리즘을 강제한다.
 - 웹 API는 로그인, 권한 확인, 사용자별 설정, persona pack, style pack, knowledge pack, 업데이트 정보 동기화를 담당한다.
 - 정적 자산은 `public/` 또는 `src/assets/`에 둔다.
 - VS Code 프로젝트 사전 설정은 `.vscode/extensions.json`, `.vscode/settings.json`, `.vscode/tasks.json`을 추적 대상으로 유지한다.
@@ -40,9 +41,11 @@ EverSoul AI Chat은 사용자의 PC에서 직접 실행되는 CPU 기반 로컬 
 
 ## 구현 기준
 
-- 공유 타입, 유틸리티, 상태 로직은 컴포넌트 내부에 중복 정의하지 않고 적절한 모듈로 분리한다.
+- 공유 타입, 유틸리티, 상태 로직은 컴포넌트 내부에 중복 정의하지 않고 적절한 모듈로 분리한다. (인라인 타입 선언 완전 금지, `types.ts` / `types.rs` 중앙화 강제)
 - UI 변경 시 기존 컴포넌트의 기능, 필드, 표시 정보, 이벤트 흐름을 제거하지 않는다.
 - Tauri 명령, 파일 접근, 외부 호출은 프런트엔드 호출부와 Rust 구현부를 함께 확인한다.
+- 프론트엔드에서 Tauri 이벤트(`listen`) 구독 시, 컴포넌트 언마운트 혹은 스코프 종료 시 반드시 `unlisten`을 호출하여 메모리 누수를 방지한다.
+- 백엔드(Rust)에서 무거운 I/O 및 LLM 연산을 수행할 경우 `tauri::async_runtime::spawn_blocking` 또는 워커 스레드를 사용하여 메인 스레드 병목(Blocking)을 차단한다.
 - 서버 동기화 데이터와 로컬 LLM 컨텍스트 조립 로직은 역할을 분리한다.
 - persona pack, style pack, knowledge pack은 실제 모델 재학습으로 표현하지 않고 로컬 컨텍스트 구성 데이터로 표현한다.
 - 환경 변수나 로컬 비밀값은 `.env.example`에 이름과 용도만 남기고 실제 값은 저장소에 포함하지 않는다.

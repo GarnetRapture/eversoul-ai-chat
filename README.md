@@ -12,7 +12,7 @@
 <p align="center"><i>완전한 로컬 구동 AI 채팅 클라이언트</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.11-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.12-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -229,22 +229,26 @@ flowchart TB
     end
 
     BE -- "대화방 · 메시지 · 정령 프로필 · 기억" --> DB[("SQLite<br/>eversoul.db")]
-    BE -- "정령별 LoRA 어댑터 장착 추론" --> LLM["GGUF 로컬 모델<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
+    BE -- "100% Prefix Reuse<br/>오프라인 데이터 영구 보존" --> CACHE[("KV Cache<br/>ai/cache/*.bin")]
+    BE -- "로컬 컨텍스트 조립 추론" --> LLM["GGUF 로컬 모델<br/>Qwen2.5-3B-Korean<br/>llama.cpp"]
 
     classDef feStyle fill:#cde2fb,stroke:#2a78d6,stroke-width:2px,color:#0b0b0b
     classDef beStyle fill:#e3ddf7,stroke:#4a3aa7,stroke-width:2px,color:#0b0b0b
     classDef dbStyle fill:#c9f0d8,stroke:#008300,stroke-width:2px,color:#0b0b0b
     classDef llmStyle fill:#fbdcc9,stroke:#eb6834,stroke-width:2px,color:#0b0b0b
+    classDef cacheStyle fill:#fff4cc,stroke:#ffb703,stroke-width:2px,color:#0b0b0b
 
     class FE1,FE2,FE3,FE4 feStyle
     class BE1,BE2,BE3 beStyle
     class DB dbStyle
     class LLM llmStyle
+    class CACHE cacheStyle
 ```
 
 - **로컬 DB 경로**: OS별 앱 데이터 디렉터리 하위 `database/eversoul.db` (디버그 빌드 시 매 실행마다 초기화).
 - **설정 파일**: 앱 데이터 디렉터리 하위 `config/settings.ini` (`rust-ini`로 읽기/쓰기, 기본 정령·활성 스타일·언어 저장).
-- **LoRA 어댑터 저장소**: 앱 데이터 디렉터리 하위 `lora_adapters/` (정령별 파인튜닝 결과 격리 저장).
+- **KV Cache 저장소**: 앱 실행 디렉터리 하위 `ai/cache/` (정령별 프롬프트 조립 결과를 `.bin` 물리 파일로 영구 보존하여 Prefix Token 부분 재사용 및 연산량 최소화 100% 달성).
+- **비동기 런타임 구조**: 백엔드의 LLM 연산은 `tauri::async_runtime::spawn_blocking` 워커로 분리되어 메인 UI 스레드 논블로킹 보장.
 
 정령 데이터 빌드 파이프라인, 대화 처리 시퀀스, LoRA 학습 흐름, 데이터베이스 구조까지 더 자세한 다이어그램은 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)에 있습니다.
 
@@ -418,6 +422,7 @@ npm run tauri build
 | 0.0.9 | `up` |
 | 0.0.10 | `fix` |
 | 0.0.11 | `1` |
+| 0.0.12 | `초기릴리즈` |
 
 ---
 
