@@ -20,4 +20,7 @@ export const settingsClient = {
     async completeInitialSetup(language: AppLanguage, tier: PerformanceTier): Promise<AppSettings> {
         return invokeCommand<AppSettings>(tauriCommands.settings.completeInitialSetup, { language, tier });
     },
+    async setSetupStage(stage: string): Promise<AppSettings> {
+        return invokeCommand<AppSettings>(tauriCommands.settings.setSetupStage, { stage });
+    },
 };

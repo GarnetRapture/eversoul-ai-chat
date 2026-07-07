@@ -3,12 +3,14 @@ import { listen } from '@tauri-apps/api/event';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import { authClient } from '../auth';
 import { chatClient, type ChatMessage, type ChatRoom } from '../chat';
-import { llmClient, type LlmModelValidation, type LlmRequestStatus, type LlmSessionStatus, type LlmStatus } from '../llm';
+import { llmClient, type LlmModelValidation, type LlmRequestStatus, type LlmSessionStatus, type LlmStatus, type ModelDownloadProgress } from '../llm';
 import { parseSpiritDetail, personaClient, type BondRankingEntry, type FamiliarityEntry, type PersonaConfig, type SpiritDetail } from '../persona';
 import { settingsClient, type AppSettings, type HardwareProfile, type ResetSummary, type SetupProgress } from '../settings';
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
 import { trainingClient, type TrainingSummary } from '../training';
+// [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
+// import { voiceClient } from '../voice';
 import { createApiStatus, filterSpirits, formatUnknownError, } from './logic';
 import { getEverTalkLabels } from './i18n';
 import type { ApiStatusItem, EverTalkController, RosterTab, StageTab } from './types';
@@ -68,6 +70,9 @@ export function useEverTalkController(): EverTalkController {
     const [activeSessionIds, setActiveSessionIds] = useState<string[]>([]);
     const [setupInProgress, setSetupInProgress] = useState(false);
     const [setupProgress, setSetupProgress] = useState<SetupProgress | null>(null);
+    const [downloadProgress, setDownloadProgress] = useState<ModelDownloadProgress | null>(null);
+    const [downloadError, setDownloadError] = useState<string | null>(null);
+    const [isDownloading, setIsDownloading] = useState(false);
     const pendingLanguageRef = useRef<AppLanguage | null>(null);
     const [appSettings, setAppSettings] = useState<AppSettings | null>(null);
     const [modelValidation, setModelValidation] = useState<LlmModelValidation | null>(null);
@@ -122,6 +127,22 @@ export function useEverTalkController(): EverTalkController {
             setSystemStatus(createApiStatus('llm', labels.localModel, 'error', message));
         }
         frontendDebugLog('refreshLlmStatus:done');
+    }
+    async function ensureLlmReadyForPersonaCache(): Promise<boolean> {
+        try {
+            let status = await llmClient.getStatus();
+            if (!status.is_loaded) {
+                status = await llmClient.loadEngine();
+            }
+            setLlmStatus(status);
+            setSystemStatus(createApiStatus('llm', labels.localModel, status.is_loaded ? 'ready' : 'warning', status.is_loaded ? labels.modelLoaded : labels.modelNotLoaded));
+            return status.is_loaded;
+        }
+        catch (err) {
+            console.error('정령 사전 캐시용 로컬 LLM 로드 실패:', err);
+            setSystemStatus(createApiStatus('llm', labels.localModel, 'error', formatUnknownError(err)));
+            return false;
+        }
     }
     async function refreshLocalStatus() {
         frontendDebugLog('refreshLocalStatus:start');
@@ -233,10 +254,11 @@ export function useEverTalkController(): EverTalkController {
             setSetupProgress(event.payload);
         });
         try {
-            const updated = await settingsClient.completeInitialSetup(language, tier);
-            setAppSettings(updated);
-            setAppLanguage(updated.language);
-            await loadMainAppData(updated.language);
+            await settingsClient.completeInitialSetup(language, tier);
+            const staged = await settingsClient.setSetupStage('done');
+            setAppSettings(staged);
+            setAppLanguage(staged.language);
+            await loadMainAppData(staged.language);
         }
         catch (err) {
             console.error('초기 셋업 실패:', err);
@@ -259,6 +281,16 @@ export function useEverTalkController(): EverTalkController {
         setActiveRoom(room);
         const history = await chatClient.listMessagesForPersona(room.id, spirit.id);
         setMessages(history);
+        try {
+            const llmReady = await ensureLlmReadyForPersonaCache();
+            if (llmReady) {
+                await chatClient.preparePersonaCache(spirit.id);
+            }
+        }
+        catch (err) {
+            console.error('정령 사전 캐시 준비 실패:', err);
+            setSystemStatus(createApiStatus('llm', labels.localModel, 'warning', formatUnknownError(err)));
+        }
         await refreshLocalStatus();
         await refreshActiveSessions();
         frontendDebugLog(`selectSpirit:done:${spirit.id}`);
@@ -273,6 +305,24 @@ export function useEverTalkController(): EverTalkController {
             setSystemStatus(createApiStatus('persona-db', labels.personaDb, 'error', formatUnknownError(err)));
         }
     }
+    /* [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
+    async function playPersonaVoice(personaId: string, text: string) {
+        if (!text.trim()) {
+            return;
+        }
+        try {
+            const bytes = await voiceClient.synthesize(personaId, text);
+            const blob = new Blob([new Uint8Array(bytes)], { type: 'audio/wav' });
+            const url = URL.createObjectURL(blob);
+            const audio = new Audio(url);
+            audio.onended = () => URL.revokeObjectURL(url);
+            await audio.play();
+        }
+        catch (err) {
+            console.error('정령 음성 합성 재생 실패:', err);
+        }
+    }
+    */
     async function sendMessage(event: React.FormEvent) {
         event.preventDefault();
         if (!inputText.trim() || !activeRoom || !activeDetail || isTyping) {
@@ -295,6 +345,8 @@ export function useEverTalkController(): EverTalkController {
         try {
             aiMessage = await chatClient.sendMessage(room.id, userText, activeSpiritId);
             setMessages((prev) => [...prev, aiMessage as ChatMessage]);
+            // [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
+            // void playPersonaVoice(activeSpiritId, aiMessage.content);
         }
         catch (err) {
             console.error('채팅 응답 수집 실패:', err);
@@ -385,10 +437,9 @@ export function useEverTalkController(): EverTalkController {
         setLanguageGateOpen(false);
     }
     async function setPerformanceTier(tier: PerformanceTier) {
-        const isInitialSetupFlow = !appSettings?.performance_configured;
+        const isInitialSetupFlow = (appSettings?.setup_stage ?? 'language') !== 'done';
         if (isInitialSetupFlow) {
-            setPerformanceGateOpen(false);
-            const language = pendingLanguageRef.current ?? appLanguage;
+            const language = appSettings?.language ?? appLanguage;
             await runInitialSetup(language, tier);
             return;
         }
@@ -419,6 +470,7 @@ export function useEverTalkController(): EverTalkController {
                 language_configured: false,
                 performance_tier: 'balanced',
                 performance_configured: false,
+                setup_stage: 'language',
             });
             setAppLanguage('ko');
             pendingLanguageRef.current = null;
@@ -465,11 +517,12 @@ export function useEverTalkController(): EverTalkController {
         }
     }
     async function setLanguage(language: AppLanguage) {
-        const isInitialSetupFlow = !appSettings?.performance_configured;
+        const isInitialSetupFlow = (appSettings?.setup_stage ?? 'language') !== 'done';
         if (isInitialSetupFlow) {
-            pendingLanguageRef.current = language;
             setAppLanguage(language);
-            setLanguageGateOpen(false);
+            await settingsClient.setLanguage(language);
+            const staged = await settingsClient.setSetupStage('download');
+            setAppSettings(staged);
             return;
         }
         const updated = await settingsClient.setLanguage(language);
@@ -479,6 +532,30 @@ export function useEverTalkController(): EverTalkController {
         const activeSpirit = spirits.find((spirit) => spirit.id === activeSpiritId);
         if (activeSpirit) {
             setActiveDetail(parseSpiritDetail(activeSpirit, updated.language));
+        }
+    }
+    async function startModelDownload() {
+        if (isDownloading) {
+            return;
+        }
+        setDownloadError(null);
+        setIsDownloading(true);
+        setDownloadProgress({ downloaded_bytes: 0, total_bytes: 0, ratio: 0, done: false });
+        const unlisten = await listen<ModelDownloadProgress>('model_download_progress', (event) => {
+            setDownloadProgress(event.payload);
+        });
+        try {
+            await llmClient.downloadModel();
+            const staged = await settingsClient.setSetupStage('performance');
+            setAppSettings(staged);
+        }
+        catch (err) {
+            console.error('모델 다운로드 실패:', err);
+            setDownloadError(formatUnknownError(err));
+        }
+        finally {
+            unlisten();
+            setIsDownloading(false);
         }
     }
     useEffect(() => {
@@ -498,9 +575,7 @@ export function useEverTalkController(): EverTalkController {
                 initialLanguage = currentSettings.language;
                 setAppSettings(currentSettings);
                 setAppLanguage(currentSettings.language);
-                setLanguageGateOpen(!currentSettings.language_configured);
-                setPerformanceGateOpen(!currentSettings.performance_configured);
-                needsGate = !currentSettings.language_configured || !currentSettings.performance_configured;
+                needsGate = currentSettings.setup_stage !== 'done';
             }
             catch (err) {
                 console.error('설정 조회 실패:', err);
@@ -656,5 +731,10 @@ export function useEverTalkController(): EverTalkController {
         openProfileDetail,
         closeProfileDetail,
         setPerformanceTier,
+        setupStage: appSettings?.setup_stage ?? 'language',
+        downloadProgress,
+        downloadError,
+        isDownloading,
+        startModelDownload,
     };
 }

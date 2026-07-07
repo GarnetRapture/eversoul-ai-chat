@@ -17,6 +17,7 @@ impl SettingsService {
             language_configured: settings.has_language(),
             performance_tier: settings.get_performance_tier(),
             performance_configured: settings.has_performance_tier(),
+            setup_stage: settings.get_setup_stage(),
         }
     }
 
@@ -29,6 +30,16 @@ impl SettingsService {
         }
         settings
             .set_performance_tier(tier)
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
+        Ok(Self::get_settings(settings))
+    }
+
+    pub fn set_setup_stage(
+        settings: &SettingsManager,
+        stage: &str,
+    ) -> Result<AppSettings, SettingsError> {
+        settings
+            .set_setup_stage(stage)
             .map_err(|e| SettingsError::Io(e.to_string()))?;
         Ok(Self::get_settings(settings))
     }

@@ -1,3 +1,4 @@
+pub mod download;
 pub mod scheduler;
 pub mod streaming;
 pub mod validation;
@@ -425,17 +426,19 @@ impl LlmEngine {
         }
 
         let new_tokens = &prompt_tokens[common_len..];
-        let mut batch = LlamaBatch::new(new_tokens.len(), 1);
-        for (offset, &token) in new_tokens.iter().enumerate() {
-            let position = (common_len + offset) as i32;
-            let is_last = offset == new_tokens.len() - 1;
-            batch
-                .add(token, position, &[0], is_last)
+        if !new_tokens.is_empty() {
+            let mut batch = LlamaBatch::new(new_tokens.len(), 1);
+            for (offset, &token) in new_tokens.iter().enumerate() {
+                let position = (common_len + offset) as i32;
+                let is_last = offset == new_tokens.len() - 1;
+                batch
+                    .add(token, position, &[0], is_last)
+                    .map_err(|e| LlmError::Infer(e.to_string()))?;
+            }
+
+            ctx.decode(&mut batch)
                 .map_err(|e| LlmError::Infer(e.to_string()))?;
         }
-
-        ctx.decode(&mut batch)
-            .map_err(|e| LlmError::Infer(e.to_string()))?;
 
         let seed = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
@@ -498,6 +501,71 @@ impl LlmEngine {
             prompt_tokens: prompt_token_count,
             generated_tokens: generated_token_count,
             cached_tokens: full_sequence,
+            reused_prefix_tokens: common_len,
+            truncated_prompt_tokens,
+            cache_reset,
+        })
+    }
+
+    pub fn prefill_cache_runtime(
+        &self,
+        ctx: &mut LlamaContext<'_>,
+        cached_tokens: &[LlamaToken],
+        prompt: &str,
+        runtime: &mut GenerationRuntime<'_>,
+    ) -> Result<CacheGenerationResult, LlmError> {
+        let plan = self.generation_plan(prompt, 1)?;
+        let prompt_tokens = plan.prompt_tokens;
+        let truncated_prompt_tokens = plan.truncated_prompt_tokens;
+        let mut cache_reset = false;
+
+        if plan.overflowed {
+            ctx.clear_kv_cache();
+            cache_reset = true;
+        }
+
+        let effective_cached_tokens: &[LlamaToken] =
+            if plan.overflowed { &[] } else { cached_tokens };
+        let matching_len = effective_cached_tokens
+            .iter()
+            .zip(prompt_tokens.iter())
+            .take_while(|(cached, incoming)| cached == incoming)
+            .count();
+        let mut common_len = matching_len.min(prompt_tokens.len());
+
+        if common_len < effective_cached_tokens.len() {
+            let removed = ctx
+                .clear_kv_cache_seq(Some(0), Some(common_len as u32), None)
+                .map_err(|e| LlmError::ContextCreate(e.to_string()))?;
+            if !removed {
+                ctx.clear_kv_cache();
+                cache_reset = true;
+                common_len = 0;
+            }
+        }
+
+        let new_tokens = &prompt_tokens[common_len..];
+        if !new_tokens.is_empty() {
+            let mut batch = LlamaBatch::new(new_tokens.len(), 1);
+            for (offset, &token) in new_tokens.iter().enumerate() {
+                runtime.ensure_not_cancelled()?;
+                let position = (common_len + offset) as i32;
+                let is_last = offset == new_tokens.len() - 1;
+                batch
+                    .add(token, position, &[0], is_last)
+                    .map_err(|e| LlmError::Infer(e.to_string()))?;
+            }
+
+            ctx.decode(&mut batch)
+                .map_err(|e| LlmError::Infer(e.to_string()))?;
+        }
+
+        let prompt_token_count = prompt_tokens.len();
+        Ok(CacheGenerationResult {
+            text: String::new(),
+            cached_tokens: prompt_tokens,
+            prompt_tokens: prompt_token_count,
+            generated_tokens: 0,
             reused_prefix_tokens: common_len,
             truncated_prompt_tokens,
             cache_reset,

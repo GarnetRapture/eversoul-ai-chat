@@ -158,6 +158,21 @@ export interface EverTalkLabels {
     setupStageModel: string;
     setupStageDone: string;
     setupProgressCount: (current: number, total: number) => string;
+    setupStepIndicator: (current: number, total: number) => string;
+    setupLanguageStep: string;
+    setupDownloadStep: string;
+    setupPerformanceStep: string;
+    downloadGateTitle: string;
+    downloadGateDescription: string;
+    downloadStart: string;
+    downloadPreparing: string;
+    downloadProgressDetail: (downloadedMb: number, totalMb: number) => string;
+    downloadComplete: string;
+    downloadFailed: string;
+    appInfoTitle: string;
+    appInfoDeveloper: string;
+    appInfoContact: string;
+    appInfoWebsite: string;
 }
 
 export type EverTalkLabelBag = {
@@ -322,6 +337,21 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         setupStageModel: '로컬 모델 로딩 중',
         setupStageDone: '구성 완료',
         setupProgressCount: (current, total) => `${current} / ${total}`,
+        setupStepIndicator: (current, total) => `단계 ${current} / ${total}`,
+        setupLanguageStep: '언어',
+        setupDownloadStep: '모델 다운로드',
+        setupPerformanceStep: '성능',
+        downloadGateTitle: '로컬 모델 다운로드',
+        downloadGateDescription: '오프라인 대화를 위한 로컬 언어 모델을 내려받습니다. 최초 1회만 필요합니다.',
+        downloadStart: '다운로드 시작',
+        downloadPreparing: '다운로드 준비 중',
+        downloadProgressDetail: (downloadedMb, totalMb) => `${downloadedMb} / ${totalMb} MB`,
+        downloadComplete: '다운로드 완료',
+        downloadFailed: '다운로드에 실패했습니다. 다시 시도해 주세요.',
+        appInfoTitle: '프로그램 정보',
+        appInfoDeveloper: '개발자',
+        appInfoContact: '문의',
+        appInfoWebsite: '웹사이트',
         messageSendFailed: '응답 생성에 실패했습니다. 다시 시도해 주세요.',
     },
     en: {
@@ -481,6 +511,21 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         setupStageModel: 'Loading local model',
         setupStageDone: 'Setup complete',
         setupProgressCount: (current, total) => `${current} / ${total}`,
+        setupStepIndicator: (current, total) => `Step ${current} / ${total}`,
+        setupLanguageStep: 'Language',
+        setupDownloadStep: 'Model Download',
+        setupPerformanceStep: 'Performance',
+        downloadGateTitle: 'Download Local Model',
+        downloadGateDescription: 'Download the local language model for offline conversations. Required only once.',
+        downloadStart: 'Start Download',
+        downloadPreparing: 'Preparing download',
+        downloadProgressDetail: (downloadedMb, totalMb) => `${downloadedMb} / ${totalMb} MB`,
+        downloadComplete: 'Download complete',
+        downloadFailed: 'Download failed. Please try again.',
+        appInfoTitle: 'About',
+        appInfoDeveloper: 'Developer',
+        appInfoContact: 'Contact',
+        appInfoWebsite: 'Website',
         messageSendFailed: 'Failed to generate a response. Please try again.',
     },
     zh_cn: {
@@ -640,6 +685,21 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         setupStageModel: '正在加载本地模型',
         setupStageDone: '配置完成',
         setupProgressCount: (current, total) => `${current} / ${total}`,
+        setupStepIndicator: (current, total) => `步骤 ${current} / ${total}`,
+        setupLanguageStep: '语言',
+        setupDownloadStep: '模型下载',
+        setupPerformanceStep: '性能',
+        downloadGateTitle: '下载本地模型',
+        downloadGateDescription: '下载用于离线对话的本地语言模型。仅需一次。',
+        downloadStart: '开始下载',
+        downloadPreparing: '正在准备下载',
+        downloadProgressDetail: (downloadedMb, totalMb) => `${downloadedMb} / ${totalMb} MB`,
+        downloadComplete: '下载完成',
+        downloadFailed: '下载失败，请重试。',
+        appInfoTitle: '程序信息',
+        appInfoDeveloper: '开发者',
+        appInfoContact: '联系',
+        appInfoWebsite: '网站',
         messageSendFailed: '生成回复失败，请重试。',
     },
 };

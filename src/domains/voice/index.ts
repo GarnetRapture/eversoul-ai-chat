@@ -1,0 +1,1 @@
+export { voiceClient } from './client';

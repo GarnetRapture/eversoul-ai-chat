@@ -84,6 +84,21 @@ pub fn settings_set_performance_tier(
 }
 
 #[tauri::command(rename_all = "snake_case")]
+pub fn settings_set_setup_stage(
+    settings_state: State<'_, SettingsState>,
+    stage: String,
+) -> Result<AppSettings, SettingsError> {
+    startup_debug_log("command:settings_set_setup_stage:start");
+    let settings = settings_state
+        .0
+        .lock()
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    let result = SettingsService::set_setup_stage(&settings, &stage);
+    startup_debug_log("command:settings_set_setup_stage:done");
+    result
+}
+
+#[tauri::command(rename_all = "snake_case")]
 pub fn settings_detect_hardware() -> Result<HardwareProfile, SettingsError> {
     startup_debug_log("command:settings_detect_hardware:start");
     let result = SettingsService::detect_hardware();

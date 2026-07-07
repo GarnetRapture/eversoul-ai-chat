@@ -16,23 +16,21 @@ pub enum LlmLoadError {
 }
 
 impl LlmService {
-    fn model_roots(app_root: &Path) -> Vec<PathBuf> {
+    pub fn model_roots(app_root: &Path) -> Vec<PathBuf> {
         let mut candidates = Vec::new();
+
+        if let Ok(exe_path) = std::env::current_exe() {
+            if let Some(exe_dir) = exe_path.parent() {
+                candidates.push(exe_dir.to_path_buf());
+            }
+        }
+
         candidates.push(app_root.to_path_buf());
 
         if let Ok(current_dir) = std::env::current_dir() {
             candidates.push(current_dir.clone());
             if let Some(parent) = current_dir.parent() {
                 candidates.push(parent.to_path_buf());
-            }
-        }
-
-        if let Ok(exe_path) = std::env::current_exe() {
-            if let Some(exe_dir) = exe_path.parent() {
-                candidates.push(exe_dir.to_path_buf());
-                if let Some(parent) = exe_dir.parent() {
-                    candidates.push(parent.to_path_buf());
-                }
             }
         }
 
@@ -49,6 +47,23 @@ impl LlmService {
             }
         }
         unique
+    }
+
+    pub fn model_destination_path(app_root: &Path) -> PathBuf {
+        for root in Self::model_roots(app_root) {
+            let model_path = root.join(MODEL_RELATIVE_PATH);
+            if model_path.exists() {
+                return model_path;
+            }
+        }
+
+        if let Ok(exe_path) = std::env::current_exe() {
+            if let Some(exe_dir) = exe_path.parent() {
+                return exe_dir.join(MODEL_RELATIVE_PATH);
+            }
+        }
+
+        app_root.join(MODEL_RELATIVE_PATH)
     }
 
     pub fn load_engine(

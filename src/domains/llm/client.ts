@@ -41,6 +41,12 @@ export const llmClient = {
     async verifyModel(): Promise<LlmModelValidation> {
         return invokeCommand<LlmModelValidation>(tauriCommands.llm.verifyModel);
     },
+    async modelPresent(): Promise<boolean> {
+        return invokeCommand<boolean>(tauriCommands.llm.modelPresent);
+    },
+    async downloadModel(): Promise<void> {
+        return invokeCommand<void>(tauriCommands.llm.downloadModel);
+    },
     async selfTest(): Promise<LlmInferResponse> {
         return invokeCommand<LlmInferResponse>(tauriCommands.llm.selfTest);
     },

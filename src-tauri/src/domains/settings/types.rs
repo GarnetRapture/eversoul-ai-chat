@@ -8,6 +8,7 @@ pub struct AppSettings {
     pub language_configured: bool,
     pub performance_tier: String,
     pub performance_configured: bool,
+    pub setup_stage: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

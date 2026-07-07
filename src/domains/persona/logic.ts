@@ -1,6 +1,6 @@
 import type { AppLanguage } from '../../shared/types';
 import type { LocalizedDialogue, LocalizedList, LocalizedText, PersonaConfig, SpiritDetail, SpiritSkinVisualAsset, SpiritVisualAssets } from './types';
-export const ASSET_ROOT = '/eversoul-assets';
+export const ASSET_ROOT = './eversoul-assets';
 const explicitAssetFolders: Record<string, string> = {
     'Ayame': 'Oyome',
     'Bryce': 'Blyce',

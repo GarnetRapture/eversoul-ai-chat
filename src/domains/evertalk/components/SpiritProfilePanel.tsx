@@ -2,6 +2,7 @@ import { BrainCircuit, Images, PanelRightClose, PanelRightOpen, Settings } from 
 import { getRaceTone, getSpiritVisualAssets } from '../../persona';
 import { createTalkChoices } from '../logic';
 import type { SpiritProfilePanelProps } from '../types';
+import { AppInfoPanel } from './AppInfoPanel';
 import { SystemStatusPanel } from './SystemStatusPanel';
 export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, localStatus, labels, onTrainPersona, onOpenProfileDetail, }: SpiritProfilePanelProps) {
     const assets = activeDetail ? getSpiritVisualAssets(activeDetail) : null;
@@ -21,6 +22,7 @@ export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, st
       </div>
       {collapsed ? null : (<>
       <SystemStatusPanel statuses={systemStatuses} labels={labels}/>
+      <AppInfoPanel labels={labels}/>
       {activeDetail ? (<>
           <section className="ever-profile-card">
             <p className="ever-kicker">{labels.bondStatus}</p>

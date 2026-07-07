@@ -13,13 +13,13 @@ use crate::domains::auth::commands::{auth_get_session, auth_login, auth_logout};
 use crate::domains::chat::commands::{
     chat_create_room, chat_create_session_room, chat_get_evertalk_session_room,
     chat_get_latest_session_room, chat_list_messages, chat_list_messages_for_persona,
-    chat_list_rooms, chat_send_message,
+    chat_list_rooms, chat_prepare_persona_cache, chat_send_message,
 };
 use crate::domains::knowledge::commands::knowledge_search;
 use crate::domains::llm::commands::{
-    llm_active_sessions, llm_cancel_request, llm_infer, llm_infer_stream, llm_load,
-    llm_request_statuses, llm_self_test, llm_session_statuses, llm_status, llm_unload,
-    llm_verify_model,
+    llm_active_sessions, llm_cancel_request, llm_download_model, llm_infer, llm_infer_stream,
+    llm_load, llm_model_present, llm_request_statuses, llm_self_test, llm_session_statuses,
+    llm_status, llm_unload, llm_verify_model,
 };
 use crate::domains::persona::commands::{
     persona_bond_ranking, persona_familiarity_list, persona_get_default, persona_get_pack,
@@ -27,13 +27,15 @@ use crate::domains::persona::commands::{
 };
 use crate::domains::settings::commands::{
     settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
-    settings_set_language, settings_set_performance_tier, SettingsState,
+    settings_set_language, settings_set_performance_tier, settings_set_setup_stage, SettingsState,
 };
 use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
 };
 use crate::domains::sync::commands::{sync_get_local_status, sync_run};
 use crate::domains::training::commands::{training_run, TrainingState};
+// [TTS 연동 보류] voice_synthesize: 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 목록에 추가.
+use crate::domains::voice::commands::{voice_get, voice_list};
 use crate::infrastructure::settings::SettingsManager;
 
 pub(crate) fn startup_debug_log(stage: &str) {
@@ -109,6 +111,7 @@ pub fn run() {
                     config_dir.join("settings.ini")
                 });
             let settings_mgr = SettingsManager::new(settings_path);
+            let _ = settings_mgr.ensure_initialized();
             startup_debug_log("setup:settings:ready");
 
             let adapters_dir = app
@@ -159,8 +162,11 @@ pub fn run() {
             chat_list_rooms,
             chat_list_messages,
             chat_list_messages_for_persona,
+            chat_prepare_persona_cache,
             chat_send_message,
             llm_load,
+            llm_model_present,
+            llm_download_model,
             llm_unload,
             llm_status,
             llm_infer,
@@ -179,9 +185,12 @@ pub fn run() {
             settings_reset,
             settings_set_language,
             settings_set_performance_tier,
+            settings_set_setup_stage,
             settings_detect_hardware,
             settings_complete_initial_setup,
-            training_run
+            training_run,
+            voice_list,
+            voice_get // [TTS 연동 보류] voice_synthesize: 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07).
         ])
         .build({
             startup_debug_log("context:generate:before");

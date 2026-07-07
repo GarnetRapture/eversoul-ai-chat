@@ -67,7 +67,10 @@ impl ChatRepository {
         Ok(None)
     }
 
-    pub fn find_latest_global_session_room(conn: &Connection, title: &str) -> Result<Option<ChatRoom>> {
+    pub fn find_latest_global_session_room(
+        conn: &Connection,
+        title: &str,
+    ) -> Result<Option<ChatRoom>> {
         let mut stmt = conn.prepare(
             "SELECT id, title, persona_id, session_started_at, created_at, updated_at
              FROM chat_room

@@ -7,3 +7,4 @@ pub mod settings;
 pub mod style;
 pub mod sync;
 pub mod training;
+pub mod voice;

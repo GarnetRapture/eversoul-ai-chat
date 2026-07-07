@@ -3,6 +3,12 @@ export interface LlmStatus {
     model_path: string | null;
     error_message: string | null;
 }
+export interface ModelDownloadProgress {
+    downloaded_bytes: number;
+    total_bytes: number;
+    ratio: number;
+    done: boolean;
+}
 export interface LlmInferResponse {
     text: string;
     time_taken_ms: number;

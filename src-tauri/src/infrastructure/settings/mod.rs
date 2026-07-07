@@ -6,9 +6,21 @@ const KEY_DEFAULT_PERSONA_ID: &str = "default_persona_id";
 const KEY_ACTIVE_STYLE_ID: &str = "active_style_id";
 const KEY_LANGUAGE: &str = "language";
 const KEY_PERFORMANCE_TIER: &str = "performance_tier";
+const KEY_SETUP_STAGE: &str = "setup_stage";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
+
+pub const SETUP_STAGE_LANGUAGE: &str = "language";
+pub const SETUP_STAGE_DOWNLOAD: &str = "download";
+pub const SETUP_STAGE_PERFORMANCE: &str = "performance";
+pub const SETUP_STAGE_DONE: &str = "done";
+const SUPPORTED_SETUP_STAGES: [&str; 4] = [
+    SETUP_STAGE_LANGUAGE,
+    SETUP_STAGE_DOWNLOAD,
+    SETUP_STAGE_PERFORMANCE,
+    SETUP_STAGE_DONE,
+];
 
 pub struct SettingsManager {
     ini_path: PathBuf,
@@ -107,6 +119,36 @@ impl SettingsManager {
         };
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_PERFORMANCE_TIER, normalized);
+        self.persist(&conf)
+    }
+
+    pub fn get_setup_stage(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_SETUP_STAGE)
+            .filter(|value| SUPPORTED_SETUP_STAGES.contains(value))
+            .unwrap_or(SETUP_STAGE_LANGUAGE)
+            .to_string()
+    }
+
+    pub fn set_setup_stage(&self, stage: &str) -> std::io::Result<()> {
+        let mut conf = self.load();
+        let normalized = if SUPPORTED_SETUP_STAGES.contains(&stage) {
+            stage
+        } else {
+            SETUP_STAGE_LANGUAGE
+        };
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_SETUP_STAGE, normalized);
+        self.persist(&conf)
+    }
+
+    pub fn ensure_initialized(&self) -> std::io::Result<()> {
+        if self.ini_path.exists() {
+            return Ok(());
+        }
+        let mut conf = self.load();
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_SETUP_STAGE, SETUP_STAGE_LANGUAGE);
         self.persist(&conf)
     }
 

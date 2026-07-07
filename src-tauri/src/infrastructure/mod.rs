@@ -5,4 +5,5 @@ pub mod http;
 pub mod llm;
 pub mod settings;
 pub mod training;
+pub mod tts;
 pub mod updates;

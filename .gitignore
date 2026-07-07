@@ -5,6 +5,7 @@ node_modules/
 dist/
 dist-ssr/
 coverage/
+build/
 
 # Tauri 및 Rust 산출물
 src-tauri/target/
@@ -71,3 +72,8 @@ ai/
 .vscode/
 .git/
 database/
+
+# 정령 음성 원본 (대용량 한국어 ogg, git 제외)
+# 실제 음성 파일은 scripts/import-spirit-voices.mjs 로 data/<캐릭터명>/ 아래에 배치한다
+data/**/*.ogg
+third_party/

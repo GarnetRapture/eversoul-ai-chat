@@ -83,6 +83,8 @@ pub enum LlmError {
     BackendInit(String),
     #[error("모델 로딩 실패: {0}")]
     ModelLoad(String),
+    #[error("모델 다운로드 실패: {0}")]
+    ModelDownload(String),
     #[error("컨텍스트 생성 실패: {0}")]
     ContextCreate(String),
     #[error("토큰 파싱 실패: {0}")]

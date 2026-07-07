@@ -1,7 +1,7 @@
 {
   "name": "eversoul-ai-chat",
   "private": true,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "Apache-2.0",
   "author": {
     "name": "GarnetRapture",
@@ -17,10 +17,11 @@
   "scripts": {
     "dev": "tauri dev",
     "dev:frontend": "vite",
-    "build": "tauri build",
+    "build": "tauri build && node scripts/package-portable.mjs",
     "build:frontend": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "voices:import": "node scripts/import-spirit-voices.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",

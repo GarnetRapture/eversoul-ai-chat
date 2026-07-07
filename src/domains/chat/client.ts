@@ -30,6 +30,11 @@ export const chatClient = {
             persona_id: personaId,
         });
     },
+    async preparePersonaCache(personaId: string): Promise<boolean> {
+        return invokeCommand<boolean>(tauriCommands.chat.preparePersonaCache, {
+            persona_id: personaId,
+        });
+    },
     async sendMessage(roomId: string, content: string, personaId: string): Promise<ChatMessage> {
         return invokeCommand<ChatMessage>(tauriCommands.chat.sendMessage, {
             room_id: roomId,

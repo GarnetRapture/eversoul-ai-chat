@@ -1354,6 +1354,169 @@
   color: #fff;
 }
 
+.ever-setup-wizard {
+  z-index: 140;
+}
+
+.ever-setup-wizard__modal {
+  width: min(560px, calc(100vw - 32px));
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 10px;
+  background: #f7f2e8;
+  color: #26293b;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  box-shadow: 0 28px 80px rgba(10, 12, 20, 0.42);
+}
+
+.ever-setup-wizard__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ever-setup-wizard__steps li {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fffaf1;
+  border: 1px solid rgba(72, 70, 95, 0.18);
+  opacity: 0.55;
+}
+
+.ever-setup-wizard__steps li.is-active {
+  opacity: 1;
+  background: #4c4a68;
+  border-color: #4c4a68;
+}
+
+.ever-setup-wizard__steps li.is-active .ever-setup-wizard__step-index,
+.ever-setup-wizard__steps li.is-active .ever-setup-wizard__step-name {
+  color: #fff;
+}
+
+.ever-setup-wizard__steps li.is-done {
+  opacity: 0.9;
+  border-color: #4c4a68;
+}
+
+.ever-setup-wizard__step-index {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #666c79;
+}
+
+.ever-setup-wizard__step-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #303445;
+}
+
+.ever-setup-wizard__body {
+  display: grid;
+  gap: 16px;
+}
+
+.ever-setup-wizard__body h2 {
+  margin: 0;
+}
+
+.ever-setup-wizard__body > p {
+  margin: 0;
+  color: #666c79;
+  line-height: 1.6;
+}
+
+.ever-setup-wizard__progress {
+  height: 12px;
+  border-radius: 999px;
+  background: #e6ddcb;
+  overflow: hidden;
+}
+
+.ever-setup-wizard__progress-bar {
+  height: 100%;
+  background: #4c4a68;
+  transition: width 0.2s ease;
+}
+
+.ever-setup-wizard__progress-detail {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #494252;
+}
+
+.ever-setup-wizard__error {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b04242;
+}
+
+.ever-setup-wizard__body > button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #4c4a68;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ever-setup-wizard__body > button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ever-app-info__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ever-app-info__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(72, 70, 95, 0.25);
+}
+
+.ever-app-info__identity {
+  display: grid;
+  gap: 2px;
+}
+
+.ever-app-info__identity small {
+  font-size: 11px;
+  color: #8a8f9c;
+}
+
+.ever-app-info__identity strong {
+  font-size: 14px;
+}
+
+.ever-app-info__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.ever-app-info__row a {
+  color: inherit;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
 .ever-setup-progress {
   position: fixed;
   inset: 0;

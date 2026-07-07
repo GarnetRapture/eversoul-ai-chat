@@ -10,6 +10,8 @@ use rusqlite::Connection;
 use serde_json::Value;
 use std::time::SystemTime;
 
+const LOCALIZED_PROMPT_CACHE_VERSION: &str = "prompt-v2";
+
 pub struct PersonaService<'a> {
     conn: &'a Connection,
 }
@@ -631,11 +633,12 @@ impl<'a> PersonaService<'a> {
 
         if let Some(p) = persona {
             let normalized_language = Self::supported_language(language).to_string();
+            let prompt_source_key = Self::localized_prompt_source_key(&p.created_at);
             let cached = PersonaRepository::get_localized_prompt(
                 self.conn,
                 &p.id,
                 &normalized_language,
-                &p.created_at,
+                &prompt_source_key,
             )
             .map_err(|e| e.to_string())?;
 
@@ -668,7 +671,9 @@ impl<'a> PersonaService<'a> {
                     - Always address them only as 'Savior'.\n\
                     - Regardless of where it might come from (conversation content, knowledge data, your own name, etc.),\n\
                       never invent or use any name other than 'Savior' as the name of the person you are\n\
-                      talking to (e.g. another spirit's name or a name that doesn't exist).\n\n",
+                      talking to (e.g. another spirit's name or a name that doesn't exist).\n\
+                    - Do not write stage directions, action tags, or emotion labels surrounded by asterisks.\n\
+                    - Do not invent profile facts. If a profile field is unknown, do not fill it with guessed content.\n\n",
                     name = localized_name,
                     body = localized_prompt
                 ),
@@ -680,7 +685,9 @@ impl<'a> PersonaService<'a> {
                     - 现在与你对话的人是这个世界唯一的玩家，「救世主」。\n\
                     - 称呼对方时必须只使用「救世主大人」。\n\
                     - 无论来源为何（对话内容、知识数据、你自己的名字等），绝对禁止编造或使用\n\
-                      「救世主」以外的任何人名作为对方的称呼（例如其他精灵的名字或不存在的名字）。\n\n",
+                      「救世主」以外的任何人名作为对方的称呼（例如其他精灵的名字或不存在的名字）。\n\
+                    - 不要输出用星号包围的舞台说明、动作标签或情绪标签。\n\
+                    - 不要编造资料。资料字段未知时，不要用猜测内容补全。\n\n",
                     name = localized_name,
                     body = localized_prompt
                 ),
@@ -694,7 +701,9 @@ impl<'a> PersonaService<'a> {
                     - 상대를 부를 때는 반드시 '구원자님'이라고만 호칭하십시오.\n\
                     - 대화 내용, 지식 데이터, 자기 자신의 이름 등 어디에서 유래했든 '구원자' 이외의\n\
                       임의의 사람 이름(예: 다른 정령의 이름, 존재하지 않는 이름 등)을 상대의 이름으로\n\
-                      지어내거나 사용하는 것을 절대 금지합니다.\n\n",
+                      지어내거나 사용하는 것을 절대 금지합니다.\n\
+                    - 별표로 감싼 행동 묘사, 감정 태그, 무대지문을 출력하지 마십시오.\n\
+                    - 프로필에 없는 사실을 지어내지 마십시오. 알 수 없는 항목은 추측해서 채우지 마십시오.\n\n",
                     name = localized_name,
                     body = localized_prompt
                 ),
@@ -709,7 +718,7 @@ impl<'a> PersonaService<'a> {
             language: normalized_language.to_string(),
             localized_name,
             assembled_prompt: prompt.clone(),
-            source_updated_at: p.created_at.clone(),
+            source_updated_at: Self::localized_prompt_source_key(&p.created_at),
             cached_at,
         };
         PersonaRepository::save_localized_prompt(conn, &cache_entry).map_err(|e| e.to_string())?;
@@ -717,24 +726,48 @@ impl<'a> PersonaService<'a> {
         Ok(prompt)
     }
 
+    fn localized_prompt_source_key(source_updated_at: &str) -> String {
+        format!("{source_updated_at}:{LOCALIZED_PROMPT_CACHE_VERSION}")
+    }
+
     pub fn get_available_personas(&self) -> Result<Vec<PersonaConfig>, PersonaError> {
+        self.ensure_archive_personas_installed()?;
+        PersonaRepository::list_personas(self.conn)
+            .map_err(|e| PersonaError::Database(e.to_string()))
+    }
+
+    fn ensure_archive_personas_installed(&self) -> Result<(), PersonaError> {
         let existing = PersonaRepository::list_personas(self.conn)
             .map_err(|e| PersonaError::Database(e.to_string()))?;
-        if !existing.is_empty() {
-            return Ok(existing);
-        }
-
+        let existing_keys = existing
+            .iter()
+            .flat_map(|persona| {
+                [
+                    persona.id.to_lowercase(),
+                    persona.name_en.to_lowercase(),
+                    persona
+                        .name_en
+                        .to_lowercase()
+                        .replace(|c: char| !c.is_alphanumeric() && c != '_' && c != '-', ""),
+                ]
+            })
+            .collect::<std::collections::HashSet<String>>();
         let mut names = PersonaLoader::list_personas();
         names.sort();
 
         for name in names {
+            let normalized = name
+                .to_lowercase()
+                .replace(|c: char| !c.is_alphanumeric() && c != '_' && c != '-', "");
+            if existing_keys.contains(&name.to_lowercase()) || existing_keys.contains(&normalized) {
+                continue;
+            }
             if let Err(err) = self.load_and_save_preset(&name) {
                 eprintln!("페르소나 프리셋 수립 실패: {err}");
             }
         }
 
-        PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))
+        Ok(())
     }
 
     pub fn set_default_persona_id(

@@ -12,6 +12,7 @@ export const tauriCommands = {
         listRooms: 'chat_list_rooms',
         listMessages: 'chat_list_messages',
         listMessagesForPersona: 'chat_list_messages_for_persona',
+        preparePersonaCache: 'chat_prepare_persona_cache',
         sendMessage: 'chat_send_message',
     },
     knowledge: {
@@ -29,6 +30,8 @@ export const tauriCommands = {
         requestStatuses: 'llm_request_statuses',
         verifyModel: 'llm_verify_model',
         selfTest: 'llm_self_test',
+        modelPresent: 'llm_model_present',
+        downloadModel: 'llm_download_model',
     },
     persona: {
         list: 'persona_list',
@@ -58,9 +61,15 @@ export const tauriCommands = {
         setPerformanceTier: 'settings_set_performance_tier',
         detectHardware: 'settings_detect_hardware',
         completeInitialSetup: 'settings_complete_initial_setup',
+        setSetupStage: 'settings_set_setup_stage',
     },
     training: {
         run: 'training_run',
+    },
+    voice: {
+        list: 'voice_list',
+        get: 'voice_get',
+        synthesize: 'voice_synthesize',
     },
 } as const;
 type CommandGroup = (typeof tauriCommands)[keyof typeof tauriCommands];

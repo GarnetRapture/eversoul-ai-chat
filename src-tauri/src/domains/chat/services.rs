@@ -7,18 +7,19 @@ use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::knowledge::services::KnowledgeService;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::style::services::StyleService;
-use crate::infrastructure::llm::worker::LlmWorkerHandle;
 use crate::infrastructure::settings::SettingsManager;
 
 const EPISODIC_INJECT_LIMIT: usize = 5;
 
-const EPISODIC_SEARCH_CANDIDATE_LIMIT: usize = 80;
+const PROMPT_HISTORY_LIMIT: usize = 6;
 
-const PROMPT_HISTORY_LIMIT: usize = 10;
+pub const CHAT_RESPONSE_MAX_TOKENS: u32 = 96;
 
 const CONSOLIDATION_INTERVAL: usize = 10;
 
 const CONSOLIDATION_SOURCE_LIMIT: usize = 30;
+
+pub const CONSOLIDATION_MAX_TOKENS: u32 = 200;
 
 pub const EVERTALK_SESSION_TITLE: &str = "EverTalk Session";
 
@@ -69,11 +70,9 @@ impl<'a> ChatService<'a> {
     }
 
     pub fn get_or_create_evertalk_session_room(&self) -> Result<ChatRoom, ChatError> {
-        if let Some(room) = ChatRepository::find_latest_global_session_room(
-            self.conn,
-            EVERTALK_SESSION_TITLE,
-        )
-            .map_err(|e| ChatError::Database(e.to_string()))?
+        if let Some(room) =
+            ChatRepository::find_latest_global_session_room(self.conn, EVERTALK_SESSION_TITLE)
+                .map_err(|e| ChatError::Database(e.to_string()))?
         {
             return Ok(room);
         }
@@ -99,7 +98,6 @@ impl<'a> ChatService<'a> {
         &self,
         req: &SendMessageRequest,
         settings: &SettingsManager,
-        query_vector: &[f32],
     ) -> Result<(String, Vec<ChatMessage>), ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -117,11 +115,7 @@ impl<'a> ChatService<'a> {
         ChatRepository::insert_message(self.conn, &user_msg)
             .map_err(|e| ChatError::Database(e.to_string()))?;
 
-        let persona_service = PersonaService::new(self.conn);
-        let language = settings.get_language();
-        let mut system_prompt = persona_service
-            .get_assembled_system_prompt(&req.persona_id, &language)
-            .map_err(|e| ChatError::Database(e))?;
+        let mut system_prompt = self.build_persona_base_system_prompt(&req.persona_id, settings)?;
 
         let knowledge_service = KnowledgeService::new(self.conn);
         if let Ok(chunks) = knowledge_service.query_knowledge(&req.content, Some(2)) {
@@ -132,37 +126,6 @@ impl<'a> ChatService<'a> {
                 }
                 system_prompt.push_str(&knowledge_context);
             }
-        }
-
-        let style_service = StyleService::new(self.conn);
-        let active_style_id = settings.get_active_style_id();
-        if let Ok(style_prompt) =
-            style_service.get_assembled_style_prompt(active_style_id.as_deref())
-        {
-            system_prompt.push_str(&style_prompt);
-        }
-
-        let semantic_memory = ChatRepository::get_semantic_memory(self.conn, &req.persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))?;
-        let relevant_episodic = ChatRepository::search_episodic_memories(
-            self.conn,
-            &req.persona_id,
-            query_vector,
-            EPISODIC_INJECT_LIMIT,
-            EPISODIC_SEARCH_CANDIDATE_LIMIT,
-        )
-        .map_err(|e| ChatError::Database(e.to_string()))?;
-
-        if semantic_memory.is_some() || !relevant_episodic.is_empty() {
-            let mut memory_block =
-                String::from("\n[구원자와의 관계에 대해 이 정령이 누적한 기억]\n");
-            if let Some(ref summary) = semantic_memory {
-                memory_block.push_str(&format!("- (통합 요약) {}\n", summary));
-            }
-            for note in &relevant_episodic {
-                memory_block.push_str(&format!("- (관련 기억) {}\n", note));
-            }
-            system_prompt.push_str(&memory_block);
         }
 
         let history = ChatRepository::list_recent_messages_for_persona(
@@ -176,16 +139,53 @@ impl<'a> ChatService<'a> {
         Ok((system_prompt, history))
     }
 
+    pub fn build_persona_base_system_prompt(
+        &self,
+        persona_id: &str,
+        settings: &SettingsManager,
+    ) -> Result<String, ChatError> {
+        let persona_service = PersonaService::new(self.conn);
+        let language = settings.get_language();
+        let mut system_prompt = persona_service
+            .get_assembled_system_prompt(persona_id, &language)
+            .map_err(ChatError::Database)?;
+
+        let style_service = StyleService::new(self.conn);
+        let active_style_id = settings.get_active_style_id();
+        if let Ok(style_prompt) =
+            style_service.get_assembled_style_prompt(active_style_id.as_deref())
+        {
+            system_prompt.push_str(&style_prompt);
+        }
+
+        let semantic_memory = ChatRepository::get_semantic_memory(self.conn, persona_id)
+            .map_err(|e| ChatError::Database(e.to_string()))?;
+        let recent_episodic =
+            ChatRepository::list_episodic_memories(self.conn, persona_id, EPISODIC_INJECT_LIMIT)
+                .map_err(|e| ChatError::Database(e.to_string()))?;
+
+        if semantic_memory.is_some() || !recent_episodic.is_empty() {
+            let mut memory_block =
+                String::from("\n[구원자와의 관계에 대해 이 정령이 누적한 기억]\n");
+            if let Some(ref summary) = semantic_memory {
+                memory_block.push_str(&format!("- (통합 요약) {}\n", summary));
+            }
+            for note in &recent_episodic {
+                memory_block.push_str(&format!("- (최근 기억) {}\n", note));
+            }
+            system_prompt.push_str(&memory_block);
+        }
+
+        Ok(system_prompt)
+    }
+
     fn render_chat_message(msg: &ChatMessage) -> String {
         format!("<|im_start|>{}\n{}<|im_end|>\n", msg.role, msg.content)
     }
 
     pub fn build_llm_chat_prompt(system_prompt: &str, history: &[ChatMessage]) -> String {
         let mut full_prompt = String::new();
-        full_prompt.push_str(&format!(
-            "<|im_start|>system\n{}<|im_end|>\n",
-            system_prompt
-        ));
+        full_prompt.push_str(&Self::build_llm_system_prefix(system_prompt));
 
         for msg in history {
             full_prompt.push_str(&Self::render_chat_message(msg));
@@ -193,6 +193,10 @@ impl<'a> ChatService<'a> {
 
         full_prompt.push_str("<|im_start|>assistant\n");
         full_prompt
+    }
+
+    pub fn build_llm_system_prefix(system_prompt: &str) -> String {
+        format!("<|im_start|>system\n{}<|im_end|>\n", system_prompt)
     }
 
     pub fn build_llm_chat_prompt_with_budget<F>(
@@ -264,32 +268,17 @@ impl<'a> ChatService<'a> {
         Ok(ai_msg)
     }
 
-    pub fn accumulate_memory(
+    pub fn record_turn_memory(
         &self,
         persona_id: &str,
         user_text: &str,
         ai_text: &str,
-        engine: &LlmWorkerHandle,
-    ) -> Result<(), ChatError> {
-        let extraction_prompt = format!(
-            "<|im_start|>system\n다음은 정령 캐릭터와 구원자(사용자) 사이의 대화 한 턴이다. \
-             이 캐릭터가 앞으로의 대화에서 계속 기억해야 할 새로운 사실, 사건, 구원자의 취향/약속 \
-             등이 있다면 한국어 한 문장으로 간결하게 요약하라. 기억할 만한 새로운 정보가 없으면 \
-             정확히 '없음'이라고만 답하라.<|im_end|>\n\
-             <|im_start|>user\n구원자: {}\n캐릭터: {}<|im_end|>\n\
-             <|im_start|>assistant\n",
-            user_text, ai_text
-        );
+    ) -> Result<Option<String>, ChatError> {
+        let trimmed_user = user_text.trim();
+        let trimmed_ai = ai_text.trim();
 
-        let summary = engine
-            .infer(&extraction_prompt, Some(80), None)
-            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
-        let trimmed = summary.trim();
-
-        if !trimmed.is_empty() && !trimmed.contains("없음") {
-            let memory_vector = engine
-                .embed_text(trimmed)
-                .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
+        if !trimmed_user.is_empty() && !trimmed_ai.is_empty() {
+            let memory_text = format!("구원자: {}\n정령: {}", trimmed_user, trimmed_ai);
             let now = SystemTime::now()
                 .duration_since(SystemTime::UNIX_EPOCH)
                 .map(|d| d.as_secs().to_string())
@@ -298,8 +287,8 @@ impl<'a> ChatService<'a> {
                 self.conn,
                 &Uuid::new_v4().to_string(),
                 persona_id,
-                trimmed,
-                &memory_vector,
+                &memory_text,
+                &[],
                 &now,
             )
             .map_err(|e| ChatError::Database(e.to_string()))?;
@@ -307,18 +296,17 @@ impl<'a> ChatService<'a> {
 
         let episodic_count = ChatRepository::count_episodic_memories(self.conn, persona_id)
             .map_err(|e| ChatError::Database(e.to_string()))?;
-        if episodic_count > 0 && episodic_count % CONSOLIDATION_INTERVAL == 0 {
-            self.consolidate_semantic_memory(persona_id, engine)?;
+        if episodic_count == 0 || episodic_count % CONSOLIDATION_INTERVAL != 0 {
+            return Ok(None);
         }
 
-        Ok(())
+        self.build_consolidation_prompt(persona_id)
     }
 
-    fn consolidate_semantic_memory(
+    fn build_consolidation_prompt(
         &self,
         persona_id: &str,
-        engine: &LlmWorkerHandle,
-    ) -> Result<(), ChatError> {
+    ) -> Result<Option<String>, ChatError> {
         let episodic = ChatRepository::list_episodic_memories(
             self.conn,
             persona_id,
@@ -326,7 +314,7 @@ impl<'a> ChatService<'a> {
         )
         .map_err(|e| ChatError::Database(e.to_string()))?;
         if episodic.is_empty() {
-            return Ok(());
+            return Ok(None);
         }
 
         let previous_summary = ChatRepository::get_semantic_memory(self.conn, persona_id)
@@ -350,29 +338,31 @@ impl<'a> ChatService<'a> {
             previous_summary, episodic_list
         );
 
-        let new_summary = engine
-            .infer(&consolidation_prompt, Some(200), None)
-            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
-        let trimmed = new_summary.trim();
+        Ok(Some(consolidation_prompt))
+    }
 
-        if !trimmed.is_empty() {
-            let memory_vector = engine
-                .embed_text(trimmed)
-                .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
-            let now = SystemTime::now()
-                .duration_since(SystemTime::UNIX_EPOCH)
-                .map(|d| d.as_secs().to_string())
-                .unwrap_or_default();
-            ChatRepository::upsert_semantic_memory(
-                self.conn,
-                persona_id,
-                trimmed,
-                &memory_vector,
-                &now,
-            )
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+    pub fn store_semantic_summary(
+        &self,
+        persona_id: &str,
+        summary: &str,
+        summary_vector: &[f32],
+    ) -> Result<(), ChatError> {
+        let trimmed = summary.trim();
+        if trimmed.is_empty() {
+            return Ok(());
         }
 
-        Ok(())
+        let now = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .map(|d| d.as_secs().to_string())
+            .unwrap_or_default();
+        ChatRepository::upsert_semantic_memory(
+            self.conn,
+            persona_id,
+            trimmed,
+            summary_vector,
+            &now,
+        )
+        .map_err(|e| ChatError::Database(e.to_string()))
     }
 }

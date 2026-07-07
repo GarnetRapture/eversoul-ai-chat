@@ -1,9 +1,9 @@
 import type React from 'react';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import type { ChatMessage, ChatRoom } from '../chat';
-import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus } from '../llm';
+import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus, ModelDownloadProgress } from '../llm';
 import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } from '../persona';
-import type { AppSettings, HardwareProfile, ResetSummary, SetupProgress } from '../settings';
+import type { AppSettings, HardwareProfile, ResetSummary, SetupPhase, SetupProgress } from '../settings';
 import type { StyleProfile } from '../style';
 import type { LocalStatusSnapshot } from '../sync';
 import type { TrainingSummary } from '../training';
@@ -135,6 +135,23 @@ export interface SetupProgressPanelProps {
     progress: SetupProgress | null;
     labels: EverTalkLabels;
 }
+export interface SetupWizardProps {
+    open: boolean;
+    stage: SetupPhase;
+    language: AppLanguage;
+    tier: PerformanceTier;
+    hardwareProfile: HardwareProfile | null;
+    downloadProgress: ModelDownloadProgress | null;
+    downloadError: string | null;
+    isDownloading: boolean;
+    labels: EverTalkLabels;
+    onSelectLanguage: (language: AppLanguage) => Promise<void>;
+    onStartDownload: () => Promise<void>;
+    onSelectTier: (tier: PerformanceTier) => Promise<void>;
+}
+export interface AppInfoPanelProps {
+    labels: EverTalkLabels;
+}
 export interface EverTalkController {
     appInitializing: boolean;
     llmStatus: LlmStatus | null;
@@ -205,4 +222,9 @@ export interface EverTalkController {
     openProfileDetail: () => void;
     closeProfileDetail: () => void;
     setPerformanceTier: (tier: PerformanceTier) => Promise<void>;
+    setupStage: SetupPhase;
+    downloadProgress: ModelDownloadProgress | null;
+    downloadError: string | null;
+    isDownloading: boolean;
+    startModelDownload: () => Promise<void>;
 }

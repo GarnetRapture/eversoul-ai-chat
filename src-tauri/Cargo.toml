@@ -1,12 +1,18 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.9"
+version = "0.0.10"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
 homepage = "https://github.com/GarnetRapture/eversoul-ai-chat"
 license = "Apache-2.0"
 edition = "2021"
+
+[package.metadata.tauri-winres]
+ProductName = "EverSoul AI Chat"
+FileDescription = "EverSoul AI Chat"
+CompanyName = "GarnetRapture"
+LegalCopyright = "Copyright © 2026 GarnetRapture"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

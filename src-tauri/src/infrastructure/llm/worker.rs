@@ -50,6 +50,11 @@ enum WorkerCommand {
         stream: Option<StreamTarget>,
         respond_to: Sender<Result<String, LlmError>>,
     },
+    WarmPersona {
+        persona_id: String,
+        prompt: String,
+        respond_to: Sender<Result<SessionGenerationStats, LlmError>>,
+    },
     Embed {
         text: String,
         respond_to: Sender<Result<Vec<f32>, LlmError>>,
@@ -198,6 +203,20 @@ impl LlmWorkerHandle {
                     );
                     let _ = respond_to.send(result);
                 }
+                WorkerCommand::WarmPersona {
+                    persona_id,
+                    prompt,
+                    respond_to,
+                } => {
+                    let result = Self::handle_warm_persona(
+                        &engine,
+                        &mut sessions,
+                        &mut access_counter,
+                        &persona_id,
+                        &prompt,
+                    );
+                    let _ = respond_to.send(result);
+                }
                 WorkerCommand::Embed { text, respond_to } => {
                     let result = engine.embed_text(&text);
                     let _ = respond_to.send(result);
@@ -261,6 +280,64 @@ impl LlmWorkerHandle {
             last_access,
             last_generation: None,
         })
+    }
+
+    fn ensure_persona_session<'a>(
+        engine: &'a LlmEngine,
+        sessions: &mut HashMap<String, PersonaSession<'a>>,
+        access_counter: &mut u64,
+        persona_id: &str,
+    ) -> Result<u64, LlmError> {
+        if !sessions.contains_key(persona_id)
+            && sessions.len() >= engine.profile().max_active_sessions
+        {
+            if let Some(oldest_id) = sessions
+                .iter()
+                .min_by_key(|(_, session)| session.last_access)
+                .map(|(id, _)| id.clone())
+            {
+                sessions.remove(&oldest_id);
+            }
+        }
+
+        *access_counter += 1;
+        let current_access = *access_counter;
+
+        if !sessions.contains_key(persona_id) {
+            sessions.insert(
+                persona_id.to_string(),
+                Self::create_persona_session(engine, persona_id, current_access)?,
+            );
+        }
+
+        Ok(current_access)
+    }
+
+    fn handle_warm_persona<'a>(
+        engine: &'a LlmEngine,
+        sessions: &mut HashMap<String, PersonaSession<'a>>,
+        access_counter: &mut u64,
+        persona_id: &str,
+        prompt: &str,
+    ) -> Result<SessionGenerationStats, LlmError> {
+        let current_access =
+            Self::ensure_persona_session(engine, sessions, access_counter, persona_id)?;
+        let session = sessions
+            .get_mut(persona_id)
+            .ok_or_else(|| LlmError::Infer(format!("LLM 세션 생성 실패: {persona_id}")))?;
+        session.last_access = current_access;
+
+        let mut runtime = GenerationRuntime::empty();
+        let result = engine.prefill_cache_runtime(
+            &mut session.context,
+            &session.cached_tokens,
+            prompt,
+            &mut runtime,
+        )?;
+        let stats = Self::generation_stats(&result);
+        session.last_generation = Some(stats.clone());
+        session.cached_tokens = result.cached_tokens;
+        Ok(stats)
     }
 
     fn infer_with_session_recovery<'a>(
@@ -362,27 +439,8 @@ impl LlmWorkerHandle {
             return engine.generate_on_context(&mut ctx, prompt, max_tokens);
         };
 
-        if !sessions.contains_key(&persona_id)
-            && sessions.len() >= engine.profile().max_active_sessions
-        {
-            if let Some(oldest_id) = sessions
-                .iter()
-                .min_by_key(|(_, session)| session.last_access)
-                .map(|(id, _)| id.clone())
-            {
-                sessions.remove(&oldest_id);
-            }
-        }
-
-        *access_counter += 1;
-        let current_access = *access_counter;
-
-        if !sessions.contains_key(&persona_id) {
-            sessions.insert(
-                persona_id.clone(),
-                Self::create_persona_session(engine, &persona_id, current_access)?,
-            );
-        }
+        let current_access =
+            Self::ensure_persona_session(engine, sessions, access_counter, &persona_id)?;
 
         let session = sessions
             .get_mut(&persona_id)
@@ -431,6 +489,25 @@ impl LlmWorkerHandle {
                 stream: stream.map(|(app_handle, token_event, done_event)| {
                     StreamTarget::new(app_handle, token_event, done_event)
                 }),
+                respond_to,
+            })
+            .map_err(|e| LlmError::Infer(format!("LLM 워커 요청 전송 실패: {e}")))?;
+
+        response
+            .recv()
+            .map_err(|e| LlmError::Infer(format!("LLM 워커 응답 수신 실패: {e}")))?
+    }
+
+    pub fn warm_persona(
+        &self,
+        persona_id: &str,
+        prompt: &str,
+    ) -> Result<SessionGenerationStats, LlmError> {
+        let (respond_to, response) = mpsc::channel();
+        self.sender
+            .send(WorkerCommand::WarmPersona {
+                persona_id: persona_id.to_string(),
+                prompt: prompt.to_string(),
                 respond_to,
             })
             .map_err(|e| LlmError::Infer(format!("LLM 워커 요청 전송 실패: {e}")))?;

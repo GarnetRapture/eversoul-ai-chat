@@ -6,6 +6,7 @@ use super::types::{
 use crate::domains::settings::commands::SettingsState;
 use crate::domains::training::commands::TrainingState;
 use crate::infrastructure::hardware::{HardwareDetector, PerformanceTier};
+use crate::infrastructure::llm::download::download_model_file;
 use crate::infrastructure::llm::scheduler::LlmRequestStatus as InfraRequestStatus;
 use crate::infrastructure::llm::validation::ModelFileValidation;
 use crate::infrastructure::llm::worker::LlmWorkerHandle;
@@ -13,7 +14,7 @@ use crate::infrastructure::llm::worker::WorkerSessionStatus;
 use crate::infrastructure::llm::LlmError as InfraLlmError;
 use crate::startup_debug_log;
 use std::sync::Mutex;
-use tauri::{AppHandle, Manager, State};
+use tauri::{AppHandle, Emitter, Manager, State};
 
 pub struct LlmState(pub Mutex<Option<LlmWorkerHandle>>);
 
@@ -157,6 +158,34 @@ pub fn llm_load(
             Err(map_load_error(e))
         }
     }
+}
+
+fn model_destination_path(app_handle: &AppHandle) -> std::path::PathBuf {
+    let app_root = app_handle
+        .path()
+        .resource_dir()
+        .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
+    LlmService::model_destination_path(&app_root)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn llm_model_present(app_handle: AppHandle) -> Result<bool, LlmError> {
+    Ok(model_destination_path(&app_handle).exists())
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub async fn llm_download_model(app_handle: AppHandle) -> Result<(), LlmError> {
+    let dest_path = model_destination_path(&app_handle);
+    if dest_path.exists() {
+        return Ok(());
+    }
+
+    let emitter = app_handle.clone();
+    download_model_file(&dest_path, move |progress| {
+        let _ = emitter.emit("model_download_progress", progress);
+    })
+    .await
+    .map_err(|e| LlmError::ModelDownload(e.to_string()))
 }
 
 #[tauri::command(rename_all = "snake_case")]
