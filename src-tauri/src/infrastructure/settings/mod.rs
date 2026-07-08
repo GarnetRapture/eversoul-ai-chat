@@ -9,18 +9,24 @@ const KEY_PERFORMANCE_TIER: &str = "performance_tier";
 const KEY_SETUP_STAGE: &str = "setup_stage";
 const KEY_SHOW_REASONING: &str = "show_reasoning";
 const KEY_ACTIVE_MODEL: &str = "active_model";
+const KEY_INFERENCE_MODE: &str = "inference_mode";
+const KEY_API_PROVIDER: &str = "api_provider";
+const KEY_API_KEY: &str = "api_key";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
+const DEFAULT_INFERENCE_MODE: &str = "local";
 pub const DEFAULT_MODEL: &str = "qwen25";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
 pub const SUPPORTED_MODELS: [&str; 2] = ["qwen25", "gemma"];
 
 pub const SETUP_STAGE_LANGUAGE: &str = "language";
+pub const SETUP_STAGE_MODE: &str = "mode";
 pub const SETUP_STAGE_DOWNLOAD: &str = "download";
 pub const SETUP_STAGE_PERFORMANCE: &str = "performance";
 pub const SETUP_STAGE_DONE: &str = "done";
-const SUPPORTED_SETUP_STAGES: [&str; 4] = [
+const SUPPORTED_SETUP_STAGES: [&str; 5] = [
     SETUP_STAGE_LANGUAGE,
+    SETUP_STAGE_MODE,
     SETUP_STAGE_DOWNLOAD,
     SETUP_STAGE_PERFORMANCE,
     SETUP_STAGE_DONE,
@@ -90,6 +96,57 @@ impl SettingsManager {
         let mut conf = self.load();
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_ACTIVE_MODEL, model);
+        self.persist(&conf)
+    }
+
+    pub fn get_inference_mode(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_INFERENCE_MODE)
+            .map(|s| s.to_string())
+            .unwrap_or_else(|| DEFAULT_INFERENCE_MODE.to_string())
+    }
+
+    pub fn set_inference_mode(&self, mode: &str) -> std::io::Result<()> {
+        let mode = if matches!(mode, "local" | "api") { mode } else { DEFAULT_INFERENCE_MODE };
+        let mut conf = self.load();
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(KEY_INFERENCE_MODE, mode);
+        self.persist(&conf)
+    }
+
+    pub fn get_api_provider(&self) -> Option<String> {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_API_PROVIDER)
+            .map(|s| s.to_string())
+    }
+
+    pub fn set_api_provider(&self, provider: Option<&str>) -> std::io::Result<()> {
+        let mut conf = self.load();
+        if let Some(p) = provider {
+            conf.with_section(Some(SECTION_GENERAL))
+                .set(KEY_API_PROVIDER, p);
+        } else {
+            conf.with_section(Some(SECTION_GENERAL))
+                .delete(&KEY_API_PROVIDER);
+        }
+        self.persist(&conf)
+    }
+
+    pub fn get_api_key(&self) -> Option<String> {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_API_KEY)
+            .map(|s| s.to_string())
+    }
+
+    pub fn set_api_key(&self, key: Option<&str>) -> std::io::Result<()> {
+        let mut conf = self.load();
+        if let Some(k) = key {
+            conf.with_section(Some(SECTION_GENERAL))
+                .set(KEY_API_KEY, k);
+        } else {
+            conf.with_section(Some(SECTION_GENERAL))
+                .delete(&KEY_API_KEY);
+        }
         self.persist(&conf)
     }
 

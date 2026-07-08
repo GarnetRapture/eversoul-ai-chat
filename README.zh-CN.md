@@ -12,7 +12,7 @@
 <p align="center"><i>承载精灵之声的完全本地化 AI 聊天客户端</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.14-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.15-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -29,7 +29,7 @@
 
 **EverSoul AI Chat** 是为了留住《EverSoul》而做的全新本地 AI 聊天项目，怀着保存精灵们记忆的心意做成。它让《EverSoul》的全部 95 名精灵，用游戏中的真实数据活过来，让你能和每一位精灵以各自的性格与语气自由交谈。
 
-生成每一句回复的 AI 完全在你自己的电脑里运行。你说的任何话都不会离开这台机器——和精灵的每一次对话，从头到尾都只留在本地。
+生成每一句回复的 AI 默认完全在你自己的电脑里运行（本地 GGUF 模型），从而完美保障隐私。同时，为照顾难以运行庞大本地模型的使用环境，系统也设计了混合架构（Hybrid Architecture），可通过外部 API (如 OpenAI、Gemini) 仅发送上下文数据，实现轻量又智能的交流。
 
 正因如此，全部 95 名精灵的官方原画、522 张对话背景，以及 EverTalk 本身用过的界面，都被直接打包进了这个项目里。每位精灵的名字、性格与语录都按精灵逐一整理在 `data/personas/` 之下，并提前准备好了韩语、英语、中文（繁体/简体）版本——换语言的时候，那位精灵之所以是那位精灵的东西不会跟着变。
 
@@ -394,6 +394,7 @@ npm run tauri build
 | 0.0.12 | `초기릴리즈` |
 | 0.0.13 | `클린` |
 | 0.0.14 | `feat:` |
+| 0.0.15 | `feat: 로컬 LLM 및 외부 API 연동 하이브리드 구동 모드 추가 및 설정 UI/다국어 적용` |
 
 ---
 

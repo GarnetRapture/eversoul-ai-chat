@@ -9,6 +9,7 @@ import { settingsClient, type AppSettings, type HardwareProfile, type ResetSumma
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
 import { trainingClient, type TrainingSummary } from '../training';
+import type { ApiProvider, InferenceMode } from '../../shared/types';
 // [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
 // import { voiceClient } from '../voice';
 import { createApiStatus, filterSpirits, formatUnknownError, } from './logic';
@@ -37,6 +38,9 @@ export function useEverTalkController(): EverTalkController {
     const [defaultPersonaId, setDefaultPersonaId] = useState<string | null>(null);
     const [personaLoadError, setPersonaLoadError] = useState<string | null>(null);
     const [appLanguage, setAppLanguage] = useState<AppLanguage>('ko');
+    const [setupInferenceMode, setSetupInferenceMode] = useState<InferenceMode>('local');
+    const [setupApiProvider, setSetupApiProvider] = useState<ApiProvider | null>('openai');
+    const [setupApiKey, setSetupApiKey] = useState<string | null>('');
     const labels = useMemo(() => getEverTalkLabels(appLanguage), [appLanguage]);
     const [systemStatuses, setSystemStatuses] = useState<ApiStatusItem[]>(() => [
         createApiStatus('auth', labels.authSession, 'checking', labels.checking),
@@ -295,7 +299,7 @@ export function useEverTalkController(): EverTalkController {
             setSetupProgress(event.payload);
         });
         try {
-            const staged = await settingsClient.completeInitialSetup(language, tier);
+            const staged = await settingsClient.completeInitialSetup(language, setupInferenceMode, setupApiProvider, setupApiKey, tier);
             setAppSettings(staged);
             setAppLanguage(staged.language);
             await loadMainAppData(staged.language);
@@ -491,9 +495,17 @@ export function useEverTalkController(): EverTalkController {
         const updated = await settingsClient.setPerformanceTier(tier);
         setAppSettings(updated);
         setPerformanceGateOpen(false);
-        if (llmStatus?.is_loaded) {
+        if (appSettings?.inference_mode === 'local' && llmStatus?.is_loaded) {
             await llmClient.unloadEngine();
             await refreshLlmStatus();
+        }
+    }
+
+    async function completeSetup() {
+        if (appSettings?.setup_stage !== 'done') {
+            const language = appSettings?.language ?? appLanguage;
+            const defaultTier = hardwareProfile?.recommended_tier ?? 'balanced';
+            await runInitialSetup(language, defaultTier);
         }
     }
     function openProfileDetail() {
@@ -515,6 +527,9 @@ export function useEverTalkController(): EverTalkController {
                 language_configured: false,
                 performance_tier: 'balanced',
                 performance_configured: false,
+                inference_mode: 'local',
+                api_provider: null,
+                api_key: null,
                 setup_stage: 'language',
                 show_reasoning: true,
             });
@@ -581,6 +596,21 @@ export function useEverTalkController(): EverTalkController {
     
     async function setShowReasoning(show: boolean) {
         const updated = await settingsClient.setShowReasoning(show);
+        setAppSettings(updated);
+    }
+    
+    async function setInferenceMode(mode: InferenceMode) {
+        const updated = await settingsClient.setInferenceMode(mode);
+        setAppSettings(updated);
+    }
+
+    async function setApiProvider(provider: ApiProvider | null) {
+        const updated = await settingsClient.setApiProvider(provider);
+        setAppSettings(updated);
+    }
+
+    async function setApiKey(key: string | null) {
+        const updated = await settingsClient.setApiKey(key);
         setAppSettings(updated);
     }
 
@@ -799,11 +829,21 @@ export function useEverTalkController(): EverTalkController {
         openProfileDetail,
         closeProfileDetail,
         setPerformanceTier,
+        setInferenceMode,
+        setApiProvider,
+        setApiKey,
         setupStage: appSettings?.setup_stage ?? 'language',
+        inferenceMode: setupInferenceMode,
+        apiProvider: setupApiProvider,
+        apiKey: setupApiKey,
+        setSetupInferenceMode,
+        setSetupApiProvider,
+        setSetupApiKey,
         downloadProgress,
         downloadError,
         isDownloading,
         startModelDownload,
         goToPerformanceStage,
+        completeSetup,
     };
 }

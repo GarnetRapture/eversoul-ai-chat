@@ -107,6 +107,9 @@ export interface SettingsPanelProps {
     onReset: () => void;
     onSetLanguage: (language: AppLanguage) => Promise<void>;
     onSetShowReasoning: (show: boolean) => Promise<void>;
+    onSetInferenceMode: (mode: 'local' | 'api') => Promise<void>;
+    onSetApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => Promise<void>;
+    onSetApiKey: (key: string | null) => Promise<void>;
 }
 export interface BackgroundGalleryPanelProps {
     open: boolean;
@@ -157,6 +160,9 @@ export interface SetupWizardProps {
     open: boolean;
     stage: SetupPhase;
     language: AppLanguage;
+    inferenceMode: 'local' | 'api';
+    apiProvider: 'openai' | 'anthropic' | 'gemini' | null;
+    apiKey: string | null;
     tier: PerformanceTier;
     hardwareProfile: HardwareProfile | null;
     downloadProgress: ModelDownloadProgress | null;
@@ -164,9 +170,13 @@ export interface SetupWizardProps {
     isDownloading: boolean;
     labels: EverTalkLabels;
     onSelectLanguage: (language: AppLanguage) => Promise<void>;
+    onSelectInferenceMode: (mode: 'local' | 'api') => void;
+    onSelectApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => void;
+    onChangeApiKey: (key: string | null) => void;
     onStartDownload: () => Promise<void>;
     onNextStage: () => Promise<void>;
     onSelectTier: (tier: PerformanceTier) => Promise<void>;
+    onCompleteSetup: () => Promise<void>;
 }
 export interface AppInfoPanelProps {
     labels: EverTalkLabels;
@@ -243,10 +253,20 @@ export interface EverTalkController {
     openProfileDetail: () => void;
     closeProfileDetail: () => void;
     setPerformanceTier: (tier: PerformanceTier) => Promise<void>;
+    setInferenceMode: (mode: 'local' | 'api') => Promise<void>;
+    setApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => Promise<void>;
+    setApiKey: (key: string | null) => Promise<void>;
     setupStage: SetupPhase;
+    inferenceMode: 'local' | 'api';
+    apiProvider: 'openai' | 'anthropic' | 'gemini' | null;
+    apiKey: string | null;
+    setSetupInferenceMode: (mode: 'local' | 'api') => void;
+    setSetupApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => void;
+    setSetupApiKey: (key: string | null) => void;
     downloadProgress: ModelDownloadProgress | null;
     downloadError: string | null;
     isDownloading: boolean;
     startModelDownload: () => Promise<void>;
     goToPerformanceStage: () => Promise<void>;
+    completeSetup: () => Promise<void>;
 }

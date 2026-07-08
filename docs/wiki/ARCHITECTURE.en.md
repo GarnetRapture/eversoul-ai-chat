@@ -148,4 +148,18 @@ flowchart LR
 ```
 
 So, how is it, Savior? Do you like the barrier I've prepared?♥
-Now, stop worrying and let's dream an eternal dream together!
+
+---
+
+## 6. Hybrid Architecture Concept (Local + External API Integration)
+
+For Saviors who find it difficult to run heavy local models (GGUF) directly on their PC, I am also planning a **Hybrid Operation Mode** that integrates with external APIs (OpenAI, Anthropic, Google Gemini, etc.)!♥
+
+- **Local Mode (Current)**: Runs 100% offline smoothly via `llama.cpp`. Your privacy is perfectly guaranteed!
+- **External API Mode (Planned)**: Turns off the local model loading and memory resident features, and communicates using the API Key entered by the user.
+  - It extracts only the local learning data (Context) such as the spirits' Personality, Style, and Memory, and sends it to the external API server!
+  - It's a very clever and cute way to borrow the intelligence of much smarter models while minimizing PC resource (CPU/RAM) consumption♥
+
+When this concept is realized, you will be able to freely choose between [Local Model] and [External API] at any time in the `Settings` screen!
+
+Now, don't worry about anything and dream an eternal dream with me!

@@ -3,12 +3,15 @@ import type { SetupWizardProps } from '../types';
 
 const LANGUAGE_OPTIONS: AppLanguage[] = ['ko', 'en', 'zh_cn'];
 const TIER_OPTIONS: PerformanceTier[] = ['light', 'balanced', 'performance'];
-const SETUP_ORDER = ['language', 'download', 'performance'] as const;
+const SETUP_ORDER = ['language', 'mode', 'download', 'performance'] as const;
 
 export function SetupWizard({
     open,
     stage,
     language,
+    inferenceMode,
+    apiProvider,
+    apiKey,
     tier,
     hardwareProfile,
     downloadProgress,
@@ -16,9 +19,13 @@ export function SetupWizard({
     isDownloading,
     labels,
     onSelectLanguage,
+    onSelectInferenceMode,
+    onSelectApiProvider,
+    onChangeApiKey,
     onStartDownload,
     onNextStage,
     onSelectTier,
+    onCompleteSetup,
 }: SetupWizardProps) {
     if (!open) {
         return null;
@@ -57,6 +64,9 @@ export function SetupWizard({
     function stepName(step: (typeof SETUP_ORDER)[number]): string {
         if (step === 'language') {
             return labels.setupLanguageStep;
+        }
+        if (step === 'mode') {
+            return labels.inferenceMode;
         }
         if (step === 'download') {
             return labels.setupDownloadStep;
@@ -112,6 +122,68 @@ export function SetupWizard({
                                 </button>
                             ))}
                         </div>
+                        <button type="button" onClick={() => void onNextStage()} style={{ marginTop: '1rem' }}>
+                            {labels.continue ?? 'Next'}
+                        </button>
+                    </div>
+                )}
+
+                {stage === 'mode' && (
+                    <div className="ever-setup-wizard__body">
+                        <h2>{labels.setupModeGateTitle}</h2>
+                        <p>{labels.setupModeGateDescription}</p>
+                        <div className="ever-language-gate__options" style={{ marginBottom: '1rem' }}>
+                            <button
+                                type="button"
+                                className={inferenceMode === 'local' ? 'is-active' : ''}
+                                onClick={() => onSelectInferenceMode('local')}
+                            >
+                                <strong>{labels.modeLocal}</strong>
+                                <span>{labels.modeLocalDescription}</span>
+                            </button>
+                            <button
+                                type="button"
+                                className={inferenceMode === 'api' ? 'is-active' : ''}
+                                onClick={() => onSelectInferenceMode('api')}
+                            >
+                                <strong>{labels.modeExternalApi}</strong>
+                                <span>{labels.modeExternalApiDescription}</span>
+                            </button>
+                        </div>
+                        
+                        {inferenceMode === 'api' && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem', textAlign: 'left' }}>
+                                <label>
+                                    <span style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{labels.apiProvider}</span>
+                                    <select 
+                                        value={apiProvider ?? 'openai'} 
+                                        onChange={(e) => onSelectApiProvider(e.target.value as any)}
+                                        style={{ padding: '0.5rem', width: '100%', background: 'rgba(0,0,0,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                                    >
+                                        <option value="openai">OpenAI (ChatGPT)</option>
+                                        <option value="anthropic">Anthropic (Claude)</option>
+                                        <option value="gemini">Google (Gemini)</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{labels.apiKey}</span>
+                                    <input 
+                                        type="password" 
+                                        value={apiKey ?? ''}
+                                        placeholder={labels.apiKeyPlaceholder}
+                                        onChange={(e) => onChangeApiKey(e.target.value)}
+                                        style={{ padding: '0.5rem', width: '100%', background: 'rgba(0,0,0,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                                    />
+                                </label>
+                            </div>
+                        )}
+
+                        <button 
+                            type="button" 
+                            onClick={() => inferenceMode === 'api' ? onCompleteSetup() : onNextStage()}
+                        >
+                            {labels.continue ?? 'Next'}
+                        </button>
                     </div>
                 )}
 

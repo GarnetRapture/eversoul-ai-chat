@@ -12,7 +12,7 @@
 <p align="center"><i>A fully local AI chat client that carries the voices of the spirits</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.14-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.15-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -29,7 +29,7 @@
 
 **EverSoul AI Chat** is a new local AI chat project made to keep EverSoul close. It was built with one idea in mind: preserving the memories of the spirits. It brings all 95 spirits from EverSoul to life using the real game data, so you can talk with each of them in their own personality and voice.
 
-The AI that generates every reply runs entirely on your own computer. Nothing you say ever leaves your machine — every conversation with a spirit stays local, start to finish.
+The AI that generates every reply runs entirely on your own computer (using local GGUF models), keeping your privacy completely secure. Additionally, for environments where running heavy local models is challenging, a hybrid architecture is designed to integrate with external APIs (like OpenAI, Gemini), transmitting only the context for lightweight and smart communication.
 
 That's why the full official artwork of all 95 spirits, 522 conversation backgrounds, and the UI that EverTalk itself used are all bundled directly into this project. Each spirit's name, personality, and speech patterns are organized one file at a time under `data/personas/`, prepared in Korean, English, and Chinese (Traditional/Simplified) in advance — so switching languages never breaks what makes that spirit feel like itself.
 
@@ -393,6 +393,7 @@ This repository follows the principle of **incrementing the patch version by 1 f
 | 0.0.12 | `초기릴리즈` |
 | 0.0.13 | `클린` |
 | 0.0.14 | `feat:` |
+| 0.0.15 | `feat: 로컬 LLM 및 외부 API 연동 하이브리드 구동 모드 추가 및 설정 UI/다국어 적용` |
 
 ---
 

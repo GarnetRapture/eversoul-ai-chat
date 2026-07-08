@@ -129,6 +129,9 @@ pub fn settings_complete_initial_setup(
     llm_state: State<'_, LlmState>,
     training_state: State<'_, TrainingState>,
     language: String,
+    inference_mode: String,
+    api_provider: Option<String>,
+    api_key: Option<String>,
     tier: String,
 ) -> Result<AppSettings, SettingsError> {
     startup_debug_log("command:settings_complete_initial_setup:start");
@@ -144,6 +147,13 @@ pub fn settings_complete_initial_setup(
     startup_debug_log("command:settings_complete_initial_setup:settings_locked");
 
     SettingsService::set_language_without_warmup(&settings, &language)?;
+    settings.set_inference_mode(&inference_mode).map_err(|e| SettingsError::Io(e.to_string()))?;
+    if let Some(ref provider) = api_provider {
+        settings.set_api_provider(Some(provider)).map_err(|e| SettingsError::Io(e.to_string()))?;
+    }
+    if let Some(ref key) = api_key {
+        settings.set_api_key(Some(key)).map_err(|e| SettingsError::Io(e.to_string()))?;
+    }
     SettingsService::set_performance_tier(&settings, &tier)?;
     SettingsService::set_setup_stage(&settings, "done")?;
     startup_debug_log("command:settings_complete_initial_setup:settings_saved");
@@ -207,7 +217,7 @@ pub fn settings_complete_initial_setup(
             .map_err(|e| SettingsError::Io(e.to_string()))?;
         startup_debug_log("command:settings_complete_initial_setup:model_load:llm_locked");
 
-        if engine_lock.is_none() {
+        if settings.get_inference_mode() == "local" && engine_lock.is_none() {
             let app_root = app_handle
                 .path()
                 .resource_dir()

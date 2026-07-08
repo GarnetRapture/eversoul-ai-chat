@@ -180,6 +180,16 @@ export interface EverTalkLabels {
     warmupOverall: (current: number, total: number) => string;
     warmupStatusBuilding: (current: number, total: number) => string;
     warmupStatusDone: string;
+    setupModeGateTitle: string;
+    setupModeGateDescription: string;
+    modeLocal: string;
+    modeExternalApi: string;
+    modeLocalDescription: string;
+    modeExternalApiDescription: string;
+    apiProvider: string;
+    apiKey: string;
+    apiKeyPlaceholder: string;
+    inferenceMode: string;
 }
 
 export type EverTalkLabelBag = {
@@ -367,6 +377,16 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         warmupOverall: (current, total) => `전체 정령 (${current} / ${total})`,
         warmupStatusBuilding: (current, total) => `전체 세션 사전 구축 중 (${current}/${total})`,
         warmupStatusDone: '전체 세션 사전 구축 완료',
+        setupModeGateTitle: '작동 모드 선택',
+        setupModeGateDescription: '사용자 PC의 자원을 활용하는 로컬 모드와, 외부 서버 자원을 활용하는 API 모드 중 하나를 선택하세요.',
+        modeLocal: '로컬 모드 (CPU LLM)',
+        modeExternalApi: '외부 API 모드',
+        modeLocalDescription: '인터넷 없이 프라이버시가 완벽히 보장되며, 무료로 무제한 사용 가능합니다.',
+        modeExternalApiDescription: '빠르고 가볍지만 API 제공자의 과금이 발생할 수 있습니다.',
+        apiProvider: 'API 제공자',
+        apiKey: 'API 키',
+        apiKeyPlaceholder: 'API 키를 입력하세요',
+        inferenceMode: '작동 모드',
     },
     en: {
         languageGateTitle: 'Choose Language',
@@ -548,6 +568,16 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         warmupOverall: (current, total) => `All souls (${current} / ${total})`,
         warmupStatusBuilding: (current, total) => `Building all sessions (${current}/${total})`,
         warmupStatusDone: 'All sessions built successfully',
+        setupModeGateTitle: 'Choose Inference Mode',
+        setupModeGateDescription: 'Select Local mode to use your PC\'s resources, or External API mode to use cloud resources.',
+        modeLocal: 'Local Mode (CPU LLM)',
+        modeExternalApi: 'External API Mode',
+        modeLocalDescription: 'Perfect privacy, fully offline, and free unlimited usage.',
+        modeExternalApiDescription: 'Fast and lightweight, but API provider charges may apply.',
+        apiProvider: 'API Provider',
+        apiKey: 'API Key',
+        apiKeyPlaceholder: 'Enter your API key',
+        inferenceMode: 'Inference Mode',
     },
     zh_cn: {
         languageGateTitle: '选择语言',
@@ -729,6 +759,16 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         warmupOverall: (current, total) => `所有精灵 (${current} / ${total})`,
         warmupStatusBuilding: (current, total) => `正在预构建所有会话 (${current}/${total})`,
         warmupStatusDone: '所有会话预构建完成',
+        setupModeGateTitle: '选择运行模式',
+        setupModeGateDescription: '选择使用您电脑资源的本地模式，或使用云端资源的外部 API 模式。',
+        modeLocal: '本地模式 (CPU LLM)',
+        modeExternalApi: '外部 API 模式',
+        modeLocalDescription: '完全离线，保障隐私，且可免费无限使用。',
+        modeExternalApiDescription: '快速轻量，但可能产生 API 提供商的费用。',
+        apiProvider: 'API 提供商',
+        apiKey: 'API 密钥',
+        apiKeyPlaceholder: '请输入 API 密钥',
+        inferenceMode: '运行模式',
     },
 };
 

@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 import { RotateCcw, X } from 'lucide-react';
 import type { AppLanguage } from '../../../shared/types';
 import type { SettingsPanelProps } from '../types';
-export function SettingsPanel({ open, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, onSetShowReasoning }: SettingsPanelProps) {
+export function SettingsPanel({ open, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, labels, onClose, onReset, onSetLanguage, onSetShowReasoning, onSetInferenceMode, onSetApiProvider, onSetApiKey }: SettingsPanelProps) {
     const [confirming, setConfirming] = useState(false);
     if (!open) {
         return null;
@@ -24,7 +24,7 @@ export function SettingsPanel({ open, settings, modelValidation, llmSessionStatu
         void onSetLanguage(event.target.value as AppLanguage);
     }
     return (<div className="ever-settings-overlay" role="dialog" aria-modal="true">
-      <div className="ever-settings-modal">
+      <div className="ever-settings-modal" style={{ width: '800px', maxWidth: '90vw' }}>
         <header className="ever-settings-modal__header">
           <h2>{labels.settings}</h2>
           <button type="button" aria-label={labels.close} onClick={handleClose}>
@@ -65,6 +65,54 @@ export function SettingsPanel({ open, settings, modelValidation, llmSessionStatu
               style={{ width: 'auto' }}
             />
           </label>
+        </section>
+
+        <section className="ever-panel-section">
+          <h3>{labels.inferenceMode}</h3>
+          <div className="ever-language-gate__options" style={{ marginBottom: '1rem' }}>
+            <button
+                type="button"
+                className={settings?.inference_mode === 'local' ? 'is-active' : ''}
+                onClick={() => void onSetInferenceMode('local')}
+            >
+                <strong>{labels.modeLocal}</strong>
+                <span>{labels.modeLocalDescription}</span>
+            </button>
+            <button
+                type="button"
+                className={settings?.inference_mode === 'api' ? 'is-active' : ''}
+                onClick={() => void onSetInferenceMode('api')}
+            >
+                <strong>{labels.modeExternalApi}</strong>
+                <span>{labels.modeExternalApiDescription}</span>
+            </button>
+          </div>
+          {settings?.inference_mode === 'api' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem', textAlign: 'left' }}>
+                  <label>
+                      <span style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{labels.apiProvider}</span>
+                      <select 
+                          value={settings.api_provider ?? 'openai'} 
+                          onChange={(e) => void onSetApiProvider(e.target.value as any)}
+                          style={{ padding: '0.5rem', width: '100%', background: 'rgba(0,0,0,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                      >
+                          <option value="openai">OpenAI (ChatGPT)</option>
+                          <option value="anthropic">Anthropic (Claude)</option>
+                          <option value="gemini">Google (Gemini)</option>
+                      </select>
+                  </label>
+                  <label>
+                      <span style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{labels.apiKey}</span>
+                      <input 
+                          type="password" 
+                          value={settings.api_key ?? ''}
+                          placeholder={labels.apiKeyPlaceholder}
+                          onChange={(e) => void onSetApiKey(e.target.value)}
+                          style={{ padding: '0.5rem', width: '100%', background: 'rgba(0,0,0,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                      />
+                  </label>
+              </div>
+          )}
         </section>
 
         <section className="ever-panel-section">

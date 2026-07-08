@@ -62,6 +62,9 @@ export const tauriCommands = {
         detectHardware: 'settings_detect_hardware',
         completeInitialSetup: 'settings_complete_initial_setup',
         setSetupStage: 'settings_set_setup_stage',
+        setInferenceMode: 'settings_set_inference_mode',
+        setApiProvider: 'settings_set_api_provider',
+        setApiKey: 'settings_set_api_key',
     },
     training: {
         run: 'training_run',

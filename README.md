@@ -12,7 +12,7 @@
 <p align="center"><i>완전한 로컬 구동 AI 채팅 클라이언트</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.14-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.15-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -29,7 +29,7 @@
 
 **EverSoul AI Chat**은 에버소울을 간직할 새로운 로컬 AI 채팅 프로젝트입니다. 정령들의 기억을 보존한다는 의미로 만들었습니다. 에버소울에 등장하는 정령 95명을 실제 게임 데이터 그대로 불러와, 각자의 성격과 말투로 자유롭게 대화할 수 있습니다.
 
-대화를 만들어내는 AI는 전부 내 컴퓨터 안에서만 돌아갑니다. 어떤 대화 내용도 밖으로 나가지 않고, 정령과 나눈 이야기는 전부 내 컴퓨터 안에서만 오갑니다.
+대화를 만들어내는 AI는 기본적으로 내 컴퓨터 안에서만(로컬 GGUF 모델) 돌아가므로 프라이버시가 완벽히 보장됩니다. 또한, 무거운 로컬 모델 실행이 부담스러운 환경을 위해 외부 API(OpenAI, Gemini 등)로 컨텍스트만 전송하여 가볍고 똑똑하게 통신할 수 있는 하이브리드 아키텍처 연동도 함께 설계되어 있습니다.
 
 그래서 정령 95명 전원의 실제 게임 그림, 대화 배경 522장, 에버톡 화면에서 쓰던 UI까지 프로젝트 안에 그대로 담아뒀습니다. 각 정령의 이름과 성격, 말투는 `data/personas/`에 정령마다 하나씩 정리되어 있고, 한국어·영어·중국어(번체/간체) 네 개 언어로 미리 준비해 두었기 때문에 언어를 바꿔도 그 정령다움은 그대로 유지됩니다.
 
@@ -425,6 +425,7 @@ npm run tauri build
 | 0.0.12 | `초기릴리즈` |
 | 0.0.13 | `클린` |
 | 0.0.14 | `feat:` |
+| 0.0.15 | `feat: 로컬 LLM 및 외부 API 연동 하이브리드 구동 모드 추가 및 설정 UI/다국어 적용` |
 
 ---
 

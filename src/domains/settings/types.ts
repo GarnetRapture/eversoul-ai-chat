@@ -1,11 +1,14 @@
-import type { AppLanguage, PerformanceTier } from '../../shared/types';
+import type { AppLanguage, PerformanceTier, InferenceMode, ApiProvider } from '../../shared/types';
 
-export type SetupPhase = 'language' | 'download' | 'performance' | 'done';
+export type SetupPhase = 'language' | 'mode' | 'download' | 'performance' | 'done';
 export interface AppSettings {
     default_persona_id: string | null;
     active_style_id: string | null;
     language: AppLanguage;
     language_configured: boolean;
+    inference_mode: InferenceMode;
+    api_provider: ApiProvider | null;
+    api_key: string | null;
     performance_tier: PerformanceTier;
     performance_configured: boolean;
     setup_stage: SetupPhase;
