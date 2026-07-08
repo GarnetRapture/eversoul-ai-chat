@@ -10,6 +10,23 @@ export interface AppSettings {
     performance_configured: boolean;
     setup_stage: SetupPhase;
     show_reasoning: boolean;
+    external_api: ExternalApiSettings;
+}
+export interface ExternalApiSettings {
+    enabled: boolean;
+    base_url: string;
+    api_key_configured: boolean;
+    model: string;
+}
+export interface ExternalApiConfigRequest {
+    enabled: boolean;
+    base_url: string;
+    api_key: string;
+    model: string;
+}
+export interface ExternalApiTestResult {
+    ok: boolean;
+    message: string;
 }
 export interface HardwareProfile {
     physical_core_count: number;

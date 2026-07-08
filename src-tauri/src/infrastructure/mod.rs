@@ -1,5 +1,6 @@
 pub mod compress;
 pub mod database;
+pub mod external_ai;
 pub mod hardware;
 pub mod http;
 pub mod llm;

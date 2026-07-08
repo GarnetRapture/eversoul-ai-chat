@@ -5,6 +5,7 @@ use uuid::Uuid;
 use super::repositories::ChatRepository;
 use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::knowledge::services::KnowledgeService;
+use crate::domains::modules::services::ModuleService;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::style::services::StyleService;
 use crate::infrastructure::settings::SettingsManager;
@@ -158,6 +159,12 @@ impl<'a> ChatService<'a> {
             system_prompt.push_str(&style_prompt);
         }
 
+        if let Ok(module_prompt) = ModuleService::active_prompt(settings) {
+            if !module_prompt.trim().is_empty() {
+                system_prompt.push_str(&module_prompt);
+            }
+        }
+
         let semantic_memory = ChatRepository::get_semantic_memory(self.conn, persona_id)
             .map_err(|e| ChatError::Database(e.to_string()))?;
         let recent_episodic =
@@ -303,10 +310,7 @@ impl<'a> ChatService<'a> {
         self.build_consolidation_prompt(persona_id)
     }
 
-    fn build_consolidation_prompt(
-        &self,
-        persona_id: &str,
-    ) -> Result<Option<String>, ChatError> {
+    fn build_consolidation_prompt(&self, persona_id: &str) -> Result<Option<String>, ChatError> {
         let episodic = ChatRepository::list_episodic_memories(
             self.conn,
             persona_id,
@@ -356,13 +360,7 @@ impl<'a> ChatService<'a> {
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
             .unwrap_or_default();
-        ChatRepository::upsert_semantic_memory(
-            self.conn,
-            persona_id,
-            trimmed,
-            summary_vector,
-            &now,
-        )
-        .map_err(|e| ChatError::Database(e.to_string()))
+        ChatRepository::upsert_semantic_memory(self.conn, persona_id, trimmed, summary_vector, &now)
+            .map_err(|e| ChatError::Database(e.to_string()))
     }
 }

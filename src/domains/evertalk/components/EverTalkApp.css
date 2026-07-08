@@ -1733,6 +1733,256 @@
   color: #63e69a;
 }
 
+.ever-module-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.ever-module-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ever-module-item__main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.ever-module-item__main input {
+  margin-top: 3px;
+}
+
+.ever-module-item__main span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ever-module-item__main strong,
+.ever-module-item__main small {
+  overflow-wrap: anywhere;
+}
+
+.ever-module-item__main strong {
+  color: #f9f7f1;
+  font-size: 13px;
+}
+
+.ever-module-item__main small {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+}
+
+.ever-module-item button {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 109, 124, 0.42);
+  background: rgba(255, 109, 124, 0.12);
+  color: #ff6d7c;
+  cursor: pointer;
+}
+
+.ever-module-management {
+  width: min(1040px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: #121b29;
+  color: #fff;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.42);
+}
+
+.ever-module-management__layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 620px;
+}
+
+.ever-module-management__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ever-module-management__list {
+  display: grid;
+  gap: 8px;
+  overflow: auto;
+}
+
+.ever-module-management__list button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ever-module-management__list button.is-active {
+  border-color: rgba(255, 109, 124, 0.56);
+  background: rgba(255, 109, 124, 0.16);
+}
+
+.ever-module-management__list span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ever-module-management__list small,
+.ever-module-management__hero p,
+.ever-module-control small {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.ever-module-management__content {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 18px;
+  overflow: auto;
+}
+
+.ever-module-management__hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ever-module-management__hero h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.ever-module-management__hero p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ever-module-management__enabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-weight: 800;
+}
+
+.ever-module-management__controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.ever-module-control {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(120px, 180px);
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ever-module-control label {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ever-module-control label span {
+  font-weight: 800;
+}
+
+.ever-module-control button,
+.ever-module-control select,
+.ever-module-control input {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  background: #1a2636;
+  color: #fff;
+  font-weight: 800;
+  padding: 8px 10px;
+}
+
+.ever-module-control button {
+  cursor: pointer;
+}
+
+.ever-module-control button.is-on {
+  border-color: rgba(120, 214, 191, 0.62);
+  background: rgba(120, 214, 191, 0.16);
+  color: #78d6bf;
+}
+
+.ever-module-management__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.ever-module-management__meta span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ever-module-management__meta button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 109, 124, 0.48);
+  border-radius: 8px;
+  background: rgba(255, 109, 124, 0.14);
+  color: #ff6d7c;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 880px) {
+  .ever-module-management__layout,
+  .ever-module-management__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .ever-module-management__sidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
 .ever-settings-language {
   display: grid;
   gap: 8px;
@@ -1745,7 +1995,10 @@
   font-weight: 800;
 }
 
-.ever-settings-language select {
+.ever-settings-language select,
+.ever-settings-language input[type="url"],
+.ever-settings-language input[type="text"],
+.ever-settings-language input[type="password"] {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
@@ -1754,6 +2007,18 @@
   font-size: 14px;
   font-weight: 800;
   padding: 10px 12px;
+}
+
+.ever-external-api-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.45fr);
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .ever-external-api-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ever-settings-reset-button {

@@ -4,6 +4,7 @@ use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::auth::commands::DbState;
 use crate::domains::llm::commands::LlmState;
 use crate::domains::settings::commands::SettingsState;
+use crate::infrastructure::external_ai::{infer_chat, ExternalAiConfig};
 use tauri::{AppHandle, Manager, State};
 
 #[tauri::command(rename_all = "snake_case")]
@@ -101,7 +102,7 @@ pub fn chat_list_messages_for_persona(
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn chat_send_message(
+pub async fn chat_send_message(
     app_handle: AppHandle,
     db_state: State<'_, DbState>,
     llm_state: State<'_, LlmState>,
@@ -116,7 +117,7 @@ pub fn chat_send_message(
         persona_id,
     };
 
-    let (system_prompt, history) = {
+    let (system_prompt, history, external_config) = {
         let conn = db_state
             .inner()
             .0
@@ -127,31 +128,48 @@ pub fn chat_send_message(
             .0
             .lock()
             .map_err(|e| ChatError::Unknown(e.to_string()))?;
+        let external_config = if settings.get_external_api_enabled() {
+            settings
+                .get_external_api_key()
+                .map(|api_key| ExternalAiConfig {
+                    base_url: settings.get_external_api_base_url(),
+                    api_key,
+                    model: settings.get_external_api_model(),
+                })
+        } else {
+            None
+        };
         let service = ChatService::new(&conn);
-        service.prepare_message_context(&req, &settings)?
+        let (system_prompt, history) = service.prepare_message_context(&req, &settings)?;
+        (system_prompt, history, external_config)
     };
 
-    let engine_lock = llm_state
-        .inner()
-        .0
-        .lock()
-        .map_err(|e| ChatError::Unknown(e.to_string()))?;
-    let engine_instance = engine_lock.as_ref().ok_or(ChatError::LlmEngineNotLoaded)?;
+    let ai_text = if let Some(config) = external_config {
+        infer_chat(&config, &system_prompt, &history, CHAT_RESPONSE_MAX_TOKENS)
+            .await
+            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?
+    } else {
+        let engine_lock = llm_state
+            .inner()
+            .0
+            .lock()
+            .map_err(|e| ChatError::Unknown(e.to_string()))?;
+        let engine_instance = engine_lock.as_ref().ok_or(ChatError::LlmEngineNotLoaded)?;
 
-    let response_max_tokens = engine_instance
-        .profile()
-        .max_tokens
-        .min(CHAT_RESPONSE_MAX_TOKENS);
-    let full_prompt = ChatService::build_llm_chat_prompt(&system_prompt, &history);
+        let response_max_tokens = engine_instance
+            .profile()
+            .max_tokens
+            .min(CHAT_RESPONSE_MAX_TOKENS);
+        let full_prompt = ChatService::build_llm_chat_prompt(&system_prompt, &history);
 
-    let ai_text = engine_instance
-        .infer(
-            &full_prompt,
-            Some(response_max_tokens),
-            Some(&req.persona_id),
-        )
-        .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?;
-    drop(engine_lock);
+        engine_instance
+            .infer(
+                &full_prompt,
+                Some(response_max_tokens),
+                Some(&req.persona_id),
+            )
+            .map_err(|e| ChatError::LlmInferenceFailed(e.to_string()))?
+    };
 
     let ai_msg = {
         let conn = db_state

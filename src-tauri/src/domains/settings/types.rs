@@ -10,6 +10,29 @@ pub struct AppSettings {
     pub performance_configured: bool,
     pub setup_stage: String,
     pub show_reasoning: bool,
+    pub external_api: ExternalApiSettings,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExternalApiSettings {
+    pub enabled: bool,
+    pub base_url: String,
+    pub api_key_configured: bool,
+    pub model: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExternalApiConfigRequest {
+    pub enabled: bool,
+    pub base_url: String,
+    pub api_key: String,
+    pub model: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExternalApiTestResult {
+    pub ok: bool,
+    pub message: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

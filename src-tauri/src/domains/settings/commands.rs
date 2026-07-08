@@ -1,5 +1,8 @@
 use super::services::SettingsService;
-use super::types::{AppSettings, HardwareProfile, ResetSummary, SettingsError, SetupProgress};
+use super::types::{
+    AppSettings, ExternalApiConfigRequest, ExternalApiTestResult, HardwareProfile, ResetSummary,
+    SettingsError, SetupProgress,
+};
 use crate::domains::auth::commands::DbState;
 use crate::domains::llm::commands::LlmState;
 use crate::domains::llm::services::LlmService;
@@ -7,6 +10,7 @@ use crate::domains::persona::repositories::PersonaRepository;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::training::commands::TrainingState;
 use crate::infrastructure::compress::PersonaLoader;
+use crate::infrastructure::external_ai::{infer_chat, ExternalAiConfig};
 use crate::infrastructure::hardware::{HardwareDetector, PerformanceTier};
 use crate::infrastructure::settings::SettingsManager;
 use crate::startup_debug_log;
@@ -119,6 +123,65 @@ pub fn settings_set_show_reasoning(
     let result = SettingsService::set_show_reasoning(&settings, show_reasoning);
     startup_debug_log("command:settings_set_show_reasoning:done");
     result
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub fn settings_set_external_api_config(
+    settings_state: State<'_, SettingsState>,
+    request: ExternalApiConfigRequest,
+) -> Result<AppSettings, SettingsError> {
+    startup_debug_log("command:settings_set_external_api_config:start");
+    let settings = settings_state
+        .0
+        .lock()
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    let result = SettingsService::set_external_api_config(&settings, &request);
+    startup_debug_log("command:settings_set_external_api_config:done");
+    result
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub async fn settings_test_external_api(
+    settings_state: State<'_, SettingsState>,
+) -> Result<ExternalApiTestResult, SettingsError> {
+    startup_debug_log("command:settings_test_external_api:start");
+    let config = {
+        let settings = settings_state
+            .0
+            .lock()
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
+        let Some(api_key) = settings.get_external_api_key() else {
+            return Ok(ExternalApiTestResult {
+                ok: false,
+                message: "External API key is not configured.".to_string(),
+            });
+        };
+        ExternalAiConfig {
+            base_url: settings.get_external_api_base_url(),
+            api_key,
+            model: settings.get_external_api_model(),
+        }
+    };
+
+    let result = match infer_chat(
+        &config,
+        "Reply with a short connection success message.",
+        &[],
+        32,
+    )
+    .await
+    {
+        Ok(text) => ExternalApiTestResult {
+            ok: true,
+            message: text,
+        },
+        Err(err) => ExternalApiTestResult {
+            ok: false,
+            message: err.to_string(),
+        },
+    };
+    startup_debug_log("command:settings_test_external_api:done");
+    Ok(result)
 }
 
 #[tauri::command(rename_all = "snake_case")]

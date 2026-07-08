@@ -32,6 +32,13 @@ export const tauriCommands = {
         selfTest: 'llm_self_test',
         downloadModel: 'llm_download_model',
     },
+    modules: {
+        list: 'modules_list',
+        importFromPath: 'modules_import_from_path',
+        setEnabled: 'modules_set_enabled',
+        updateControls: 'modules_update_controls',
+        delete: 'modules_delete',
+    },
     persona: {
         list: 'persona_list',
         update: 'persona_update',
@@ -59,6 +66,8 @@ export const tauriCommands = {
         setLanguage: 'settings_set_language',
         setPerformanceTier: 'settings_set_performance_tier',
         setShowReasoning: 'settings_set_show_reasoning',
+        setExternalApiConfig: 'settings_set_external_api_config',
+        testExternalApi: 'settings_test_external_api',
         detectHardware: 'settings_detect_hardware',
         completeInitialSetup: 'settings_complete_initial_setup',
         setSetupStage: 'settings_set_setup_stage',
