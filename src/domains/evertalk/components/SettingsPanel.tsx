@@ -123,7 +123,7 @@ function extractVertexConfig(baseUrl: string): { projectId: string; location: st
     };
 }
 
-export function SettingsPanel({ open: isOpen, settings, modelValidation, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, importedModules, moduleImportError, labels, onClose, onReset, onSetLanguage, onSetShowReasoning, onSetInferenceMode, onSetApiProvider, onSetApiKey, onSetExternalApiConfig, onTestExternalApi, onImportModule, onSetModuleEnabled, onDeleteModule }: SettingsPanelProps) {
+export function SettingsPanel({ open: isOpen, settings, modelValidation, availableModels, selectedLocalModel, llmSessionStatuses, llmRequestStatuses, isResetting, resetSummary, resetError, importedModules, moduleImportError, labels, onClose, onReset, onSetLanguage, onSetShowReasoning, onSetInferenceMode, onSetApiProvider, onSetApiKey, onSetLocalModel, onSetExternalApiConfig, onTestExternalApi, onImportModule, onSetModuleEnabled, onDeleteModule }: SettingsPanelProps) {
     const [confirming, setConfirming] = useState(false);
     const [externalEnabled, setExternalEnabled] = useState(false);
     const [externalProvider, setExternalProvider] = useState<ExternalProviderId>('openai');
@@ -340,6 +340,24 @@ export function SettingsPanel({ open: isOpen, settings, modelValidation, llmSess
                 <span>{labels.modeExternalApiDescription}</span>
             </button>
           </div>
+          {settings?.inference_mode === 'local' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem', textAlign: 'left', marginBottom: '1rem' }}>
+                  <label>
+                      <span style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.2rem' }}>로컬 모델 선택</span>
+                      <select 
+                          value={selectedLocalModel ?? ''} 
+                          onChange={(e) => void onSetLocalModel(e.target.value)}
+                          style={{ padding: '0.5rem', width: '100%', background: 'rgba(0,0,0,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}
+                      >
+                          {availableModels?.map(model => (
+                              <option key={model.id} value={model.id}>
+                                  {model.name} {model.is_downloaded ? '(설치됨)' : '(다운로드 필요)'}
+                              </option>
+                          ))}
+                      </select>
+                  </label>
+              </div>
+          )}
           {settings?.inference_mode === 'api' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem', textAlign: 'left' }}>
                   <label>

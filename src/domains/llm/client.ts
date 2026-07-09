@@ -6,6 +6,7 @@ import {
     LlmRequestStatus,
     LlmSessionStatus,
     LlmStreamInferRequest,
+    AvailableLocalModel,
 } from './types';
 export const llmClient = {
     async loadEngine(): Promise<LlmStatus> {
@@ -13,6 +14,9 @@ export const llmClient = {
     },
     async getStatus(): Promise<LlmStatus> {
         return invokeCommand<LlmStatus>(tauriCommands.llm.status);
+    },
+    async checkAvailableModels(): Promise<AvailableLocalModel[]> {
+        return invokeCommand<AvailableLocalModel[]>(tauriCommands.llm.checkAvailableModels);
     },
     async unloadEngine(): Promise<void> {
         return invokeCommand<void>(tauriCommands.llm.unload);

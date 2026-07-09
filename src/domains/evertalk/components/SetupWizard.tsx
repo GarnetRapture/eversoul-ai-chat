@@ -3,7 +3,7 @@ import type { SetupWizardProps } from '../types';
 
 const LANGUAGE_OPTIONS: AppLanguage[] = ['ko', 'en', 'zh_cn'];
 const TIER_OPTIONS: PerformanceTier[] = ['light', 'balanced', 'performance'];
-const SETUP_ORDER = ['language', 'mode', 'download', 'performance'] as const;
+const SETUP_ORDER = ['language', 'mode', 'modelSelect', 'download', 'performance'] as const;
 
 export function SetupWizard({
     open,
@@ -12,6 +12,8 @@ export function SetupWizard({
     inferenceMode,
     apiProvider,
     apiKey,
+    availableModels,
+    selectedLocalModel,
     tier,
     hardwareProfile,
     downloadProgress,
@@ -20,6 +22,7 @@ export function SetupWizard({
     labels,
     onSelectLanguage,
     onSelectInferenceMode,
+    onSelectLocalModel,
     onSelectApiProvider,
     onChangeApiKey,
     onStartDownload,
@@ -70,6 +73,9 @@ export function SetupWizard({
         }
         if (step === 'download') {
             return labels.setupDownloadStep;
+        }
+        if (step === 'modelSelect') {
+            return '로컬 모델 선택'; // 다국어 지원은 labels 쪽에 나중에 추가
         }
         return labels.setupPerformanceStep;
     }
@@ -182,6 +188,34 @@ export function SetupWizard({
                             type="button" 
                             onClick={() => inferenceMode === 'api' ? onCompleteSetup() : onNextStage()}
                         >
+                            {labels.continue ?? 'Next'}
+                        </button>
+                    </div>
+                )}
+
+                {stage === 'modelSelect' && (
+                    <div className="ever-setup-wizard__body">
+                        <h2>로컬 모델 선택</h2>
+                        <p>PC 환경에서 독립적으로 실행할 로컬 인공지능 모델을 선택해주세요.</p>
+                        <div className="ever-language-gate__options" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
+                            {availableModels?.map(model => (
+                                <button
+                                    key={model.id}
+                                    type="button"
+                                    className={selectedLocalModel === model.id ? 'is-active' : ''}
+                                    onClick={() => onSelectLocalModel(model.id)}
+                                >
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                                        <strong>{model.name}</strong>
+                                        {model.is_downloaded && <span style={{ color: '#4caf50' }}>[설치됨]</span>}
+                                    </div>
+                                    <div style={{ fontSize: '0.8rem', opacity: 0.7, textAlign: 'left', marginTop: '0.2rem' }}>
+                                        {model.is_downloaded ? '이 모델은 즉시 사용 가능합니다.' : '추가 다운로드가 필요합니다.'}
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                        <button type="button" onClick={() => void onNextStage()} style={{ marginTop: '1rem' }} disabled={!selectedLocalModel}>
                             {labels.continue ?? 'Next'}
                         </button>
                     </div>

@@ -126,6 +126,24 @@ pub fn settings_set_show_reasoning(
 }
 
 #[tauri::command(rename_all = "snake_case")]
+pub fn settings_set_active_model(
+    settings_state: State<'_, SettingsState>,
+    model: String,
+) -> Result<AppSettings, SettingsError> {
+    startup_debug_log("command:settings_set_active_model:start");
+    let settings = settings_state
+        .0
+        .lock()
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    settings
+        .set_active_model(&model)
+        .map_err(|e| SettingsError::Io(e.to_string()))?;
+    let result = SettingsService::get_settings(&settings);
+    startup_debug_log("command:settings_set_active_model:done");
+    Ok(result)
+}
+
+#[tauri::command(rename_all = "snake_case")]
 pub fn settings_set_external_api_config(
     settings_state: State<'_, SettingsState>,
     request: ExternalApiConfigRequest,

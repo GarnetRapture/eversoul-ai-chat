@@ -29,6 +29,7 @@ export const tauriCommands = {
         sessionStatuses: 'llm_session_statuses',
         requestStatuses: 'llm_request_statuses',
         verifyModel: 'llm_verify_model',
+        checkAvailableModels: 'llm_check_available_models',
         selfTest: 'llm_self_test',
         downloadModel: 'llm_download_model',
     },
@@ -74,6 +75,7 @@ export const tauriCommands = {
         setInferenceMode: 'settings_set_inference_mode',
         setApiProvider: 'settings_set_api_provider',
         setApiKey: 'settings_set_api_key',
+        setActiveLocalModel: 'settings_set_active_model',
     },
     training: {
         run: 'training_run',

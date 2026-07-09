@@ -54,6 +54,15 @@ export interface LlmSessionStatus {
     last_access: number;
     last_generation: LlmSessionGenerationStats | null;
 }
+
+export interface AvailableLocalModel {
+    id: string;
+    name: string;
+    filename: string;
+    size_bytes: number;
+    is_downloaded: boolean;
+}
+
 export type LlmError = {
     ModelFileNotFound: {
         path: string;
