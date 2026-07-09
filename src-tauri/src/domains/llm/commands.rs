@@ -445,7 +445,10 @@ pub async fn llm_check_available_models(
     app_handle: AppHandle,
 ) -> Result<Vec<AvailableLocalModel>, String> {
     let mut results = Vec::new();
-    let base_path = app_handle.path().app_data_dir().unwrap_or_default().join("ai").join("model");
+    let app_root = app_handle
+        .path()
+        .resource_dir()
+        .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
     
     let models = vec![
         ("gemma-2", "Gemma 2 2B (Recommended)", "gemma-2-2b-it-Q4_K_M.gguf"),
@@ -453,7 +456,7 @@ pub async fn llm_check_available_models(
     ];
 
     for (id, name, filename) in models {
-        let file_path = base_path.join(filename);
+        let file_path = LlmService::model_destination_path(&app_root, id);
         let metadata = std::fs::metadata(&file_path);
         
         let (is_downloaded, size_bytes) = match metadata {

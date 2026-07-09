@@ -342,24 +342,17 @@ impl LlmWorkerHandle {
             .ok_or_else(|| LlmError::Infer(format!("LLM 세션 생성 실패: {persona_id}")))?;
         session.last_access = current_access;
 
-        let mut cache_dir = {
-            #[cfg(debug_assertions)]
-            let base = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
-            #[cfg(not(debug_assertions))]
-            let base = std::env::current_exe()
-                .ok()
-                .and_then(|p| p.parent().map(|p| p.to_path_buf()))
-                .unwrap_or_else(|| std::path::PathBuf::from("."));
-            base
-        };
+        let mut cache_dir = std::env::current_exe()
+            .ok()
+            .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+            .unwrap_or_else(|| std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from(".")));
         cache_dir.push("ai");
         cache_dir.push("cache");
         let _ = std::fs::create_dir_all(&cache_dir);
-        let _cache_path = cache_dir.join(format!("{}.bin", persona_id));
+        let cache_path = cache_dir.join(format!("{}.bin", persona_id));
         
-        #[cfg(not(debug_assertions))]
         if session.cached_tokens.is_empty() {
-            if let Ok(loaded_tokens) = session.context.state_load_file(&_cache_path, 4096) {
+            if let Ok(loaded_tokens) = session.context.state_load_file(&cache_path, 4096) {
                 session.cached_tokens = loaded_tokens;
             }
         }
@@ -389,8 +382,7 @@ impl LlmWorkerHandle {
         session.last_generation = Some(stats.clone());
         session.cached_tokens = result.cached_tokens;
         
-        #[cfg(not(debug_assertions))]
-        let _ = session.context.state_save_file(&_cache_path, &session.cached_tokens);
+        let _ = session.context.state_save_file(&cache_path, &session.cached_tokens);
         
         Ok(stats)
     }
@@ -430,6 +422,16 @@ impl LlmWorkerHandle {
                 session.last_generation = Some(Self::generation_stats(&result));
                 request_registry.update_generation(request_id, &result);
                 session.cached_tokens = result.cached_tokens;
+                
+                let mut cache_dir = std::env::current_exe()
+                    .ok()
+                    .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+                    .unwrap_or_else(|| std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from(".")));
+                cache_dir.push("ai");
+                cache_dir.push("cache");
+                let cache_path = cache_dir.join(format!("{}.bin", persona_id));
+                let _ = session.context.state_save_file(&cache_path, &session.cached_tokens);
+                
                 if let Some(target) = stream {
                     target.emit_done(request_id, false, None);
                 }

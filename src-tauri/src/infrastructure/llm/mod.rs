@@ -26,9 +26,10 @@ pub const QWEN_MODEL_PATH: &str = "ai/model/qwen25-3b-korean-Q4_K_M.gguf";
 pub const GEMMA_MODEL_PATH: &str = "ai/model/gemma-2-2b-it-Q4_K_M.gguf";
 
 pub fn get_model_relative_path(active_model: &str) -> &'static str {
-    match active_model {
-        "gemma" => GEMMA_MODEL_PATH,
-        _ => QWEN_MODEL_PATH,
+    if active_model.starts_with("gemma") {
+        GEMMA_MODEL_PATH
+    } else {
+        QWEN_MODEL_PATH
     }
 }
 

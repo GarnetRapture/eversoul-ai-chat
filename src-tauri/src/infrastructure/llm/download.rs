@@ -11,9 +11,10 @@ pub const GEMMA_MODEL_DOWNLOAD_URL: &str =
     "https://huggingface.co/bartowski/gemma-2-2b-it-GGUF/resolve/main/gemma-2-2b-it-Q4_K_M.gguf";
 
 pub fn get_model_download_url(active_model: &str) -> &'static str {
-    match active_model {
-        "gemma" => GEMMA_MODEL_DOWNLOAD_URL,
-        _ => QWEN_MODEL_DOWNLOAD_URL,
+    if active_model.starts_with("gemma") {
+        GEMMA_MODEL_DOWNLOAD_URL
+    } else {
+        QWEN_MODEL_DOWNLOAD_URL
     }
 }
 

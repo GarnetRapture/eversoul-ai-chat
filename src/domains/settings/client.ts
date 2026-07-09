@@ -19,13 +19,19 @@ export const settingsClient = {
         return invokeCommand<HardwareProfile>(tauriCommands.settings.detectHardware);
     },
     async completeInitialSetup(language: AppLanguage, inferenceMode: InferenceMode, apiProvider: ApiProvider | null, apiKey: string | null, tier: PerformanceTier): Promise<AppSettings> {
-        return invokeCommand<AppSettings>(tauriCommands.settings.completeInitialSetup, { language, inferenceMode, apiProvider, apiKey, tier });
+        return invokeCommand<AppSettings>(tauriCommands.settings.completeInitialSetup, { 
+            language, 
+            inference_mode: inferenceMode, 
+            api_provider: apiProvider, 
+            api_key: apiKey, 
+            tier 
+        });
     },
     async setSetupStage(stage: string): Promise<AppSettings> {
         return invokeCommand<AppSettings>(tauriCommands.settings.setSetupStage, { stage });
     },
     async setShowReasoning(showReasoning: boolean): Promise<AppSettings> {
-        return invokeCommand<AppSettings>('settings_set_show_reasoning', { showReasoning });
+        return invokeCommand<AppSettings>('settings_set_show_reasoning', { show_reasoning: showReasoning });
     },
     async setInferenceMode(mode: InferenceMode): Promise<AppSettings> {
         return invokeCommand<AppSettings>('settings_set_inference_mode', { mode });

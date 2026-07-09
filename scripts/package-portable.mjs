@@ -32,16 +32,11 @@ async function ensureDirectory(dirPath, label) {
 }
 
 await ensureFile(releaseExePath, 'Tauri release exe');
-await ensureDirectory(sourceDataDir, 'data');
 
 await rm(portableDir, { recursive: true, force: true });
 await mkdir(portableDir, { recursive: true });
 await copyFile(releaseExePath, portableExePath, constants.COPYFILE_FICLONE);
-await cp(sourceDataDir, portableDataDir, {
-  recursive: true,
-  force: true,
-  errorOnExist: false,
-});
+await mkdir(portableDataDir, { recursive: true });
 await mkdir(portableModelDir, { recursive: true });
 
 console.info(`포터블 빌드 생성 완료: ${portableDir}`);

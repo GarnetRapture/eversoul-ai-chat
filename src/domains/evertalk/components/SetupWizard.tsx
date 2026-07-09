@@ -3,7 +3,7 @@ import type { SetupWizardProps } from '../types';
 
 const LANGUAGE_OPTIONS: AppLanguage[] = ['ko', 'en', 'zh_cn'];
 const TIER_OPTIONS: PerformanceTier[] = ['light', 'balanced', 'performance'];
-const SETUP_ORDER = ['language', 'mode', 'modelSelect', 'download', 'performance'] as const;
+const SETUP_ORDER = ['language', 'mode', 'model_select', 'download', 'performance'] as const;
 
 export function SetupWizard({
     open,
@@ -74,7 +74,7 @@ export function SetupWizard({
         if (step === 'download') {
             return labels.setupDownloadStep;
         }
-        if (step === 'modelSelect') {
+        if (step === 'model_select') {
             return '로컬 모델 선택'; // 다국어 지원은 labels 쪽에 나중에 추가
         }
         return labels.setupPerformanceStep;
@@ -138,22 +138,24 @@ export function SetupWizard({
                     <div className="ever-setup-wizard__body">
                         <h2>{labels.setupModeGateTitle}</h2>
                         <p>{labels.setupModeGateDescription}</p>
-                        <div className="ever-language-gate__options" style={{ marginBottom: '1rem' }}>
+                        <div className="ever-setup-wizard__options-list" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
                             <button
                                 type="button"
                                 className={inferenceMode === 'local' ? 'is-active' : ''}
                                 onClick={() => onSelectInferenceMode('local')}
+                                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1.2rem', gap: '0.5rem', border: inferenceMode === 'local' ? '2px solid #8c52ff' : '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', background: inferenceMode === 'local' ? 'rgba(140, 82, 255, 0.15)' : 'rgba(0, 0, 0, 0.2)', cursor: 'pointer', transition: 'all 0.2s' }}
                             >
-                                <strong>{labels.modeLocal}</strong>
-                                <span>{labels.modeLocalDescription}</span>
+                                <strong style={{ fontSize: '1.1rem' }}>{labels.modeLocal}</strong>
+                                <span style={{ fontSize: '0.9rem', opacity: 0.8, lineHeight: '1.4', wordBreak: 'keep-all' }}>{labels.modeLocalDescription}</span>
                             </button>
                             <button
                                 type="button"
                                 className={inferenceMode === 'api' ? 'is-active' : ''}
                                 onClick={() => onSelectInferenceMode('api')}
+                                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1.2rem', gap: '0.5rem', border: inferenceMode === 'api' ? '2px solid #8c52ff' : '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', background: inferenceMode === 'api' ? 'rgba(140, 82, 255, 0.15)' : 'rgba(0, 0, 0, 0.2)', cursor: 'pointer', transition: 'all 0.2s' }}
                             >
-                                <strong>{labels.modeExternalApi}</strong>
-                                <span>{labels.modeExternalApiDescription}</span>
+                                <strong style={{ fontSize: '1.1rem' }}>{labels.modeExternalApi}</strong>
+                                <span style={{ fontSize: '0.9rem', opacity: 0.8, lineHeight: '1.4', wordBreak: 'keep-all' }}>{labels.modeExternalApiDescription}</span>
                             </button>
                         </div>
                         
@@ -193,23 +195,24 @@ export function SetupWizard({
                     </div>
                 )}
 
-                {stage === 'modelSelect' && (
+                {stage === 'model_select' && (
                     <div className="ever-setup-wizard__body">
                         <h2>로컬 모델 선택</h2>
                         <p>PC 환경에서 독립적으로 실행할 로컬 인공지능 모델을 선택해주세요.</p>
-                        <div className="ever-language-gate__options" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
+                        <div className="ever-setup-wizard__options-list" style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1.5rem' }}>
                             {availableModels?.map(model => (
                                 <button
                                     key={model.id}
                                     type="button"
                                     className={selectedLocalModel === model.id ? 'is-active' : ''}
                                     onClick={() => onSelectLocalModel(model.id)}
+                                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1.2rem', border: selectedLocalModel === model.id ? '2px solid #4caf50' : '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', background: selectedLocalModel === model.id ? 'rgba(76, 175, 80, 0.1)' : 'rgba(0, 0, 0, 0.2)', cursor: 'pointer', transition: 'all 0.2s' }}
                                 >
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                                        <strong>{model.name}</strong>
-                                        {model.is_downloaded && <span style={{ color: '#4caf50' }}>[설치됨]</span>}
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+                                        <strong style={{ fontSize: '1.1rem' }}>{model.name}</strong>
+                                        {model.is_downloaded && <span style={{ color: '#4caf50', fontSize: '0.85rem', fontWeight: 'bold' }}>[설치됨]</span>}
                                     </div>
-                                    <div style={{ fontSize: '0.8rem', opacity: 0.7, textAlign: 'left', marginTop: '0.2rem' }}>
+                                    <div style={{ fontSize: '0.9rem', opacity: 0.8, marginTop: '0.4rem', wordBreak: 'keep-all' }}>
                                         {model.is_downloaded ? '이 모델은 즉시 사용 가능합니다.' : '추가 다운로드가 필요합니다.'}
                                     </div>
                                 </button>
