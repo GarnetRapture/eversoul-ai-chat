@@ -1,10 +1,10 @@
-import { BrainCircuit, Images, PanelRightClose, PanelRightOpen, Settings } from 'lucide-react';
+import { Boxes, BrainCircuit, Images, PanelRightClose, PanelRightOpen, Settings } from 'lucide-react';
 import { getRaceTone, getSpiritVisualAssets } from '../../persona';
 import { createTalkChoices } from '../logic';
 import type { SpiritProfilePanelProps } from '../types';
 import { AppInfoPanel } from './AppInfoPanel';
 import { SystemStatusPanel } from './SystemStatusPanel';
-export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, localStatus, labels, onTrainPersona, onOpenProfileDetail, }: SpiritProfilePanelProps) {
+export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenModuleManagement, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, localStatus, labels, onTrainPersona, onOpenProfileDetail, }: SpiritProfilePanelProps) {
     const assets = activeDetail ? getSpiritVisualAssets(activeDetail) : null;
     const tone = activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral';
     const choices = createTalkChoices(activeDetail, labels);
@@ -15,6 +15,9 @@ export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, st
         </button>
         <button className="ever-profile__toggle" type="button" aria-label={labels.settingsOpen} onClick={onOpenSettings}>
           <Settings aria-hidden="true" size={20}/>
+        </button>
+        <button className="ever-profile__toggle" type="button" aria-label="모듈 관리" title="모듈 관리" onClick={onOpenModuleManagement}>
+          <Boxes aria-hidden="true" size={20}/>
         </button>
         <button className="ever-profile__toggle" type="button" aria-label={collapsed ? labels.expandRight : labels.collapseRight} onClick={onToggleCollapsed}>
           {collapsed ? <PanelRightOpen aria-hidden="true" size={20}/> : <PanelRightClose aria-hidden="true" size={20}/>}

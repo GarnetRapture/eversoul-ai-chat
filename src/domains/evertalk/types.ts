@@ -2,8 +2,9 @@ import type React from 'react';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import type { ChatMessage, ChatRoom } from '../chat';
 import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus, ModelDownloadProgress } from '../llm';
+import type { ImportedModule, ModuleControl } from '../modules';
 import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } from '../persona';
-import type { AppSettings, HardwareProfile, ResetSummary, SetupPhase, SetupProgress } from '../settings';
+import type { AppSettings, ExternalApiConfigRequest, ExternalApiTestResult, HardwareProfile, ResetSummary, SetupPhase, SetupProgress } from '../settings';
 import type { StyleProfile } from '../style';
 import type { LocalStatusSnapshot } from '../sync';
 import type { TrainingSummary } from '../training';
@@ -80,6 +81,7 @@ export interface SpiritProfilePanelProps {
     onSelectStyle: (styleId: string) => void;
     onToggleCollapsed: () => void;
     onOpenSettings: () => void;
+    onOpenModuleManagement: () => void;
     onOpenBackgroundGallery: () => void;
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
@@ -88,6 +90,16 @@ export interface SpiritProfilePanelProps {
     labels: EverTalkLabels;
     onTrainPersona: () => void;
     onOpenProfileDetail: () => void;
+}
+export interface ModuleManagementPanelProps {
+    open: boolean;
+    modules: ImportedModule[];
+    moduleImportError: string | null;
+    onClose: () => void;
+    onImportModule: (path: string) => Promise<void>;
+    onSetModuleEnabled: (id: string, enabled: boolean) => Promise<void>;
+    onUpdateModuleControls: (id: string, controls: ModuleControl[]) => Promise<void>;
+    onDeleteModule: (id: string) => Promise<void>;
 }
 export interface SystemStatusPanelProps {
     statuses: ApiStatusItem[];
@@ -102,6 +114,8 @@ export interface SettingsPanelProps {
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
+    importedModules: ImportedModule[];
+    moduleImportError: string | null;
     labels: EverTalkLabels;
     onClose: () => void;
     onReset: () => void;
@@ -110,6 +124,11 @@ export interface SettingsPanelProps {
     onSetInferenceMode: (mode: 'local' | 'api') => Promise<void>;
     onSetApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => Promise<void>;
     onSetApiKey: (key: string | null) => Promise<void>;
+    onSetExternalApiConfig: (request: ExternalApiConfigRequest) => Promise<void>;
+    onTestExternalApi: () => Promise<ExternalApiTestResult>;
+    onImportModule: (path: string) => Promise<void>;
+    onSetModuleEnabled: (id: string, enabled: boolean) => Promise<void>;
+    onDeleteModule: (id: string) => Promise<void>;
 }
 export interface BackgroundGalleryPanelProps {
     open: boolean;
@@ -207,6 +226,7 @@ export interface EverTalkController {
     trainingError: string | null;
     messagesListRef: React.RefObject<HTMLDivElement | null>;
     settingsOpen: boolean;
+    moduleManagementOpen: boolean;
     backgroundGalleryOpen: boolean;
     appSettings: AppSettings | null;
     modelValidation: LlmModelValidation | null;
@@ -215,6 +235,9 @@ export interface EverTalkController {
     isResetting: boolean;
     resetSummary: ResetSummary | null;
     resetError: string | null;
+    importedModules: ImportedModule[];
+    moduleImportError: string | null;
+
     bondRanking: BondRankingEntry[];
     bondRankingLoading: boolean;
     familiarityList: FamiliarityEntry[];
@@ -243,12 +266,20 @@ export interface EverTalkController {
     selectStyle: (styleId: string) => Promise<void>;
     openSettings: () => Promise<void>;
     closeSettings: () => void;
+    openModuleManagement: () => Promise<void>;
+    closeModuleManagement: () => void;
     openBackgroundGallery: () => void;
     closeBackgroundGallery: () => void;
     resetAppData: () => Promise<void>;
     trainPersona: () => Promise<void>;
     setLanguage: (language: AppLanguage) => Promise<void>;
     setShowReasoning: (show: boolean) => Promise<void>;
+    setExternalApiConfig: (request: ExternalApiConfigRequest) => Promise<void>;
+    testExternalApi: () => Promise<ExternalApiTestResult>;
+    importModule: (path: string) => Promise<void>;
+    setModuleEnabled: (id: string, enabled: boolean) => Promise<void>;
+    updateModuleControls: (id: string, controls: ModuleControl[]) => Promise<void>;
+    deleteModule: (id: string) => Promise<void>;
     closeLanguageGate: () => void;
     openProfileDetail: () => void;
     closeProfileDetail: () => void;

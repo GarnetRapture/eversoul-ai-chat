@@ -1,6 +1,6 @@
 import { invokeCommand, tauriCommands } from '../../shared/api';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
-import { AppSettings, HardwareProfile, ResetSummary } from './types';
+import { AppSettings, ExternalApiConfigRequest, ExternalApiTestResult, HardwareProfile, ResetSummary } from './types';
 import type { ApiProvider, InferenceMode } from '../../shared/types';
 export const settingsClient = {
     async get(): Promise<AppSettings> {
@@ -35,5 +35,11 @@ export const settingsClient = {
     },
     async setApiKey(key: string | null): Promise<AppSettings> {
         return invokeCommand<AppSettings>('settings_set_api_key', { key });
+    },
+    async setExternalApiConfig(request: ExternalApiConfigRequest): Promise<AppSettings> {
+        return invokeCommand<AppSettings>(tauriCommands.settings.setExternalApiConfig, { request });
+    },
+    async testExternalApi(): Promise<ExternalApiTestResult> {
+        return invokeCommand<ExternalApiTestResult>(tauriCommands.settings.testExternalApi);
     },
 };

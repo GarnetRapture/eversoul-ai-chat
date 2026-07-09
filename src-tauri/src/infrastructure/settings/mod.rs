@@ -12,10 +12,16 @@ const KEY_ACTIVE_MODEL: &str = "active_model";
 const KEY_INFERENCE_MODE: &str = "inference_mode";
 const KEY_API_PROVIDER: &str = "api_provider";
 const KEY_API_KEY: &str = "api_key";
+const KEY_EXTERNAL_API_ENABLED: &str = "external_api_enabled";
+const KEY_EXTERNAL_API_BASE_URL: &str = "external_api_base_url";
+const KEY_EXTERNAL_API_KEY: &str = "external_api_key";
+const KEY_EXTERNAL_API_MODEL: &str = "external_api_model";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
 const DEFAULT_INFERENCE_MODE: &str = "local";
 pub const DEFAULT_MODEL: &str = "qwen25";
+const DEFAULT_EXTERNAL_API_BASE_URL: &str = "https://api.openai.com/v1";
+const DEFAULT_EXTERNAL_API_MODEL: &str = "gpt-4o-mini";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
 pub const SUPPORTED_MODELS: [&str; 2] = ["qwen25", "gemma"];
 
@@ -52,6 +58,13 @@ impl SettingsManager {
             std::fs::create_dir_all(parent)?;
         }
         conf.write_to_file(&self.ini_path)
+    }
+
+    pub fn modules_path(&self) -> PathBuf {
+        self.ini_path
+            .parent()
+            .map(|parent| parent.join("modules.json"))
+            .unwrap_or_else(|| PathBuf::from("modules.json"))
     }
 
     pub fn get_default_persona_id(&self) -> Option<String> {
@@ -232,6 +245,72 @@ impl SettingsManager {
         let mut conf = self.load();
         conf.with_section(Some(SECTION_GENERAL))
             .set(KEY_SHOW_REASONING, if value { "true" } else { "false" });
+        self.persist(&conf)
+    }
+
+    pub fn get_external_api_enabled(&self) -> bool {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_EXTERNAL_API_ENABLED)
+            .is_some_and(|v| v == "true")
+    }
+
+    pub fn get_external_api_base_url(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_EXTERNAL_API_BASE_URL)
+            .filter(|value| !value.trim().is_empty())
+            .unwrap_or(DEFAULT_EXTERNAL_API_BASE_URL)
+            .trim_end_matches('/')
+            .to_string()
+    }
+
+    pub fn get_external_api_key(&self) -> Option<String> {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_EXTERNAL_API_KEY)
+            .map(str::trim)
+            .filter(|value| !value.is_empty())
+            .map(ToString::to_string)
+    }
+
+    pub fn get_external_api_model(&self) -> String {
+        self.load()
+            .get_from(Some(SECTION_GENERAL), KEY_EXTERNAL_API_MODEL)
+            .filter(|value| !value.trim().is_empty())
+            .unwrap_or(DEFAULT_EXTERNAL_API_MODEL)
+            .to_string()
+    }
+
+    pub fn set_external_api_config(
+        &self,
+        enabled: bool,
+        base_url: &str,
+        api_key: &str,
+        model: &str,
+    ) -> std::io::Result<()> {
+        let mut conf = self.load();
+        let normalized_base_url = base_url.trim().trim_end_matches('/');
+        let normalized_model = model.trim();
+        conf.with_section(Some(SECTION_GENERAL))
+            .set(
+                KEY_EXTERNAL_API_ENABLED,
+                if enabled { "true" } else { "false" },
+            )
+            .set(
+                KEY_EXTERNAL_API_BASE_URL,
+                if normalized_base_url.is_empty() {
+                    DEFAULT_EXTERNAL_API_BASE_URL
+                } else {
+                    normalized_base_url
+                },
+            )
+            .set(KEY_EXTERNAL_API_KEY, api_key.trim())
+            .set(
+                KEY_EXTERNAL_API_MODEL,
+                if normalized_model.is_empty() {
+                    DEFAULT_EXTERNAL_API_MODEL
+                } else {
+                    normalized_model
+                },
+            );
         self.persist(&conf)
     }
 

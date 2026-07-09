@@ -12,7 +12,7 @@
 <p align="center"><i>承载精灵之声的完全本地化 AI 聊天客户端</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.15-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.17-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -395,6 +395,7 @@ npm run tauri build
 | 0.0.13 | `클린` |
 | 0.0.14 | `feat:` |
 | 0.0.15 | `feat: 로컬 LLM 및 외부 API 연동 하이브리드 구동 모드 추가 및 설정 UI/다국어 적용` |
+| 0.0.17 | `Merge pull request #1 from GarnetRapture/codex/setup-from-v0.0.11` |
 
 ---
 

@@ -4,8 +4,9 @@ import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import { authClient } from '../auth';
 import { chatClient, type ChatMessage, type ChatRoom } from '../chat';
 import { llmClient, type LlmModelValidation, type LlmRequestStatus, type LlmSessionStatus, type LlmStatus, type ModelDownloadProgress } from '../llm';
+import { modulesClient, type ImportedModule, type ModuleControl } from '../modules';
 import { parseSpiritDetail, personaClient, type BondRankingEntry, type FamiliarityEntry, type PersonaConfig, type SpiritDetail } from '../persona';
-import { settingsClient, type AppSettings, type HardwareProfile, type ResetSummary, type SetupProgress } from '../settings';
+import { settingsClient, type AppSettings, type ExternalApiConfigRequest, type ExternalApiTestResult, type HardwareProfile, type ResetSummary, type SetupProgress } from '../settings';
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
 import { trainingClient, type TrainingSummary } from '../training';
@@ -73,6 +74,7 @@ export function useEverTalkController(): EverTalkController {
     const [activeStyle, setActiveStyle] = useState<StyleProfile | null>(null);
     const [isSyncing, setIsSyncing] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [moduleManagementOpen, setModuleManagementOpen] = useState(false);
     const [backgroundGalleryOpen, setBackgroundGalleryOpen] = useState(false);
     const [languageGateOpen, setLanguageGateOpen] = useState(false);
     const [profileDetailOpen, setProfileDetailOpen] = useState(false);
@@ -92,6 +94,8 @@ export function useEverTalkController(): EverTalkController {
     const [isResetting, setIsResetting] = useState(false);
     const [resetSummary, setResetSummary] = useState<ResetSummary | null>(null);
     const [resetError, setResetError] = useState<string | null>(null);
+    const [importedModules, setImportedModules] = useState<ImportedModule[]>([]);
+    const [moduleImportError, setModuleImportError] = useState<string | null>(null);
     const [isTraining, setIsTraining] = useState(false);
     const [trainingSummary, setTrainingSummary] = useState<TrainingSummary | null>(null);
     const [trainingError, setTrainingError] = useState<string | null>(null);
@@ -124,6 +128,13 @@ export function useEverTalkController(): EverTalkController {
     async function refreshLlmStatus() {
         frontendDebugLog('refreshLlmStatus:start');
         try {
+            const currentSettings = await settingsClient.get();
+            setAppSettings(currentSettings);
+            if (currentSettings.external_api.enabled) {
+                setLlmStatus({ is_loaded: false, model_path: null, error_message: null });
+                setSystemStatus(createApiStatus('llm', labels.localModel, 'ready', `External API: ${currentSettings.external_api.model}`));
+                return;
+            }
             let status = await llmClient.getStatus();
             if (!status.is_loaded) {
                 status = await llmClient.loadEngine();
@@ -141,6 +152,12 @@ export function useEverTalkController(): EverTalkController {
     }
     async function ensureLlmReadyForPersonaCache(): Promise<boolean> {
         try {
+            const currentSettings = await settingsClient.get();
+            setAppSettings(currentSettings);
+            if (currentSettings.external_api.enabled) {
+                setSystemStatus(createApiStatus('llm', labels.localModel, 'ready', `External API: ${currentSettings.external_api.model}`));
+                return false;
+            }
             let status = await llmClient.getStatus();
             if (!status.is_loaded) {
                 status = await llmClient.loadEngine();
@@ -288,6 +305,27 @@ export function useEverTalkController(): EverTalkController {
         if (defaultSpirit) {
             frontendDebugLog('loadMainAppData:select_default_spirit:start');
             await selectSpirit(defaultSpirit, initialLanguage);
+        }
+        frontendDebugLog('loadMainAppData:refreshStyles:start');
+        await refreshStyles();
+        frontendDebugLog('loadMainAppData:refreshLocalStatus:start');
+        await refreshLocalStatus();
+        try {
+            frontendDebugLog('loadMainAppData:llm_status:start');
+            const currentSettings = await settingsClient.get();
+            setAppSettings(currentSettings);
+            if (currentSettings.external_api.enabled) {
+                setLlmStatus({ is_loaded: false, model_path: null, error_message: null });
+                setSystemStatus(createApiStatus('llm', initLabels.localModel, 'ready', `External API: ${currentSettings.external_api.model}`));
+                frontendDebugLog('loadMainAppData:done');
+                return;
+            }
+            const status = await llmClient.getStatus();
+            setLlmStatus(status);
+            setSystemStatus(createApiStatus('llm', initLabels.localModel, status.is_loaded ? 'ready' : 'warning', status.is_loaded ? initLabels.modelLoaded : initLabels.modelNotLoaded));
+        }
+        catch (err) {
+            setSystemStatus(createApiStatus('llm', initLabels.localModel, 'error', formatUnknownError(err)));
         }
         frontendDebugLog('loadMainAppData:done');
     }
@@ -456,17 +494,20 @@ export function useEverTalkController(): EverTalkController {
         setSettingsOpen(true);
         setResetSummary(null);
         setResetError(null);
+        setModuleImportError(null);
         try {
             const current = await settingsClient.get();
             setAppSettings(current);
-            const [validation, sessionStatuses, requestStatuses] = await Promise.all([
+            const [validation, sessionStatuses, requestStatuses, modules] = await Promise.all([
                 llmClient.verifyModel(),
                 llmClient.getSessionStatuses(),
                 llmClient.getRequestStatuses(),
+                modulesClient.list(),
             ]);
             setModelValidation(validation);
             setLlmSessionStatuses(sessionStatuses);
             setLlmRequestStatuses(requestStatuses);
+            setImportedModules(modules);
         }
         catch (err) {
             console.error('설정 조회 실패:', err);
@@ -475,6 +516,19 @@ export function useEverTalkController(): EverTalkController {
     }
     function closeSettings() {
         setSettingsOpen(false);
+    }
+    async function openModuleManagement() {
+        setModuleManagementOpen(true);
+        setModuleImportError(null);
+        try {
+            setImportedModules(await modulesClient.list());
+        }
+        catch (err) {
+            setModuleImportError(formatUnknownError(err));
+        }
+    }
+    function closeModuleManagement() {
+        setModuleManagementOpen(false);
     }
     function openBackgroundGallery() {
         setBackgroundGalleryOpen(true);
@@ -532,6 +586,12 @@ export function useEverTalkController(): EverTalkController {
                 api_key: null,
                 setup_stage: 'language',
                 show_reasoning: true,
+                external_api: {
+                    enabled: false,
+                    base_url: 'https://api.openai.com/v1',
+                    api_key_configured: false,
+                    model: 'gpt-4o-mini',
+                },
             });
             setAppLanguage('ko');
             pendingLanguageRef.current = null;
@@ -550,6 +610,8 @@ export function useEverTalkController(): EverTalkController {
             setModelValidation(null);
             setLlmSessionStatuses([]);
             setLlmRequestStatuses([]);
+            setImportedModules([]);
+            setModuleImportError(null);
         }
         catch (err) {
             console.error('설정 초기화 실패:', err);
@@ -612,6 +674,71 @@ export function useEverTalkController(): EverTalkController {
     async function setApiKey(key: string | null) {
         const updated = await settingsClient.setApiKey(key);
         setAppSettings(updated);
+    }
+
+    async function setExternalApiConfig(request: ExternalApiConfigRequest) {
+        const updated = await settingsClient.setExternalApiConfig(request);
+        setAppSettings(updated);
+        if (updated.external_api.enabled) {
+            setLlmStatus({ is_loaded: false, model_path: null, error_message: null });
+            setSystemStatus(createApiStatus('llm', labels.localModel, 'ready', `External API: ${updated.external_api.model}`));
+        }
+        else {
+            await refreshLlmStatus();
+        }
+    }
+
+    async function testExternalApi(): Promise<ExternalApiTestResult> {
+        return settingsClient.testExternalApi();
+    }
+
+    async function importModule(path: string) {
+        setModuleImportError(null);
+        try {
+            await modulesClient.importFromPath(path);
+            setImportedModules(await modulesClient.list());
+        }
+        catch (err) {
+            const message = formatUnknownError(err);
+            setModuleImportError(message);
+            throw err;
+        }
+    }
+
+    async function setModuleEnabled(id: string, enabled: boolean) {
+        setModuleImportError(null);
+        try {
+            setImportedModules(await modulesClient.setEnabled(id, enabled));
+        }
+        catch (err) {
+            const message = formatUnknownError(err);
+            setModuleImportError(message);
+            throw err;
+        }
+    }
+
+    async function deleteModule(id: string) {
+        setModuleImportError(null);
+        try {
+            setImportedModules(await modulesClient.delete(id));
+        }
+        catch (err) {
+            const message = formatUnknownError(err);
+            setModuleImportError(message);
+            throw err;
+        }
+    }
+
+    async function updateModuleControls(id: string, controls: ModuleControl[]) {
+        setModuleImportError(null);
+        try {
+            setImportedModules(await modulesClient.updateControls(id, controls));
+        }
+        catch (err) {
+            const message = formatUnknownError(err);
+            setModuleImportError(message);
+            throw err;
+        }
     }
 
     async function startModelDownload() {
@@ -780,6 +907,7 @@ export function useEverTalkController(): EverTalkController {
         isSyncing,
         messagesListRef,
         settingsOpen,
+        moduleManagementOpen,
         backgroundGalleryOpen,
         appSettings,
         modelValidation,
@@ -788,6 +916,8 @@ export function useEverTalkController(): EverTalkController {
         isResetting,
         resetSummary,
         resetError,
+        importedModules,
+        moduleImportError,
         isTraining,
         trainingSummary,
         trainingError,
@@ -819,12 +949,20 @@ export function useEverTalkController(): EverTalkController {
         selectStyle,
         openSettings,
         closeSettings,
+        openModuleManagement,
+        closeModuleManagement,
         openBackgroundGallery,
         closeBackgroundGallery,
         resetAppData,
         trainPersona,
         setLanguage,
         setShowReasoning,
+        setExternalApiConfig,
+        testExternalApi,
+        importModule,
+        setModuleEnabled,
+        updateModuleControls,
+        deleteModule,
         closeLanguageGate,
         openProfileDetail,
         closeProfileDetail,

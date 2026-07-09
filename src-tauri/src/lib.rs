@@ -20,13 +20,19 @@ use crate::domains::llm::commands::{
     llm_load, llm_request_statuses, llm_self_test, llm_session_statuses,
     llm_status, llm_unload, llm_verify_model,
 };
+use crate::domains::modules::commands::{
+    modules_delete, modules_import_from_path, modules_list, modules_set_enabled,
+    modules_update_controls,
+};
 use crate::domains::persona::commands::{
     persona_bond_ranking, persona_familiarity_list, persona_get_default, persona_get_pack,
     persona_list, persona_list_archive, persona_select_preset, persona_set_default, persona_update,
 };
 use crate::domains::settings::commands::{
     settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
-    settings_set_language, settings_set_performance_tier, settings_set_setup_stage, settings_set_show_reasoning, SettingsState,
+    settings_set_external_api_config, settings_set_language, settings_set_performance_tier,
+    settings_set_setup_stage, settings_set_show_reasoning, settings_test_external_api,
+    SettingsState,
 };
 use crate::domains::style::commands::{
     style_get_active, style_list, style_select_active, style_update,
@@ -162,6 +168,11 @@ pub fn run() {
             llm_request_statuses,
             llm_verify_model,
             llm_self_test,
+            modules_list,
+            modules_import_from_path,
+            modules_set_enabled,
+            modules_delete,
+            modules_update_controls,
             style_list,
             style_update,
             style_select_active,
@@ -172,6 +183,8 @@ pub fn run() {
             settings_set_performance_tier,
             settings_set_setup_stage,
             settings_set_show_reasoning,
+            settings_set_external_api_config,
+            settings_test_external_api,
             settings_detect_hardware,
             settings_complete_initial_setup,
             train_lora,

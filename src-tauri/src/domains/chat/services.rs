@@ -5,6 +5,7 @@ use uuid::Uuid;
 use super::repositories::ChatRepository;
 use super::types::{ChatError, ChatMessage, ChatRoom, SendMessageRequest};
 use crate::domains::knowledge::services::KnowledgeService;
+use crate::domains::modules::services::ModuleService;
 use crate::domains::persona::services::PersonaService;
 use crate::domains::style::services::StyleService;
 use crate::infrastructure::settings::SettingsManager;
@@ -167,6 +168,12 @@ impl<'a> ChatService<'a> {
             style_service.get_assembled_style_prompt(active_style_id.as_deref())
         {
             system_prompt.push_str(&style_prompt);
+        }
+
+        if let Ok(module_prompt) = ModuleService::active_prompt(settings) {
+            if !module_prompt.trim().is_empty() {
+                system_prompt.push_str(&module_prompt);
+            }
         }
 
         let semantic_memory = ChatRepository::get_semantic_memory(self.conn, persona_id)

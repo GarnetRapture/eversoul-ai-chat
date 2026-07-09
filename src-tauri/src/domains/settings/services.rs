@@ -1,4 +1,7 @@
-use super::types::{AppSettings, HardwareProfile, ResetSummary, SettingsError};
+use super::types::{
+    AppSettings, ExternalApiConfigRequest, ExternalApiSettings, HardwareProfile, ResetSummary,
+    SettingsError,
+};
 use crate::domains::persona::repositories::PersonaRepository;
 use crate::domains::persona::services::PersonaService;
 use crate::infrastructure::database::DatabaseManager;
@@ -22,6 +25,12 @@ impl SettingsService {
             performance_configured: settings.has_performance_tier(),
             setup_stage: settings.get_setup_stage(),
             show_reasoning: settings.get_show_reasoning(),
+            external_api: ExternalApiSettings {
+                enabled: settings.get_external_api_enabled(),
+                base_url: settings.get_external_api_base_url(),
+                api_key_configured: settings.get_external_api_key().is_some(),
+                model: settings.get_external_api_model(),
+            },
         }
     }
 
@@ -55,6 +64,37 @@ impl SettingsService {
         settings
             .set_show_reasoning(show)
             .map_err(|e| SettingsError::Io(e.to_string()))?;
+        Ok(Self::get_settings(settings))
+    }
+
+    pub fn set_external_api_config(
+        settings: &SettingsManager,
+        req: &ExternalApiConfigRequest,
+    ) -> Result<AppSettings, SettingsError> {
+        let base_url = normalize_external_base_url(&req.base_url)?;
+        let model = req.model.trim();
+        if req.enabled && model.is_empty() {
+            return Err(SettingsError::Validation(
+                "external_api_model is required when external API is enabled".to_string(),
+            ));
+        }
+        if req.enabled && req.api_key.trim().is_empty() && settings.get_external_api_key().is_none()
+        {
+            return Err(SettingsError::Validation(
+                "external_api_key is required when external API is enabled".to_string(),
+            ));
+        }
+
+        let api_key = if req.api_key.trim().is_empty() {
+            settings.get_external_api_key().unwrap_or_default()
+        } else {
+            req.api_key.clone()
+        };
+
+        settings
+            .set_external_api_config(req.enabled, &base_url, &api_key, model)
+            .map_err(|e| SettingsError::Io(e.to_string()))?;
+
         Ok(Self::get_settings(settings))
     }
 
@@ -133,4 +173,21 @@ impl SettingsService {
             cleared_persona_memories: counts.persona_memories,
         })
     }
+}
+
+fn normalize_external_base_url(base_url: &str) -> Result<String, SettingsError> {
+    let mut normalized = base_url.trim().trim_end_matches('/').to_string();
+    if normalized.ends_with("/chat/completions") {
+        normalized.truncate(normalized.len() - "/chat/completions".len());
+        normalized = normalized.trim_end_matches('/').to_string();
+    }
+    if normalized.is_empty() {
+        normalized = "https://api.openai.com/v1".to_string();
+    }
+    if !normalized.starts_with("https://") && !normalized.starts_with("http://") {
+        return Err(SettingsError::Validation(
+            "external_api_base_url must start with https:// or http://".to_string(),
+        ));
+    }
+    Ok(normalized)
 }
