@@ -96,3 +96,12 @@ pub enum LlmError {
     #[error("알 수 없는 오류: {0}")]
     Unknown(String),
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AvailableLocalModel {
+    pub id: String,
+    pub name: String,
+    pub filename: String,
+    pub size_bytes: u64,
+    pub is_downloaded: bool,
+}

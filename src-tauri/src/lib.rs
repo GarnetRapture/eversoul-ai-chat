@@ -16,9 +16,9 @@ use crate::domains::chat::commands::{
 };
 use crate::domains::knowledge::commands::knowledge_search;
 use crate::domains::llm::commands::{
-    llm_active_sessions, llm_cancel_request, llm_download_model, llm_infer, llm_infer_stream,
-    llm_load, llm_request_statuses, llm_self_test, llm_session_statuses,
-    llm_status, llm_unload, llm_verify_model,
+    llm_active_sessions, llm_cancel_request, llm_check_available_models, llm_download_model,
+    llm_infer, llm_infer_stream, llm_load, llm_request_statuses, llm_self_test,
+    llm_session_statuses, llm_status, llm_unload, llm_verify_model,
 };
 use crate::domains::modules::commands::{
     modules_delete, modules_import_from_path, modules_list, modules_set_enabled,
@@ -31,7 +31,7 @@ use crate::domains::persona::commands::{
 use crate::domains::settings::commands::{
     settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
     settings_set_external_api_config, settings_set_language, settings_set_performance_tier,
-    settings_set_setup_stage, settings_set_show_reasoning, settings_test_external_api,
+    settings_set_setup_stage, settings_set_show_reasoning, settings_test_external_api, settings_set_active_model,
     SettingsState,
 };
 use crate::domains::style::commands::{
@@ -167,6 +167,7 @@ pub fn run() {
             llm_session_statuses,
             llm_request_statuses,
             llm_verify_model,
+            llm_check_available_models,
             llm_self_test,
             modules_list,
             modules_import_from_path,
@@ -184,6 +185,7 @@ pub fn run() {
             settings_set_setup_stage,
             settings_set_show_reasoning,
             settings_set_external_api_config,
+            settings_set_active_model,
             settings_test_external_api,
             settings_detect_hardware,
             settings_complete_initial_setup,

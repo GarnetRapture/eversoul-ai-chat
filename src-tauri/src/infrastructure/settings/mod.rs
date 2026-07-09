@@ -19,20 +19,22 @@ const KEY_EXTERNAL_API_MODEL: &str = "external_api_model";
 const DEFAULT_LANGUAGE: &str = "ko";
 const DEFAULT_PERFORMANCE_TIER: &str = "balanced";
 const DEFAULT_INFERENCE_MODE: &str = "local";
-pub const DEFAULT_MODEL: &str = "qwen25";
+pub const DEFAULT_MODEL: &str = "gemma-2";
 const DEFAULT_EXTERNAL_API_BASE_URL: &str = "https://api.openai.com/v1";
 const DEFAULT_EXTERNAL_API_MODEL: &str = "gpt-4o-mini";
 const SUPPORTED_PERFORMANCE_TIERS: [&str; 3] = ["light", "balanced", "performance"];
-pub const SUPPORTED_MODELS: [&str; 2] = ["qwen25", "gemma"];
+pub const SUPPORTED_MODELS: [&str; 2] = ["qwen25", "gemma-2"];
 
 pub const SETUP_STAGE_LANGUAGE: &str = "language";
 pub const SETUP_STAGE_MODE: &str = "mode";
+pub const SETUP_STAGE_MODEL_SELECT: &str = "model_select";
 pub const SETUP_STAGE_DOWNLOAD: &str = "download";
 pub const SETUP_STAGE_PERFORMANCE: &str = "performance";
 pub const SETUP_STAGE_DONE: &str = "done";
-const SUPPORTED_SETUP_STAGES: [&str; 5] = [
+const SUPPORTED_SETUP_STAGES: [&str; 6] = [
     SETUP_STAGE_LANGUAGE,
     SETUP_STAGE_MODE,
+    SETUP_STAGE_MODEL_SELECT,
     SETUP_STAGE_DOWNLOAD,
     SETUP_STAGE_PERFORMANCE,
     SETUP_STAGE_DONE,

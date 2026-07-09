@@ -3,10 +3,10 @@ import { listen } from '@tauri-apps/api/event';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import { authClient } from '../auth';
 import { chatClient, type ChatMessage, type ChatRoom } from '../chat';
-import { llmClient, type LlmModelValidation, type LlmRequestStatus, type LlmSessionStatus, type LlmStatus, type ModelDownloadProgress } from '../llm';
+import { llmClient, type LlmModelValidation, type LlmRequestStatus, type LlmSessionStatus, type LlmStatus, type ModelDownloadProgress, type AvailableLocalModel } from '../llm';
 import { modulesClient, type ImportedModule, type ModuleControl } from '../modules';
 import { parseSpiritDetail, personaClient, type BondRankingEntry, type FamiliarityEntry, type PersonaConfig, type SpiritDetail } from '../persona';
-import { settingsClient, type AppSettings, type ExternalApiConfigRequest, type ExternalApiTestResult, type HardwareProfile, type ResetSummary, type SetupProgress } from '../settings';
+import { settingsClient, type AppSettings, type ExternalApiConfigRequest, type ExternalApiTestResult, type HardwareProfile, type ResetSummary, type SetupProgress, type SetupPhase } from '../settings';
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
 import { trainingClient, type TrainingSummary } from '../training';
@@ -42,6 +42,8 @@ export function useEverTalkController(): EverTalkController {
     const [setupInferenceMode, setSetupInferenceMode] = useState<InferenceMode>('local');
     const [setupApiProvider, setSetupApiProvider] = useState<ApiProvider | null>('openai');
     const [setupApiKey, setSetupApiKey] = useState<string | null>('');
+    const [availableModels, setAvailableModels] = useState<AvailableLocalModel[]>([]);
+    const [selectedLocalModel, setSelectedLocalModel] = useState<string | null>(null);
     const labels = useMemo(() => getEverTalkLabels(appLanguage), [appLanguage]);
     const [systemStatuses, setSystemStatuses] = useState<ApiStatusItem[]>(() => [
         createApiStatus('auth', labels.authSession, 'checking', labels.checking),
@@ -676,6 +678,16 @@ export function useEverTalkController(): EverTalkController {
         setAppSettings(updated);
     }
 
+    async function changeLocalModel(modelId: string) {
+        setSelectedLocalModel(modelId);
+        try {
+            const updated = await settingsClient.setActiveLocalModel(modelId);
+            setAppSettings(updated);
+        } catch (err) {
+            console.error('로컬 모델 변경 실패:', err);
+        }
+    }
+
     async function setExternalApiConfig(request: ExternalApiConfigRequest) {
         const updated = await settingsClient.setExternalApiConfig(request);
         setAppSettings(updated);
@@ -772,9 +784,31 @@ export function useEverTalkController(): EverTalkController {
         }
     }
     
-    async function goToPerformanceStage() {
+    async function nextSetupStage() {
+        if (!appSettings) return;
+        
+        let nextStage: SetupPhase = 'done';
+        if (appSettings.setup_stage === 'language') {
+            nextStage = 'mode';
+        } else if (appSettings.setup_stage === 'mode') {
+            if (setupInferenceMode === 'api') {
+                nextStage = 'performance';
+            } else {
+                nextStage = 'modelSelect';
+            }
+        } else if (appSettings.setup_stage === 'modelSelect') {
+            const selected = availableModels.find(m => m.id === selectedLocalModel);
+            if (selected && selected.is_downloaded) {
+                nextStage = 'performance';
+            } else {
+                nextStage = 'download';
+            }
+        } else if (appSettings.setup_stage === 'download') {
+            nextStage = 'performance';
+        }
+        
         try {
-            const staged = await settingsClient.setSetupStage('performance');
+            const staged = await settingsClient.setSetupStage(nextStage);
             setAppSettings(staged);
         } catch (e) {
             console.error(e);
@@ -810,6 +844,15 @@ export function useEverTalkController(): EverTalkController {
             }
             catch (err) {
                 console.error('하드웨어 사양 감지 실패:', err);
+            }
+            try {
+                const models = await llmClient.checkAvailableModels();
+                setAvailableModels(models);
+                if (models.length > 0) {
+                    setSelectedLocalModel(models.find(m => m.is_downloaded)?.id || models[0].id);
+                }
+            } catch (err) {
+                console.error('로컬 모델 상태 확인 실패:', err);
             }
             if (needsGate) {
                 frontendDebugLog('initApp:needs_gate');
@@ -970,10 +1013,14 @@ export function useEverTalkController(): EverTalkController {
         setInferenceMode,
         setApiProvider,
         setApiKey,
+        changeLocalModel,
         setupStage: appSettings?.setup_stage ?? 'language',
         inferenceMode: setupInferenceMode,
         apiProvider: setupApiProvider,
         apiKey: setupApiKey,
+        availableModels,
+        selectedLocalModel,
+        setSelectedLocalModel,
         setSetupInferenceMode,
         setSetupApiProvider,
         setSetupApiKey,
@@ -981,7 +1028,7 @@ export function useEverTalkController(): EverTalkController {
         downloadError,
         isDownloading,
         startModelDownload,
-        goToPerformanceStage,
+        nextSetupStage,
         completeSetup,
     };
 }

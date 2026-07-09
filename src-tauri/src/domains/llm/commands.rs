@@ -1,6 +1,6 @@
 use super::services::{LlmLoadError, LlmService};
 use super::types::{
-    LlmError, LlmInferResponse, LlmModelValidation, LlmRequestStatus, LlmSessionGenerationStats,
+    AvailableLocalModel, LlmError, LlmInferResponse, LlmModelValidation, LlmRequestStatus, LlmSessionGenerationStats,
     LlmSessionStatus, LlmStatus, LlmStreamInferRequest,
 };
 use crate::domains::settings::commands::SettingsState;
@@ -438,4 +438,37 @@ pub fn llm_self_test(
         startup_debug_log("command:llm_self_test:missing_handle");
         Err(LlmError::EngineNotLoaded)
     }
+}
+
+#[tauri::command(rename_all = "snake_case")]
+pub async fn llm_check_available_models(
+    app_handle: AppHandle,
+) -> Result<Vec<AvailableLocalModel>, String> {
+    let mut results = Vec::new();
+    let base_path = app_handle.path().app_data_dir().unwrap_or_default().join("ai").join("model");
+    
+    let models = vec![
+        ("gemma-2", "Gemma 2 2B (Recommended)", "gemma-2-2b-it-Q4_K_M.gguf"),
+        ("qwen25", "Qwen 2.5 3B (Korean)", "qwen25-3b-korean-Q4_K_M.gguf"),
+    ];
+
+    for (id, name, filename) in models {
+        let file_path = base_path.join(filename);
+        let metadata = std::fs::metadata(&file_path);
+        
+        let (is_downloaded, size_bytes) = match metadata {
+            Ok(m) if m.is_file() => (true, Some(m.len())),
+            _ => (false, None),
+        };
+        
+        results.push(AvailableLocalModel {
+            id: id.to_string(),
+            name: name.to_string(),
+            filename: filename.to_string(),
+            is_downloaded,
+            size_bytes: size_bytes.unwrap_or(0),
+        });
+    }
+
+    Ok(results)
 }

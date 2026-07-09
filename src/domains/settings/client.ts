@@ -36,6 +36,9 @@ export const settingsClient = {
     async setApiKey(key: string | null): Promise<AppSettings> {
         return invokeCommand<AppSettings>('settings_set_api_key', { key });
     },
+    async setActiveLocalModel(model: string): Promise<AppSettings> {
+        return invokeCommand<AppSettings>(tauriCommands.settings.setActiveLocalModel, { model });
+    },
     async setExternalApiConfig(request: ExternalApiConfigRequest): Promise<AppSettings> {
         return invokeCommand<AppSettings>(tauriCommands.settings.setExternalApiConfig, { request });
     },

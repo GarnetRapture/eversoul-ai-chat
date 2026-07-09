@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { AppLanguage, PerformanceTier } from '../../shared/types';
 import type { ChatMessage, ChatRoom } from '../chat';
-import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus, ModelDownloadProgress } from '../llm';
+import type { LlmModelValidation, LlmRequestStatus, LlmSessionStatus, LlmStatus, ModelDownloadProgress, AvailableLocalModel } from '../llm';
 import type { ImportedModule, ModuleControl } from '../modules';
 import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } from '../persona';
 import type { AppSettings, ExternalApiConfigRequest, ExternalApiTestResult, HardwareProfile, ResetSummary, SetupPhase, SetupProgress } from '../settings';
@@ -109,6 +109,8 @@ export interface SettingsPanelProps {
     open: boolean;
     settings: AppSettings | null;
     modelValidation: LlmModelValidation | null;
+    availableModels: AvailableLocalModel[];
+    selectedLocalModel: string | null;
     llmSessionStatuses: LlmSessionStatus[];
     llmRequestStatuses: LlmRequestStatus[];
     isResetting: boolean;
@@ -124,6 +126,7 @@ export interface SettingsPanelProps {
     onSetInferenceMode: (mode: 'local' | 'api') => Promise<void>;
     onSetApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => Promise<void>;
     onSetApiKey: (key: string | null) => Promise<void>;
+    onSetLocalModel: (modelId: string) => Promise<void>;
     onSetExternalApiConfig: (request: ExternalApiConfigRequest) => Promise<void>;
     onTestExternalApi: () => Promise<ExternalApiTestResult>;
     onImportModule: (path: string) => Promise<void>;
@@ -182,6 +185,8 @@ export interface SetupWizardProps {
     inferenceMode: 'local' | 'api';
     apiProvider: 'openai' | 'anthropic' | 'gemini' | null;
     apiKey: string | null;
+    availableModels: AvailableLocalModel[];
+    selectedLocalModel: string | null;
     tier: PerformanceTier;
     hardwareProfile: HardwareProfile | null;
     downloadProgress: ModelDownloadProgress | null;
@@ -190,6 +195,7 @@ export interface SetupWizardProps {
     labels: EverTalkLabels;
     onSelectLanguage: (language: AppLanguage) => Promise<void>;
     onSelectInferenceMode: (mode: 'local' | 'api') => void;
+    onSelectLocalModel: (modelId: string) => void;
     onSelectApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => void;
     onChangeApiKey: (key: string | null) => void;
     onStartDownload: () => Promise<void>;
@@ -287,10 +293,14 @@ export interface EverTalkController {
     setInferenceMode: (mode: 'local' | 'api') => Promise<void>;
     setApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => Promise<void>;
     setApiKey: (key: string | null) => Promise<void>;
+    changeLocalModel: (modelId: string) => Promise<void>;
     setupStage: SetupPhase;
     inferenceMode: 'local' | 'api';
     apiProvider: 'openai' | 'anthropic' | 'gemini' | null;
     apiKey: string | null;
+    availableModels: AvailableLocalModel[];
+    selectedLocalModel: string | null;
+    setSelectedLocalModel: (modelId: string | null) => void;
     setSetupInferenceMode: (mode: 'local' | 'api') => void;
     setSetupApiProvider: (provider: 'openai' | 'anthropic' | 'gemini' | null) => void;
     setSetupApiKey: (key: string | null) => void;
@@ -298,6 +308,6 @@ export interface EverTalkController {
     downloadError: string | null;
     isDownloading: boolean;
     startModelDownload: () => Promise<void>;
-    goToPerformanceStage: () => Promise<void>;
+    nextSetupStage: () => Promise<void>;
     completeSetup: () => Promise<void>;
 }
