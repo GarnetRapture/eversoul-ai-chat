@@ -794,9 +794,9 @@ export function useEverTalkController(): EverTalkController {
             if (setupInferenceMode === 'api') {
                 nextStage = 'performance';
             } else {
-                nextStage = 'modelSelect';
+                nextStage = 'model_select';
             }
-        } else if (appSettings.setup_stage === 'modelSelect') {
+        } else if (appSettings.setup_stage === 'model_select') {
             const selected = availableModels.find(m => m.id === selectedLocalModel);
             if (selected && selected.is_downloaded) {
                 nextStage = 'performance';

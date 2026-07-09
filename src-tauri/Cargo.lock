@@ -1371,7 +1371,7 @@ dependencies = [
 
 [[package]]
 name = "eversoul-ai-chat"
-version = "0.0.17"
+version = "0.0.18"
 dependencies = [
  "anyhow",
  "candle-core",
