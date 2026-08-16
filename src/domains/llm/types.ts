@@ -63,22 +63,7 @@ export interface AvailableLocalModel {
     is_downloaded: boolean;
 }
 
-export type LlmError = {
-    ModelFileNotFound: {
-        path: string;
-    };
-} | {
-    ModelDownload: string;
-} | {
-    BackendInit: string;
-} | {
-    ModelLoad: string;
-} | {
-    ContextCreate: string;
-} | {
-    Tokenize: string;
-} | {
-    Infer: string;
-} | 'EngineNotLoaded' | {
-    Unknown: string;
-};
+export interface LlmError {
+    code: string;
+    message: string;
+}

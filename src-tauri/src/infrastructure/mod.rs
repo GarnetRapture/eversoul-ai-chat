@@ -1,8 +1,12 @@
+pub mod api_key;
+pub mod cache;
+pub mod chat_session;
 pub mod compress;
 pub mod database;
 pub mod external_ai;
 pub mod hardware;
 pub mod http;
+pub mod i18n;
 pub mod llm;
 pub mod settings;
 pub mod training;

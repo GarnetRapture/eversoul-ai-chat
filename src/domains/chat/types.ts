@@ -14,10 +14,7 @@ export interface ChatMessage {
     content: string;
     created_at: string;
 }
-export type ChatError = {
-    Database: string;
-} | 'LlmEngineNotLoaded' | {
-    LlmInferenceFailed: string;
-} | {
-    Unknown: string;
-};
+export interface ChatError {
+    code: string;
+    message: string;
+}

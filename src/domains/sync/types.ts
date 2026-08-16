@@ -13,10 +13,7 @@ export interface LocalStatusSnapshot {
     last_sync_status: string | null;
     last_sync_error: string | null;
 }
-export type SyncError = {
-    Database: string;
-} | {
-    Network: string;
-} | {
-    Unknown: string;
-};
+export interface SyncError {
+    code: string;
+    message: string;
+}

@@ -5,6 +5,7 @@ use super::types::{
 };
 use crate::domains::chat::repositories::ChatRepository;
 use crate::infrastructure::compress::PersonaLoader;
+use crate::infrastructure::i18n::pick;
 use crate::infrastructure::settings::SettingsManager;
 use rusqlite::Connection;
 use serde_json::Value;
@@ -21,23 +22,31 @@ impl<'a> PersonaService<'a> {
         Self { conn }
     }
 
-    pub fn update_persona_settings(&self, req: UpdatePersonaRequest) -> Result<(), PersonaError> {
+    pub fn update_persona_settings(
+        &self,
+        req: UpdatePersonaRequest,
+        language: &str,
+    ) -> Result<(), PersonaError> {
         let existing = PersonaRepository::get_persona(self.conn, &req.id)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
 
         if let Some(mut config) = existing {
             config.system_prompt = req.system_prompt;
             config.greeting = req.greeting;
             PersonaRepository::save_persona(self.conn, &config)
-                .map_err(|e| PersonaError::Database(e.to_string()))
+                .map_err(|e| PersonaError::database(language, &e.to_string()))
         } else {
-            Err(PersonaError::NotFound(req.id))
+            Err(PersonaError::not_found(language, &req.id))
         }
     }
 
-    pub fn load_and_save_preset(&self, name_en: &str) -> Result<PersonaConfig, PersonaError> {
-        let json_val =
-            PersonaLoader::load_persona(name_en).map_err(|e| PersonaError::Archive(e))?;
+    pub fn load_and_save_preset(
+        &self,
+        name_en: &str,
+        language: &str,
+    ) -> Result<PersonaConfig, PersonaError> {
+        let json_val = PersonaLoader::load_persona(name_en)
+            .map_err(|e| PersonaError::archive(language, &e))?;
 
         let name = json_val["name"].as_str().unwrap_or(name_en);
         let name_en_val = json_val["name_en"].as_str().unwrap_or(name_en);
@@ -195,7 +204,7 @@ impl<'a> PersonaService<'a> {
         };
 
         PersonaRepository::save_persona(self.conn, &config)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
 
         Ok(config)
     }
@@ -650,7 +659,12 @@ impl<'a> PersonaService<'a> {
             return Ok(prompt);
         }
 
-        Err(format!("페르소나 정보를 찾을 수 없습니다: {}", id))
+        Err(pick(
+            language,
+            format!("페르소나 정보를 찾을 수 없습니다: {id}"),
+            format!("Persona profile not found: {id}"),
+            format!("找不到精灵资料：{id}"),
+        ))
     }
 
     fn assemble_and_cache_prompt(
@@ -730,15 +744,15 @@ impl<'a> PersonaService<'a> {
         format!("{source_updated_at}:{LOCALIZED_PROMPT_CACHE_VERSION}")
     }
 
-    pub fn get_available_personas(&self) -> Result<Vec<PersonaConfig>, PersonaError> {
-        self.ensure_archive_personas_installed()?;
+    pub fn get_available_personas(&self, language: &str) -> Result<Vec<PersonaConfig>, PersonaError> {
+        self.ensure_archive_personas_installed(language)?;
         PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))
+            .map_err(|e| PersonaError::database(language, &e.to_string()))
     }
 
-    fn ensure_archive_personas_installed(&self) -> Result<(), PersonaError> {
+    fn ensure_archive_personas_installed(&self, language: &str) -> Result<(), PersonaError> {
         let existing = PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
         let existing_keys = existing
             .iter()
             .flat_map(|persona| {
@@ -762,8 +776,16 @@ impl<'a> PersonaService<'a> {
             if existing_keys.contains(&name.to_lowercase()) || existing_keys.contains(&normalized) {
                 continue;
             }
-            if let Err(err) = self.load_and_save_preset(&name) {
-                eprintln!("페르소나 프리셋 수립 실패: {err}");
+            if let Err(err) = self.load_and_save_preset(&name, language) {
+                eprintln!(
+                    "{}",
+                    pick(
+                        language,
+                        format!("페르소나 프리셋 수립 실패: {err}"),
+                        format!("Failed to install persona preset: {err}"),
+                        format!("精灵预设安装失败：{err}"),
+                    )
+                );
             }
         }
 
@@ -775,26 +797,27 @@ impl<'a> PersonaService<'a> {
         settings: &SettingsManager,
         id: &str,
     ) -> Result<String, PersonaError> {
+        let language = settings.get_language();
         let existing = PersonaRepository::get_persona(self.conn, id)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(&language, &e.to_string()))?;
 
         if existing.is_none() {
-            return Err(PersonaError::NotFound(id.to_string()));
+            return Err(PersonaError::not_found(&language, id));
         }
 
         settings
             .set_default_persona_id(id)
-            .map_err(|e| PersonaError::Unknown(e.to_string()))?;
+            .map_err(|e| PersonaError::unknown(&language, &e.to_string()))?;
         Ok(id.to_string())
     }
 
-    pub fn get_bond_ranking(&self) -> Result<Vec<BondRankingEntry>, PersonaError> {
+    pub fn get_bond_ranking(&self, language: &str) -> Result<Vec<BondRankingEntry>, PersonaError> {
         let personas = PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
         let message_counts = ChatRepository::count_messages_by_persona(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
         let memory_counts = ChatRepository::count_episodic_memories_by_persona(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
 
         let mut entries: Vec<BondRankingEntry> = personas
             .into_iter()
@@ -821,13 +844,16 @@ impl<'a> PersonaService<'a> {
         Ok(entries)
     }
 
-    pub fn get_familiarity_list(&self) -> Result<Vec<FamiliarityEntry>, PersonaError> {
+    pub fn get_familiarity_list(
+        &self,
+        language: &str,
+    ) -> Result<Vec<FamiliarityEntry>, PersonaError> {
         let personas = PersonaRepository::list_personas(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
         let message_counts = ChatRepository::count_messages_by_persona(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
         let memory_counts = ChatRepository::count_episodic_memories_by_persona(self.conn)
-            .map_err(|e| PersonaError::Database(e.to_string()))?;
+            .map_err(|e| PersonaError::database(language, &e.to_string()))?;
 
         let mut entries: Vec<FamiliarityEntry> = personas
             .into_iter()

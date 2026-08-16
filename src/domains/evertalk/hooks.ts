@@ -9,7 +9,7 @@ import { parseSpiritDetail, personaClient, type BondRankingEntry, type Familiari
 import { settingsClient, type AppSettings, type ExternalApiConfigRequest, type ExternalApiTestResult, type HardwareProfile, type ResetSummary, type SetupProgress, type SetupPhase } from '../settings';
 import { styleClient, type StyleProfile } from '../style';
 import { syncClient, type LocalStatusSnapshot } from '../sync';
-import { trainingClient, type TrainingSummary } from '../training';
+import { trainingClient, isTrainingErrorPayload, type TrainingSummary, type TrainingProgress } from '../training';
 import type { ApiProvider, InferenceMode } from '../../shared/types';
 // [TTS 연동 보류] 합성 음성 품질 미흡으로 TTS 연동 보류 (2026-07-07). 재개 시 주석 해제.
 // import { voiceClient } from '../voice';
@@ -101,6 +101,7 @@ export function useEverTalkController(): EverTalkController {
     const [isTraining, setIsTraining] = useState(false);
     const [trainingSummary, setTrainingSummary] = useState<TrainingSummary | null>(null);
     const [trainingError, setTrainingError] = useState<string | null>(null);
+    const [trainingProgress, setTrainingProgress] = useState<TrainingProgress | null>(null);
     const [bondRanking, setBondRanking] = useState<BondRankingEntry[]>([]);
     const [bondRankingLoading, setBondRankingLoading] = useState(false);
     const [familiarityList, setFamiliarityList] = useState<FamiliarityEntry[]>([]);
@@ -123,7 +124,7 @@ export function useEverTalkController(): EverTalkController {
             setSystemStatus(createApiStatus('style-db', labels.styleDb, 'ready', labels.loadedCount(styleList.length)));
         }
         catch (err) {
-            console.error('스타일팩 DB 로드 실패:', err);
+            console.error(labels.logStylePackLoadFailed, err);
             setSystemStatus(createApiStatus('style-db', labels.styleDb, 'error', formatUnknownError(err)));
         }
     }
@@ -145,7 +146,7 @@ export function useEverTalkController(): EverTalkController {
             setSystemStatus(createApiStatus('llm', labels.localModel, status.is_loaded ? 'ready' : 'warning', status.is_loaded ? labels.modelLoaded : labels.modelNotLoaded));
         }
         catch (err) {
-            console.error('로컬 LLM 엔진 로드 실패:', err);
+            console.error(labels.logLocalLlmLoadFailed, err);
             const message = formatUnknownError(err);
             setLlmStatus({ is_loaded: false, model_path: null, error_message: message });
             setSystemStatus(createApiStatus('llm', labels.localModel, 'error', message));
@@ -169,7 +170,7 @@ export function useEverTalkController(): EverTalkController {
             return status.is_loaded;
         }
         catch (err) {
-            console.error('정령 사전 캐시용 로컬 LLM 로드 실패:', err);
+            console.error(labels.logPersonaCacheLlmLoadFailed, err);
             setSystemStatus(createApiStatus('llm', labels.localModel, 'error', formatUnknownError(err)));
             return false;
         }
@@ -201,7 +202,7 @@ export function useEverTalkController(): EverTalkController {
             setLlmRequestStatuses(requestStatuses);
         }
         catch (err) {
-            console.error('활성 세션 조회 실패:', err);
+            console.error(labels.logActiveSessionsFetchFailed, err);
         }
         frontendDebugLog('refreshActiveSessions:done');
     }
@@ -286,7 +287,7 @@ export function useEverTalkController(): EverTalkController {
                     try {
                         await chatClient.preparePersonaCache(spirit.id);
                     } catch (err) {
-                        console.error(`정령 사전 캐시 준비 실패 (${spirit.id}):`, err);
+                        console.error(initLabels.logPersonaCacheWarmupFailed(spirit.id), err);
                     }
                 }
                 
@@ -345,7 +346,7 @@ export function useEverTalkController(): EverTalkController {
             await loadMainAppData(staged.language);
         }
         catch (err) {
-            console.error('초기 셋업 실패:', err);
+            console.error(labels.logInitialSetupFailed, err);
             setPersonaLoadError(formatUnknownError(err));
         }
         finally {
@@ -376,7 +377,7 @@ export function useEverTalkController(): EverTalkController {
                                 await chatClient.preparePersonaCache(currentSpiritId);
                                 await refreshActiveSessions();
                             } catch (err) {
-                                console.error('채팅방 전환 중 사전 캐시 준비 실패:', err);
+                                console.error(labels.logRoomSwitchCacheFailed, err);
                             }
                         }
                     });
@@ -394,7 +395,7 @@ export function useEverTalkController(): EverTalkController {
                 try {
                     await chatClient.preparePersonaCache(spirit.id);
                 } catch (err) {
-                    console.error('정령 사전 캐시 준비 실패:', err);
+                    console.error(labels.logPersonaCacheFailed, err);
                     setSystemStatus(createApiStatus('llm', labels.localModel, 'warning', formatUnknownError(err)));
                 }
             }
@@ -438,7 +439,7 @@ export function useEverTalkController(): EverTalkController {
             setMessages((prev) => [...prev, aiMessage as ChatMessage]);
         }
         catch (err) {
-            console.error('채팅 응답 수집 실패:', err);
+            console.error(labels.logChatResponseFailed, err);
             setSystemStatus(createApiStatus('llm', labels.localModel, 'error', formatUnknownError(err)));
             const errorMessage: ChatMessage = {
                 id: crypto.randomUUID(),
@@ -462,7 +463,7 @@ export function useEverTalkController(): EverTalkController {
                 }
             }
             catch (err) {
-                console.error('대화 후 부가 상태 갱신 실패:', err);
+                console.error(labels.logPostChatStateRefreshFailed, err);
             }
         }
         setIsTyping(false);
@@ -475,7 +476,7 @@ export function useEverTalkController(): EverTalkController {
             await refreshLocalStatus();
         }
         catch (err) {
-            console.error('서버 동기화 실패:', err);
+            console.error(labels.logServerSyncFailed, err);
             setSystemStatus(createApiStatus('sync', labels.dataSync, 'error', formatUnknownError(err)));
         }
         finally {
@@ -489,7 +490,7 @@ export function useEverTalkController(): EverTalkController {
             setStyles((prev) => prev.map((style) => ({ ...style, is_active: style.id === styleId })));
         }
         catch (err) {
-            console.error('스타일 활성화 실패:', err);
+            console.error(labels.logStyleActivateFailed, err);
         }
     }
     async function openSettings() {
@@ -512,7 +513,7 @@ export function useEverTalkController(): EverTalkController {
             setImportedModules(modules);
         }
         catch (err) {
-            console.error('설정 조회 실패:', err);
+            console.error(labels.logSettingsFetchFailed, err);
             setResetError(formatUnknownError(err));
         }
     }
@@ -616,7 +617,7 @@ export function useEverTalkController(): EverTalkController {
             setModuleImportError(null);
         }
         catch (err) {
-            console.error('설정 초기화 실패:', err);
+            console.error(labels.logSettingsResetFailed, err);
             setResetError(formatUnknownError(err));
         }
         finally {
@@ -625,17 +626,23 @@ export function useEverTalkController(): EverTalkController {
     }
     async function trainPersona() {
         if (!activeSpiritId || isTraining) return;
-        
+
         setIsTraining(true);
         setTrainingError(null);
         setTrainingSummary(null);
+        setTrainingProgress(null);
+        const unlistenProgress = await trainingClient.onProgress((progress) => {
+            setTrainingProgress(progress);
+        });
         try {
             const summary = await trainingClient.run(activeSpiritId);
             setTrainingSummary(summary);
         } catch (err) {
-            console.error('정령 LoRA 학습 실패:', err);
-            setTrainingError(formatUnknownError(err));
+            console.error(labels.logLoraTrainingFailed, err);
+            setTrainingError(isTrainingErrorPayload(err) ? err.message : formatUnknownError(err));
         } finally {
+            unlistenProgress();
+            setTrainingProgress(null);
             setIsTraining(false);
         }
     }
@@ -684,7 +691,7 @@ export function useEverTalkController(): EverTalkController {
             const updated = await settingsClient.setActiveLocalModel(modelId);
             setAppSettings(updated);
         } catch (err) {
-            console.error('로컬 모델 변경 실패:', err);
+            console.error(labels.logLocalModelChangeFailed, err);
         }
     }
 
@@ -775,7 +782,7 @@ export function useEverTalkController(): EverTalkController {
             });
         }
         catch (err) {
-            console.error('모델 다운로드 실패:', err);
+            console.error(labels.logModelDownloadFailed, err);
             setDownloadError(formatUnknownError(err));
         }
         finally {
@@ -835,7 +842,7 @@ export function useEverTalkController(): EverTalkController {
                 needsGate = currentSettings.setup_stage !== 'done';
             }
             catch (err) {
-                console.error('설정 조회 실패:', err);
+                console.error(labels.logSettingsFetchFailed, err);
             }
             try {
                 frontendDebugLog('initApp:detect_hardware:start');
@@ -843,7 +850,7 @@ export function useEverTalkController(): EverTalkController {
                 setHardwareProfile(detectedHardware);
             }
             catch (err) {
-                console.error('하드웨어 사양 감지 실패:', err);
+                console.error(labels.logHardwareDetectFailed, err);
             }
             try {
                 const models = await llmClient.checkAvailableModels();
@@ -852,7 +859,7 @@ export function useEverTalkController(): EverTalkController {
                     setSelectedLocalModel(models.find(m => m.is_downloaded)?.id || models[0].id);
                 }
             } catch (err) {
-                console.error('로컬 모델 상태 확인 실패:', err);
+                console.error(labels.logLocalModelStatusCheckFailed, err);
             }
             if (needsGate) {
                 frontendDebugLog('initApp:needs_gate');
@@ -891,7 +898,7 @@ export function useEverTalkController(): EverTalkController {
             }
         })
             .catch((err) => {
-            console.error('인연도 랭킹 조회 실패:', err);
+            console.error(labels.logBondRankingFetchFailed, err);
         })
             .finally(() => {
             if (!cancelled) {
@@ -916,7 +923,7 @@ export function useEverTalkController(): EverTalkController {
             }
         })
             .catch((err) => {
-            console.error('친밀도 조회 실패:', err);
+            console.error(labels.logFamiliarityFetchFailed, err);
         })
             .finally(() => {
             if (!cancelled) {
@@ -964,6 +971,7 @@ export function useEverTalkController(): EverTalkController {
         isTraining,
         trainingSummary,
         trainingError,
+        trainingProgress,
         bondRanking,
         bondRankingLoading,
         familiarityList,

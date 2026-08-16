@@ -1,3 +1,4 @@
+use crate::infrastructure::i18n::pick;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -75,26 +76,131 @@ pub struct LlmSessionStatus {
     pub last_generation: Option<LlmSessionGenerationStats>,
 }
 
-#[derive(Debug, thiserror::Error, serde::Serialize)]
-pub enum LlmError {
-    #[error("모델 파일을 찾을 수 없습니다: {path}")]
-    ModelFileNotFound { path: String },
-    #[error("LLM 엔진 백엔드 초기화 실패: {0}")]
-    BackendInit(String),
-    #[error("모델 로딩 실패: {0}")]
-    ModelLoad(String),
-    #[error("모델 다운로드 실패: {0}")]
-    ModelDownload(String),
-    #[error("컨텍스트 생성 실패: {0}")]
-    ContextCreate(String),
-    #[error("토큰 파싱 실패: {0}")]
-    Tokenize(String),
-    #[error("추론 실패: {0}")]
-    Infer(String),
-    #[error("엔진이 로드되지 않았습니다.")]
-    EngineNotLoaded,
-    #[error("알 수 없는 오류: {0}")]
-    Unknown(String),
+/// `code`는 프론트엔드 프로그래밍적 분기용, `message`는 SettingsManager의
+/// 현재 언어(ko/en/zh_cn/zh_tw)로 이미 렌더링된 텍스트다. Tauri IPC로 그대로
+/// 직렬화되어 프론트엔드 catch(err).message로 표시되므로 한국어 하드코딩 금지.
+#[derive(Debug, Clone, Serialize)]
+pub struct LlmError {
+    pub code: &'static str,
+    pub message: String,
+}
+
+impl std::fmt::Display for LlmError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "[{}] {}", self.code, self.message)
+    }
+}
+
+impl std::error::Error for LlmError {}
+
+impl LlmError {
+    pub fn model_file_not_found(language: &str, path: &str) -> Self {
+        Self {
+            code: "model_file_not_found",
+            message: pick(
+                language,
+                format!("모델 파일을 찾을 수 없습니다: {path}"),
+                format!("Model file not found: {path}"),
+                format!("找不到模型文件：{path}"),
+            ),
+        }
+    }
+
+    pub fn backend_init(language: &str, detail: &str) -> Self {
+        Self {
+            code: "backend_init",
+            message: pick(
+                language,
+                format!("LLM 엔진 백엔드 초기화 실패: {detail}"),
+                format!("Failed to initialize the LLM engine backend: {detail}"),
+                format!("LLM 引擎后端初始化失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn model_load(language: &str, detail: &str) -> Self {
+        Self {
+            code: "model_load",
+            message: pick(
+                language,
+                format!("모델 로딩 실패: {detail}"),
+                format!("Failed to load the model: {detail}"),
+                format!("模型加载失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn model_download(language: &str, detail: &str) -> Self {
+        Self {
+            code: "model_download",
+            message: pick(
+                language,
+                format!("모델 다운로드 실패: {detail}"),
+                format!("Model download failed: {detail}"),
+                format!("模型下载失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn context_create(language: &str, detail: &str) -> Self {
+        Self {
+            code: "context_create",
+            message: pick(
+                language,
+                format!("컨텍스트 생성 실패: {detail}"),
+                format!("Failed to create the context: {detail}"),
+                format!("上下文创建失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn tokenize(language: &str, detail: &str) -> Self {
+        Self {
+            code: "tokenize",
+            message: pick(
+                language,
+                format!("토큰화 실패: {detail}"),
+                format!("Tokenization failed: {detail}"),
+                format!("分词失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn infer(language: &str, detail: &str) -> Self {
+        Self {
+            code: "infer",
+            message: pick(
+                language,
+                format!("추론 실패: {detail}"),
+                format!("Inference failed: {detail}"),
+                format!("推理失败：{detail}"),
+            ),
+        }
+    }
+
+    pub fn engine_not_loaded(language: &str) -> Self {
+        Self {
+            code: "engine_not_loaded",
+            message: pick(
+                language,
+                "엔진이 로드되지 않았습니다.".to_string(),
+                "The engine is not loaded.".to_string(),
+                "引擎尚未加载。".to_string(),
+            ),
+        }
+    }
+
+    pub fn unknown(language: &str, detail: &str) -> Self {
+        Self {
+            code: "unknown",
+            message: pick(
+                language,
+                format!("알 수 없는 오류: {detail}"),
+                format!("Unknown error: {detail}"),
+                format!("未知错误：{detail}"),
+            ),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -121,12 +121,7 @@ export interface FamiliarityEntry {
     memory_count: number;
     familiarity_score: number;
 }
-export type PersonaError = {
-    Database: string;
-} | {
-    Archive: string;
-} | {
-    NotFound: string;
-} | {
-    Unknown: string;
-};
+export interface PersonaError {
+    code: string;
+    message: string;
+}

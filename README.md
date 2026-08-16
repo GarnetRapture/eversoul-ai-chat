@@ -12,7 +12,7 @@
 <p align="center"><i>완전한 로컬 구동 AI 채팅 클라이언트</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.0.19-blue?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.0.20-blue?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="License" />
   <img src="https://img.shields.io/badge/Tauri-2-FFC107?style=flat-square&logo=tauri" alt="Tauri" />
   <img src="https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react" alt="React" />
@@ -409,26 +409,7 @@ npm run tauri build
 이 저장소는 **커밋 1회당 patch 버전 +1**을 원칙으로 합니다. `package.json` · `src-tauri/Cargo.toml` · `src-tauri/tauri.conf.json` 세 파일의 `version` 필드는 항상 동일한 값으로 동기화되어야 하며, 기능 변경이 포함된 커밋을 생성할 때마다 세 파일을 함께 갱신합니다.
 
 | 버전  | 커밋                                      |
-| ----- | ----------------------------------------- |
-| 0.0.1 | `first`                                   |
-| 0.0.2 | `초기세팅`                                |
-| 0.0.3 | `초기세팅2`                               |
-| 0.0.4 | `초기세팅3`                               |
-| 0.0.5 | `초기셋팅4`                               |
-| 0.0.6 | `update_i18n : en , kr , zh_tw , zh_cn`   |
-| 0.0.7 | 다국어 README 3종 정비 + 버전 규칙 문서화 |
-| 0.0.7 | `up` |
-| 0.0.8 | `bugfix` |
-| 0.0.9 | `up` |
-| 0.0.10 | `fix` |
-| 0.0.11 | `1` |
-| 0.0.12 | `초기릴리즈` |
-| 0.0.13 | `클린` |
-| 0.0.14 | `feat:` |
-| 0.0.15 | `feat: 로컬 LLM 및 외부 API 연동 하이브리드 구동 모드 추가 및 설정 UI/다국어 적용` |
-| 0.0.17 | `Merge pull request #1 from GarnetRapture/codex/setup-from-v0.0.11` |
-| 0.0.18 | `fix` |
-| 0.0.19 | `ㅇ` |
+
 
 ---
 

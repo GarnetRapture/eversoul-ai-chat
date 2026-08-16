@@ -5,46 +5,52 @@ use super::types::{
 };
 use crate::domains::settings::commands::SettingsState;
 use crate::domains::training::commands::TrainingState;
+use crate::infrastructure::cache::CacheController;
+use crate::infrastructure::chat_session::ChatSessionStatus;
 use crate::infrastructure::hardware::{HardwareDetector, PerformanceTier};
 use crate::infrastructure::llm::download::download_model_file;
 use crate::infrastructure::llm::scheduler::LlmRequestStatus as InfraRequestStatus;
 use crate::infrastructure::llm::validation::ModelFileValidation;
 use crate::infrastructure::llm::worker::LlmWorkerHandle;
-use crate::infrastructure::llm::worker::WorkerSessionStatus;
 use crate::infrastructure::llm::LlmError as InfraLlmError;
 use crate::startup_debug_log;
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use tauri::{AppHandle, Emitter, Manager, State};
 
 pub struct LlmState(pub Mutex<Option<LlmWorkerHandle>>);
+pub struct CacheState(pub Arc<CacheController>);
 
-fn map_engine_error(err: InfraLlmError) -> LlmError {
-    match err {
-        InfraLlmError::ModelFileNotFound { path } => LlmError::ModelFileNotFound {
-            path: path.to_string_lossy().to_string(),
-        },
-        InfraLlmError::BackendInit(msg) => LlmError::BackendInit(msg),
-        InfraLlmError::ModelLoad(msg) => LlmError::ModelLoad(msg),
-        InfraLlmError::ContextCreate(msg) => LlmError::ContextCreate(msg),
-        InfraLlmError::Tokenize(msg) => LlmError::Tokenize(msg),
-        InfraLlmError::Infer(msg) => LlmError::Infer(msg),
+fn map_engine_error(_language: &str, err: InfraLlmError) -> LlmError {
+    LlmError {
+        code: err.code,
+        message: err.message,
     }
 }
 
-fn map_load_error(err: LlmLoadError) -> LlmError {
+fn map_load_error(language: &str, err: LlmLoadError) -> LlmError {
     match err {
-        LlmLoadError::ModelFileNotFound(paths) => LlmError::ModelFileNotFound {
-            path: paths
+        LlmLoadError::ModelFileNotFound(paths) => LlmError::model_file_not_found(
+            language,
+            &paths
                 .iter()
                 .map(|p| p.to_string_lossy().to_string())
                 .collect::<Vec<String>>()
                 .join(", "),
-        },
-        LlmLoadError::EngineError(e) => map_engine_error(e),
+        ),
+        LlmLoadError::EngineError(e) => map_engine_error(language, e),
     }
 }
 
-fn map_session_status(status: WorkerSessionStatus) -> LlmSessionStatus {
+fn command_language(settings_state: &State<'_, SettingsState>) -> Result<String, LlmError> {
+    Ok(settings_state
+        .inner()
+        .0
+        .lock()
+        .map_err(|e| LlmError::unknown("ko", &e.to_string()))?
+        .get_language())
+}
+
+fn map_session_status(status: ChatSessionStatus) -> LlmSessionStatus {
     LlmSessionStatus {
         persona_id: status.persona_id,
         cached_tokens: status.cached_tokens,
@@ -91,15 +97,17 @@ fn map_model_validation(validation: ModelFileValidation) -> LlmModelValidation {
 pub fn llm_load(
     app_handle: AppHandle,
     llm_state: State<'_, LlmState>,
+    cache_state: State<'_, CacheState>,
     training_state: State<'_, TrainingState>,
     settings_state: State<'_, SettingsState>,
 ) -> Result<LlmStatus, LlmError> {
     startup_debug_log("command:llm_load:start");
+    let language = command_language(&settings_state)?;
     let mut engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
     startup_debug_log("command:llm_load:state_locked");
 
     if let Some(ref handle) = *engine_lock {
@@ -121,7 +129,7 @@ pub fn llm_load(
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?
         .clone();
     startup_debug_log("command:llm_load:adapters_ready");
 
@@ -129,7 +137,7 @@ pub fn llm_load(
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?
         .get_performance_tier();
     startup_debug_log("command:llm_load:tier_ready");
     let hardware = HardwareDetector::detect();
@@ -143,10 +151,17 @@ pub fn llm_load(
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?
         .get_active_model();
 
-    match LlmService::load_engine(&app_root, adapters_dir, profile, &active_model) {
+    match LlmService::load_engine(
+        &app_root,
+        adapters_dir,
+        profile,
+        &active_model,
+        &language,
+        cache_state.inner().0.clone(),
+    ) {
         Ok(handle) => {
             startup_debug_log("command:llm_load:engine_loaded");
             let model_path_str = handle.model_path().to_string_lossy().to_string();
@@ -162,7 +177,7 @@ pub fn llm_load(
         Err(e) => {
             *engine_lock = None;
             startup_debug_log("command:llm_load:error");
-            Err(map_load_error(e))
+            Err(map_load_error(&language, e))
         }
     }
 }
@@ -180,11 +195,12 @@ pub async fn llm_download_model(
     app_handle: AppHandle,
     settings_state: State<'_, SettingsState>,
 ) -> Result<(), LlmError> {
+    let language = command_language(&settings_state)?;
     let active_model = settings_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?
         .get_active_model();
 
     let dest_path = model_destination_path(&app_handle, &active_model);
@@ -194,17 +210,21 @@ pub async fn llm_download_model(
         let _ = emitter.emit("model_download_progress", progress);
     })
     .await
-    .map_err(|e| LlmError::ModelDownload(e.to_string()))
+    .map_err(|e| LlmError::model_download(&language, &e.to_string()))
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn llm_unload(llm_state: State<'_, LlmState>) -> Result<(), LlmError> {
+pub fn llm_unload(
+    llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
+) -> Result<(), LlmError> {
     startup_debug_log("command:llm_unload:start");
+    let language = command_language(&settings_state)?;
     let mut engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     *engine_lock = None;
     startup_debug_log("command:llm_unload:done");
@@ -212,13 +232,17 @@ pub fn llm_unload(llm_state: State<'_, LlmState>) -> Result<(), LlmError> {
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn llm_status(llm_state: State<'_, LlmState>) -> Result<LlmStatus, LlmError> {
+pub fn llm_status(
+    llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
+) -> Result<LlmStatus, LlmError> {
     startup_debug_log("command:llm_status:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     if let Some(ref handle) = *engine_lock {
         startup_debug_log("command:llm_status:loaded");
@@ -240,24 +264,26 @@ pub fn llm_status(llm_state: State<'_, LlmState>) -> Result<LlmStatus, LlmError>
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_infer(
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
     prompt: String,
     max_tokens: Option<u32>,
 ) -> Result<LlmInferResponse, LlmError> {
     startup_debug_log("command:llm_infer:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     if let Some(ref handle) = *engine_lock {
-        let result =
-            LlmService::run_inference(handle, &prompt, max_tokens).map_err(map_engine_error);
+        let result = LlmService::run_inference(handle, &prompt, max_tokens)
+            .map_err(|e| map_engine_error(&language, e));
         startup_debug_log("command:llm_infer:done");
         result
     } else {
         startup_debug_log("command:llm_infer:not_loaded");
-        Err(LlmError::EngineNotLoaded)
+        Err(LlmError::engine_not_loaded(&language))
     }
 }
 
@@ -265,14 +291,16 @@ pub fn llm_infer(
 pub fn llm_infer_stream(
     app_handle: AppHandle,
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
     request: LlmStreamInferRequest,
 ) -> Result<LlmInferResponse, LlmError> {
     startup_debug_log("command:llm_infer_stream:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     if let Some(ref handle) = *engine_lock {
         let result = LlmService::run_inference_with_request(
@@ -283,26 +311,28 @@ pub fn llm_infer_stream(
             request.persona_id.as_deref(),
             Some((app_handle, request.token_event, request.done_event)),
         )
-        .map_err(map_engine_error);
+        .map_err(|e| map_engine_error(&language, e));
         startup_debug_log("command:llm_infer_stream:done");
         result
     } else {
         startup_debug_log("command:llm_infer_stream:not_loaded");
-        Err(LlmError::EngineNotLoaded)
+        Err(LlmError::engine_not_loaded(&language))
     }
 }
 
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_cancel_request(
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
     request_id: String,
 ) -> Result<bool, LlmError> {
     startup_debug_log("command:llm_cancel_request:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     let result = engine_lock
         .as_ref()
@@ -312,13 +342,17 @@ pub fn llm_cancel_request(
 }
 
 #[tauri::command(rename_all = "snake_case")]
-pub fn llm_active_sessions(llm_state: State<'_, LlmState>) -> Result<Vec<String>, LlmError> {
+pub fn llm_active_sessions(
+    llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
+) -> Result<Vec<String>, LlmError> {
     startup_debug_log("command:llm_active_sessions:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     let result = engine_lock
         .as_ref()
@@ -331,13 +365,15 @@ pub fn llm_active_sessions(llm_state: State<'_, LlmState>) -> Result<Vec<String>
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_session_statuses(
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
 ) -> Result<Vec<LlmSessionStatus>, LlmError> {
     startup_debug_log("command:llm_session_statuses:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     let result = engine_lock
         .as_ref()
@@ -356,13 +392,15 @@ pub fn llm_session_statuses(
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_request_statuses(
     llm_state: State<'_, LlmState>,
+    settings_state: State<'_, SettingsState>,
 ) -> Result<Vec<LlmRequestStatus>, LlmError> {
     startup_debug_log("command:llm_request_statuses:start");
+    let language = command_language(&settings_state)?;
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
 
     let result = engine_lock
         .as_ref()
@@ -381,23 +419,25 @@ pub fn llm_request_statuses(
 #[tauri::command(rename_all = "snake_case")]
 pub fn llm_verify_model(
     app_handle: AppHandle,
+    cache_state: State<'_, CacheState>,
     settings_state: State<'_, SettingsState>,
 ) -> Result<LlmModelValidation, LlmError> {
     startup_debug_log("command:llm_verify_model:start");
+    let language = command_language(&settings_state)?;
     let active_model = settings_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?
         .get_active_model();
 
     let app_root = app_handle
         .path()
         .resource_dir()
         .unwrap_or_else(|_| std::env::current_dir().unwrap_or_default());
-    let result = LlmService::validate_model(&app_root, &active_model)
+    let result = LlmService::validate_model(&app_root, &active_model, &language, &cache_state.inner().0)
         .map(map_model_validation)
-        .map_err(map_load_error);
+        .map_err(|e| map_load_error(&language, e));
     startup_debug_log("command:llm_verify_model:done");
     result
 }
@@ -406,37 +446,40 @@ pub fn llm_verify_model(
 pub fn llm_self_test(
     app_handle: AppHandle,
     llm_state: State<'_, LlmState>,
+    cache_state: State<'_, CacheState>,
     training_state: State<'_, TrainingState>,
     settings_state: State<'_, SettingsState>,
 ) -> Result<LlmInferResponse, LlmError> {
     startup_debug_log("command:llm_self_test:start");
+    let language = command_language(&settings_state)?;
     let status = llm_load(
         app_handle,
         llm_state.clone(),
+        cache_state,
         training_state,
         settings_state,
     )?;
     if !status.is_loaded {
         startup_debug_log("command:llm_self_test:not_loaded");
-        return Err(LlmError::EngineNotLoaded);
+        return Err(LlmError::engine_not_loaded(&language));
     }
     let engine_lock = llm_state
         .inner()
         .0
         .lock()
-        .map_err(|e| LlmError::Unknown(e.to_string()))?;
+        .map_err(|e| LlmError::unknown(&language, &e.to_string()))?;
     if let Some(ref handle) = *engine_lock {
         let result = LlmService::run_inference(
             handle,
-            "<|im_start|>system\n한국어로 짧게 답하십시오.<|im_end|>\n<|im_start|>user\n테스트<|im_end|>\n<|im_start|>assistant\n",
+            "<start_of_turn>user\n한국어로 짧게 테스트에 답해줘<end_of_turn>\n<start_of_turn>model\n",
             Some(8),
         )
-        .map_err(map_engine_error);
+        .map_err(|e| map_engine_error(&language, e));
         startup_debug_log("command:llm_self_test:done");
         result
     } else {
         startup_debug_log("command:llm_self_test:missing_handle");
-        Err(LlmError::EngineNotLoaded)
+        Err(LlmError::engine_not_loaded(&language))
     }
 }
 
@@ -452,7 +495,6 @@ pub async fn llm_check_available_models(
     
     let models = vec![
         ("gemma-2", "Gemma 2 2B (Recommended)", "gemma-2-2b-it-Q4_K_M.gguf"),
-        ("qwen25", "Qwen 2.5 3B (Korean)", "qwen25-3b-korean-Q4_K_M.gguf"),
     ];
 
     for (id, name, filename) in models {

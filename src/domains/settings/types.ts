@@ -51,10 +51,7 @@ export interface ResetSummary {
     cleared_knowledge_chunks: number;
     cleared_persona_memories: number;
 }
-export type SettingsError = {
-    Io: string;
-} | {
-    Database: string;
-} | {
-    Validation: string;
-};
+export interface SettingsError {
+    code: 'io' | 'database' | 'validation';
+    message: string;
+}

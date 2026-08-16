@@ -1,98 +1,148 @@
-use std::{
-    fs,
-    io::{BufRead, BufReader},
-    path::PathBuf,
-    process::{Command, Stdio},
-};
-use tauri::{AppHandle, Emitter, Manager};
+use tauri::{AppHandle, Emitter};
 
 use crate::domains::auth::commands::DbState;
-use super::types::{TrainingProgress, TrainingSummary};
+use crate::domains::persona::repositories::PersonaRepository;
+use crate::infrastructure::llm::get_model_relative_path;
+use crate::infrastructure::training::{train_persona_lora, ConversationExample};
+use super::types::{TrainingError, TrainingProgress, TrainingSummary};
+
+const MIN_TRAINING_EXAMPLES: usize = 5;
+const MAX_SOURCE_MESSAGES: i64 = 1000;
+
+/// lib.rs의 setup 로직과 동일한 exe 기준 앱 루트 산정 방식.
+/// 디버그 빌드는 작업 디렉토리, 릴리즈 빌드는 실행 파일이 위치한 디렉토리를 기준으로 삼는다.
+fn app_root_dir() -> std::path::PathBuf {
+    #[cfg(debug_assertions)]
+    {
+        std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."))
+    }
+    #[cfg(not(debug_assertions))]
+    {
+        std::env::current_exe()
+            .ok()
+            .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+            .unwrap_or_else(|| std::path::PathBuf::from("."))
+    }
+}
 
 pub async fn run_training(
     persona_id: String,
     app_handle: AppHandle,
     db_state: &DbState,
-) -> Result<TrainingSummary, String> {
-    // 1. 코퍼스(Corpus) 준비를 위해 DB에서 채팅 기록 추출
-    let conn = db_state.0.lock().map_err(|e| format!("DB 락 오류: {}", e))?;
-    
-    let mut stmt = conn.prepare("SELECT sender_role, content FROM chat_messages WHERE persona_id = ? ORDER BY created_at ASC LIMIT 1000")
-        .map_err(|e| format!("쿼리 준비 실패: {}", e))?;
-        
-    let messages = stmt.query_map([&persona_id], |row| {
-        Ok((
-            row.get::<_, String>(0)?,
-            row.get::<_, String>(1)?,
-        ))
-    }).map_err(|e| format!("쿼리 실행 실패: {}", e))?;
-    
-    let mut corpus = String::new();
-    let mut msg_count = 0;
-    for msg_res in messages {
-        if let Ok((role, content)) = msg_res {
-            corpus.push_str(&format!("{}: {}\n", role, content));
-            msg_count += 1;
+    adapters_dir: &std::path::Path,
+    active_model: &str,
+    language: &str,
+) -> Result<TrainingSummary, TrainingError> {
+    // 1. 페르소나 시스템 프롬프트 조회
+    let system_prompt = {
+        let conn = db_state
+            .0
+            .get()
+            .map_err(|_| TrainingError::db_lock(language))?;
+        let persona = PersonaRepository::get_persona(&conn, &persona_id)
+            .map_err(|_| TrainingError::query_failed(language))?
+            .ok_or_else(|| TrainingError::persona_not_found(language, &persona_id))?;
+        persona.system_prompt
+    };
+
+    // 2. 코퍼스 준비를 위해 DB에서 채팅 기록 추출 (chat_message 테이블,
+    //    chat_message.persona_id가 비어 있으면 chat_room.persona_id로 폴백)
+    let rows: Vec<(String, String)> = {
+        let conn = db_state
+            .0
+            .get()
+            .map_err(|_| TrainingError::db_lock(language))?;
+        let mut stmt = conn
+            .prepare(
+                "SELECT cm.role, cm.content
+                 FROM chat_message cm
+                 JOIN chat_room cr ON cr.id = cm.room_id
+                 WHERE cm.persona_id = ?1 OR (cm.persona_id IS NULL AND cr.persona_id = ?1)
+                 ORDER BY cm.created_at ASC
+                 LIMIT ?2",
+            )
+            .map_err(|_| TrainingError::query_failed(language))?;
+
+        let messages = stmt
+            .query_map(rusqlite::params![&persona_id, MAX_SOURCE_MESSAGES], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, String>(1)?))
+            })
+            .map_err(|_| TrainingError::query_failed(language))?;
+
+        messages.filter_map(Result::ok).collect()
+    };
+
+    // 3. 시간순 대화를 (user/assistant 히스토리 -> assistant 응답) 학습 예시로 변환
+    let mut examples: Vec<ConversationExample> = Vec::new();
+    let mut history: Vec<(String, String)> = Vec::new();
+    for (role, content) in rows {
+        if role == "system" {
+            continue;
         }
+        if role == "assistant" && !history.is_empty() {
+            examples.push(ConversationExample {
+                system_prompt: system_prompt.clone(),
+                prompt_turns: history.clone(),
+                target_reply: content.clone(),
+            });
+        }
+        history.push((role, content));
     }
-    
-    if msg_count < 10 {
-        return Err("학습을 위한 채팅 데이터가 부족합니다 (최소 10개).".to_string());
+
+    if examples.len() < MIN_TRAINING_EXAMPLES {
+        return Err(TrainingError::insufficient_data(
+            language,
+            MIN_TRAINING_EXAMPLES,
+            examples.len(),
+        ));
     }
-    
-    // 2. 임시 파일에 덤프
-    let app_dir = app_handle.path().app_data_dir().unwrap_or_else(|_| PathBuf::from("."));
-    let training_dir = app_dir.join("training");
-    fs::create_dir_all(&training_dir).map_err(|e| e.to_string())?;
-    
-    let corpus_path = training_dir.join(format!("{}_corpus.txt", persona_id));
-    fs::write(&corpus_path, corpus).map_err(|e| format!("코퍼스 저장 실패: {}", e))?;
-    
-    // 3. 서브프로세스 훈련 실행 (llama-finetune 바이너리 호출)
-    // 참고: 실제 배포 시에는 플랫폼별 빌드된 llama-finetune 바이너리를 번들링하거나 사이드카로 실행합니다.
-    let mut child = Command::new("llama-finetune")
-        .arg("--train-data")
-        .arg(&corpus_path)
-        .arg("--lora-out")
-        .arg(training_dir.join(format!("{}_lora.gguf", persona_id)))
-        .arg("--iters")
-        .arg("100")
-        .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .spawn()
-        .map_err(|e| format!("훈련 엔진 스폰 실패. 바이너리가 존재하는지 확인하세요: {}", e))?;
-        
-    let stdout = child.stdout.take().unwrap();
-    let reader = BufReader::new(stdout);
-    
-    // 진행률 파싱 및 프론트엔드 송출
-    for line_res in reader.lines() {
-        if let Ok(line) = line_res {
-            // 예시 로그: "[10/100] loss = 1.234"
-            // 정규식 대신 단순 파싱 시뮬레이션 로직
-            if line.contains("loss =") {
-                // 실제 파싱을 거쳐야 함. 여기선 더미 전송
+    let examples_used = examples.len();
+
+    // 4. 실제 Rust(candle) LoRA 학습 실행. 원본 가중치는 채팅 추론과 동일한, 이미
+    //    로컬에 고정 배치된 활성 GGUF 모델(ai/model/*.gguf)을 그대로 역양자화해서 쓴다.
+    //    새 원본 모델을 인터넷에서 별도로 받지 않는다. 어댑터 GGUF는 mount_lora_adapter가
+    //    찾는 adapters_dir/{persona_id}.gguf 경로와 정확히 일치해야 하므로, candle 원본
+    //    가중치는 같은 스템의 .bin으로 저장해 with_extension("gguf")가 그 경로를 가리키게 한다.
+    let app_root = app_root_dir();
+    let base_model_gguf_path = app_root.join(get_model_relative_path(active_model));
+    let weights_path = adapters_dir.join(format!("{persona_id}.bin"));
+    let progress_persona_id = persona_id.clone();
+    let progress_app_handle = app_handle.clone();
+
+    let report = tauri::async_runtime::spawn_blocking(move || {
+        train_persona_lora(
+            examples,
+            &base_model_gguf_path,
+            &weights_path,
+            |step, total_steps, loss| {
                 let progress = TrainingProgress {
-                    persona_id: persona_id.clone(),
-                    step: 1, // 파싱된 스텝
-                    total_steps: 100,
-                    loss: 1.234,
+                    persona_id: progress_persona_id.clone(),
+                    step,
+                    total_steps,
+                    loss,
                 };
-                let _ = app_handle.emit("training-progress", &progress);
-            }
+                let _ = progress_app_handle.emit("training-progress", &progress);
+            },
+        )
+    })
+    .await
+    .map_err(|e| TrainingError::thread_panic(language, &e.to_string()))?
+    .map_err(|e| {
+        let detail = e.to_string();
+        if let Some(rest) = detail.strip_prefix("architecture_mismatch:") {
+            let mut parts = rest.splitn(2, ':');
+            let expected = parts.next().unwrap_or_default();
+            let found = parts.next().unwrap_or_default();
+            TrainingError::architecture_mismatch(language, expected, found)
+        } else {
+            TrainingError::training_failed(language, &detail)
         }
-    }
-    
-    let status = child.wait().map_err(|e| format!("훈련 대기 실패: {}", e))?;
-    if !status.success() {
-        return Err(format!("훈련 프로세스 비정상 종료: {}", status));
-    }
-    
-    // 4. 완료 후 요약 리턴
+    })?;
+
     Ok(TrainingSummary {
         persona_id,
-        examples_used: msg_count,
-        steps: 100,
-        final_loss: 0.05,
+        examples_used,
+        steps: report.steps,
+        final_loss: report.final_loss,
     })
 }

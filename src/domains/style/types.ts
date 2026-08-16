@@ -10,10 +10,7 @@ export interface StyleProfile {
     is_active: boolean;
     created_at: string;
 }
-export type StyleError = {
-    Database: string;
-} | {
-    NotFound: string;
-} | {
-    Unknown: string;
-};
+export interface StyleError {
+    code: string;
+    message: string;
+}

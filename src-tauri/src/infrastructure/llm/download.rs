@@ -5,17 +5,12 @@ use futures_util::StreamExt;
 use serde::Serialize;
 use thiserror::Error;
 
-pub const QWEN_MODEL_DOWNLOAD_URL: &str =
-    "https://huggingface.co/MyeongHo0621/Qwen2.5-3B-Korean/resolve/main/gguf/qwen25-3b-korean-Q4_K_M.gguf";
 pub const GEMMA_MODEL_DOWNLOAD_URL: &str =
     "https://huggingface.co/bartowski/gemma-2-2b-it-GGUF/resolve/main/gemma-2-2b-it-Q4_K_M.gguf";
 
-pub fn get_model_download_url(active_model: &str) -> &'static str {
-    if active_model.starts_with("gemma") {
-        GEMMA_MODEL_DOWNLOAD_URL
-    } else {
-        QWEN_MODEL_DOWNLOAD_URL
-    }
+/// 이 프로젝트가 지원하는 로컬 모델은 gemma-2-2b-it 하나로 고정이다.
+pub fn get_model_download_url(_active_model: &str) -> &'static str {
+    GEMMA_MODEL_DOWNLOAD_URL
 }
 
 #[derive(Debug, Clone, Serialize)]

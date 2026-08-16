@@ -1,9 +1,44 @@
+use r2d2::ManageConnection;
 use rusqlite::{Connection, Result};
 use std::path::PathBuf;
 
 pub struct DatabaseManager {
     path: PathBuf,
 }
+
+#[derive(Clone)]
+pub struct SqliteConnectionManager {
+    path: PathBuf,
+}
+
+impl SqliteConnectionManager {
+    pub fn new(path: PathBuf) -> Self {
+        Self { path }
+    }
+}
+
+impl ManageConnection for SqliteConnectionManager {
+    type Connection = Connection;
+    type Error = rusqlite::Error;
+
+    fn connect(&self) -> std::result::Result<Connection, Self::Error> {
+        let conn = Connection::open(&self.path)?;
+        conn.pragma_update(None, "journal_mode", "WAL")?;
+        conn.pragma_update(None, "synchronous", "NORMAL")?;
+        conn.pragma_update(None, "foreign_keys", "ON")?;
+        Ok(conn)
+    }
+
+    fn is_valid(&self, conn: &mut Connection) -> std::result::Result<(), Self::Error> {
+        conn.execute_batch("SELECT 1")
+    }
+
+    fn has_broken(&self, _conn: &mut Connection) -> bool {
+        false
+    }
+}
+
+pub type DbPool = r2d2::Pool<SqliteConnectionManager>;
 
 #[derive(Debug, Clone)]
 pub struct ResetCounts {
@@ -20,8 +55,16 @@ impl DatabaseManager {
         Self { path }
     }
 
+    pub fn create_pool(&self) -> std::result::Result<DbPool, Box<dyn std::error::Error>> {
+        self.connect()?;
+        let manager = SqliteConnectionManager::new(self.path.clone());
+        Ok(r2d2::Pool::builder().max_size(8).build(manager)?)
+    }
+
     pub fn connect(&self) -> Result<Connection> {
         let conn = Connection::open(&self.path)?;
+        conn.pragma_update(None, "journal_mode", "WAL")?;
+        conn.pragma_update(None, "synchronous", "NORMAL")?;
         Self::migrate(&conn)?;
         Ok(conn)
     }

@@ -21,14 +21,16 @@ pub struct StreamTarget {
     app_handle: AppHandle,
     token_event: String,
     done_event: String,
+    language: String,
 }
 
 impl StreamTarget {
-    pub fn new(app_handle: AppHandle, token_event: String, done_event: String) -> Self {
+    pub fn new(app_handle: AppHandle, token_event: String, done_event: String, language: String) -> Self {
         Self {
             app_handle,
             token_event,
             done_event,
+            language,
         }
     }
 
@@ -41,7 +43,7 @@ impl StreamTarget {
                     token,
                 },
             )
-            .map_err(|e| LlmError::Infer(e.to_string()))
+            .map_err(|e| LlmError::infer(&self.language, &e.to_string()))
     }
 
     pub fn emit_done(&self, request_id: &str, cancelled: bool, error_message: Option<String>) {

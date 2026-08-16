@@ -34,13 +34,13 @@ export const settingsClient = {
         return invokeCommand<AppSettings>('settings_set_show_reasoning', { show_reasoning: showReasoning });
     },
     async setInferenceMode(mode: InferenceMode): Promise<AppSettings> {
-        return invokeCommand<AppSettings>('settings_set_inference_mode', { mode });
+        return invokeCommand<AppSettings>(tauriCommands.settings.setInferenceMode, { mode });
     },
     async setApiProvider(provider: ApiProvider | null): Promise<AppSettings> {
-        return invokeCommand<AppSettings>('settings_set_api_provider', { provider });
+        return invokeCommand<AppSettings>(tauriCommands.settings.setApiProvider, { provider });
     },
     async setApiKey(key: string | null): Promise<AppSettings> {
-        return invokeCommand<AppSettings>('settings_set_api_key', { key });
+        return invokeCommand<AppSettings>(tauriCommands.settings.setApiKey, { key });
     },
     async setActiveLocalModel(model: string): Promise<AppSettings> {
         return invokeCommand<AppSettings>(tauriCommands.settings.setActiveLocalModel, { model });

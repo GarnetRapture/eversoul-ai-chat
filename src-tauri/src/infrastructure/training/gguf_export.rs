@@ -2,13 +2,13 @@ use candle_core::quantized::{gguf_file, GgmlDType, QTensor};
 use candle_nn::VarMap;
 use std::io::{BufWriter, Write};
 
-use super::config::Qwen2Config;
+use super::config::Gemma2Config;
 
 const LORA_PROJECTIONS: &[(&str, &str)] = &[("q_proj", "attn_q"), ("v_proj", "attn_v")];
 
 pub fn export_lora_to_gguf(
     varmap: &VarMap,
-    cfg: &Qwen2Config,
+    cfg: &Gemma2Config,
     alpha: f64,
     output_path: &std::path::Path,
 ) -> anyhow::Result<()> {
@@ -40,7 +40,7 @@ pub fn export_lora_to_gguf(
         ),
         (
             "general.architecture",
-            gguf_file::Value::String("qwen2".to_string()),
+            gguf_file::Value::String("gemma2".to_string()),
         ),
         ("adapter.type", gguf_file::Value::String("lora".to_string())),
         ("adapter.lora.alpha", gguf_file::Value::F32(alpha as f32)),

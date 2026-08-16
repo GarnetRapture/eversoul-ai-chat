@@ -33,14 +33,15 @@ impl<'a> ChatService<'a> {
         Self { conn }
     }
 
-    pub fn create_chat_room(&self, title: &str) -> Result<ChatRoom, ChatError> {
-        self.create_chat_session_room(title, None)
+    pub fn create_chat_room(&self, title: &str, language: &str) -> Result<ChatRoom, ChatError> {
+        self.create_chat_session_room(title, None, language)
     }
 
     pub fn create_chat_session_room(
         &self,
         title: &str,
         persona_id: Option<String>,
+        language: &str,
     ) -> Result<ChatRoom, ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -58,41 +59,54 @@ impl<'a> ChatService<'a> {
 
         ChatRepository::create_room(self.conn, &room)
             .map(|_| room)
-            .map_err(|e| ChatError::Database(e.to_string()))
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 
-    pub fn get_chat_rooms(&self) -> Result<Vec<ChatRoom>, ChatError> {
-        ChatRepository::list_rooms(self.conn).map_err(|e| ChatError::Database(e.to_string()))
+    pub fn get_chat_rooms(&self, language: &str) -> Result<Vec<ChatRoom>, ChatError> {
+        ChatRepository::list_rooms(self.conn)
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 
-    pub fn get_latest_session_room(&self, persona_id: &str) -> Result<Option<ChatRoom>, ChatError> {
+    pub fn get_latest_session_room(
+        &self,
+        persona_id: &str,
+        language: &str,
+    ) -> Result<Option<ChatRoom>, ChatError> {
         ChatRepository::find_latest_room_by_persona(self.conn, persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 
-    pub fn get_or_create_evertalk_session_room(&self) -> Result<ChatRoom, ChatError> {
+    pub fn get_or_create_evertalk_session_room(
+        &self,
+        language: &str,
+    ) -> Result<ChatRoom, ChatError> {
         if let Some(room) =
             ChatRepository::find_latest_global_session_room(self.conn, EVERTALK_SESSION_TITLE)
-                .map_err(|e| ChatError::Database(e.to_string()))?
+                .map_err(|e| ChatError::database(language, &e.to_string()))?
         {
             return Ok(room);
         }
 
-        self.create_chat_session_room(EVERTALK_SESSION_TITLE, None)
+        self.create_chat_session_room(EVERTALK_SESSION_TITLE, None, language)
     }
 
-    pub fn get_room_messages(&self, room_id: &str) -> Result<Vec<ChatMessage>, ChatError> {
+    pub fn get_room_messages(
+        &self,
+        room_id: &str,
+        language: &str,
+    ) -> Result<Vec<ChatMessage>, ChatError> {
         ChatRepository::list_messages(self.conn, room_id)
-            .map_err(|e| ChatError::Database(e.to_string()))
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 
     pub fn get_room_messages_for_persona(
         &self,
         room_id: &str,
         persona_id: &str,
+        language: &str,
     ) -> Result<Vec<ChatMessage>, ChatError> {
         ChatRepository::list_messages_for_persona(self.conn, room_id, persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 
     pub fn prepare_message_context(
@@ -100,6 +114,7 @@ impl<'a> ChatService<'a> {
         req: &SendMessageRequest,
         settings: &SettingsManager,
     ) -> Result<(String, Vec<ChatMessage>), ChatError> {
+        let language = settings.get_language();
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
             .map(|d| d.as_secs().to_string())
@@ -114,7 +129,7 @@ impl<'a> ChatService<'a> {
             created_at: now.clone(),
         };
         ChatRepository::insert_message(self.conn, &user_msg)
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+            .map_err(|e| ChatError::database(&language, &e.to_string()))?;
 
         let system_prompt = self.build_persona_base_system_prompt(&req.persona_id, settings)?;
 
@@ -124,7 +139,7 @@ impl<'a> ChatService<'a> {
             &req.persona_id,
             PROMPT_HISTORY_LIMIT,
         )
-        .map_err(|e| ChatError::Database(e.to_string()))?;
+        .map_err(|e| ChatError::database(&language, &e.to_string()))?;
 
         // KV 캐시 파괴 방지: 지식 검색 결과는 시스템 프롬프트(고정)가 아닌 가장 최신 컨텍스트(history 직전)에 삽입
         let mut final_history = history.clone();
@@ -160,9 +175,9 @@ impl<'a> ChatService<'a> {
         let language = settings.get_language();
         let mut system_prompt = persona_service
             .get_assembled_system_prompt(persona_id, &language)
-            .map_err(ChatError::Database)?;
+            .map_err(|e| ChatError::database(&language, &e))?;
 
-        let style_service = StyleService::new(self.conn);
+        let style_service = StyleService::new(self.conn, &language);
         let active_style_id = settings.get_active_style_id();
         if let Ok(style_prompt) =
             style_service.get_assembled_style_prompt(active_style_id.as_deref())
@@ -177,10 +192,10 @@ impl<'a> ChatService<'a> {
         }
 
         let semantic_memory = ChatRepository::get_semantic_memory(self.conn, persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+            .map_err(|e| ChatError::database(&language, &e.to_string()))?;
         let recent_episodic =
             ChatRepository::list_episodic_memories(self.conn, persona_id, EPISODIC_INJECT_LIMIT)
-                .map_err(|e| ChatError::Database(e.to_string()))?;
+                .map_err(|e| ChatError::database(&language, &e.to_string()))?;
 
         if semantic_memory.is_some() || !recent_episodic.is_empty() {
             let mut memory_block =
@@ -200,34 +215,37 @@ impl<'a> ChatService<'a> {
             _ => "한국어",
         };
 
-        let qwen_instruction = format!("\n\n[중요 절대 지침]\n\
+        let persona_behavior_instruction = format!("\n\n[중요 절대 지침]\n\
             1. 너는 AI가 아니라 설정된 정령 캐릭터 본인이다. 어색한 기계적 번역투(예: '저는 ~에 온 지 꽤 오래되었어요', '역할을 맡게 되어 기뻐요')를 절대 피하고 자연스러운 {lang}로 말해라.\n\
             2. 매 턴 똑같은 인사말이나 자기소개를 반복하지 말고, 직전 사용자의 말(대화 맥락)에 직접적으로 반응해라.\n\
             3. 실제 대답을 출력하기 전에 반드시 <think> 태그를 열고 너의 내면의 생각, 감정 변화, 행동 의도를 {lang}로 먼저 작성해라. 생각 과정이 끝나면 </think> 태그를 닫고 대답을 이어가라.\n\
             (형식 예시: <think>구원자가 내 반응을 보고 싶어하는 것 같다.</think>정말이지, 구원자님도 참!)", lang=target_lang_str);
-        system_prompt.push_str(&qwen_instruction);
+        system_prompt.push_str(&persona_behavior_instruction);
 
         Ok(system_prompt)
     }
 
-    fn render_chat_message(msg: &ChatMessage) -> String {
-        format!("<|im_start|>{}\n{}<|im_end|>\n", msg.role, msg.content)
-    }
-
-    pub fn build_llm_chat_prompt(system_prompt: &str, history: &[ChatMessage]) -> String {
-        let mut full_prompt = String::new();
-        full_prompt.push_str(&Self::build_llm_system_prefix(system_prompt));
-
-        for msg in history {
-            full_prompt.push_str(&Self::render_chat_message(msg));
+    /// Gemma 2 공식 채팅 템플릿은 역할이 `user`/`model` 둘뿐이다(assistant가 아니라 model).
+    fn gemma_role(role: &str) -> &str {
+        if role == "assistant" {
+            "model"
+        } else {
+            "user"
         }
-
-        full_prompt.push_str("<|im_start|>assistant\n");
-        full_prompt
     }
 
+    fn render_chat_message(msg: &ChatMessage) -> String {
+        format!(
+            "<start_of_turn>{}\n{}<end_of_turn>\n",
+            Self::gemma_role(&msg.role),
+            msg.content
+        )
+    }
+
+    /// Gemma 2는 system 역할을 지원하지 않으므로, 공식 권장 방식대로
+    /// 시스템 프롬프트를 첫 user 턴에 병합한다.
     pub fn build_llm_system_prefix(system_prompt: &str) -> String {
-        format!("<|im_start|>system\n{}<|im_end|>\n", system_prompt)
+        format!("<start_of_turn>user\n{}<end_of_turn>\n", system_prompt)
     }
 
     pub fn build_llm_chat_prompt_with_budget<F>(
@@ -239,8 +257,8 @@ impl<'a> ChatService<'a> {
     where
         F: FnMut(&str) -> Result<usize, ChatError>,
     {
-        let system_block = format!("<|im_start|>system\n{}<|im_end|>\n", system_prompt);
-        let assistant_block = "<|im_start|>assistant\n";
+        let system_block = format!("<start_of_turn>user\n{}<end_of_turn>\n", system_prompt);
+        let assistant_block = "<start_of_turn>model\n";
         let base_prompt = format!("{}{}", system_block, assistant_block);
 
         if count_tokens(&base_prompt)? >= max_prompt_tokens {
@@ -279,6 +297,7 @@ impl<'a> ChatService<'a> {
         room_id: &str,
         persona_id: &str,
         text: String,
+        language: &str,
     ) -> Result<ChatMessage, ChatError> {
         let now = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
@@ -294,7 +313,7 @@ impl<'a> ChatService<'a> {
             created_at: now,
         };
         ChatRepository::insert_message(self.conn, &ai_msg)
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+            .map_err(|e| ChatError::database(language, &e.to_string()))?;
 
         Ok(ai_msg)
     }
@@ -304,6 +323,7 @@ impl<'a> ChatService<'a> {
         persona_id: &str,
         user_text: &str,
         ai_text: &str,
+        language: &str,
     ) -> Result<Option<String>, ChatError> {
         let trimmed_user = user_text.trim();
         let trimmed_ai = ai_text.trim();
@@ -322,31 +342,35 @@ impl<'a> ChatService<'a> {
                 &[],
                 &now,
             )
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+            .map_err(|e| ChatError::database(language, &e.to_string()))?;
         }
 
         let episodic_count = ChatRepository::count_episodic_memories(self.conn, persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))?;
+            .map_err(|e| ChatError::database(language, &e.to_string()))?;
         if episodic_count == 0 || episodic_count % CONSOLIDATION_INTERVAL != 0 {
             return Ok(None);
         }
 
-        self.build_consolidation_prompt(persona_id)
+        self.build_consolidation_prompt(persona_id, language)
     }
 
-    fn build_consolidation_prompt(&self, persona_id: &str) -> Result<Option<String>, ChatError> {
+    fn build_consolidation_prompt(
+        &self,
+        persona_id: &str,
+        language: &str,
+    ) -> Result<Option<String>, ChatError> {
         let episodic = ChatRepository::list_episodic_memories(
             self.conn,
             persona_id,
             CONSOLIDATION_SOURCE_LIMIT,
         )
-        .map_err(|e| ChatError::Database(e.to_string()))?;
+        .map_err(|e| ChatError::database(language, &e.to_string()))?;
         if episodic.is_empty() {
             return Ok(None);
         }
 
         let previous_summary = ChatRepository::get_semantic_memory(self.conn, persona_id)
-            .map_err(|e| ChatError::Database(e.to_string()))?
+            .map_err(|e| ChatError::database(language, &e.to_string()))?
             .unwrap_or_else(|| "없음".to_string());
 
         let episodic_list = episodic
@@ -357,12 +381,12 @@ impl<'a> ChatService<'a> {
             .join("\n");
 
         let consolidation_prompt = format!(
-            "<|im_start|>system\n다음은 정령 캐릭터가 구원자(사용자)와의 대화에서 그동안 기록해 \
+            "<start_of_turn>user\n다음은 정령 캐릭터가 구원자(사용자)와의 대화에서 그동안 기록해 \
              온 개별 기억들과, 이전에 정리했던 통합 요약이다. 이 모든 정보를 종합해 이 캐릭터가 \
              구원자에 대해 알고 있는 핵심 사실/취향/관계 상태를 한국어 3~5문장 이내로 새롭게 통합 \
-             요약하라. 중복은 제거하고 최신 정보를 우선하라.<|im_end|>\n\
-             <|im_start|>user\n[이전 통합 요약]\n{}\n\n[개별 기억 목록]\n{}<|im_end|>\n\
-             <|im_start|>assistant\n",
+             요약하라. 중복은 제거하고 최신 정보를 우선하라.\n\
+             [이전 통합 요약]\n{}\n\n[개별 기억 목록]\n{}<end_of_turn>\n\
+             <start_of_turn>model\n",
             previous_summary, episodic_list
         );
 
@@ -374,6 +398,7 @@ impl<'a> ChatService<'a> {
         persona_id: &str,
         summary: &str,
         summary_vector: &[f32],
+        language: &str,
     ) -> Result<(), ChatError> {
         let trimmed = summary.trim();
         if trimmed.is_empty() {
@@ -385,6 +410,6 @@ impl<'a> ChatService<'a> {
             .map(|d| d.as_secs().to_string())
             .unwrap_or_default();
         ChatRepository::upsert_semantic_memory(self.conn, persona_id, trimmed, summary_vector, &now)
-            .map_err(|e| ChatError::Database(e.to_string()))
+            .map_err(|e| ChatError::database(language, &e.to_string()))
     }
 }

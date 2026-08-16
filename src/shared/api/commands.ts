@@ -78,7 +78,7 @@ export const tauriCommands = {
         setActiveLocalModel: 'settings_set_active_model',
     },
     training: {
-        run: 'training_run',
+        run: 'train_lora',
     },
     voice: {
         list: 'voice_list',

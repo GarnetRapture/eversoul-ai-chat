@@ -1,10 +1,15 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, VecDeque};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 
 use serde::Serialize;
 
 use super::{CacheGenerationResult, LlmError};
+
+/// 완료(completed/failed/cancelled)된 요청 상태를 requests 맵에 보관하는 최대 개수.
+/// 이 상한이 없으면 채팅을 계속할수록 RequestRegistry가 무한정 누적되어
+/// 러스트 프로세스(웹뷰가 아니라 백엔드 워커 측) 메모리 누수로 이어진다.
+const MAX_RETAINED_FINISHED_REQUESTS: usize = 50;
 
 #[derive(Debug, Clone, Serialize)]
 pub struct LlmRequestStatus {
@@ -23,6 +28,7 @@ pub struct LlmRequestStatus {
 pub struct RequestRegistry {
     requests: Arc<Mutex<HashMap<String, LlmRequestStatus>>>,
     cancellations: Arc<Mutex<HashMap<String, Arc<AtomicBool>>>>,
+    finished_order: Arc<Mutex<VecDeque<String>>>,
 }
 
 impl RequestRegistry {
@@ -30,6 +36,7 @@ impl RequestRegistry {
         Self {
             requests: Arc::new(Mutex::new(HashMap::new())),
             cancellations: Arc::new(Mutex::new(HashMap::new())),
+            finished_order: Arc::new(Mutex::new(VecDeque::new())),
         }
     }
 
@@ -84,6 +91,22 @@ impl RequestRegistry {
         }
         if let Ok(mut map) = self.cancellations.lock() {
             map.remove(request_id);
+        }
+        self.retain_recent_finished(request_id);
+    }
+
+    fn retain_recent_finished(&self, request_id: &str) {
+        let Ok(mut order) = self.finished_order.lock() else {
+            return;
+        };
+        order.push_back(request_id.to_string());
+        while order.len() > MAX_RETAINED_FINISHED_REQUESTS {
+            let Some(oldest_id) = order.pop_front() else {
+                break;
+            };
+            if let Ok(mut map) = self.requests.lock() {
+                map.remove(&oldest_id);
+            }
         }
     }
 

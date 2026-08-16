@@ -4,7 +4,7 @@ import { createTalkChoices } from '../logic';
 import type { SpiritProfilePanelProps } from '../types';
 import { AppInfoPanel } from './AppInfoPanel';
 import { SystemStatusPanel } from './SystemStatusPanel';
-export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenModuleManagement, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, localStatus, labels, onTrainPersona, onOpenProfileDetail, }: SpiritProfilePanelProps) {
+export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, styles, activeStyle, isSyncing, onSyncStyles, onSelectStyle, onToggleCollapsed, onOpenSettings, onOpenModuleManagement, onOpenBackgroundGallery, isTraining, trainingSummary, trainingError, trainingProgress, localStatus, labels, onTrainPersona, onOpenProfileDetail, }: SpiritProfilePanelProps) {
     const assets = activeDetail ? getSpiritVisualAssets(activeDetail) : null;
     const tone = activeDetail ? getRaceTone(activeDetail.race) : 'tone-neutral';
     const choices = createTalkChoices(activeDetail, labels);
@@ -99,6 +99,9 @@ export function SpiritProfilePanel({ activeDetail, collapsed, systemStatuses, st
             {trainingError && (<div className="ever-roster__error">
                 <strong>{labels.trainingFailed}</strong>
                 <span>{trainingError}</span>
+              </div>)}
+            {isTraining && trainingProgress && (<div className="ever-settings-result">
+                <span>{labels.trainingProgressDetail(trainingProgress.step, trainingProgress.total_steps, trainingProgress.loss)}</span>
               </div>)}
             <button className="ever-settings-reset-button" type="button" disabled={isTraining} onClick={onTrainPersona}>
               <BrainCircuit aria-hidden="true" size={16}/>

@@ -114,6 +114,7 @@ export interface EverTalkLabels {
     steps: string;
     finalLoss: string;
     trainingRunning: string;
+    trainingProgressDetail: (step: number, total: number, loss: number) => string;
     startTraining: string;
     speakingStyle: string;
     syncing: string;
@@ -190,6 +191,27 @@ export interface EverTalkLabels {
     apiKey: string;
     apiKeyPlaceholder: string;
     inferenceMode: string;
+    logStylePackLoadFailed: string;
+    logLocalLlmLoadFailed: string;
+    logPersonaCacheLlmLoadFailed: string;
+    logActiveSessionsFetchFailed: string;
+    logInitialSetupFailed: string;
+    logRoomSwitchCacheFailed: string;
+    logPersonaCacheFailed: string;
+    logPersonaCacheWarmupFailed: (personaId: string) => string;
+    logChatResponseFailed: string;
+    logPostChatStateRefreshFailed: string;
+    logServerSyncFailed: string;
+    logStyleActivateFailed: string;
+    logSettingsFetchFailed: string;
+    logSettingsResetFailed: string;
+    logLoraTrainingFailed: string;
+    logLocalModelChangeFailed: string;
+    logModelDownloadFailed: string;
+    logHardwareDetectFailed: string;
+    logLocalModelStatusCheckFailed: string;
+    logBondRankingFetchFailed: string;
+    logFamiliarityFetchFailed: string;
 }
 
 export type EverTalkLabelBag = {
@@ -311,6 +333,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         steps: '스텝',
         finalLoss: '최종 손실',
         trainingRunning: '학습 진행 중...',
+        trainingProgressDetail: (step, total, loss) => `${step} / ${total} 스텝 · 손실 ${loss.toFixed(4)}`,
         startTraining: '이 정령 학습 시작',
         speakingStyle: '말투 스타일',
         syncing: '동기화 중',
@@ -387,6 +410,27 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         apiKey: 'API 키',
         apiKeyPlaceholder: 'API 키를 입력하세요',
         inferenceMode: '작동 모드',
+        logStylePackLoadFailed: '스타일팩 DB 로드 실패',
+        logLocalLlmLoadFailed: '로컬 LLM 엔진 로드 실패',
+        logPersonaCacheLlmLoadFailed: '정령 사전 캐시용 로컬 LLM 로드 실패',
+        logActiveSessionsFetchFailed: '활성 세션 조회 실패',
+        logInitialSetupFailed: '초기 셋업 실패',
+        logRoomSwitchCacheFailed: '채팅방 전환 중 사전 캐시 준비 실패',
+        logPersonaCacheFailed: '정령 사전 캐시 준비 실패',
+        logPersonaCacheWarmupFailed: (personaId) => `정령 사전 캐시 준비 실패 (${personaId})`,
+        logChatResponseFailed: '채팅 응답 수집 실패',
+        logPostChatStateRefreshFailed: '대화 후 부가 상태 갱신 실패',
+        logServerSyncFailed: '서버 동기화 실패',
+        logStyleActivateFailed: '스타일 활성화 실패',
+        logSettingsFetchFailed: '설정 조회 실패',
+        logSettingsResetFailed: '설정 초기화 실패',
+        logLoraTrainingFailed: '정령 LoRA 학습 실패',
+        logLocalModelChangeFailed: '로컬 모델 변경 실패',
+        logModelDownloadFailed: '모델 다운로드 실패',
+        logHardwareDetectFailed: '하드웨어 사양 감지 실패',
+        logLocalModelStatusCheckFailed: '로컬 모델 상태 확인 실패',
+        logBondRankingFetchFailed: '인연도 랭킹 조회 실패',
+        logFamiliarityFetchFailed: '친밀도 조회 실패',
     },
     en: {
         languageGateTitle: 'Choose Language',
@@ -502,6 +546,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         steps: 'Steps',
         finalLoss: 'Final loss',
         trainingRunning: 'Training...',
+        trainingProgressDetail: (step, total, loss) => `Step ${step} / ${total} · Loss ${loss.toFixed(4)}`,
         startTraining: 'Start training',
         speakingStyle: 'Speaking Style',
         syncing: 'Syncing',
@@ -578,6 +623,27 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         apiKey: 'API Key',
         apiKeyPlaceholder: 'Enter your API key',
         inferenceMode: 'Inference Mode',
+        logStylePackLoadFailed: 'Failed to load style pack DB',
+        logLocalLlmLoadFailed: 'Failed to load local LLM engine',
+        logPersonaCacheLlmLoadFailed: 'Failed to load local LLM for persona cache',
+        logActiveSessionsFetchFailed: 'Failed to fetch active sessions',
+        logInitialSetupFailed: 'Initial setup failed',
+        logRoomSwitchCacheFailed: 'Failed to prepare cache while switching rooms',
+        logPersonaCacheFailed: 'Failed to prepare persona cache',
+        logPersonaCacheWarmupFailed: (personaId) => `Failed to prepare persona cache (${personaId})`,
+        logChatResponseFailed: 'Failed to get chat response',
+        logPostChatStateRefreshFailed: 'Failed to refresh state after chat',
+        logServerSyncFailed: 'Server sync failed',
+        logStyleActivateFailed: 'Failed to activate style',
+        logSettingsFetchFailed: 'Failed to fetch settings',
+        logSettingsResetFailed: 'Settings reset failed',
+        logLoraTrainingFailed: 'Soul LoRA training failed',
+        logLocalModelChangeFailed: 'Failed to change local model',
+        logModelDownloadFailed: 'Model download failed',
+        logHardwareDetectFailed: 'Hardware detection failed',
+        logLocalModelStatusCheckFailed: 'Failed to check local model status',
+        logBondRankingFetchFailed: 'Failed to fetch bond ranking',
+        logFamiliarityFetchFailed: 'Failed to fetch familiarity',
     },
     zh_cn: {
         languageGateTitle: '选择语言',
@@ -693,6 +759,7 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         steps: '步数',
         finalLoss: '最终损失',
         trainingRunning: '训练中...',
+        trainingProgressDetail: (step, total, loss) => `${step} / ${total} 步 · 损失 ${loss.toFixed(4)}`,
         startTraining: '开始训练',
         speakingStyle: '说话风格',
         syncing: '同步中',
@@ -769,6 +836,27 @@ export const EVERTALK_LABELS: Record<AppLanguage, EverTalkLabels> = {
         apiKey: 'API 密钥',
         apiKeyPlaceholder: '请输入 API 密钥',
         inferenceMode: '运行模式',
+        logStylePackLoadFailed: '风格包数据库加载失败',
+        logLocalLlmLoadFailed: '本地 LLM 引擎加载失败',
+        logPersonaCacheLlmLoadFailed: '精灵预缓存用本地 LLM 加载失败',
+        logActiveSessionsFetchFailed: '活跃会话查询失败',
+        logInitialSetupFailed: '初始设置失败',
+        logRoomSwitchCacheFailed: '切换聊天室时预缓存准备失败',
+        logPersonaCacheFailed: '精灵预缓存准备失败',
+        logPersonaCacheWarmupFailed: (personaId) => `精灵预缓存准备失败 (${personaId})`,
+        logChatResponseFailed: '聊天回复获取失败',
+        logPostChatStateRefreshFailed: '对话后状态刷新失败',
+        logServerSyncFailed: '服务器同步失败',
+        logStyleActivateFailed: '风格启用失败',
+        logSettingsFetchFailed: '设置查询失败',
+        logSettingsResetFailed: '设置重置失败',
+        logLoraTrainingFailed: '精灵 LoRA 训练失败',
+        logLocalModelChangeFailed: '本地模型切换失败',
+        logModelDownloadFailed: '模型下载失败',
+        logHardwareDetectFailed: '硬件规格检测失败',
+        logLocalModelStatusCheckFailed: '本地模型状态检查失败',
+        logBondRankingFetchFailed: '羁绊排行查询失败',
+        logFamiliarityFetchFailed: '亲密度查询失败',
     },
 };
 

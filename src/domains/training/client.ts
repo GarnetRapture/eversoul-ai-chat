@@ -15,6 +15,33 @@ export interface TrainingProgress {
     loss: number;
 }
 
+
+export type TrainingErrorCode =
+    | 'db_lock'
+    | 'persona_not_found'
+    | 'query_failed'
+    | 'insufficient_data'
+    | 'architecture_mismatch'
+    | 'base_model_load_failed'
+    | 'tokenizer_load_failed'
+    | 'thread_panic'
+    | 'training_failed'
+    | 'state_lock';
+
+export interface TrainingErrorPayload {
+    code: TrainingErrorCode;
+    message: string;
+}
+
+export function isTrainingErrorPayload(value: unknown): value is TrainingErrorPayload {
+    return (
+        typeof value === 'object' &&
+        value !== null &&
+        typeof (value as TrainingErrorPayload).code === 'string' &&
+        typeof (value as TrainingErrorPayload).message === 'string'
+    );
+}
+
 export const trainingClient = {
     async run(personaId: string): Promise<TrainingSummary> {
         return invoke('train_lora', { personaId });

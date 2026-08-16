@@ -7,7 +7,7 @@ import type { BondRankingEntry, FamiliarityEntry, PersonaConfig, SpiritDetail } 
 import type { AppSettings, ExternalApiConfigRequest, ExternalApiTestResult, HardwareProfile, ResetSummary, SetupPhase, SetupProgress } from '../settings';
 import type { StyleProfile } from '../style';
 import type { LocalStatusSnapshot } from '../sync';
-import type { TrainingSummary } from '../training';
+import type { TrainingSummary, TrainingProgress } from '../training';
 import type { EverTalkLabels } from './i18n';
 export interface LoadableAssetImageProps {
     candidates: string[];
@@ -86,6 +86,7 @@ export interface SpiritProfilePanelProps {
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
     trainingError: string | null;
+    trainingProgress: TrainingProgress | null;
     localStatus: LocalStatusSnapshot | null;
     labels: EverTalkLabels;
     onTrainPersona: () => void;
@@ -230,6 +231,7 @@ export interface EverTalkController {
     isTraining: boolean;
     trainingSummary: TrainingSummary | null;
     trainingError: string | null;
+    trainingProgress: TrainingProgress | null;
     messagesListRef: React.RefObject<HTMLDivElement | null>;
     settingsOpen: boolean;
     moduleManagementOpen: boolean;

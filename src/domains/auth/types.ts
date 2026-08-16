@@ -4,10 +4,7 @@ export interface UserSession {
     username: string;
     created_at: string;
 }
-export type AuthError = {
-    Database: string;
-} | {
-    Network: string;
-} | 'InvalidCredentials' | {
-    Unknown: string;
-};
+export interface AuthError {
+    code: string;
+    message: string;
+}

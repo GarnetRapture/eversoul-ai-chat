@@ -1,6 +1,6 @@
 [package]
 name = "eversoul-ai-chat"
-version = "0.0.19"
+version = "0.0.20"
 description = "A Tauri App"
 authors = ["GarnetRapture <garnet@everlib.pro>"]
 repository = "https://github.com/GarnetRapture/eversoul-ai-chat"
@@ -38,6 +38,7 @@ tracing-subscriber = "0.3.23"
 directories = "6.0.0"
 reqwest = { version = "0.13.4", default-features = false, features = ["json", "rustls", "stream"] }
 rusqlite = { version = "0.40.1", features = ["bundled"] }
+r2d2 = "0.8"
 uuid = { version = "1.23.4", features = ["v4", "serde"] }
 tauri-plugin-shell = "2.3.5"
 tauri-plugin-dialog = "2.7.1"
@@ -64,7 +65,6 @@ rust-ini = "0.21"
 # 의존하지 않기 위함).
 candle-core = "0.8"
 candle-nn = "0.8"
-hf-hub = "0.3"
 # esaxx_fast(유니그램 토크나이저용 C++ 의존성 esaxx-rs)는 기본값에서 제외한다.
 # esaxx-rs가 정적 CRT(/MT)로 빌드되어 동적 CRT(/MD)로 빌드되는 llama-cpp-sys-2와
 # 링크 시 충돌(LNK2038 RuntimeLibrary mismatch)한다. Qwen2는 BPE 토크나이저를

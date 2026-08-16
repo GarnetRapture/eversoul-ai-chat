@@ -20,11 +20,14 @@ pub fn tokenize_example(
     example: &ConversationExample,
     device: &Device,
 ) -> anyhow::Result<TokenizedBatch> {
-    let mut prompt = format!("<|im_start|>system\n{}<|im_end|>\n", example.system_prompt);
+    // Gemma 2 공식 채팅 템플릿: 역할은 user/model 둘뿐이고 system 역할이 없어
+    // 시스템 프롬프트를 첫 user 턴으로 병합한다(domains/chat/services.rs와 동일 규칙).
+    let mut prompt = format!("<start_of_turn>user\n{}<end_of_turn>\n", example.system_prompt);
     for (role, content) in &example.prompt_turns {
-        prompt.push_str(&format!("<|im_start|>{role}\n{content}<|im_end|>\n"));
+        let gemma_role = if role == "assistant" { "model" } else { "user" };
+        prompt.push_str(&format!("<start_of_turn>{gemma_role}\n{content}<end_of_turn>\n"));
     }
-    prompt.push_str("<|im_start|>assistant\n");
+    prompt.push_str("<start_of_turn>model\n");
 
     let prompt_ids = tokenizer
         .encode(prompt, true)
@@ -32,7 +35,7 @@ pub fn tokenize_example(
         .get_ids()
         .to_vec();
 
-    let target = format!("{}<|im_end|>\n", example.target_reply);
+    let target = format!("{}<end_of_turn>\n", example.target_reply);
     let target_ids = tokenizer
         .encode(target, false)
         .map_err(|e| anyhow::anyhow!("정답 응답 토큰화 실패: {e}"))?

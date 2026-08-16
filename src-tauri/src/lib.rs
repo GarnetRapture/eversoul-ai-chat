@@ -1,11 +1,14 @@
 pub mod domains;
 pub mod infrastructure;
 
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use tauri::Manager;
 
 use crate::domains::auth::commands::DbState;
-use crate::domains::llm::commands::LlmState;
+use crate::domains::llm::commands::{CacheState, LlmState};
+use crate::domains::settings::commands::ApiKeyState;
+use crate::infrastructure::api_key::ApiKeyController;
+use crate::infrastructure::cache::CacheController;
 use crate::infrastructure::database::DatabaseManager;
 
 use crate::domains::auth::commands::{auth_get_session, auth_login, auth_logout};
@@ -30,7 +33,8 @@ use crate::domains::persona::commands::{
 };
 use crate::domains::settings::commands::{
     settings_complete_initial_setup, settings_detect_hardware, settings_get, settings_reset,
-    settings_set_external_api_config, settings_set_language, settings_set_performance_tier,
+    settings_set_api_key, settings_set_api_provider, settings_set_external_api_config,
+    settings_set_inference_mode, settings_set_language, settings_set_performance_tier,
     settings_set_setup_stage, settings_set_show_reasoning, settings_test_external_api, settings_set_active_model,
     SettingsState,
 };
@@ -98,9 +102,7 @@ pub fn run() {
 
             startup_debug_log("setup:database:path_ready");
             let db_mgr = DatabaseManager::new(db_path);
-            let conn = db_mgr
-                .connect()
-                .map_err(|e| -> Box<dyn std::error::Error> { Box::new(e) })?;
+            let db_pool = db_mgr.create_pool()?;
             startup_debug_log("setup:database:connected");
 
             let settings_path = {
@@ -119,12 +121,27 @@ pub fn run() {
             };
             startup_debug_log("setup:lora_adapters:ready");
 
-            app.manage(DbState(Mutex::new(conn)));
+            let api_key_path = {
+                let config_dir = base_dir.join("config");
+                let _ = std::fs::create_dir_all(&config_dir);
+                config_dir.join("api_key.ini")
+            };
+            let api_key_ctrl = ApiKeyController::new(api_key_path);
+            startup_debug_log("setup:api_key:ready");
+
+            let cache_ctrl = Arc::new(CacheController::new(CacheController::default_session_cache_dir())?);
+            startup_debug_log("setup:cache:ready");
+
+            app.manage(DbState(db_pool));
             startup_debug_log("setup:state:db");
             app.manage(LlmState(Mutex::new(None)));
             startup_debug_log("setup:state:llm");
+            app.manage(CacheState(cache_ctrl));
+            startup_debug_log("setup:state:cache");
             app.manage(SettingsState(Mutex::new(settings_mgr)));
             startup_debug_log("setup:state:settings");
+            app.manage(ApiKeyState(Mutex::new(api_key_ctrl)));
+            startup_debug_log("setup:state:api_key");
             app.manage(TrainingState(Mutex::new(adapters_dir)));
             startup_debug_log("setup:state:training");
 
@@ -182,6 +199,9 @@ pub fn run() {
             settings_reset,
             settings_set_language,
             settings_set_performance_tier,
+            settings_set_inference_mode,
+            settings_set_api_provider,
+            settings_set_api_key,
             settings_set_setup_stage,
             settings_set_show_reasoning,
             settings_set_external_api_config,
